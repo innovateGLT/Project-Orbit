@@ -1,0 +1,274 @@
+
+<div class="container header">
+	
+	<nav class="header-links">
+        <ul class="nav nav-pills header-nav-links">
+            <li role="presentation" class="active"><a href="/project/">New Project</a></li>
+            <li role="presentation" class="login-btn" ng-show="auth.isAuthenticated"><a href="/my_profile/"> My profile</a></li>
+            <li role="presentation" ng-show="false" class="login-btn" ng-click="logout()"><a href="#/">Logout</a></li>
+            <li role="presentation" class="login-btn" ng-show="!auth.isAuthenticated" ng-click="login()"><a href="#/">Login</a></li>
+            <li role="presentation"><a href=""><i class="glyphicon glyphicon-question-sign"></i></a></li>
+        </ul>
+    </nav>
+    <div class="row">
+        <div class="col-lg-12 text-center v-center">
+            <h1>PROJECT ORBIT</h1>
+            <p class="lead">Welcome to our website</p>
+            <br>
+            <form class="col-lg-12" ng-submit="search()" style="height: 200px">
+                <div class="input-group input-group-lg col-sm-offset-4 col-sm-4">
+                    <input ng-model="query" ng-keyup="$event.keyCode == 13 ? search() : null" type="text" class="center-block form-control input-lg" title="Find your niche" placeholder="Find your niche">
+                    <span class="input-group-btn"><button id="searchButton" class="btn btn-lg btn-primary" type="submit"><i class="glyphicon glyphicon-search"></i></button></span>
+                </div>
+            </form>
+        </div>
+    </div>
+    <video autoplay loop poster="{{posterUrl}}" id="bgvid">
+        <source src="polina.webm" type="video/webm">
+         <source src="{{videoUrl}}" type="video/mp4">
+    </video>
+</div>
+<!-- /container full -->
+<div class="container container-main" style="margin-top: 50px;">
+
+    <div class="featurette-header">
+        <h1 class="featurette-heading">Featured People</h1>
+        <br/>
+    </div>
+    <div class="row">
+        <div class="col-md-4 col-sm-4 text-center" ng-repeat="user in featuredUsers">
+            <img class="img-circle" width="120px" src="{{user.picture}}">
+            <h2>{{user.name}}</h2>
+            <p>{{user.nickname}}</p>
+            <p><a class="btn btn-default" href="/user/#/{{user.user_id}}">View info »</a></p>
+        </div>
+    </div>
+    <!-- /.row -->
+    <!-- <hr class="featurette-divider"> -->
+    
+
+</div>
+
+
+<div class="container bold-container">
+	<!-- How It Works -->
+    <div class="featurette-header">
+        <h1 class="featurette-heading">How it works</h1>
+        <br/>
+    </div>
+        <!-- FOR THE PROJECT OWNER -->
+    <div class="row {{(projectOwnerSelected) ? 'owner-active' : 'owner-inactive' }}">
+        <div class="col-md-4 col-sm-4 text-center">
+            <img class="img-rounded" width="140px" src="/app/assets/png/umbrella.png">
+            <h2>Step 1 title</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+        </div>
+        <div class="col-md-4 col-sm-4 text-center">
+            <img class="img-rounded" width="140px" src="/app/assets/png/graph2.png">
+            <h2>Step 2 title</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+        </div>
+        <div class="col-md-4 col-sm-4 text-center">
+            <img class="img-rounded" width="140px" src="/app/assets/png/graph4.png">
+            <h2>Step 3 title</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+        </div>
+    </div>
+    <!-- /.row -->
+    <!-- FOR THE PROJECT SEEKER -->
+    <div class="row {{(projectSeekerSelected) ? 'seeker-active' : 'seeker-inactive' }}">
+        <div class="col-md-4 col-sm-4 text-center">
+            <img class="img-rounded" width="140px" src="/app/assets/png/temperature.png">
+            <h2>Step 1 title </h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+        </div>
+        <div class="col-md-4 col-sm-4 text-center">
+            <img class="img-rounded" width="140px" src="/app/assets/png/lamp.png">
+            <h2>Step 2 title </h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+        </div>
+        <div class="col-md-4 col-sm-4 text-center">
+            <img class="img-rounded" width="140px" src="/app/assets/png/cashier.png">
+            <h2>Step 3 title </h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+        </div>
+    </div>
+    <!-- /.row -->
+    <div class="row">
+        <div class="col-md-6 col-sm-6 text-center project {{ (projectOwnerSelected) ? 'active thumbnail' : '' }} {{ (projectSeekerSelected) ? 'p-inactive' : '' }}" ng-click="selectProjectOwner()">
+            <img class="img-rounded" width="200px" src="/app/assets/png/case.png">
+            <h2>PROJECT OWNER</h2>
+            <!-- <p>This is for a project owner</p> -->
+        </div>
+        <div class="col-md-6 col-sm-6 text-center project {{ (projectSeekerSelected) ? 'active thumbnail' : '' }} {{ (projectOwnerSelected ) ? 'p-inactive' : '' }}" ng-click="selectProjectSeeker()">
+            <img class="img-rounded" width="200px" src="/app/assets/png/wooden-sign.png">
+            <h2>PROJECT SEEKER</h2>
+            <!-- <p>This is for a project seeker</p> -->
+        </div>
+    </div>
+    <!-- /.row -->
+    <br/>
+    <br/>
+
+
+</div>
+
+
+<div class="container not-bold-container">
+	<!-- Category Section -->
+    <!-- <hr class="featurette-divider"> -->
+    <div class="featurette-header">
+        <h1 class="featurette-heading">Categories</h1>
+        <br/>
+    </div>
+    <div class="row">
+        <div class="col-md-3 col-sm-6 text-center category">
+            <img class="img-rounded" width="140px" src="/app/assets/categories/IT.png">
+            <h2>IT</h2>
+            <div class="category-overlay text-left" ng-click="go('/project/#/category/IT')">
+                <div class="media">
+                    <a class="pull-left" href="/project/#/category/IT">
+                        <img class="media-object" width="50px" src="/app/assets/categories/IT.png" alt="Image">
+                    </a>
+                    <div class="media-body">
+                        <h4 class="media-heading"><a class="cat-overlay-title" href="/project/#/category/IT">IT</a></h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis qui error fugiat laborum earum nostrum ipsum dolore, tempora vero vel.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6 text-center category">
+            <img class="img-rounded" width="140px" src="/app/assets/categories/Security.png">
+            <h2>Security</h2>
+            <div class="category-overlay text-left" ng-click="go('/project/#/category/Security')">
+                <div class="media">
+                    <a class="pull-left" href="/project/#/category/Security">
+                        <img class="media-object" width="50px" src="/app/assets/categories/Security.png" alt="Image">
+                    </a>
+                    <div class="media-body">
+                        <h4 class="media-heading"><a class="cat-overlay-title" href="/project/#/category/Security">Security</a></h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis qui error fugiat laborum earum nostrum ipsum dolore, tempora vero vel.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6 text-center category">
+            <img class="img-rounded" width="140px" src="/app/assets/categories/Operations.png">
+            <h2>Operations</h2>
+            <div class="category-overlay text-left" ng-click="go('/project/#/category/Operations')">
+                <div class="media">
+                    <a class="pull-left" href="/project/#/category/Operations">
+                        <img class="media-object" width="50px" src="/app/assets/categories/Operations.png" alt="Image">
+                    </a>
+                    <div class="media-body">
+                        <h4 class="media-heading"><a class="cat-overlay-title" href="/project/#/category/Operations">Operations</a></h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis qui error fugiat laborum earum nostrum ipsum dolore, tempora vero vel.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6 text-center category">
+            <img class="img-rounded" width="140px" src="/app/assets/categories/Business.png">
+            <h2>Business</h2>
+            <div class="category-overlay text-left" ng-click="go('/project/#/category/Business')">
+                <div class="media">
+                    <a class="pull-left" href="/project/#/category/Business">
+                        <img class="media-object" width="50px" src="/app/assets/categories/Business.png" alt="Image">
+                    </a>
+                    <div class="media-body">
+                        <h4 class="media-heading"><a class="cat-overlay-title" href="/project/#/category/Business">Business</a></h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis qui error fugiat laborum earum nostrum ipsum dolore, tempora vero vel.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.row -->
+    </br>
+    </br>
+    <div class="row">
+        <div class="col-md-3 col-sm-6 text-center category">
+            <img class="img-rounded" width="140px" src="/app/assets/categories/Cabin.png">
+            <h2>Category 5 </h2>
+            <div class="category-overlay text-left" ng-click="go('/project/#/category/Business')">
+                <div class="media">
+                    <a class="pull-left" href="/project/#/category/Business">
+                        <img class="media-object" width="50px" src="/app/assets/categories/Cabin.png" alt="Image">
+                    </a>
+                    <div class="media-body">
+                        <h4 class="media-heading"><a class="cat-overlay-title" href="/project/#/category/Business">Category 5</a></h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis qui error fugiat laborum earum nostrum ipsum dolore, tempora vero vel.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6 text-center category">
+            <img class="img-rounded" width="140px" src="/app/assets/categories/RetroTV.png">
+            <h2>Category 6 </h2>
+            <div class="category-overlay text-left" ng-click="go('/project/#/category/Business')">
+                <div class="media">
+                    <a class="pull-left" href="/project/#/category/Business">
+                        <img class="media-object" width="50px" src="/app/assets/categories/RetroTV.png" alt="Image">
+                    </a>
+                    <div class="media-body">
+                        <h4 class="media-heading"><a class="cat-overlay-title" href="/project/#/category/Business">Category 6</a></h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis qui error fugiat laborum earum nostrum ipsum dolore, tempora vero vel.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6 text-center category" ng-click="go('/project/#/category/Business')">
+            <img class="img-rounded" width="140px" src="/app/assets/categories/Submarine.png">
+            <h2>Category 7 </h2>
+            <div class="category-overlay text-left">
+                <div class="media">
+                    <a class="pull-left" href="/project/#/category/Business">
+                        <img class="media-object" width="50px" src="/app/assets/categories/Submarine.png" alt="Image">
+                    </a>
+                    <div class="media-body">
+                        <h4 class="media-heading"><a class="cat-overlay-title" href="/project/#/category/Business">Category 7</a></h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis qui error fugiat laborum earum nostrum ipsum dolore, tempora vero vel.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6 text-center category" ng-click="go('/project/#/category/Business')">
+            <img class="img-rounded" width="140px" src="/app/assets/categories/Tent.png">
+            <h2>Category 8</h2>
+            <div class="category-overlay text-left">
+                <div class="media">
+                    <a class="pull-left" href="/project/#/category/Business">
+                        <img class="media-object" width="50px" src="/app/assets/categories/Tent.png" alt="Image">
+                    </a>
+                    <div class="media-body">
+                        <h4 class="media-heading"><a class="cat-overlay-title" href="/project/#/category/Business">Category 8</a></h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis qui error fugiat laborum earum nostrum ipsum dolore, tempora vero vel.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.row -->
+    <!-- END OF CATEGORY SECTION -->
+</div>
+
+<div class="container bold-container">
+    <div class="featurette-header">
+        <h1 class="featurette-heading">Featured Projects</h1>
+        <br/>
+    </div>
+    <div class="row">
+        <div class="col-md-4 col-sm-6 text-center " ng-repeat="project in featuredProjects">
+            <div class="thumbnail project">
+                <img class="img-circle" width="140px" src="/app/assets/categories/{{project.category}}.png">
+                <h2 class="project-header">{{project.title}}</h2>
+                <p>{{project.description}}</p>
+                <p>By <a href="/user/#/{{project.user.user_id}}"> {{project.user.name}} </a></p>
+                <p><a class="btn btn-default" href="/project/#/{{project._id}}">View details »</a></p>
+            </div>
+        </div>
+    </div>
+    <!-- /.row -->
+</div>
+<!-- /.container -->
+

@@ -1,0 +1,137 @@
+
+<div class="container  bold-container" style="margin-top : 80px">
+    <div class="row">
+        <div class="containter text-center profile">
+           
+            
+            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 title">
+                <a class="pull-left" href="#">
+                    <img width="120px" class="media-object img-circle" src="{{auth.profile.picture}}" alt="Image">
+                </a>
+                
+            </div>
+            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 text-left">
+                <h3 class="media-heading">{{ auth.profile.name}}</h3>
+                    <ul class="list-unstyled">
+                        <li>{{auth.profile.dept}}</li>
+                        <li>{{auth.profile.job_role}}</li>
+                        <li>{{auth.profile.country}}</li>
+                        <li>{{auth.profile.email}}</li>
+                    </ul>
+            </div>
+
+            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                
+            </div>
+
+            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                <div class="edit">
+                    <span class="label label-danger" id="editProfile" ng-click="editProfile()">
+                    <i class="glyphicon glyphicon-cog"></i> Edit Profile
+                </span>
+                </div>
+            </div>
+
+            
+        </div>    
+    </div>
+</div>
+
+
+<div class="container not-bold-container-user">
+    <div class="row title">
+         <div class="text-left">
+                <div class="profile-list">
+                    <strong>Skills:</strong>
+                    <ul class="list-inline">
+                        <li ng-repeat="skill in user.skills"><span class="label label-success">{{skill}}</span></li>
+                    </ul>
+                </div>
+                <br />
+                <div class="profile-list">
+                    <strong>Interests:</strong>
+                    <ul class="list-inline">
+                        <li ng-repeat="interest in user.interests"><span class="label label-success">{{interest}}</span></li>
+                    </ul>
+                </div>
+                <br />
+                <div class="profile-list">
+                    <strong>I am actively looking for a project:</strong>
+                    <ul class="list-inline">
+                        <li>
+                            {{(user.status) ? "YES" : "NO" }}&nbsp;
+                        </li>
+                    </ul>
+                </div>
+                <br />
+            </div>
+    </div>
+</div>
+
+<!-- <hr class="featurette-divider-sm"> -->
+<div class="container bold-container">
+    <div class="row">
+        <h2 class="{{ (projects.length == 0) ? 'title' : 'text-center' }}">My Current Projects</h2>
+        <div class="row">
+            <div class="col-md-4 text-center" ng-repeat="project in projects">
+                <div class="thumbnail">
+                    <img class="img-circle" width="140px" src="/app/assets/categories/{{project.category}}.png">
+                    <h3>{{project.title}}</h3>
+                    <div class="featured-project">
+                        <i class="glyphicon {{(project. featured) ? 'glyphicon-ok-circle text-success' : 'ng-hide' }} "></i> 
+
+                        <i class="glyphicon {{(project.visibility == 'global') ? 'glyphicon-globe text-success' : 'ng-hide' }} "></i>
+                    </div>
+                    <p class="project-desc">{{project.description}}</p>
+                    <p><a class="btn btn-default" href="/project/#/{{project._id}}">View details »</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- <hr class="featurette-divider-sm"> -->
+<div class="container not-bold-container-user">
+    <div class="row">
+        <h2 class="{{ (invitedProjects.length == 0) ? '' : 'text-center' }}">My Invited Projects</h2>
+        <div class="row">
+            <div class="col-md-4 text-center" ng-repeat="project in invitedProjects">
+                <div class="thumbnail">
+                    <img class="img-circle" width="140px" src="/app/assets/categories/{{project.category}}.png">
+                    <h3>{{project.title}}</h3>
+                    <div class="featured-project">
+                        <i class="glyphicon {{(project. featured) ? 'glyphicon-ok-circle text-success' : 'ng-hide' }} "></i> 
+
+                        <i class="glyphicon {{(project.visibility == 'global') ? 'glyphicon-globe text-success' : 'ng-hide' }} "></i>
+                    </div>
+                    <p class="project-desc">{{project.description}}</p>
+                    <p>By <a href="/user/#/{{project.user.user_id}}"> {{project.user.name}} </a></p>
+                    <p><a class="btn btn-default" href="/project/#/{{project._id}}">View details »</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- <hr class="featurette-divider-sm"> -->
+<div class="container bold-container">
+    <div class="row">
+        <h2 class="{{ (completedProjects.length == 0) ? 'title' : 'text-center' }}">My Completed Projects</h2>
+        <div class="row">
+            <div class="col-md-4 text-center" ng-repeat="project in completedProjects">
+                <div class="thumbnail">
+                    <img class="img-circle" width="140px" src="/app/assets/categories/{{project.category}}.png">
+                    <h3> {{project.title}}</h3>
+                    <div class="featured-project">
+                        <i class="glyphicon {{(project. featured) ? 'glyphicon-ok-circle text-success' : 'ng-hide' }} "></i> 
+
+                        <i class="glyphicon {{(project.visibility == 'global') ? 'glyphicon-globe text-success' : 'ng-hide' }} "></i>
+                    </div>
+                    <p class="project-desc">{{project.description}}</p>
+                    <p><a class="btn btn-default" href="/project/#/{{project._id}}">View details »</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

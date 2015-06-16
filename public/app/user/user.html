@@ -1,0 +1,111 @@
+<div class="container  bold-container" style="margin-top : 80px">
+    <div class="row">
+       
+            
+            <div class="col-md-3 col-lg-3 title">
+                <a class="pull-left" href="#">
+                    <img width="120px" class="media-object img-circle" src="{{user.picture}}" alt="Image">
+                </a>
+                
+            </div>
+            <div class="col-md-3 col-lg-3 text-left">
+                <h3 class="media-heading">{{ user.name}}</h3>
+                    <ul class="list-unstyled">
+                        <li>{{user.dept}}</li>
+                        <li>{{user.job_role}}</li>
+                        <li>{{user.country}}</li>
+                        <li>{{user.email}}</li>
+                    </ul>
+            </div>
+
+            <div class="col-md-3 col-lg-3">
+                <div ng-show="isAdmin" class="edit">
+                <h2>
+                
+                <i ng-click="feature()" class="glyphicon {{(user.featured) ? 'glyphicon-ok-circle text-success' : 'glyphicon-remove-circle' }}"></i> Featured
+                </h2>
+            </div>
+                </div>
+            </div>
+
+            <div class="col-md-3 col-lg-3">
+                
+            </div>
+
+            
+         
+    </div>
+</div>
+
+<div class="container not-bold-container-user">
+    <div class="row">
+         <div class="text-left">
+                <div class="profile-list">
+                    <strong>Skills:</strong>
+                    <ul class="list-inline">
+                        <li ng-repeat="skill in user.skills"><span class="label label-success">{{skill}}</span></li>
+                    </ul>
+                </div>
+                <br />
+                <div class="profile-list">
+                    <strong>Interests:</strong>
+                    <ul class="list-inline">
+                        <li ng-repeat="interest in user.interests"><span class="label label-success">{{interest}}</span></li>
+                    </ul>
+                </div>
+                <div class="profile-list">
+                    <strong>I am actively looking for a project:</strong>
+                    <ul class="list-inline">
+                        <li>
+                            {{(user.status) ? "YES" : "NO" }}&nbsp;
+                        </li>
+                    </ul>
+                </div>
+                <br />
+            </div>
+    </div>
+</div>
+
+
+<div class="container bold-container">
+    <div class="row">
+        <h2 class="{{ (projects.length == 0) ? 'title' : 'text-center' }}">My Current Projects</h2>
+        </br>
+        <div class="row">
+            <div class="col-sm-6 col-md-4 text-center" ng-repeat="project in projects">
+                <div class="thumbnail">
+                    <img class="img-circle" width="140px" src="/app/assets/categories/{{project.category}}.png">
+                    <h3>{{project.title}}</h3>
+                    <div class="featured-project">
+                        <i class="glyphicon {{(project. featured) ? 'glyphicon-ok-circle text-success' : 'ng-hide' }} "></i> 
+
+                        <i class="glyphicon {{(project.visibility == 'global') ? 'glyphicon-globe text-success' : 'ng-hide' }} "></i>
+                    </div>
+                    <p class="project-desc">{{project.description}}</p>
+                    <p><a class="btn btn-default" href="/project/#/{{project._id}}">View details »</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container not-bold-container">
+    <div class="row">
+        <h2 class="{{ (completedProjects.length == 0) ? '' : 'text-center' }}">My Completed Projects</h2>
+        <div class="row">
+            <div class="col-md-4 text-center" ng-repeat="project in completedProjects">
+                <div class="thumbnail">
+                    <img class="img-circle" width="140px" src="/app/assets/categories/{{project.category}}.png">
+                    <h3> {{project.title}}</h3>
+                    <div class="featured-project">
+                        <i class="glyphicon {{(project. featured) ? 'glyphicon-ok-circle text-success' : 'ng-hide' }} "></i> 
+
+                        <i class="glyphicon {{(project.visibility == 'global') ? 'glyphicon-globe text-success' : 'ng-hide' }} "></i>
+                    </div>
+                    <p class="project-desc">{{project.description}}</p>
+                    <p><a class="btn btn-default" href="/project/#/{{project._id}}">View details »</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

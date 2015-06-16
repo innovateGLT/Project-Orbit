@@ -1,0 +1,22 @@
+<h2 class="text-center"> {{ (projects.length == 0) ? 'No result found' : 'Search result'}} </h2>
+
+<div class="container container-main">
+    <div class="row">
+        <div class="col-md-4 text-center" ng-repeat="project in projects">
+            <div class="thumbnail">
+                <img class="img-circle" width="140px" src="/app/assets/categories/{{project.category}}.png">
+                <h2 class="project-header">{{project.title}}</h2>
+                <div class="featured-project">
+                    <i class="glyphicon {{(project. featured) ? 'glyphicon-ok-circle text-success' : 'ng-hide' }} "></i> 
+
+                    <i class="glyphicon {{(project.visibility == 'global') ? 'glyphicon-globe text-success' : 'ng-hide' }} "></i>
+                </div>
+                <p class="project-desc">{{project.description}}</p>
+                <p>By <a href="/user/#/{{project.user.user_id}}"> {{project.user.name}} </a></p>
+                <p><a class="btn btn-default" href="/project/#/{{project._id}}">View details »</a></p>
+            </div>
+        </div>
+    </div>
+    <!-- /.row -->
+    <hr class="featurette-divider">
+</div>

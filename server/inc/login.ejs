@@ -1,0 +1,20 @@
+
+    <script type="text/ng-template" id="loginModalContent.html">
+       
+                <div class="modal-body">
+                    <button type="button" class="close" ng-click="cancel()" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <img class="profile-img" src="/app/assets/img/user.png" alt="">
+                    <div ng-show="error" class="text-danger text-center" >{{errorMessage}}</div>
+                    <form class="form-signin" ng-submit="signin()">
+                        <input type="text" class="form-control" ng-model="username" placeholder="Username" required autofocus>
+                        <input type="password" class="form-control" ng-model="password" placeholder="Password" required>
+                        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+                        <br />
+                        <!-- <a href="#" class="pull-left">Create an account </a> -->
+                        <!-- <a href="#" class="pull-right">Need help? </a> -->
+                    </form>
+                </div>
+            
+    </script>

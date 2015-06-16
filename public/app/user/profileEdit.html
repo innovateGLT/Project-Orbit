@@ -1,0 +1,55 @@
+<div class="container container-main">
+    <div class="row">
+        <div class="containter text-center profile">
+            <div class="edit">
+                <span ng-click="goToProfile()" class="label label-success" id="editProfileDone">
+                        <i class="glyphicon glyphicon-ok"></i> Done
+                    </span>
+            </div>
+            <img src="{{auth.profile.picture}}" width="120" height="120" border="0" class="img-circle">
+            <br />
+            <br />
+            <br />
+            <h1 class="media-heading"> {{ auth.profile.name}}<small>{{user.role}}</small></h1>.
+        </div>
+        <!-- I am actively looking for a project -->
+        <hr class="featurette-divider-sm">
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" value="" ng-model="status"> I am actively looking for a project
+                <span ng-click="save()" class="label label-success" style="margin-right: 10px">
+                        <i class="glyphicon glyphicon-ok"></i> Save
+                    </span>
+            </label>
+        </div>
+        <hr class="featurette-divider-sm">
+        <h2>My Skills <small>(separated by commas)</small></h2>
+        <div class="row">
+            <textarea class="form-control" ng-model="skills" rows="4"></textarea>
+            <div class="pull-right">
+                <span ng-click="save()" class="label label-success" style="margin-right: 10px">
+                        <i class="glyphicon glyphicon-ok"></i> Save
+                    </span>
+                <span ng-show="false" class="label label-danger">
+                        <i class="glyphicon glyphicon-remove"></i> Cancel
+                    </span>
+            </div>
+        </div>
+        <!-- /.row -->
+        <hr class="featurette-divider-sm">
+        <h2>My Interests <small>(separated by commas)</small></h2>
+        <div class="row">
+            <textarea class="form-control" ng-model="interests" rows="4"></textarea>
+            <div class="pull-right">
+                <span ng-click="save()" class="label label-success" style="margin-right: 10px">
+                        <i class="glyphicon glyphicon-ok"></i> Save
+                    </span>
+                <span ng-show="false" class="label label-danger">
+                        <i class="glyphicon glyphicon-remove"></i> Cancel
+                    </span>
+            </div>
+        </div>
+        <!-- /.row -->
+    </div>
+</div>
+<!-- /.container -->
