@@ -772,7 +772,8 @@ video#bgvid {
     padding: 0;
     margin: 0;
     width: 100%;
-      overflow-y: hidden;
+    overflow-y: hidden;
+    overflow-x: hidden;
 }
 
 .bold-container {
