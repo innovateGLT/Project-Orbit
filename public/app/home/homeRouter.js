@@ -7,7 +7,7 @@ angular.module('project')
                 .when('/', {
                     templateUrl: '/app/home/home.html',
                     controller: 'HomeController'
-                })
+                });
 
 
         }

@@ -83,12 +83,28 @@ body {
 }
 
 .footer {
-    /*margin-top: 50px;*/
-    padding-top: 50px;
+    padding: 20px 40px;
     min-height: 150px;
-    background-color: #110022;
     text-align: center;
-    color: #DDCCEE;
+    border-top: 5px solid #000;
+    color: #000;
+    font-size: 85%;
+}
+
+.footer a {
+    color: #000;
+}
+
+.footer .disclaimer {
+    color: #808080;
+}
+
+.footer img.powered-by {
+    width: 25%;
+}
+
+.footer .col-md-12 {
+    margin-top: 15px;
 }
 
 .header-links {
@@ -823,4 +839,8 @@ video#bgvid {
 .header-logo:hover {
     color: white;
     
+}
+
+.no-margin-top {
+    margin-top: 0 !important;
 }
