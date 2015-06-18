@@ -870,31 +870,35 @@ video#bgvid {
 }
 
 /* how it works */
-.role-container {
-    display: inline-block;
-    width: 42.2%;
-}
 
-.panel-circle {
-    float: left;
-    width: 200px;
-    border: 1px solid #d2d2d2;
-    height: 200px;
-    border-radius: 100px;
-    background-color: #d2d2d2;
-    color: #fff;
+.panel-circle div {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    height: 0;
+    padding: 50% 0;
+    border-radius: 50%;
+  
+    /* Just making it pretty */
+    @shadow: rgba(0, 0, 0, .1);
+    @shadow-length: 4px;
+    -webkit-box-shadow: 0 @shadow-length 0 0 @shadow;
+            box-shadow: 0 @shadow-length 0 0 @shadow;
+    text-shadow: 0 @shadow-length 0 @shadow;
+    background: #d2d2d2;
+    color: white;
+    font-family: Helvetica, Arial Black, sans;
     text-align: center;
-    padding-top: 40px;
-    margin: 7% 1.5%;
     -webkit-transition: all .2s; /* Safari */
     transition: all .2s;
 }
 
-.panel-circle.role {
-    cursor: pointer;
+.panel-circle.main div {
+    background-color: #ff0000;
+    border: 1px solid #ff0000;
 }
 
-.panel-circle.role:hover {
+.panel-circle.role div:hover {
     -ms-transform: scale(1.05,1.05); /* IE 9 */
     -webkit-transform: scale(1.05,1.05); /* Safari */
     transform: scale(1.05,1.05);
@@ -905,27 +909,140 @@ video#bgvid {
 
 .panel-circle p {
     font-size: 170%;
-    margin: 10% 0 0 0;
+    margin: -15% 0 0 0;
     padding: 0;
+    font-size: 1.38vw;
 }
 
 .panel-circle.role p.role-title {
     font-size: 300%;
     font-weight: bold;
-    margin-top: -5%;
-}
-
-.panel-circle.main {
-    background-color: #ff0000;
-    border: 1px solid #ff0000;
-    height: 300px;
-    width: 300px;
-    border-radius: 150px;
-    margin: 0;
+    margin-top: -10%;
+    font-size: 2.5vw;
 }
 
 .panel-circle.main p {
-    font-size: 600%;
-    margin-top: 15%;
+    font-size: 500%;
+    margin-top: -20%;
     font-weight: bold;
+    font-size: 4.5vw;
+}
+
+@media only screen and (min-width: 300px) and (max-width: 499px) {
+    
+    .panel-circle {
+        width: 100%;
+    }
+    
+    .panel-circle div {
+        width: 80%;
+        padding: 40% 0;
+    }
+    
+    .panel-circle.main {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    
+    .panel-circle.main div {
+        width: 100%;
+        padding: 50% 0;
+    }
+    
+    .panel-circle.main p {
+         font-size: 400%;
+         margin-top: -15%;
+     }
+     
+     .panel-circle.role {
+         margin-top: 0;
+     }
+     
+     .panel-circle p {
+         font-size: 150%;
+         margin-top: -15%;
+     }
+     
+     .panel-circle.role p.role-title {
+         font-size: 200%;
+         margin-top: 0;
+     }
+     
+     .seeker-active, .owner-active {
+         max-height: 850px;
+     }
+    
+}
+
+@media only screen and (min-width: 500px) and (max-width: 899px) {
+     
+     .panel-circle.role {
+         width: 30%;
+     }
+     
+     .panel-circle.role p.role-title {
+         font-size: 2vw;
+         margin-top: -5%;
+     }
+     
+     .panel-circle.main p {
+         font-size: 4vw;
+     }
+}
+
+@media only screen and (min-width: 900px) {
+    
+    .panel-circle {
+        float: left;
+    }
+    
+    .panel-circle.role {
+        cursor: pointer;
+        margin-top: 7%;
+        width: 30%;
+    }
+    
+    .panel-circle.main {
+        width: 38%;
+        margin: 0 1%;
+    }
+}
+
+@media only screen and (min-width: 960px) {
+     .panel-circle {
+         float: left;
+     }
+     
+     .panel-circle p {
+         font-size: 2.5vw;
+     }
+     
+     .panel-circle.role p.role-title { 
+         font-size: 4vw;
+         margin-top: -5%;
+     }
+     
+     .panel-circle.main p {
+         font-size: 5vw;
+         margin-top: -10%;
+     }
+}
+
+@media only screen and (min-width: 1024px) {
+     .panel-circle {
+         float: left;
+     }
+     
+     .panel-circle p {
+         font-size: 2vw;
+     }
+     
+     .panel-circle.role p.role-title { 
+         font-size: 3.5vw;
+         margin-top: -5%;
+     }
+     
+     .panel-circle.main p {
+         margin-top: -15%;
+     }
 }
