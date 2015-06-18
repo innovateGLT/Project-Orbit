@@ -92,18 +92,35 @@
         </div>
     </div>
     <!-- /.row -->
-    <div class="row">
+    <!--<div class="row">
         <div class="col-md-6 col-sm-6 text-center project {{ (projectOwnerSelected) ? 'active thumbnail' : '' }} {{ (projectSeekerSelected) ? 'p-inactive' : '' }}" ng-click="selectProjectOwner()">
             <img class="img-rounded" width="200px" src="/app/assets/png/case.png">
             <h2>PROJECT OWNER</h2>
-            <!-- <p>This is for a project owner</p> -->
         </div>
         <div class="col-md-6 col-sm-6 text-center project {{ (projectSeekerSelected) ? 'active thumbnail' : '' }} {{ (projectOwnerSelected ) ? 'p-inactive' : '' }}" ng-click="selectProjectSeeker()">
             <img class="img-rounded" width="200px" src="/app/assets/png/wooden-sign.png">
             <h2>PROJECT SEEKER</h2>
-            <!-- <p>This is for a project seeker</p> -->
+        </div>
+    </div>-->
+    
+    <div class="row text-center mt30">
+        <div class="role-container">
+            <div class="panel-circle role" ng-click="selectProjectOwner()">
+                <!-- <p>This is for a project owner</p> -->
+                <p>an opportunity</p>
+                <p class="role-title">owner</p>
+            </div>
+            <div class="panel-circle main">
+                <p>I am...</p>
+            </div>
+            <div class="panel-circle role" ng-click="selectProjectSeeker()">
+                <!-- <p>This is for a project seeker</p> -->
+                <p>an opportunity</p>
+                <p class="role-title">seeker</p>
+            </div>
         </div>
     </div>
+    
     <!-- /.row -->
     <br/>
     <br/>
