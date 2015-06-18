@@ -841,6 +841,30 @@ video#bgvid {
     
 }
 
+/* margins */
+
+.mt10 {margin-top:10px;}
+.mt20 {margin-top:20px;}
+.mt30 {margin-top:30px;}
+.mt40 {margin-top:40px;}
+.mt50 {margin-top:50px;}
+.mt60 {margin-top:60px;}
+.mt70 {margin-top:70px;}
+.mt80 {margin-top:80px;}
+.mt90 {margin-top:90px;}
+.mt100 {margin-top:100px;}
+
+.mb10 {margin-bottom:10px;}
+.mb20 {margin-bottom:20px;}
+.mb30 {margin-bottom:30px;}
+.mb40 {margin-bottom:40px;}
+.mb50 {margin-bottom:50px;}
+.mb60 {margin-bottom:60px;}
+.mb70 {margin-bottom:70px;}
+.mb80 {margin-bottom:80px;}
+.mb90 {margin-bottom:90px;}
+.mb100 {margin-bottom:100px;}
+
 .no-margin-top {
     margin-top: 0 !important;
 }
