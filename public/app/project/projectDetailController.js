@@ -42,13 +42,10 @@ angular.module('project')
                     $scope.isOwner = false;
                 }
 
-
-
                 if ($scope.auth.profile.email == ADMIN_EMAIL) {
                     $scope.isOwner = true;
                     $scope.isAdmin = true;
                 }
-
 
                 $scope.matchedUsers = Users.getMatches({
                     skills: $scope.project.skillset.join(',')

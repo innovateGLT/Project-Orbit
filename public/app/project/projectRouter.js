@@ -3,10 +3,10 @@ angular.module('project')
     .config(['$routeProvider',
         function($routeProvider) {
             $routeProvider
-                .when('/', {
-                    templateUrl: '/app/project/project.html',
-                    controller: 'ProjectController'
-                })
+            .when('/', {
+                templateUrl: '/app/project/project.html',
+                controller: 'ProjectController'
+            })
 
             .when('/category/:category', {
                 templateUrl: '/app/project/project_cat.html',

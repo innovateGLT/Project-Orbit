@@ -693,7 +693,7 @@ http://nicolasgallagher.com/micro-clearfix-hack/
 .project-desc {
     min-height: 100px;
     height: 100px;
-    overflow: scroll;
+    overflow: hidden;
 }
 /*CATEGORY OVERLAY*/
 

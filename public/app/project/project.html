@@ -14,7 +14,7 @@
     <div class="form-group">
         <label class="col-md-4 control-label" for="project-category">Project Category</label>
         <div class="col-md-4">
-            <select class="form-control" ng-model="project.category" ng-options="category for category in defaultCategories">
+            <select class="form-control" ng-model="project.category" ng-options="category.name for category in defaultCategories">
             </select>
         </div>
     </div>

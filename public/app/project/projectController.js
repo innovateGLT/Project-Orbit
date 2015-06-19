@@ -21,8 +21,17 @@ angular.module('project')
 
             $scope.project = {};
 
-            $scope.defaultCategories = ['Business', 'Operations', 'IT', 'Security'];
-            $scope.project.category = 'Business';
+            $scope.defaultCategories = [
+                { id : "CrossUnitProjects", name : "Cross Unit Projects" },
+                { id : "JobRelations", name : "Job Relations" },
+                { id : "StretchAssignments", name : "Stretch Assignments" },
+                { id : "JobShadowing", name : "Job Shadowing" },
+                { id : "BusinessInteractions", name : "Business Interactions" },
+                { id : "AdventureAssignments", name : "Adventure Assignments" },
+                { id : "FindaMentorMentee", name : "Find a Mentor / Mentee" },
+                { id : "OtherOpportunities", name : "Other Opportunities" },
+            ];
+            $scope.project.category = $scope.defaultCategories[3];
 
             $scope.defaultSkillCategories = ['Technical', 'Soft Skills', 'Project Management'];
             $scope.project.skillCategory = 'Technical';
@@ -157,6 +166,7 @@ angular.module('project')
                 newProject.timeAvailability = $scope.hoursAvail + " hours per " + newProject.timeAvailability;
 
                 newProject.country = $scope.auth.profile.country;
+                newProject.category = $scope.project.category.id; 
 
 
                 console.log("NEW PROJECT", newProject);
