@@ -456,17 +456,20 @@ span.label {
 .seeker-active,
 .owner-active {
     max-height: 500px;
-    opacity: 1;
-    /*transition: all 0.5s ease-in;*/
-    
+    opacity: 1;    
     transition: all linear 0.5s;
 }
 
 .seeker-inactive,
 .owner-inactive {
     max-height: 0;
+    width: 100%;
     overflow: hidden;
     opacity: 0;
+    padding: 0 !important;
+    margin: 0;
+    transition: all linear 0.5s;
+    visibility: hidden;
 }
 
 .user-header,
@@ -948,6 +951,14 @@ video#bgvid {
         padding: 30% 0;
     }
     
+    .panel-circle.role div.owner {
+        float: none;
+    }
+    
+    .panel-circle.role div.seeker {
+        float: none;
+    }
+    
     .panel-circle.main {
         margin-top: 20px;
         margin-bottom: 20px;
@@ -978,9 +989,12 @@ video#bgvid {
      }
      
      .seeker-active, .owner-active {
-         max-height: 850px;
+         max-height: 1000px;
+     }    
+     
+     .hiw-steps img {
+         width: 50vw;
      }
-    
 }
 
 @media only screen and (min-width: 500px) {
@@ -1033,6 +1047,10 @@ video#bgvid {
          font-size: 5vw;
          margin-top: -10%;
      }
+     
+     .hiw-steps img {
+         width: 15vw;
+     }
 }
 
 @media only screen and (min-width: 1024px) and (max-width: 1365px) {
@@ -1076,6 +1094,10 @@ video#bgvid {
      .panel-circle.main p {
          margin-top: -15%;
      }
+     
+     .hiw-steps img {
+        width: 15vw;
+    }
 }
 
 /* How it Works Steps */
@@ -1095,8 +1117,5 @@ video#bgvid {
     border: 1px solid #888888;
     border-radius: 2px;
     padding: 20px;
-}
-
-.hiw-steps img {
-    width: 15vw;
+    margin-bottom: 20px;
 }
