@@ -55,40 +55,42 @@
         <br/>
     </div>
         <!-- FOR THE PROJECT OWNER -->
-    <div class="row {{(projectOwnerSelected) ? 'owner-active' : 'owner-inactive' }}">
+    <div class="row pane pane-dark hiw-steps {{(projectOwnerSelected) ? 'owner-active' : 'owner-inactive' }}">
+        <span class="close" ng-click="selectProjectOwner()">&times;</span>
         <div class="col-md-4 col-sm-4 text-center">
             <img class="img-rounded" width="300px" src="/app/assets/img/home/owner-step1-announce.png">
-            <h2>Step 1 title</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+            <h2>Step 1. Announce</h2>
+            <p>Need more ideas and extra help for a project? Post an opportunity and spread the word to seekers.</p>
         </div>
         <div class="col-md-4 col-sm-4 text-center">
             <img class="img-rounded" width="300px" src="/app/assets/img/home/owner-step2-review.png">
-            <h2>Step 2 title</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+            <h2>Step 2. Review</h2>
+            <p>Review the profiles of the applicants and potential seekers who may have the expertise you are looking for.</p>
         </div>
         <div class="col-md-4 col-sm-4 text-center">
             <img class="img-rounded" width="300px" src="/app/assets/img/home/owner-step3-select.png">
-            <h2>Step 3 title</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+            <h2>Step 3. Select</h2>
+            <p>On board a seeker to the project.</p>
         </div>
     </div>
     <!-- /.row -->
     <!-- FOR THE PROJECT SEEKER -->
-    <div class="row {{(projectSeekerSelected) ? 'seeker-active' : 'seeker-inactive' }}">
+    <div class="row pane pane-dark hiw-steps {{(projectSeekerSelected) ? 'seeker-active' : 'seeker-inactive' }}">
+        <span class="close" ng-click="selectProjectSeeker()">&times;</span>
         <div class="col-md-4 col-sm-4 text-center">
             <img class="img-rounded" width="300px" src="/app/assets/img/home/seeker-step1-seek.png">
-            <h2>Step 1 title </h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+            <h2>Step 1. Seek</h2>
+            <p>Looking to learn something new and grow your skills? Seek for an opporunity.</p>
         </div>
         <div class="col-md-4 col-sm-4 text-center">
             <img class="img-rounded" width="300px" src="/app/assets/img/home/seeker-step2-apply.png">
-            <h2>Step 2 title </h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+            <h2>Step 2. Apply</h2>
+            <p>Found an opportunity you are interested in? Apply for it.</p>
         </div>
         <div class="col-md-4 col-sm-4 text-center">
             <img class="img-rounded" width="300px" src="/app/assets/img/home/seeker-step3-collaborate.png">
-            <h2>Step 3 title </h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+            <h2>Step 3. Collaborate</h2>
+            <p>Once onboarded to a project, explore and collaborate.</p>
         </div>
     </div>
     <!-- /.row -->
@@ -103,12 +105,12 @@
         </div>
     </div>-->
     
-    <div class="row text-center mt30">
+    <div class="row text-center">
         <div class="col-md-2"></div>
         <div class="col-md-8">
             <div class="panel-circle role" ng-click="selectProjectOwner()">
                 <!-- <p>This is for a project owner</p> -->
-                <div>
+                <div class="owner">
                     <p>an opportunity</p>
                     <p class="role-title">owner</p>
                 </div>
@@ -120,7 +122,7 @@
             </div>
             <div class="panel-circle role" ng-click="selectProjectSeeker()">
                 <!-- <p>This is for a project seeker</p> -->
-                <div>
+                <div class="seeker">
                     <p>an opportunity</p>
                     <p class="role-title">seeker</p>
                 </div>

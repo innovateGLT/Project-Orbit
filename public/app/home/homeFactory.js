@@ -168,7 +168,7 @@ angular.module('home')
         var autoLogin = function(callback) {
 
 
-            var BASE = "http://" + window.location.host;
+            var BASE = "http://ssupdate.global.hsbc/myhsbc/uservariables.ashx";
             console.log("BASE", BASE);
             $http.get(BASE + '/api/users/fake_login').
             success(function(data, status, headers, config) {
