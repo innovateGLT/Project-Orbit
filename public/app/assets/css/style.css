@@ -936,8 +936,8 @@ video#bgvid {
     }
     
     .panel-circle div {
-        width: 80%;
-        padding: 40% 0;
+        width: 60%;
+        padding: 30% 0;
     }
     
     .panel-circle.main {
@@ -946,13 +946,13 @@ video#bgvid {
     }
     
     .panel-circle.main div {
-        width: 100%;
-        padding: 50% 0;
+        width: 80%;
+        padding: 40% 0;
     }
     
     .panel-circle.main p {
          font-size: 400%;
-         margin-top: -15%;
+         margin-top: -20%;
      }
      
      .panel-circle.role {
@@ -961,7 +961,7 @@ video#bgvid {
      
      .panel-circle p {
          font-size: 150%;
-         margin-top: -15%;
+         margin-top: -20%;
      }
      
      .panel-circle.role p.role-title {
@@ -974,26 +974,6 @@ video#bgvid {
      }
     
 }
-
-/*@media only screen and (min-width: 500px) {
-     
-     .pane-circle {
-         float: left;
-     }
-     
-     .panel-circle.role {
-         width: 30%;
-     }
-     
-     .panel-circle.role p.role-title {
-         font-size: 2vw;
-         margin-top: -5%;
-     }
-     
-     .panel-circle.main p {
-         font-size: 4vw;
-     }
-}*/
 
 @media only screen and (min-width: 500px) {
     
