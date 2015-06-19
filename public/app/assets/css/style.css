@@ -975,7 +975,11 @@ video#bgvid {
     
 }
 
-@media only screen and (min-width: 500px) and (max-width: 899px) {
+/*@media only screen and (min-width: 500px) {
+     
+     .pane-circle {
+         float: left;
+     }
      
      .panel-circle.role {
          width: 30%;
@@ -989,9 +993,9 @@ video#bgvid {
      .panel-circle.main p {
          font-size: 4vw;
      }
-}
+}*/
 
-@media only screen and (min-width: 900px) {
+@media only screen and (min-width: 500px) {
     
     .panel-circle {
         float: left;
@@ -1007,6 +1011,20 @@ video#bgvid {
         width: 38%;
         margin: 0 1%;
     }
+    
+    .panel-circle.role p {
+        font-size: 2.5vw;
+    }
+    
+    .panel-circle.role p.role-title {
+         font-size: 4.5vw;
+         margin-top: -5%;
+     }
+     
+     .panel-circle.main p {
+         font-size: 6vw;
+         margin-top: -15%;
+     }
 }
 
 @media only screen and (min-width: 960px) {
