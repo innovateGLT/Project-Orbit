@@ -14,7 +14,6 @@
     "commit": "20311cf9d8107bd1a16579d702e95c4cf3493aac"
   },
   "_source": "git://github.com/jdpedrie/angularjs-camelCase-to-human-filter.git",
-  "_target": "~0.2.1",
-  "_originalSource": "angularjs-camelCase-human",
-  "_direct": true
+  "_target": "*",
+  "_originalSource": "angularjs-camelCase-human"
 }
