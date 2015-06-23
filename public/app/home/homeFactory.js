@@ -56,7 +56,7 @@ angular.module('home')
                     }
                 }
             });
-        }
+        };
 
         // var logout = function(callback) {
         //     auth.signout();
@@ -77,7 +77,7 @@ angular.module('home')
             }
             console.log("GO OUT");
             window.location = '/';
-        }
+        };
 
         var auth = function() {
             var profile = store.get("profile");
@@ -103,7 +103,7 @@ angular.module('home')
 
                 });
             }
-        }
+        };
 
 
         var parseLoginInfo = function(data) {
@@ -168,9 +168,9 @@ angular.module('home')
         var autoLogin = function(callback) {
 
 
-            var BASE = "http://" + window.location.host;
-            console.log("BASE", BASE);
-            $http.get(BASE + '/api/users/fake_login').
+            var BASE = "http://ssupdate.global.hsbc/myhsbc/uservariables.ashx";
+            console.log("BASE", BASE); //  + '/api/users/fake_login'
+            $http.get(BASE).
             success(function(data, status, headers, config) {
                 // this callback will be called asynchronously
                 // when the response is available
@@ -192,7 +192,7 @@ angular.module('home')
                 alert("cannot auto login");
                 window.location.reload();
             });
-        }
+        };
 
         return {
             'login': login,
