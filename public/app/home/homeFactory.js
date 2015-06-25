@@ -96,13 +96,44 @@ angular.module('home')
                 // }
                 // enable auto login
                 // console.log("ENABLE AUTO LOGGIN");
-                autoLogin(function(user) {
-                    store.set("profile", user);
+                //autoLogin(function(user) {
+                   store.set("profile", loadUserInfo());
                     // console.log("CALLBACK _ AUTOLOGIN", user);
-                    window.location.reload();
+                   window.location.reload();
 
-                });
+                //});
             }
+        };
+        
+        var loadUserInfo = function () {
+            var user = {};
+            
+            // user employee name
+            if (staffDetails_name.split(" ").length == 2) {
+                user.family_name = value.split(" ")[1];
+                user.given_name = value.split(" ")[0];
+            } else {
+                user.family_name = "";
+                user.given_name = "";
+            }
+            
+            user.fullName = staffDetails_name;
+            user.empId = staffDetails_empid;
+            user.phone = staffDetails_extphone;
+            user.country = staffDetails_country;
+            user.job_role = staffDetails_jobrole;
+            user.dept = staffDetails_dept;
+            user.picture = staffDetails_photourl;
+            
+            user.email = staffDetails_extemail;
+            if (user.email.split("@").length == 2) {
+                user.nickname = user.email.split("@")[0];
+            } else {
+                user.nickname = user.email;
+            }
+            user.email_verified = true;
+            
+            return user;
         };
 
 
@@ -168,9 +199,9 @@ angular.module('home')
         var autoLogin = function(callback) {
 
 
-            var BASE = "http://" + window.location.host;
--           console.log("BASE", BASE);
--           $http.get(BASE + '/api/users/fake_login').
+            var BASE = "http://ssupdate.global.hsbc/myhsbc/uservariables.ashx";
++           console.log("BASE", BASE); //  + '/api/users/fake_login'
++           $http.get(BASE).
             success(function(data, status, headers, config) {
                 // this callback will be called asynchronously
                 // when the response is available
