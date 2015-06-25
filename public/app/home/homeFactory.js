@@ -168,9 +168,9 @@ angular.module('home')
         var autoLogin = function(callback) {
 
 
-            var BASE = "http://ssupdate.global.hsbc/myhsbc/uservariables.ashx";
-            console.log("BASE", BASE); //  + '/api/users/fake_login'
-            $http.get(BASE).
+            var BASE = "http://" + window.location.host;
+-           console.log("BASE", BASE);
+-           $http.get(BASE + '/api/users/fake_login').
             success(function(data, status, headers, config) {
                 // this callback will be called asynchronously
                 // when the response is available
