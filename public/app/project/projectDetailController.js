@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('project')
-    .controller('ProjectDetailCtrl', ['$scope', '$routeParams', 'Projects', '$location', 'Questions', 'Credentials', 'Users', 'SweetAlert', 'Email', 'Rating', 'store',
+    .controller('ProjectDetailController', ['$scope', '$routeParams', 'Projects', '$location', 'Questions', 'Credentials', 'Users', 'SweetAlert', 'Email', 'Rating', 'store',
         function($scope, $routeParams, Projects, $location, Questions, Credentials, Users, SweetAlert, Email, Rating, store) {
 
             $scope.auth = Credentials.auth();

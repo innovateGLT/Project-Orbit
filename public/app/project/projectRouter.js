@@ -25,7 +25,7 @@ angular.module('project')
 
             .when('/:id', {
                 templateUrl: '/app/project/projectDetail.html',
-                controller: 'ProjectDetailCtrl'
+                controller: 'ProjectDetailController'
             });
         }
     ]);
