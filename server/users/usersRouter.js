@@ -3,6 +3,7 @@
 var express = require('express');
 var router = express.Router();
 var User = require('./usersSchema');
+var Skills = require('./skillsSchema');
 var ObjectId = require('mongoose').Types.ObjectId;
 var geoip = require('geoip-lite');
 var crypto = require('crypto');
@@ -245,5 +246,39 @@ router.delete('/:id', function(req, res, next) {
         res.json(post);
     });
 });
+
+router.get('/skills/:empId', function(req, res, next) {
+    var query = Skills.find(
+        {
+            peopleSoftId: req.params.empId
+        }
+    );
+    query.exec(function(err, skillList) {
+        if(skillList) {
+            var skills = [];
+            skillList.forEach(function(model) {
+                var data = model.toObject();
+                skills.push({
+                    skill: data.skill,
+                    technology: data.technology,
+                    category: data.category,
+                    status: data.status,
+                    rating: data.rating.substring(0, 1),
+                    ratingDescription: data.rating.substring(2)
+                });
+            });
+
+            var response = {
+                person: {
+                    name: skillList[0].toObject().name,
+                    peopleSoftId: skillList[0].toObject().peopleSoftId,
+                    skills: skills
+                }
+            };
+        }
+        res.json(response);
+    });
+});
+
 
 module.exports = router;

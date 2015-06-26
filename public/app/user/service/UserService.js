@@ -39,6 +39,11 @@ angular.module('project')
                 'getByEmail': {
                     method: 'GET',
                     'url': '/api/users/by_email/:email'
+                },
+                // Use for loading from GMIS record
+                'getSkills': {
+                    method: 'GET',
+                    'url': '/api/users/skills/:empId'
                 }
             });
         }

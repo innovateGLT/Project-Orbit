@@ -85,6 +85,32 @@ angular.module('home')
             // console.log("PROFLE GET", profile);
             if (profile !== null) {
                 // console.log("AUTOLOGIN", profile);
+
+                // One time loading of GMIS skills into user profile
+                if(profile.skills == undefined || profile.skills.length < 1) {
+                    console.log("Loading GMIS skills into profile...");
+                    var data = Users.getSkills({empId: profile.empId}, function (response) {
+                        // Convert skill list to simple array, use for updating 'User' object.  This is temporary.
+                        // The original array contains more information, e.g. rating, category, etc. and will
+                        // be used later for generating bubble chart and such.
+                        if(data.person) {
+                            var simpleSkillList = [];
+                          
+                            data.person.skills.forEach(function(skill) {
+                                simpleSkillList.push(skill.skill);
+                            });
+                            profile.skills = simpleSkillList;
+                            store.set("profile", profile);
+
+                            // Update "User" object into DB
+                            var user = new Users(profile);
+                            user.$save(function(data) {
+                                console.log("GMIS data populated.");
+                            });  
+                        }    
+                    });
+                }
+
                 return {
                     isAuthenticated: true,
                     profile: profile
