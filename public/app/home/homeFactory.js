@@ -106,6 +106,13 @@ angular.module('home')
         };
         
         var loadUserInfo = function () {
+            // summary
+            //      this method would load the users retrieve from the common API to an object
+            // return
+            //      an object that contains all the user information
+            // tags
+            //      private
+
             var user = {};
             
             // user employee name
@@ -123,15 +130,11 @@ angular.module('home')
             user.country = staffDetails_country;
             user.job_role = staffDetails_jobrole;
             user.dept = staffDetails_dept;
-            user.picture = staffDetails_photourl;
-            
+            user.picture = "http://" + staffDetails_photourl;
             user.email = staffDetails_extemail;
-            if (user.email.split("@").length == 2) {
-                user.nickname = user.email.split("@")[0];
-            } else {
-                user.nickname = user.email;
-            }
             user.email_verified = true;
+
+            user.nickname = staffDetails_name.split(" ")[0];
             
             return user;
         };
