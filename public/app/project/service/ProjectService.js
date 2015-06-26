@@ -1,6 +1,6 @@
 'use strict';
 
-
+// TODO : cleanup
 
 angular.module('project')
 
