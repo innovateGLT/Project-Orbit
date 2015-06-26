@@ -117,7 +117,7 @@ angular.module('home')
                 user.given_name = "";
             }
             
-            user.fullName = staffDetails_name;
+            user.name = staffDetails_name;
             user.empId = staffDetails_empid;
             user.phone = staffDetails_extphone;
             user.country = staffDetails_country;
