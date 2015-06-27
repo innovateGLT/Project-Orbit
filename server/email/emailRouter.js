@@ -7,11 +7,25 @@ var router = express.Router();
 var nodemailer = require('nodemailer');
 
 // create reusable transporter object using SMTP transport
-var transporter = nodemailer.createTransport({
-    service: 'Gmail',
+//var transporter = nodemailer.createTransport({
+  //  service: 'Gmail',
+    //auth: {
+      //  user: 'ivyleague022@gmail.com',
+        //pass: 'Tellmemore'
+    //}
+//});
+
+//For opportunities to send notification emails using Innovate account
+var transporter = nodemailer.createTransport("SMTP", {
+    host: "smtp-mail.hsbc.ca", //hostname
+    secureConnection: false, //TLS requires secureConnection to be false
+    port: 587, //port for secure SMTP
     auth: {
-        user: 'schoolservice2@gmail.com',
-        pass: 'Tellmemore'
+        user: 'innovate@hsbc.ca',
+        pass: 'TBD'
+    },
+    tls: {
+        ciphers:'SSLv3'
     }
 });
 

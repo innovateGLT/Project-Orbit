@@ -59,11 +59,11 @@ router.post('/login', function(req, res, next) {
             "_id": "556aca43bd88723e43b353b9",
             "user_id": "auth0|556aca404461c98662c6b3a8",
             "role": "regular",
-            "nickname": "schoolservice2",
-            "name": "schoolservice2@gmail.com",
+            "nickname": "innovateAdmin",
+            "name": "ivyleague022@gmail.com",
             "picture": "https://secure.gravatar.com/avatar/6130f2008ca20ce8b01ced7458811912?s=480&r=pg&d=https%3A%2F%2Fcdn.auth0.com%2Favatars%2Fsc.png",
             "email_verified": true,
-            "email": "schoolservice2@gmail.com",
+            "email": "ivyleague022@gmail.com",
             "featured": false,
             "family_name": "",
             "given_name": ""
@@ -84,11 +84,11 @@ router.post('/login', function(req, res, next) {
         "_id": "5565e7babd88723e43b353b8",
         "user_id": "auth0|555e27ff76bcb9f83bad54be",
         "role": "regular",
-        "nickname": "daiviet",
-        "name": "daiviet@outlook.com",
+        "nickname": "Darwin",
+        "name": "Charlie Darwin",
         "picture": "https://secure.gravatar.com/avatar/921d6f38b3cb2de66e024e9e76c2a307?s=480&r=pg&d=https%3A%2F%2Fcdn.auth0.com%2Favatars%2Fda.png",
         "email_verified": true,
-        "email": "daiviet@outlook.com",
+        "email": "innovate@gmail.com",
         "family_name": "",
         "given_name": "",
         "location": "CA"
@@ -109,7 +109,7 @@ router.post('/login', function(req, res, next) {
 /* GET /users/fake_login */
 router.get('/fake_login', function(req, res, next) {
 
-    var dat = "var staffDetails_name='John Doe';var staffDetails_empid='333333';var staffDetails_extphone='+4373457111';var staffDetails_country='CANADA';var staffDetails_jobrole='Programmer';var staffDetails_dept='IT Support';var staffDetails_photourl='http://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?d=identicon&s=200';var staffDetails_extemail='tinhoc@outlook.com';";
+    var dat = "var staffDetails_name='Charlie Darwin';var staffDetails_empid='333333';var staffDetails_extphone='+60473457111';var staffDetails_country='CANADA';var staffDetails_jobrole='Programmer';var staffDetails_dept='IT Support';var staffDetails_photourl='http://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?d=identicon&s=200';var staffDetails_extemail='ivyleague022@gmail.com';";
     res.send(dat);
 });
 
