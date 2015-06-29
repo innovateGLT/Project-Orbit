@@ -280,5 +280,12 @@ router.get('/skills/:empId', function(req, res, next) {
     });
 });
 
+router.post('/skills', function(req, res, next) {
+	User.update({empId: req.body.empId}, {skills: req.body.skills}, {upsert: true}, function(err, post) {
+        if (err) return next(err);
+        res.sendStatus(200);
+    });
+});
+
 
 module.exports = router;

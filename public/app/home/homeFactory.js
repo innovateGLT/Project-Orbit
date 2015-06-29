@@ -102,9 +102,12 @@ angular.module('home')
                             profile.skills = simpleSkillList;
                             store.set("profile", profile);
 
-                            // Update "User" object into DB
-                            var user = new Users(profile);
-                            user.$save(function(data) {
+                            // Update skill array into "User" object in DB
+                            var user = new Users({
+                            	empId: profile.empId,
+                            	skills: profile.skills
+                            });
+                            user.$upsertUser(function(data) {
                                 console.log("GMIS data populated.");
                             });  
                         }    
@@ -116,18 +119,12 @@ angular.module('home')
                     profile: profile
                 }
             } else {
-                // return {
-                //     isAuthenticated: false,
-                //     profile: {}
-                // }
-                // enable auto login
-                // console.log("ENABLE AUTO LOGGIN");
-                //autoLogin(function(user) {
-                   store.set("profile", loadUserInfo());
-                    // console.log("CALLBACK _ AUTOLOGIN", user);
-                   window.location.reload();
-
-                //});
+            	   var userInfo = loadUserInfo();
+                   var user = new Users(userInfo);
+                   user.$save(function(data) {
+                	   store.set("profile", data);
+                	   window.location.reload();
+                   });
             }
         };
         
@@ -151,7 +148,7 @@ angular.module('home')
             }
             
             user.name = staffDetails_name;
-            user.empId = staffDetails_empid;
+            user.empId = parseInt(staffDetails_empid);
             user.phone = staffDetails_extphone;
             user.country = staffDetails_country;
             user.job_role = staffDetails_jobrole;
@@ -169,7 +166,6 @@ angular.module('home')
         var parseLoginInfo = function(data) {
             var lines = data.split(';');
             var user = {};
-
 
             for (var i = 0; i < lines.length; i++) {
                 var line = lines[i];

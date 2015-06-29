@@ -44,6 +44,10 @@ angular.module('project')
                 'getSkills': {
                     method: 'GET',
                     'url': '/api/users/skills/:empId'
+                },
+                'upsertUser': {
+                    method: 'POST',
+                    'url': '/api/users/skills/'
                 }
             });
         }
