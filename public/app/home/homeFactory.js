@@ -143,8 +143,8 @@ angular.module('home')
             
             // user employee name
             if (staffDetails_name.split(" ").length == 2) {
-                user.family_name = value.split(" ")[1];
-                user.given_name = value.split(" ")[0];
+                user.family_name = staffDetails_name.split(" ")[1];
+                user.given_name = staffDetails_name.split(" ")[0];
             } else {
                 user.family_name = "";
                 user.given_name = "";
