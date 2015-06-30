@@ -20,6 +20,7 @@ angular.module('project')
             $scope.editing = [];
 
             $scope.project = {};
+            
 
             $scope.defaultCategories = [
                 { id : "CrossUnitProjects", name : "Cross Unit Projects" },

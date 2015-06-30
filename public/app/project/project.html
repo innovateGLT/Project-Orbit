@@ -3,6 +3,7 @@
     <div class="page-header" style="margin-top: 0;">
         <h1 style="margin-top: 0;">{{ (isNewProject) ? "Create a new Project" : "Edit The Project" }}</h1>
     </div>
+    
     <!-- Text input-->
     <div class="form-group">
         <label class="col-md-4 control-label" for="project-title">Project Title</label>
@@ -14,8 +15,12 @@
     <div class="form-group">
         <label class="col-md-4 control-label" for="project-category">Project Category</label>
         <div class="col-md-4">
-            <select class="form-control" ng-model="project.category" ng-options="category.name for category in defaultCategories">
-            </select>
+            <ui-select ng-model="project.category" theme="selectize">
+                <ui-select-match placeholder="Select the project category...">{{$select.selected.name}}</ui-select-match>
+                <ui-select-choices repeat="category in defaultCategories | filter: $select.search">
+                    {{ category.name }}
+                </ui-select-choices>
+            </ui-select>
         </div>
     </div>
     <!-- Multiple Radios -->
@@ -51,8 +56,12 @@
     <div class="form-group">
         <label class="col-md-4 control-label" for="project-skillset">Project Skill Category</label>
         <div class="col-md-4">
-            <select class="form-control" ng-model="project.skillCategory" ng-options="category for category in defaultSkillCategories">
-            </select>
+            <ui-select ng-model="project.skillCategory" theme="selectize">
+                <ui-select-match placeholder="Select the project category...">{{$select.selected}}</ui-select-match>
+                <ui-select-choices repeat="category in defaultSkillCategories | filter: $select.search">
+                    {{ category }}
+                </ui-select-choices>
+            </ui-select>
         </div>
     </div>
     <!-- PROJECT SKILLSET -->
@@ -66,9 +75,14 @@
     <div class="form-group">
         <label class="col-md-4 control-label" for="project-timeline">Effort Required</label>
         <div class="col-md-4">
-            <input type="text" ng-required="true" class="form-control input-md" ng-model="effortNum" style="width : 60%;display : inline">
-            <select class="form-control" ng-model="project.effortRequired" ng-options="effort for effort in defaultEffortRequired" style="width : 38%;display : inline">
-            </select>
+            <input type="text" ng-required="true" class="form-control input-md left w60" ng-model="effortNum"/>
+            
+            <ui-select ng-model="project.effortRequired" theme="selectize" class="left w35 ml5p">
+                <ui-select-match placeholder="">{{$select.selected}}</ui-select-match>
+                <ui-select-choices repeat="effort in defaultEffortRequired | filter: $select.search">
+                    {{ effort }}
+                </ui-select-choices>
+            </ui-select>
         </div>
     </div>
     <!-- TIME AVAILABILITY -->
@@ -76,15 +90,17 @@
         <label class="col-md-4 control-label" for="project-timeline">Time Availability</label>
         <div class="col-md-4">
             
-            <div class="input-group">
+            <div class="input-group w60 left">
                 <input type="text" ng-required="true" class="form-control" ng-model="hoursAvail" placeholder="" aria-describedby="basic-addon2" >
                 <span class="input-group-addon" id="basic-addon2">hours</span>
                 <span class="input-group-addon time-avail">Per</span>
-                <select class="form-control" ng-model="project.timeAvailability" ng-options="effort for effort in defaultTimeAvailability" >
-            </select>
             </div>
-            
-            
+            <ui-select ng-model="project.timeAvailability" theme="selectize" class="left w35 ml5p">
+                <ui-select-match placeholder="">{{$select.selected}}</ui-select-match>
+                <ui-select-choices repeat="effort in defaultTimeAvailability | filter: $select.search">
+                    {{ effort }}
+                </ui-select-choices>
+            </ui-select>
         </div>
     </div>
     <!-- PROJECT POSTED END DATE FIELD -->
