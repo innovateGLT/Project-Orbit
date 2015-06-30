@@ -73,7 +73,7 @@
     <div class="row">
         <h2 class="{{ (projects.length == 0) ? 'title' : 'text-center' }}">My Current Projects</h2>
         <div class="row">
-            <div class="col-md-4 text-center" ng-repeat="project in projects">
+            <div class="col-md-3 text-center" ng-repeat="project in projects">
                 <div class="thumbnail">
                     <img class="img-circle" width="140px" src="/app/assets/img/categories/300x300/{{project.category}}.png">
                     <h3>{{project.title}}</h3>
@@ -82,7 +82,7 @@
 
                         <i class="glyphicon {{(project.visibility == 'global') ? 'glyphicon-globe text-success' : 'ng-hide' }} "></i>
                     </div>
-                    <p class="project-desc">{{project.description}}</p>
+                    <p class="project-desc" title="{{project.description}}">{{project.description | characters:150}}</p>
                     <p><a class="btn btn-default" href="/project/#/{{project._id}}">View details »</a></p>
                 </div>
             </div>
