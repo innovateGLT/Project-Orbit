@@ -1,8 +1,0 @@
-{
-  "name": "angularjs-camelCase-human",
-  "main": "camelCaseToHuman.js",
-  "author": "John Dennis Pedrie",
-  "dependencies": {
-    "angular": "~1"
-  }
-}
