@@ -52,7 +52,7 @@ angular.module('project')
 
             $scope.DATE_FORMAT = 'DD-MM-YYYY';
 
-            var a = new Pikaday({
+            /*var a = new Pikaday({
                 field: document.getElementById('project-posted-end-date-1'),
                 format: $scope.DATE_FORMAT
             });
@@ -65,8 +65,27 @@ angular.module('project')
             a = new Pikaday({
                 field: document.getElementById('project-end-date-1'),
                 format: $scope.DATE_FORMAT
-            });
+            });*/
 
+            $scope.open = function( $event, calendarIndex ) {
+                $event.preventDefault();
+                $event.stopPropagation();
+        
+                switch(calendarIndex) {
+                    
+                    case 0 : 
+                        $scope.postedEndDateCalendar.show();
+                        break;
+                    case 1 : 
+                        $scope.startDateCalendar.show();
+                        break;
+                    case 2 : 
+                        $scope.endDateCalendar.show();
+                        break;
+                    default:
+                        break;
+                }
+            };
 
             if ($routeParams.id !== undefined) {
                 var project = Projects.get({

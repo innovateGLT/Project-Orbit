@@ -1,3 +1,3 @@
 'use strict';
 
-angular.module('project', ['ngRoute', 'ngResource', "oitozero.ngSweetAlert", 'ui.bootstrap', 'camelCaseToHuman']);
+angular.module('project', ['ngRoute', 'ngResource', "oitozero.ngSweetAlert", 'ui.bootstrap', 'camelCaseToHuman', 'pikaday']);
