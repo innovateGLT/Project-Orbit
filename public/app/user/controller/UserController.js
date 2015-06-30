@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('project')
-    .controller('UserController', ['$scope', 'Users', '$location', '$routeParams', 'Credentials', 'Projects', 'SweetAlert',
-        function($scope, Users, $location, $routeParams, Credentials, Projects, SweetAlert) {
+    .controller('UserController', ['$scope', 'Users', '$location', '$routeParams', 'Credentials', 'Projects', 'SweetAlert', 'Bubble',
+        function($scope, Users, $location, $routeParams, Credentials, Projects, SweetAlert, Bubble) {
 
 
 
@@ -29,10 +29,7 @@ angular.module('project')
 
 
                 $scope.user = user;
-
-
-
-
+                getSkills($scope.user.empId);
             })
 
 
@@ -67,6 +64,23 @@ angular.module('project')
                     }
                 });
             }
+            
+            var getSkills = function(empId) {
+            	$scope.skillList = [];
+                Users.getSkills({empId : parseInt(empId)}, function(data) {
+                	if(data.person) {
+                        data.person.skills.forEach(function(s) {
+                      	  $scope.skillList.push({
+                          	'category' : s.category,
+                              'skill' : s.skill,
+                              'rating' : s.rating
+                            }); 
+                        });
+                      }  
+                      // Generate bubble chart using D3 API
+                	Bubble.generateBubble($scope.skillList);
+                });
+            };
         }
     ])
 

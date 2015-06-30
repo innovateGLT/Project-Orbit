@@ -268,13 +268,15 @@ router.get('/skills/:empId', function(req, res, next) {
                 });
             });
 
-            var response = {
-                person: {
-                    name: skillList[0].toObject().name,
-                    peopleSoftId: skillList[0].toObject().peopleSoftId,
-                    skills: skills
-                }
-            };
+            if(skills.length > 0) {
+	            var response = {
+	                person: {
+	                    name: skillList[0].toObject().name,
+	                    peopleSoftId: skillList[0].toObject().peopleSoftId,
+	                    skills: skills
+	                }
+	            };
+            }
         }
         res.json(response);
     });
