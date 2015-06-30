@@ -5,8 +5,8 @@
 angular.module('home')
 
 
-.factory('Credentials', ['auth', 'store', '$location', 'Users', '$modal', '$http',
-    function(auth, store, $location, Users, $modal, $http) {
+.factory('Credentials', ['auth', 'store', '$location', 'Users', '$modal', '$http', '$q',
+    function(auth, store, $location, Users, $modal, $http, $q) {
 
         // var login = function(callback) {
 
@@ -80,51 +80,25 @@ angular.module('home')
         };
 
         var auth = function() {
-            var profile = store.get("profile");
+            var profile = getProfile();
 
             // console.log("PROFLE GET", profile);
             if (profile !== null) {
                 // console.log("AUTOLOGIN", profile);
-
-                // One time loading of GMIS skills into user profile
-                if(profile.skills == undefined || profile.skills.length < 1) {
-                    console.log("Loading GMIS skills into profile...");
-                    var data = Users.getSkills({empId: profile.empId}, function (response) {
-                        // Convert skill list to simple array, use for updating 'User' object.  This is temporary.
-                        // The original array contains more information, e.g. rating, category, etc. and will
-                        // be used later for generating bubble chart and such.
-                        if(data.person) {
-                            var simpleSkillList = [];
-                          
-                            data.person.skills.forEach(function(skill) {
-                                simpleSkillList.push(skill.skill);
-                            });
-                            profile.skills = simpleSkillList;
-                            store.set("profile", profile);
-
-                            // Update skill array into "User" object in DB
-                            var user = new Users({
-                            	empId: profile.empId,
-                            	skills: profile.skills
-                            });
-                            user.$upsertUser(function(data) {
-                                console.log("GMIS data populated.");
-                            });  
-                        }    
-                    });
-                }
 
                 return {
                     isAuthenticated: true,
                     profile: profile
                 }
             } else {
-            	   var userInfo = loadUserInfo();
-                   var user = new Users(userInfo);
-                   user.$save(function(data) {
-                	   store.set("profile", data);
-                	   window.location.reload();
-                   });
+            	   loadUserInfo().then(function(userInfo) {
+	                   var user = new Users(userInfo);
+	                   user.$save(function(data) {
+	                	   store.set("profile", data);
+	                	   store.set("profile_lastUpdatedTime", new Date().getTime().toString());
+	                	   window.location.reload();
+	                   });
+            	   });
             }
         };
         
@@ -135,7 +109,7 @@ angular.module('home')
             //      an object that contains all the user information
             // tags
             //      private
-
+        	var deferred = $q.defer();
             var user = {};
             
             // user employee name
@@ -159,7 +133,24 @@ angular.module('home')
 
             user.nickname = staffDetails_name.split(" ")[0];
             
-            return user;
+            // Loading of GMIS skills into user profile
+            console.log("Loading GMIS skills into profile...");
+            Users.getSkills({empId: user.empId}, function (response) {
+                // Convert skill list to simple array, use for updating 'User' object.  This is temporary.
+                // The original array contains more information, e.g. rating, category, etc. and will
+                // be used later for generating bubble chart and such.
+                if(response.person) {
+                    var simpleSkillList = [];
+                  
+                    response.person.skills.forEach(function(skill) {
+                        simpleSkillList.push(skill.skill);
+                    });
+                    user.skills = simpleSkillList;
+                    console.log("GMIS data populated.");
+                }
+                return deferred.resolve(user);
+            });
+            return deferred.promise;
         };
 
 
@@ -249,6 +240,21 @@ angular.module('home')
                 window.location.reload();
             });
         };
+        
+        // Retrieve profile from storage and check the lastUpdated time.
+        // If lastUpdated is over 1 day old, purge the storage.
+        var getProfile = function() {
+        	var lastUpdatedTime = store.get("profile_lastUpdatedTime")
+        	if(lastUpdatedTime) {
+        		if(new Date().getTime().toString() - lastUpdatedTime >= 86400000) {
+        			store.remove("profile");
+        			store.remove("profile_lastUpdatedTime");
+        		} else {
+        			return store.get("profile");
+        		}
+        	}
+        	return null;
+        }
 
         return {
             'login': login,
