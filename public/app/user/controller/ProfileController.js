@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('project')
-    .controller('ProfileController', ['$scope', 'Users', '$location', '$routeParams', 'Credentials', 'Projects',
-        function($scope, Users, $location, $routeParams, Credentials, Projects) {
+    .controller('ProfileController', ['$scope', 'Users', '$location', '$routeParams', 'Credentials', 'Projects', 'Bubble',
+        function($scope, Users, $location, $routeParams, Credentials, Projects, Bubble) {
 
 
             $scope.auth = Credentials.auth();
@@ -56,11 +56,23 @@ angular.module('project')
             $scope.editProfile = function() {
                 $location.path("/edit");
             }
-
-
-
-
-
+            
+            var getSkills = function() {
+            	$scope.skillList = [];
+                Users.getSkills({empId : $scope.auth.profile.empId}, function(data) {
+                	if(data.person) {
+                        data.person.skills.forEach(function(s) {
+                      	  $scope.skillList.push({
+                          	'category' : s.category,
+                              'skill' : s.skill,
+                              'rating' : s.rating
+                            }); 
+                        });
+                      }  
+                      // Generate bubble chart using D3 API
+                	Bubble.generateBubble($scope.skillList);
+                });
+            }();
         }
     ])
 
