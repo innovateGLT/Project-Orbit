@@ -32,7 +32,7 @@ angular.module('project')
                 $scope.status = user.status;
 
                 console.log("USER", user);
-            })
+            });
 
 
             $scope.save = function() {
@@ -62,12 +62,12 @@ angular.module('project')
                 console.log("USER HAS BEEN UPDATED", user);
                 // alert("The user has been saved!");
                 SweetAlert.swal("Saved!", "The user's profile has been updated.", "success");
-            }
+            };
 
 
             $scope.goToProfile = function() {
                 $location.path("/");
-            }
+            };
         }
     ])
 

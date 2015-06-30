@@ -133,7 +133,7 @@
 .selectize-input,
 .selectize-input input {
   font-family: inherit;
-  font-size: 15px;
+  font-size: 14px;
   -webkit-font-smoothing: inherit;
   line-height: 18px;
   color: #303030;
@@ -151,7 +151,7 @@
   z-index: 1;
   display: inline-block;
   width: 100%;
-  padding: 7px 8px;
+  padding: 7px 10px;
   overflow: hidden;
   border: 1px solid #d0d0d0;
   -webkit-border-radius: 3px;

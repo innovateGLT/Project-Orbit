@@ -25,6 +25,7 @@
     "angular": "~1.3.0",
     "angular-sweetalert": "latest",
     "angularjs-camelCase-human": "latest",
-    "pikaday-angular": "~2.0.0"
+    "pikaday-angular": "~2.0.0",
+    "angular-truncate": "*"
   }
 }

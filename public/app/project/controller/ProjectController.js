@@ -1,9 +1,9 @@
 'use strict';
 
 angular.module('project')
-    .controller('ProjectController', ['$scope', 'Projects', '$location', '$routeParams', 'Credentials',
+    .controller('ProjectController', ['$scope', 'Projects', '$location', '$routeParams', 'Credentials', 'SweetAlert',
 
-        function($scope, Projects, $location, $routeParams, Credentials) {
+        function($scope, Projects, $location, $routeParams, Credentials, SweetAlert) {
 
 
 
@@ -24,7 +24,7 @@ angular.module('project')
 
             $scope.defaultCategories = [
                 { id : "CrossUnitProjects", name : "Cross Unit Projects" },
-                { id : "JobRelations", name : "Job Relations" },
+                { id : "JobRotations", name : "Job Rotations" },
                 { id : "StretchAssignments", name : "Stretch Assignments" },
                 { id : "JobShadowing", name : "Job Shadowing" },
                 { id : "BusinessInteractions", name : "Business Interactions" },
@@ -53,20 +53,18 @@ angular.module('project')
 
             $scope.DATE_FORMAT = 'DD-MM-YYYY';
 
-            /*var a = new Pikaday({
-                field: document.getElementById('project-posted-end-date-1'),
-                format: $scope.DATE_FORMAT
-            });
-
-            a = new Pikaday({
-                field: document.getElementById('project-start-date-1'),
-                format: $scope.DATE_FORMAT
-            });
-
-            a = new Pikaday({
-                field: document.getElementById('project-end-date-1'),
-                format: $scope.DATE_FORMAT
-            });*/
+            $scope.checkCategory = function ( /* String */catId ) {
+                
+                var category = null;
+                
+                angular.forEach($scope.defaultCategories, function (value, key) {
+                    if ( !category && value.id === catId ) {
+                        category = value;
+                    } 
+                });
+                
+                return category;
+            };
 
             $scope.open = function( $event, calendarIndex ) {
                 $event.preventDefault();
@@ -88,7 +86,7 @@ angular.module('project')
                 }
             };
 
-            if ($routeParams.id !== undefined) {
+            if ( $routeParams.id ) {
                 var project = Projects.get({
                     id: $routeParams.id
                 }, function() {
@@ -127,6 +125,8 @@ angular.module('project')
 
                     console.log('EDITTED PROJECT', project, timeAvail[1]);
                     console.log("EDIT", timeAvail[1].trim(), 'XXXX');
+
+                    project.category = $scope.checkCategory(project.category);
 
                     $scope.project = project;
                     $scope.isNewProject = false;
@@ -243,21 +243,31 @@ angular.module('project')
                     name: $scope.auth.profile.name,
                 };
 
+                var deferred = null;
+                var message = "";
                 var project = new Projects(newProject);
                 if ($scope.isNewProject === true) {
 
                     newProject.status = 'Open';
-                    project.$save(function() {
-                        console.log('PROJECT HAS BEEN CREATED', project);
+                    deferred = project.$save();
+                    message = "saved!";
+                } else {
+                    deferred = Projects.update({
+                        id: project._id
+                    }, project).$promise;
+                    message = "updated!";
+                }
+                
+                deferred.then(function () {
+                    
+                    SweetAlert.swal({
+                        title: "Project " + message,
+                        type: "success"
+                    }, function(){ 
+                        console.log('Project has been ' + message, project);
                         $location.url('/' + project._id);
                     });
-                } else {
-                    Projects.update({
-                        id: project._id
-                    }, project);
-                    console.log('PROJECT HAS BEEN UPDATED', project);
-                    $location.url('/' + project._id);
-                }
+                });
             };
         }
     ])

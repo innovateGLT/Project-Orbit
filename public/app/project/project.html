@@ -29,8 +29,8 @@
         <div class="col-md-4">
             
             <div class="btn-group">
-                <label class="btn btn-default" ng-model="project.chargeable" btn-radio="'Left'">Chargeable</label>
-                <label class="btn btn-default" ng-model="project.chargeable" btn-radio="'Middle'">Non-Chargeable</label>
+                <label class="btn btn-default" ng-model="project.chargeable" btn-radio="true">Chargeable</label>
+                <label class="btn btn-default" ng-model="project.chargeable" btn-radio="false">Non-Chargeable</label>
             </div>
         </div>
     </div>
@@ -40,8 +40,8 @@
         <div class="col-md-4">
             
             <div class="btn-group">
-                <label class="btn btn-default" ng-model="project.visibility" btn-radio="'Left'">Global</label>
-                <label class="btn btn-default" ng-model="project.visibility" btn-radio="'Middle'">Local</label>
+                <label class="btn btn-default" ng-model="project.visibility" btn-radio="'Global'">Global</label>
+                <label class="btn btn-default" ng-model="project.visibility" btn-radio="'Local'">Local</label>
             </div>
         </div>
     </div>
@@ -143,8 +143,12 @@
     <div class="form-group" ng-show="!isNewProject">
         <label class="col-md-4 control-label" for="project-timeline">Status</label>
         <div class="col-md-4">
-            <select class="form-control" ng-model="project.status" ng-options="status for status in defaultStatuses">
-            </select>
+            <ui-select ng-model="project.status" theme="selectize">
+                <ui-select-match placeholder="Select the project category...">{{$select.selected}}</ui-select-match>
+                <ui-select-choices repeat="status in defaultStatuses | filter: $select.search">
+                    {{ status }}
+                </ui-select-choices>
+            </ui-select>
         </div>
     </div>
     <!-- Button -->
