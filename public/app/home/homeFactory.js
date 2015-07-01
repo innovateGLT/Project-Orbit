@@ -113,9 +113,9 @@ angular.module('home')
             var user = {};
             
             // user employee name
-            if (staffDetails_name.toProperCase().split(" ").length == 2) {
-                user.family_name = staffDetails_name.split(" ")[1];
-                user.given_name = staffDetails_name.split(" ")[0];
+            if (staffDetails_name.split(" ").length == 2) {
+                user.family_name = staffDetails_name.toProperCase().split(" ")[1];
+                user.given_name = staffDetails_name.toProperCase().split(" ")[0];
             } else {
                 user.family_name = "";
                 user.given_name = "";
