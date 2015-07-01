@@ -1150,3 +1150,24 @@ video#bgvid {
 .w80 { width:80% !important; }
 .w90 { width:90% !important; }
 .w100 { width:100%; }
+
+.input-group.input-group-unstyled input.form-control {
+    -webkit-border-radius: 4px;
+       -moz-border-radius: 4px;
+            border-radius: 4px;
+}
+.input-group-unstyled .input-group-addon {
+    border-radius: 4px;
+    border: 0px;
+    background-color: transparent;
+}
+
+
+/* now the element will fade out before it is removed from the DOM */
+.fade.ng-leave {
+  transition:0.5s linear all;
+  opacity:1;
+}
+.fade.ng-leave.ng-leave-active {
+  opacity:0;
+}

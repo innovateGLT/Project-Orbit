@@ -1,19 +1,34 @@
-<hr class="featurette-divider">
-<h2 class="text-center"> All users</h2>
 <div class="container container-main">
-    <div class="row">
-        <div class="col-md-4 col-sm-6 text-center" ng-repeat="user in users">
-            <div class="thumbnail">
-                <img class="img-circle" width="120px" src="{{user.picture}}">
-                
-                <h3><i ng-show="user.featured" class="glyphicon {{(user.featured) ? 'glyphicon-ok-circle text-success' : '' }} "></i>  <a href="/user/#/{{user.user_id}}"> {{user.name}}</a></h3>
-                <p>{{user.job_role}}</p>
-                <p>{{user.dept}}</p>
-                <p>{{user.country}}</p>
-                <p>{{user.email}}</p>
+<div class="page-header">
+    <h1>All Users</h1>
+</div>
+
+<div class="row">
+    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 right mb30">
+        <div class="form-group">
+            <label class="control-label" for="filter">Filter</label>
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search for name, role, location, email..." ng-model="filter"/>
+                <span class="input-group-addon">
+                    <i class="glyphicon glyphicon-search"></i>
+                </span>
             </div>
         </div>
     </div>
-    <!-- /.row -->
-    <hr class="featurette-divider">
+</div>
+<div class="row">
+    <div class="col-md-4 col-sm-6 text-center" ng-repeat="user in users | filter:filter">
+        <div class="thumbnail">
+            <img class="img-circle" width="120px" src="{{user.picture}}">
+            
+            <h3><i ng-show="user.featured" class="glyphicon {{(user.featured) ? 'glyphicon-ok-circle text-success' : '' }} "></i>  <a href="/user/#/{{user.user_id}}"> {{user.name}}</a></h3>
+            <p>{{user.job_role}}</p>
+            <p>{{user.dept}}</p>
+            <p>{{user.country}}</p>
+            <p>{{user.email}}</p>
+        </div>
+    </div>
+</div>
+<!-- /.row -->
+<hr class="featurette-divider">
 </div>

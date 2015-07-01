@@ -381,17 +381,15 @@ angular.module('project')
                     name: user.name
                 }
 
-                var exist = false;
+                var invited = false;
                 for (var i = 0; i < $scope.project.invitedUsers.length; i++) {
                     if (invitedUser.user_id == $scope.project.invitedUsers[i].user_id) {
-                        exist = true;
+                        invited = true;
                     }
                 };
-                if (exist == false) {
-                    //
-                } else {
+                if ( invited ) {
                     // alert("you have invited this user");
-                    SweetAlert.swal("Error!", "You have invited this user", "error");
+                    SweetAlert.swal("Error!", "You already have invited this user", "error");
                     return;
                 }
 
@@ -418,7 +416,7 @@ angular.module('project')
                             return false
                         }
 
-                        if (exist == false) {
+                        if ( !invited ) {
                             $scope.project.invitedUsers.push(invitedUser);
                         }
 
