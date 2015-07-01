@@ -113,7 +113,7 @@ angular.module('home')
             var user = {};
             
             // user employee name
-            if (staffDetails_name.split(" ").length == 2) {
+            if (staffDetails_name.toProperCase().split(" ").length == 2) {
                 user.family_name = staffDetails_name.split(" ")[1];
                 user.given_name = staffDetails_name.split(" ")[0];
             } else {
@@ -121,17 +121,17 @@ angular.module('home')
                 user.given_name = "";
             }
             
-            user.name = staffDetails_name;
+            user.name = staffDetails_name.toProperCase();
             user.empId = staffDetails_empid;
             user.phone = staffDetails_extphone;
-            user.country = staffDetails_country;
+            user.country = staffDetails_country.toProperCase();
             user.job_role = staffDetails_jobrole;
             user.dept = staffDetails_dept;
             user.picture = "http://" + staffDetails_photourl;
             user.email = staffDetails_extemail;
             user.email_verified = true;
 
-            user.nickname = staffDetails_name.split(" ")[0];
+            user.nickname = staffDetails_name.split(" ")[0].toProperCase();
             
             // Loading of GMIS skills into user profile
             console.log("Loading GMIS skills into profile...");
