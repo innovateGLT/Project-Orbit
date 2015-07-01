@@ -122,7 +122,7 @@ angular.module('home')
             }
             
             user.name = staffDetails_name;
-            user.empId = parseInt(staffDetails_empid);
+            user.empId = staffDetails_empid;
             user.phone = staffDetails_extphone;
             user.country = staffDetails_country;
             user.job_role = staffDetails_jobrole;
@@ -242,11 +242,11 @@ angular.module('home')
         };
         
         // Retrieve profile from storage and check the lastUpdated time.
-        // If lastUpdated is over 1 day old, purge the storage.
+        // If lastUpdated is over 1 hour old, purge the storage.
         var getProfile = function() {
         	var lastUpdatedTime = store.get("profile_lastUpdatedTime")
         	if(lastUpdatedTime) {
-        		if(new Date().getTime().toString() - lastUpdatedTime >= 86400000) {
+        		if(new Date().getTime().toString() - lastUpdatedTime >= 3600000) {
         			store.remove("profile");
         			store.remove("profile_lastUpdatedTime");
         		} else {
