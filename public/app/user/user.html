@@ -1,4 +1,4 @@
-<div class="container  bold-container" style="margin-top : 80px">
+<div class="container bold-container" style="margin-top : 80px">
     <div class="row">
        
             
@@ -71,7 +71,7 @@
         <h2 class="{{ (projects.length == 0) ? 'title' : 'text-center' }}">My Current Projects</h2>
         </br>
         <div class="row">
-            <div class="col-sm-6 col-md-4 text-center" ng-repeat="project in projects">
+            <div class="col-sm-6 col-md-3 text-center" ng-repeat="project in projects">
                 <div class="thumbnail">
                     <img class="img-circle" width="140px" src="/app/assets/img/categories/300x300/{{project.category}}.png">
                     <h3>{{project.title}}</h3>
@@ -92,7 +92,7 @@
     <div class="row">
         <h2 class="{{ (completedProjects.length == 0) ? '' : 'text-center' }}">My Completed Projects</h2>
         <div class="row">
-            <div class="col-md-4 text-center" ng-repeat="project in completedProjects">
+            <div class="col-md-3 text-center" ng-repeat="project in completedProjects">
                 <div class="thumbnail">
                     <img class="img-circle" width="140px" src="/app/assets/img/categories/300x300/{{project.category}}.png">
                     <h3> {{project.title}}</h3>

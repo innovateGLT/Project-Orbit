@@ -47,6 +47,7 @@ angular.module('project')
             $scope.defaultStatuses = ['Open', 'In Progress', 'Completed', 'Closed'];
 
             $scope.project.chargeable = false;
+            $scope.project.visibility = "Local";
 
             $scope.isNewProject = true;
 
