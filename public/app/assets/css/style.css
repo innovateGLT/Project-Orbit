@@ -1179,8 +1179,8 @@ video#bgvid {
 }
   
 .user-record.ng-leave {
-    -webkit-animation: fadeOutLeft 1s;
-    -moz-animation: fadeOutLeft 1s;
-    -ms-animation: fadeOutLeft 1s;
-    animation: fadeOutLeft 1s;
+    -webkit-animation: bounceOut 1s;
+    -moz-animation: bounceOut 1s;
+    -ms-animation: bounceOut 1s;
+    animation: bounceOut 1s;
 }
