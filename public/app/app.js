@@ -1,6 +1,6 @@
 'use strict';
 
-var ADMIN_EMAIL = 'schoolservice2@gmail.com';
+var ADMIN_EMAIL = 'innovate@hsbc.ca';
 
 
 
