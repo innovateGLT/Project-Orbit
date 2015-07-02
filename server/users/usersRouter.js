@@ -136,12 +136,24 @@ router.get('/featured', function(req, res, next) {
 /* GET /users/matches */
 router.get('/matches', function(req, res, next) {
 
-    console.log("QUERY ID", req.query);
+    console.log("QUERY IDs", req.query);
 
+	var temp = req.query.skills.split(',');
+	var expandedSkillList = [];
 
+	req.query.skills.split(',').forEach(function(skill){
+		if(skill.indexOf(" ") > -1 ) {
+			temp = temp.concat(skill.split(" "));
+		}
+	});
+
+	temp.forEach(function(skill){
+		expandedSkillList.push(new RegExp(skill, "i"));
+	});
+	
     var query = User.find({
         skills: {
-            $in: req.query.skills.split(',')
+            $in: expandedSkillList
         }
     }).limit(10);
 
