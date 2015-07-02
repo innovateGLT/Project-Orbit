@@ -2,7 +2,7 @@
 
 // TODO : cleanup
 
-angular.module('project')
+angular.module('user')
 
     .factory('Users', ['$resource',
         function($resource) {
@@ -51,7 +51,9 @@ angular.module('project')
                 }
             });
         }
-    ]).factory('Bubble', [ function( ) {
+    ])
+    
+    .factory('Bubble', [ function( ) {
         // Config for D3 Bubble Chart -- BEGIN
         var generateBubble = function(input) {
         	

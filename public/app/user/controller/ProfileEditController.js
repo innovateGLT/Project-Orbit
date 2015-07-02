@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('project')
+angular.module('user')
     .controller('ProfileEditController', ['$scope', 'Users', '$location', '$routeParams', 'auth', 'Credentials', 'Projects', 'SweetAlert',
         function($scope, Users, $location, $routeParams, auth, Credentials, Projects, SweetAlert) {
 
