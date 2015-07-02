@@ -151,11 +151,14 @@ router.get('/matches', function(req, res, next) {
 		expandedSkillList.push(new RegExp(skill, "i"));
 	});
 	
-    var query = User.find({
-        skills: {
+    var query = User.find({$or: [
+        {skills: {
             $in: expandedSkillList
-        }
-    }).limit(10);
+        }},
+        {interests: {
+            $in: expandedSkillList
+        }}
+    ]}).limit(10);
 
     // query.or([{status : "Open"},{status : "In Progress"}]);
 
