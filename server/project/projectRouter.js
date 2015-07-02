@@ -122,7 +122,7 @@ router.get('/search', function(req, res, next) {
     });
 
     query.or([{
-        "user.name": new RegExp(req.query.q, 'i')
+        'user.name': new RegExp(req.query.q, 'i')
     }, {
 
         title: new RegExp(req.query.q, 'i')
