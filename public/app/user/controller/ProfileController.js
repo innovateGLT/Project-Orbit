@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('project')
+angular.module('user')
     .controller('ProfileController', ['$scope', 'Users', '$location', '$routeParams', 'Credentials', 'Projects', 'Bubble',
         function($scope, Users, $location, $routeParams, Credentials, Projects, Bubble) {
 

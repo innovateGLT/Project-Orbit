@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('project')
+angular.module('user')
     .controller('UserController', ['$scope', 'Users', '$location', '$routeParams', 'Credentials', 'Projects', 'SweetAlert', 'Bubble',
         function($scope, Users, $location, $routeParams, Credentials, Projects, SweetAlert, Bubble) {
 

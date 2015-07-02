@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('project')
+angular.module('user')
     .config(['$routeProvider',
         function($routeProvider) {
             $routeProvider
