@@ -250,7 +250,7 @@ body {
 }
 
 .edit span.label {
-    padding: 10px;
+    padding: 10px 50px;
 }
 
 .profile-list .list-inline > li {
@@ -260,6 +260,19 @@ body {
 .profile-list,
 .profile-list > ul {
     font-size: 16px;
+}
+
+.profile-container {
+    border: 1px solid f2f2f2;
+    background: #f8f8f8;
+    border-radius: 3px;
+    padding: 30px;
+    margin-top: 150px;
+    margin-bottom: 100px;
+    
+    -webkit-box-shadow: 0px 0px 30px -5px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 30px -5px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 30px -5px rgba(0,0,0,0.75);
 }
 
 span.label {
@@ -851,6 +864,7 @@ video#bgvid {
 .mt80 {margin-top:80px;}
 .mt90 {margin-top:90px;}
 .mt100 {margin-top:100px;}
+.mt150 {margin-top:150px;}
 
 .mb10 {margin-bottom:10px;}
 .mb20 {margin-bottom:20px;}
@@ -881,6 +895,9 @@ video#bgvid {
 .no-margin-top {
     margin-top: 0 !important;
 }
+
+.no-padding {padding: 0 !important;}
+.no-margin {margin: 0 !important;}
 
 /* how it works */
 
@@ -1188,4 +1205,25 @@ user-badge .thumbnail {
     min-height: 100px;
     max-height: 100px;
     overflow: hidden;
+}
+
+.interest-item {
+  -webkit-transition: color 0.5s, background-color 0.3s;
+  -moz-transition: color 0.5s, background-color 0.3s;
+  -ms-transition: color 0.5s, background-color 0.3s;
+  transition: color 0.5s, background-color 0.3s;
+}
+
+.interest-item.ng-enter {
+    -webkit-animation: fadeInUp .5s;
+    -moz-animation: fadeInUp .5s;
+    -ms-animation: fadeInUp .5s;
+    animation: fadeInUp .5s;
+}
+
+.interest-item.ng-leave {
+    -webkit-animation: fadeOutRight .5s;
+    -moz-animation: fadeOutRight .5s;
+    -ms-animation: fadeOutRight .5s;
+    animation: fadeOutRight .5s;
 }

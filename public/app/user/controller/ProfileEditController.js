@@ -27,7 +27,7 @@ angular.module('user')
                 }
 
                 $scope.skills = user.skills.join(',');
-                $scope.interests = user.interests.join(',');
+                $scope.interests = user.interests;
                 $scope.user = user;
                 $scope.status = user.status;
 
@@ -37,36 +37,46 @@ angular.module('user')
 
             $scope.save = function() {
 
-                // trim
-                var skills = $scope.skills.split(",");
-                for (var i = 0; i < skills.length; i++) {
-                    skills[i] = skills[i].trim();
-                };
-                user.skills = skills;
-
-
-                // trim interests
-                var interests = $scope.interests.split(",");
-                for (var i = 0; i < interests.length; i++) {
-                    interests[i] = interests[i].trim();
-                };
-                user.interests = interests;
+                user.interests = $scope.interests;
 
                 user.status = $scope.status;
                 $scope.status = !$scope.status;
 
 
-                Users.update({
+                var deferred = Users.update({
                     id: user._id
-                }, user);
-                console.log("USER HAS BEEN UPDATED", user);
-                // alert("The user has been saved!");
-                SweetAlert.swal("Saved!", "The user's profile has been updated.", "success");
+                }, user).$promise;
+                
+                deferred.then(function () {
+                    
+                    SweetAlert.swal({
+                        title: "Saved!",
+                        type: "success",
+                        text: "The user's profile has been updated."
+                    }, function(){ 
+                        console.log("The user's profile has been updated.");
+                        $scope.goToProfile();
+                    });
+                });
+                
             };
 
 
             $scope.goToProfile = function() {
                 $location.path("/");
+            };
+            
+            $scope.addInterest = function() {
+                $scope.interests.push($scope.interest.trim());
+                $scope.interest = "";
+            };
+              
+            $scope.removeInterest = function(index) {
+                $scope.interests.splice(index, 1);
+            };
+              
+            $scope.clearAll = function() {
+                $scope.interests = [];
             };
         }
     ])
