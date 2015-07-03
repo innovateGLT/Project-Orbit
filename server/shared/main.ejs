@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+	<% include ../inc/header %>
+
+</head>
+<body >
+	
+	<ng-view></ng-view>
+
+    <% include ../inc/footer %>
+
+	<% include ../inc/vendors %>
+
+    <!-- App scripts -->
+    <script src="/app/app.js"></script>
+    <script type="text/javascript" src="/app/common/controller/HeaderController.js"></script>
+    
+    <!-- Project scripts -->
+    <script src="/app/project/project.js"></script>
+    <script src="/app/project/service/ProjectService.js"></script>
+    
+    <!-- User scripts -->
+    <script src="/app/user/user.js"></script>
+    <script src="/app/user/service/UserService.js"></script>
+    
+    <!-- Home scripts -->
+    <script src="/app/home/home.js"></script>
+    <script src="/app/home/homeController.js"></script>
+	<script src="/app/home/homeRouter.js"></script>	
+	<script src="/app/home/homeFactory.js"></script>
+  
+	
+</body>
+</html>

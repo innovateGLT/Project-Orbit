@@ -42,6 +42,11 @@ angular.module('project')
                 method: 'GET',
                 'url': '/api/projects/completed/by_user_id/:user_id',
                 isArray: true
+            },
+            'getMatchedProjectsByUserId': {
+                method: 'GET',
+                'url': '/api/projects/matched/by_user_id/:user_id',
+                isArray: true
             }
         });
     }

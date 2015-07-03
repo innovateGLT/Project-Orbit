@@ -38,8 +38,8 @@
 </div>
 
 
-<div class="container not-bold-container-user">
-    <div class="row title">
+<div class="container not-bold-container-user ml50 w90">
+    <div class="title">
          <div class="text-left">
 <!--                 <div class="profile-list"> -->
 <!--                     <strong>Skills:</strong> -->
@@ -75,11 +75,11 @@
 
 <!-- <hr class="featurette-divider-sm"> -->
 <div class="container bold-container">
-    <div class="row">
+    <div class="col-md-12">
         <h2 class="{{ (projects.length == 0) ? 'title' : 'text-center' }}">My Current Projects</h2>
-        <div class="row">
+        <div class="col-md-12">
             <div class="col-md-3 text-center" ng-repeat="project in projects">
-                <div class="thumbnail">
+                <div class="thumbnail project-thumbnail">
                     <img class="img-circle" width="140px" src="/app/assets/img/categories/300x300/{{project.category}}.png">
                     <h3>{{project.title}}</h3>
                     <div class="featured-project">
@@ -87,7 +87,7 @@
 
                         <i class="glyphicon {{(project.visibility == 'global') ? 'glyphicon-globe text-success' : 'ng-hide' }} "></i>
                     </div>
-                    <p class="project-desc" title="{{project.description}}">{{project.description | characters:150}}</p>
+                    <p class="project-desc" title="{{project.description}}">{{project.description | characters:100}}</p>
                     <p><a class="btn btn-default" href="/project/#/{{project._id}}">View details »</a></p>
                 </div>
             </div>
@@ -96,12 +96,12 @@
 </div>
 
 <!-- <hr class="featurette-divider-sm"> -->
-<div class="container not-bold-container-user">
-    <div class="row">
+<div class="container not-bold-container-user" ng-if="invitedProjects.length > 0">
+    <div class="col-md-12">
         <h2 class="{{ (invitedProjects.length == 0) ? '' : 'text-center' }}">My Invited Projects</h2>
-        <div class="row">
+        <div class="col-md-12">
             <div class="col-md-4 text-center" ng-repeat="project in invitedProjects">
-                <div class="thumbnail">
+                <div class="thumbnail project-thumbnail">
                     <img class="img-circle" width="140px" src="/app/assets/img/categories/300x300/{{project.category}}.png">
                     <h3>{{project.title}}</h3>
                     <div class="featured-project">
@@ -109,7 +109,7 @@
 
                         <i class="glyphicon {{(project.visibility == 'global') ? 'glyphicon-globe text-success' : 'ng-hide' }} "></i>
                     </div>
-                    <p class="project-desc">{{project.description}}</p>
+                    <p class="project-desc" title="{{project.description}}">{{project.description | characters : 100}}</p>
                     <p>By <a href="/user/#/{{project.user.user_id}}"> {{project.user.name}} </a></p>
                     <p><a class="btn btn-default" href="/project/#/{{project._id}}">View details »</a></p>
                 </div>
@@ -119,12 +119,12 @@
 </div>
 
 <!-- <hr class="featurette-divider-sm"> -->
-<div class="container bold-container">
-    <div class="row">
+<div class="container bold-container" ng-if="completedProjects.length > 0">
+    <div class="col-md-12">
         <h2 class="{{ (completedProjects.length == 0) ? 'title' : 'text-center' }}">My Completed Projects</h2>
-        <div class="row">
+        <div class="col-md-12">
             <div class="col-md-4 text-center" ng-repeat="project in completedProjects">
-                <div class="thumbnail">
+                <div class="thumbnail project-thumbnail">
                     <img class="img-circle" width="140px" src="/app/assets/img/categories/300x300/{{project.category}}.png">
                     <h3> {{project.title}}</h3>
                     <div class="featured-project">
@@ -132,7 +132,7 @@
 
                         <i class="glyphicon {{(project.visibility == 'global') ? 'glyphicon-globe text-success' : 'ng-hide' }} "></i>
                     </div>
-                    <p class="project-desc">{{project.description}}</p>
+                    <p class="project-desc" title="{{project.description}}">{{project.description | characters : 100}}</p>
                     <p><a class="btn btn-default" href="/project/#/{{project._id}}">View details »</a></p>
                 </div>
             </div>
@@ -140,3 +140,25 @@
     </div>
 </div>
 
+<!-- <hr class="featurette-divider-sm"> -->
+<div class="container not-bold-container-user" ng-if="matchedProjects.length > 0">
+    <div class="col-md-12">
+        <h2 class="{{ (matchedProjects.length == 0) ? 'title' : 'text-center' }}">You might be interested in the following projects</h2>
+        <div class="col-md-12">
+            <div class="col-md-3 text-center" ng-repeat="project in matchedProjects">
+                <div class="thumbnail project-thumbnail">
+                    <img class="img-circle" width="140px" src="/app/assets/img/categories/300x300/{{project.category}}.png">
+                    <h3>{{project.title}}</h3>
+                    <div class="featured-project">
+                        <i class="glyphicon {{(project. featured) ? 'glyphicon-ok-circle text-success' : 'ng-hide' }} "></i> 
+
+                        <i class="glyphicon {{(project.visibility == 'global') ? 'glyphicon-globe text-success' : 'ng-hide' }} "></i>
+                    </div>
+                    <p class="project-desc" title="{{project.description}}">{{project.description | characters : 100}}</p>
+                    <p>By <a href="/user/#/{{project.user.user_id}}"> {{project.user.name}} </a></p>
+                    <p><a class="btn btn-default" href="/project/#/{{project._id}}">View details »</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

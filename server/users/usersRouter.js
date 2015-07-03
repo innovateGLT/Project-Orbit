@@ -109,7 +109,7 @@ router.post('/login', function(req, res, next) {
 /* GET /users/fake_login */
 router.get('/fake_login', function(req, res, next) {
 
-    var dat = "var staffDetails_name='Charlie Darwin';var staffDetails_empid='333333';var staffDetails_extphone='+60473457111';var staffDetails_country='CANADA';var staffDetails_jobrole='Programmer';var staffDetails_dept='IT Support';var staffDetails_photourl='http://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?d=identicon&s=200';var staffDetails_extemail='ivyleague022@gmail.com';";
+    var dat = '{"_id":"5593278d3064237ec4824022","user_id":"c18394afadc9acf7da874c9e33dbd2bf","name":"Marnel Juan Rodriguez","empId":43784823,"picture":"http://photos.global.hsbc/casual/square/4378/43784823.jpg","nickname":"Marnel","__v":0,"date_created":"2015-06-30T23:34:37.977Z","status":true,"interests":[],"skills":["Core Java","J2EE","JSP","Servlet","Spring","Java","JAVA 1.6","Java Servlets","JQuery","JSTL","Web Service","Ajax","CSS","DHTML","HTML","JDBC","JMS","Maven","Web Build & Deployment","XML","Java Script"],"featured":false,"country":"CANADA","job_role":"ANALYST BUSINESS SYSTEMS","dept":"GLTV DIGITAL - GSWD","family_name":"","given_name":"","role":"regular","email_verified":true,"email":"Marnel X Rodriguez/HBCA/HSBC"}';
     res.send(dat);
 });
 

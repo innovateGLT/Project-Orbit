@@ -3,6 +3,7 @@
 var express = require('express');
 var router = express.Router();
 var Project = require('./projectSchema');
+var User = require('../users/usersSchema');
 
 /* GET /projects listing. */
 router.get('/', function(req, res, next) {
@@ -73,6 +74,54 @@ router.get('/completed/by_user_id/:user_id', function(req, res, next) {
         if (err) return next(err);
         res.json(post);
     });
+});
+
+/* GET /projects/matched/by_user_id/:user_id */
+router.get('/matched/by_user_id/:user_id', function(req, res, next) {
+    // summary
+    //      get project suggestions based on the users skills and interests
+    //      retrieve the user skills and interests first, and use it at as parameters in retrieving matched projects
+    // params
+    //      user_id - the user id of the current user
+    // return
+    //      the list of suggested projects the user might be interested in
+
+    var skillsAndInterests = [];
+    
+    // retrieve the user first
+    User.findOne({
+        user_id: req.params.user_id
+    }, function(err, post) {
+        if (err) return next(err);
+        
+        // append the skills
+        post.skills.forEach(function ( skill ) {
+            skillsAndInterests.push(new RegExp(skill, "i"));
+        });
+        
+        // append the interests
+        post.interests.forEach(function ( interest ) {
+            skillsAndInterests.push(new RegExp(interest, "i"));
+        });
+
+        // rertieve all matching projects, limit only to 4
+        var query = Project.find({
+            "skillset" : { 
+                $in : skillsAndInterests 
+            } 
+        }).limit(4);
+        
+        query.exec(function (err, records) {
+            if (err) {
+                next(err);
+            }
+            
+            res.json(records);
+        });
+    });
+
+    
+    
 });
 
 /* GET /projects/by_user_id/:user_id */

@@ -785,8 +785,11 @@ video#bgvid {
     padding : 40px;
 }
 
+.bold-container  .title {
+    padding-left: 80px;
+}
+
 .thumbnail {
-    /*background-color: #F0F0F0;*/
     padding: 40px;
 }
 
@@ -804,17 +807,8 @@ video#bgvid {
     margin-top: 50px;
     margin-bottom: 50px;
     background-color: white;
-    margin-left: 100px;
-}
-
-.bold-container {
-    background-color: #F5F4F4;
+    padding: 0 40px;
     width: 100%;
-    padding : 40px;
-}
-
-.bold-container  .title {
-    padding-left: 80px;
 }
 
 .input-group.search-bar {
@@ -1183,4 +1177,15 @@ video#bgvid {
     -moz-animation: bounceOut 1s;
     -ms-animation: bounceOut 1s;
     animation: bounceOut 1s;
+}
+
+user-badge .thumbnail {
+    max-height: 378px;
+}
+
+.thumbnail.project-thumbnail h3,
+.thumbnail.project-thumbnail h2 {
+    min-height: 80px;
+    max-height: 80px;
+    overflow: hidden;
 }

@@ -39,10 +39,10 @@ angular.module('user')
             });
 
 
+            /** */
             var completedProjects = Projects.getCompletedProjectsByUserId({
                 user_id: $scope.userId
             }, function() {
-                // console.log("USER PROJECT",projects);
 
                 $scope.completedProjects = completedProjects;
             });
@@ -51,7 +51,13 @@ angular.module('user')
                 id: $scope.userId
             });
 
+            /* Matched projects based on skills and interests */
+            var matchedProjects = Projects.getMatchedProjectsByUserId({
+                user_id: $scope.userId
+            }, function() {
 
+                $scope.matchedProjects = matchedProjects;
+            });
 
             $scope.editProfile = function() {
                 $location.path("/edit");
