@@ -124,11 +124,7 @@ angular.module('home')
             user.name = staffDetails_name.toProperCase();
             user.empId = staffDetails_empid;
             user.phone = staffDetails_extphone;
-<<<<<<< HEAD
             user.country = staffDetails_country.toUpperCase();
-=======
-            user.country = staffDetails_country.toUpperCase
->>>>>>> origin/cliffs-workspace
             user.job_role = staffDetails_jobrole;
             user.dept = staffDetails_dept;
             user.picture = "http://" + staffDetails_photourl;
@@ -220,8 +216,8 @@ angular.module('home')
 
 
             var BASE = "http://ssupdate.global.hsbc/myhsbc/uservariables.ashx";
-+           console.log("BASE", BASE); //  + '/api/users/fake_login'
-+           $http.get(BASE).
+            console.log("BASE", BASE); //  + '/api/users/fake_login'
+            $http.get(BASE).
             success(function(data, status, headers, config) {
                 // this callback will be called asynchronously
                 // when the response is available

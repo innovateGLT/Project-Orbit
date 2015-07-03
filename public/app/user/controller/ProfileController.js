@@ -38,8 +38,6 @@ angular.module('user')
                 $scope.projects = projects;
             });
 
-
-            /** */
             var completedProjects = Projects.getCompletedProjectsByUserId({
                 user_id: $scope.userId
             }, function() {
