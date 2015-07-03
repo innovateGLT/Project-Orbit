@@ -78,7 +78,9 @@ angular.module('user')
                         });
                       }  
                       // Generate bubble chart using D3 API
-                	Bubble.generateBubble($scope.skillList);
+                	if($scope.skillList.length > 0) {
+                		Bubble.generateBubble($scope.skillList);
+                	}
                 });
             };
         }
