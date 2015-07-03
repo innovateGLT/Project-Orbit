@@ -18,7 +18,10 @@
 </div>
 <div class="row">
     <div class="col-md-4 col-sm-6 text-center user-record" ng-repeat="user in users | filter:filter">
-        <div class="thumbnail">
+        
+        <user-badge user="user"></user-badge>
+        
+        <!--<div class="thumbnail">
             <img class="img-circle" width="120px" src="{{user.picture}}">
             
             <h3><i ng-show="user.featured" class="glyphicon {{(user.featured) ? 'glyphicon-ok-circle text-success' : '' }} "></i>  <a href="/user/#/{{user.user_id}}"> {{user.name}}</a></h3>
@@ -26,7 +29,7 @@
             <p>{{user.dept}}</p>
             <p>{{user.country}}</p>
             <p>{{user.email}}</p>
-        </div>
+        </div>-->
     </div>
 </div>
 <!-- /.row -->
