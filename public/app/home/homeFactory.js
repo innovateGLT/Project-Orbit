@@ -124,7 +124,7 @@ angular.module('home')
             user.name = staffDetails_name.toProperCase();
             user.empId = staffDetails_empid;
             user.phone = staffDetails_extphone;
-            user.country = staffDetails_country.toProperCase();
+            user.country = staffDetails_country.toUpperCase();
             user.job_role = staffDetails_jobrole;
             user.dept = staffDetails_dept;
             user.picture = "http://" + staffDetails_photourl;
