@@ -1234,5 +1234,8 @@ user-badge .thumbnail {
     animation: fadeOutRight .5s;
 }
 
-/* ngView animations */
+/* edit profile styles */
 
+.edit-profile {
+    min-height: 550px;
+}
