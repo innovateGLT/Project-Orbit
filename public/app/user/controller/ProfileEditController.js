@@ -67,8 +67,10 @@ angular.module('user')
             };
             
             $scope.addInterest = function() {
-                $scope.interests.push($scope.interest.trim());
-                $scope.interest = "";
+                if ( $scope.interest ) {
+                    $scope.interests.push($scope.interest.trim());
+                    $scope.interest = "";
+                }
             };
               
             $scope.removeInterest = function(index) {

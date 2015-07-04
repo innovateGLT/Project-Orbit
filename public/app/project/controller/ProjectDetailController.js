@@ -574,6 +574,9 @@ angular.module('project')
             }];
 
 
+            $scope.backToList = function () {
+                $location.path("/list");  
+            };
 
         }
     ]);

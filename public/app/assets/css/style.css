@@ -247,6 +247,7 @@ body {
 .edit {
     position: absolute;
     cursor: pointer;
+    right: 0px;
 }
 
 .edit span.label {
@@ -899,6 +900,11 @@ video#bgvid {
 .no-padding {padding: 0 !important;}
 .no-margin {margin: 0 !important;}
 
+/* line-height */
+.lh5 {line-height:5em;}
+.lh55 {line-height:5.5em;}
+
+
 /* how it works */
 
 .panel-circle div {
@@ -1207,23 +1213,26 @@ user-badge .thumbnail {
     overflow: hidden;
 }
 
-.interest-item {
-  -webkit-transition: color 0.5s, background-color 0.3s;
-  -moz-transition: color 0.5s, background-color 0.3s;
-  -ms-transition: color 0.5s, background-color 0.3s;
-  transition: color 0.5s, background-color 0.3s;
+.animate-fadein-out {
+  -webkit-transition: color 0.5s, background-color 0.5s;
+  -moz-transition: color 0.5s, background-color 0.5s;
+  -ms-transition: color 0.5s, background-color 0.5s;
+  transition: color 0.5s, background-color 0.5s;
 }
 
-.interest-item.ng-enter {
+.animate-fadein-out.ng-enter {
     -webkit-animation: fadeInUp .5s;
     -moz-animation: fadeInUp .5s;
     -ms-animation: fadeInUp .5s;
     animation: fadeInUp .5s;
 }
 
-.interest-item.ng-leave {
+.animate-fadein-out.ng-leave {
     -webkit-animation: fadeOutRight .5s;
     -moz-animation: fadeOutRight .5s;
     -ms-animation: fadeOutRight .5s;
     animation: fadeOutRight .5s;
 }
+
+/* ngView animations */
+

@@ -1,18 +1,33 @@
-<div class="container container-main" style="min-height: 75%;margin-top:30px">
-	<div class="page-header" style="margin-top: 0;">
+<div style="min-height: 75%;margin-top:30px">
+	<div class="page-header col-md-12 col-lg-12 no-padding left" style="margin-top: 0;">
 		<!-- Use green for Available, red for In Progress, grey for Completed -->
-		<h1 style="margin-top: 0;">{{project.title}}    <small style="color: green">{{project.status}}</small>  <button ng-show="isAdmin" class="btn btn-danger" ng-click="delete()">Delete</button> <i ng-show="isAdmin" class="glyphicon {{(project.featured) ? 'glyphicon-ok-circle text-success' : 'glyphicon-remove-circle'}}" ng-click="feature()"></i> <button ng-show="hasBeenInvited" class="btn btn-success" ng-click="acceptInvitation(auth.profile)">Accept this project</button> </h1>
+		<div class="row">
+			<div class="col-md-9 col-lg-9 col-sm-12 col-xs-12">
+				<h1 style="margin-top: 0;" class="col-md-9 col-lg-9 no-padding">{{project.title}}    <small style="color: green">{{project.status}}</small>  <button ng-show="isAdmin" class="btn btn-danger" ng-click="delete()">Delete</button> <i ng-show="isAdmin" class="glyphicon {{(project.featured) ? 'glyphicon-ok-circle text-success' : 'glyphicon-remove-circle'}}" ng-click="feature()"></i> <button ng-show="hasBeenInvited" class="btn btn-success" ng-click="acceptInvitation(auth.profile)">Accept this project</button> </h1>
+			</div>
+			<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 no-padding pull-right text-right">
+	            <div class="edit">
+	                <span class="label label-danger" id="viewProject" ng-click="backToList()">
+	                    <i class="glyphicon glyphicon-arrow-left"></i> Back
+	                </span>
+	            </div>
+	        </div>
+		</div>
 		
-		<h2><small style="color: blue"> By <a href="/user/#/{{project.user.user_id}}">{{project.user.name}}</a></small>
-		<small>
-		<i ng-repeat="star in projectFullStars" class="glyphicon glyphicon-star" style="color: #f39c12"></i><i ng-repeat="star1 in projectEmptyStars" class="glyphicon glyphicon-star-empty" style="color: #f39c12"></i>
-		({{projectPeoplesRating}} people rated)
-		</small>
-		</h2>
-		<div ng-show="logginUserSelectedForProject">
-			
-			{{ (isRated == true) ? 'You have rated this project\'s owner' : 'Rate this project\'s owner:'}} <rating ng-model="rate" max="max" readonly="isReadonly" on-hover="hoveringOver(value)" on-leave="overStar = null"></rating>
-			<span class="label" ng-class="{'label-warning': percent<30, 'label-info': percent>=30 && percent<70, 'label-success': percent>=70}" ng-show="overStar && !isReadonly">{{percent}}%</span>
+		<div class="row lh55">
+			<div class="col-md-8 col-lg-8 col-sm-12 col-xs-12">
+				<h2 class="col-md-12 col-lg-12 no-padding left"><small style="color: blue"> By <a href="/user/#/{{project.user.user_id}}">{{project.user.name}}</a></small>
+				<small>
+				<i ng-repeat="star in projectFullStars" class="glyphicon glyphicon-star" style="color: #f39c12"></i><i ng-repeat="star1 in projectEmptyStars" class="glyphicon glyphicon-star-empty" style="color: #f39c12"></i>
+				({{projectPeoplesRating}} people rated)
+				</small>
+				</h2>
+			</div>
+			<div ng-show="logginUserSelectedForProject" class="col-md-4 col-lg-4 col-sm-12 col-xs-12 text-right no-padding">
+				
+				{{ (isRated == true) ? 'You have rated this project\'s owner' : 'Rate this project\'s owner:'}} <rating ng-model="rate" max="max" readonly="isReadonly" on-hover="hoveringOver(value)" on-leave="overStar = null"></rating>
+				<span class="label" ng-class="{'label-warning': percent<30, 'label-info': percent>=30 && percent<70, 'label-success': percent>=70}" ng-show="overStar && !isReadonly">{{percent}}%</span>
+			</div>
 		</div>
 		
 	</div>
