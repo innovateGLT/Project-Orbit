@@ -55,7 +55,7 @@
         <br/>
     </div>
         <!-- FOR THE PROJECT OWNER -->
-    <div class="row pane pane-dark hiw-steps {{(projectOwnerSelected) ? 'owner-active' : 'owner-inactive' }}">
+    <div ng-if="projectOwnerSelected" class="row pane pane-dark hiw-steps animate-fadein-out">
         <span class="close" ng-click="selectProjectOwner()">&times;</span>
         <div class="col-md-4 col-sm-4 text-center">
             <img class="img-rounded" width="300px" src="/app/assets/img/home/owner-step1-announce.png">
@@ -75,7 +75,7 @@
     </div>
     <!-- /.row -->
     <!-- FOR THE PROJECT SEEKER -->
-    <div class="row pane pane-dark hiw-steps {{(projectSeekerSelected) ? 'seeker-active' : 'seeker-inactive' }}">
+    <div ng-if="projectSeekerSelected" class="row pane pane-dark hiw-steps animate-fadein-out">
         <span class="close" ng-click="selectProjectSeeker()">&times;</span>
         <div class="col-md-4 col-sm-4 text-center">
             <img class="img-rounded" width="300px" src="/app/assets/img/home/seeker-step1-seek.png">
