@@ -181,7 +181,7 @@ router.get('/search', function(req, res, next) {
         category: new RegExp(req.query.q, 'i')
     }, {
         skillset: {
-             $in: [new RegExp(req.query.q,'i’)]
+             $in: [new RegExp(req.query.q, 'i')]
         }
     }]);
 
