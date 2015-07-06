@@ -36,7 +36,7 @@ body {
 
 .container-main {
     margin-top: 100px;
-    padding-bottom: 80px;
+    margin-bottom: 100px;
 }
 
 .featurette-divider {
@@ -1244,24 +1244,24 @@ user-badge .thumbnail {
 
 /* navigation entrance and exit style START */
 .animate-fadein-down {
-  -webkit-transition: all .5s;
-  -moz-transition: all .5s;
-  -ms-transition: all .5s;
-  transition: all .5s;
+  -webkit-transition: color .5s, background-color .5s;
+  -moz-transition: color .5s, background-color .5s;
+  -ms-transition: color .5s, background-color .5s;
+  transition: color .5s, background-color .5s;
 }
 
 .animate-fadein-down.ng-enter {
-    -webkit-animation: fadeInDown .5s;
-    -moz-animation: fadeInDown .5s;
-    -ms-animation: fadeInDown .5s;
-    animation: fadeInDown .5s;
+    -webkit-animation: fadeInLeft .5s;
+    -moz-animation: fadeInLeft .5s;
+    -ms-animation: fadeInLeft .5s;
+    animation: fadeInLeft .5s;
 }
 
 .animate-fadein-down.ng-leave {
-    -webkit-animation: fadeOutUp .5s;
-    -moz-animation: fadeOutUp .5s;
-    -ms-animation: fadeOutUp .5s;
-    animation: fadeOutUp .5s;
+    -webkit-animation: fadeOutRight .5s;
+    -moz-animation: fadeOutRight .5s;
+    -ms-animation: fadeOutRight .5s;
+    animation: fadeOutRight .5s;
 }
 
 /* navigation entrance and exit style END */

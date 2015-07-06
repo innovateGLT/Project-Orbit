@@ -1,12 +1,13 @@
 
 <!-- Project suggestions based on the users skills and interests -->
-
-<h2 class="text-center"> {{ (projects.length == 0) ? 'No result found' : 'Search result'}} </h2>
-
-<div class="container" ng-if="projects.length > 0">
-    <hr class="featurette-divider-xs">
+<div class="container">
+    <h2 class="text-center"> {{ (projects.length == 0) ? 'No result found' : 'Search result'}} </h2>
     
-    <project-list projects="projects" class="container"></project-list>
-    
-    <hr class="featurette-divider-xs">
+    <div class="container" ng-if="projects.length > 0">
+        <hr class="featurette-divider-xs">
+        
+        <project-list projects="projects" class="container"></project-list>
+        
+        <hr class="featurette-divider-xs">
+    </div>
 </div>
