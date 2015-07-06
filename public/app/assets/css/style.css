@@ -1271,3 +1271,26 @@ user-badge .thumbnail {
 .edit-profile {
     min-height: 550px;
 }
+
+/* edit profile styles end */
+
+/* helper styles START */
+.disclaimer {
+    font-size: 75%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+.disclaimer-light {
+    color: #808080;
+    background-color: #ffffff;
+    border: 1px dashed #808080;
+}
+
+.disclaimer-dark {
+    color: #ffffff;
+    background-color: #a0a0a0;
+    border: 1px dashed #f2f2f2;
+}
+/* helper styles END */
