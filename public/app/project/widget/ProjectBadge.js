@@ -15,6 +15,7 @@ angular.module("project")
                     // implement just in case needed
                     
                     $scope.returnUrl = $location.path();
+                    $scope.searchParams = $location.search();
                 }
     		};
         		

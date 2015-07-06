@@ -80,7 +80,7 @@ angular.module('home')
             country: $scope.auth.profile.country
         });
 
-        $scope.featuredUserService = UserService.featured({
+        $scope.featuredUsers = UserService.featured({
             country: $scope.auth.profile.country
         });
 

@@ -50,7 +50,7 @@ router.get('/featured', function(req, res, next) {
     }).limit(4);
 
     query.or([{
-        country: req.query.country
+        country: new RegExp(req.query.country, 'i')
     }, {
         visibility: "global"
     }]);

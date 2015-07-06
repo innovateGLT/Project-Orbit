@@ -122,7 +122,7 @@ router.get('/featured', function(req, res, next) {
     }).limit(3);
 
     query.or([{
-        country: req.query.country
+        country: new RegExp(req.query.country, 'i')
     }]);
     // query.or([{status : "Open"},{status : "In Progress"}]);
     query.exec(function(err, post) {

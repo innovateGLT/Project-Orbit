@@ -36,10 +36,10 @@ angular.module('user')
                     method: 'GET',
                     'url': '/api/users/by_id/:user_id'
                 },
-                /*'getByEmail': {
+                'getByEmail': {
                     method: 'GET',
                     'url': '/api/users/by_email/:email'
-                },*/
+                },
                 // Use for loading from GMIS record
                 'getSkills': {
                     method: 'GET',

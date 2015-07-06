@@ -7,6 +7,8 @@
 </head>
 <body ng-controller="appController">
 	
+    <% include ../inc/login %>
+    
     <div ng-if="isNavigationVisibile" class="animate-fadein-down left w100" ng-include="'/app/common/page/navigation.html'"></div>
 	<div ng-view class="animate-fadein-out left col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding {{ isNavigationVisibile && isContainerVisible && !isUserViewPage ? 'container container-main' : ''}}"></div>
 
@@ -90,6 +92,15 @@
         <!-- Service -->
     <script type="text/javascript" src="/app/profile/service/ProfileService.js"></script>
     <script type="text/javascript" src="/app/profile/service/SkillsBubbleService.js"></script>
+    
+    <!------------------------------------------------------------------------------------------------------------>
+    <!------------------------------------------------------------------------------------------------------------>
+    <!---------------------------------------LOAD USER SCRIPTS---------------------------------------------------->
+    <!------------------------------------------------------------------------------------------------------------>
+    <!------------------------------------------------------------------------------------------------------------>	
+    <script type="text/javascript" src="/app/loaduser/loaduser.js"></script>
+    <script type="text/javascript" src="/app/loaduser/controller/LoadUserController.js"></script>		
+    <script type="text/javascript" src="/app/loaduser/router/LoadUserRouter.js"></script>
     
     <!------------------------------------------------------------------------------------------------------------>
     <!------------------------------------------------------------------------------------------------------------>

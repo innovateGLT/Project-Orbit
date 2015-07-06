@@ -3,7 +3,7 @@
 var ADMIN_EMAIL = 'innovate@hsbc.ca';
 
 // app.js
-angular.module('app', ['auth0','home', 'profile', 'project', 'user', 'angular-storage', 'angular-jwt', 'ngAnimate']);
+angular.module('app', ['auth0','home', 'profile', 'project', 'user', 'loaduser', 'angular-storage', 'angular-jwt', 'ngAnimate']);
 
 angular.module('app').controller('loginModalCtrl', function($scope, $modalInstance, UserService, store, $location) {
 
