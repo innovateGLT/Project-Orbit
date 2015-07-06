@@ -576,10 +576,13 @@ angular.module('project')
                 // summary
                 //      return back to projects list
                 //      if a hash is existing in the url, we determine that the user came from the projects list filtered by category
+                //      also attacht the previous search params if any
                 
                 var returnUrl = $location.hash();
                 $location.hash("");
-                $location.path(returnUrl);
+                
+                $location.path(returnUrl).search(store.get("searchParams"));
+                store.remove("searchParams");
 
             };
 

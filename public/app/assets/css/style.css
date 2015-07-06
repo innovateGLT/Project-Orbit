@@ -859,6 +859,7 @@ video#bgvid {
 
 /* margins */
 
+.mt5  {margin-top:5px;}
 .mt10 {margin-top:10px;}
 .mt20 {margin-top:20px;}
 .mt30 {margin-top:30px;}
@@ -871,6 +872,7 @@ video#bgvid {
 .mt100 {margin-top:100px;}
 .mt150 {margin-top:150px;}
 
+.mb5  {margin-bottom:5px;}
 .mb10 {margin-bottom:10px;}
 .mb20 {margin-bottom:20px;}
 .mb30 {margin-bottom:30px;}
@@ -894,6 +896,19 @@ video#bgvid {
 .ml80 {margin-left:80px;}
 .ml90 {margin-left:90px;}
 .ml100 {margin-left:100px;}
+
+.mr5  {margin-right:5px;}
+.mr10 {margin-right:10px;}
+.mr20 {margin-right:20px;}
+.mr30 {margin-right:30px;}
+.mr40 {margin-right:40px;}
+.mr50 {margin-right:50px;}
+.mr60 {margin-right:60px;}
+.mr70 {margin-right:70px;}
+.mr80 {margin-right:80px;}
+.mR90 {margin-right:90px;}
+.mr100 {margin-right:100px;}
+.mr150 {margin-right:150px;}
 
 .ml5p {margin-left:5%;}
 
@@ -1272,6 +1287,27 @@ user-badge .thumbnail {
     min-height: 550px;
 }
 
+.edit-profile .interest {
+    float:left;
+    padding:0;
+    font-size:85%;
+    text-indent:2px;
+    margin-bottom:10px;
+    margin-right:10px;
+}
+
+.edit-profile .interest > div {
+    padding:3px 10px;
+    float:left;
+    margin:0;
+}
+
+.edit-profile .interest > div > span:first-child {
+    float:left;
+    margin-right:10px;
+    margin-top:5px;
+}
+
 /* edit profile styles end */
 
 /* helper styles START */
@@ -1292,5 +1328,9 @@ user-badge .thumbnail {
     color: #ffffff;
     background-color: #a0a0a0;
     border: 1px dashed #f2f2f2;
+}
+
+.label {
+    padding: 5px 10px;
 }
 /* helper styles END */

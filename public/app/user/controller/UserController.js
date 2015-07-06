@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('user')
-    .controller('UserController', ['$scope', 'UserService', '$location', '$routeParams', 'SecurityService', 'Projects', 'SweetAlert', 'Bubble',
-        function($scope, UserService, $location, $routeParams, SecurityService, Projects, SweetAlert, Bubble) {
+    .controller('UserController', ['$scope', 'UserService', '$location', '$routeParams', 'SecurityService', 'Projects', 'SweetAlert', 'Bubble', 'store',
+        function($scope, UserService, $location, $routeParams, SecurityService, Projects, SweetAlert, Bubble, store) {
 
 
 
@@ -87,9 +87,16 @@ angular.module('user')
             $scope.returnUrl = $location.hash();
             
             $scope.backToList = function() {
+                // summary
+                //      return back to projects list
+                //      if a hash is existing in the url, we determine that the user came from the projects list filtered by category
+                //      also attacht the previous search params if any
+                
                 var returnUrl = $location.hash();
                 $location.hash("");
-                $location.path(returnUrl);
+                
+                $location.path(returnUrl).search(store.get("searchParams"));
+                store.remove("searchParams");
             };
             
             

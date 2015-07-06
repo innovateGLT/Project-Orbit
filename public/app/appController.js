@@ -1,10 +1,10 @@
 'use strict';
 
-var app = angular.module('app');
+angular.module('app')
 
-app.controller('appController', ['$scope', '$location', '$anchorScroll',
+.controller('appController', ['$scope', '$location', '$anchorScroll', 'store',
     
-    function ($scope, $location, $anchorScroll) {
+    function ($scope, $location, $anchorScroll, store) {
     
     
         $scope.$on('$locationChangeStart', function(event) {
@@ -18,6 +18,10 @@ app.controller('appController', ['$scope', '$location', '$anchorScroll',
             $scope.isNavigationVisibile = $location.path() !== "/";
             $scope.isContainerVisible = $location.path() !== "/profile";
             $scope.isUserViewPage = $location.path().indexOf("/user/list") === -1 && $location.path().indexOf("/user") === 0;
+            
+            if ( $location.path() == "/search" ) {
+                store.set("searchParams", $location.search());
+            }
             
             $anchorScroll();
         });

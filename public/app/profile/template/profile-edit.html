@@ -19,7 +19,7 @@
             </div>
             
             <div class="col-md-12 edit mt50">
-                <span ng-click="save()" class="label label-success" id="editProfileDone">
+                <span ng-click="save()" class="btn btn-primary" id="editProfileDone">
                     <i class="glyphicon glyphicon-ok"></i> Update
                 </span>
             </div>
@@ -36,9 +36,9 @@
             
             <div class="row">
                 <div class="profile-list">
-                     <h3>My Skills</h3>
-                     <p class="disclaimer disclaimer-light">Skills are automatically retrieved from GMIS, so editing / adding is not applicable.</p>
-                     <ul class="list-inline no-padding">
+                    <h3>My Skills</h3>
+                    <p class="disclaimer disclaimer-light">Skills are automatically retrieved from GMIS, so editing / adding is not applicable.</p>
+                    <ul class="list-inline no-padding">
                         <li ng-repeat="skill in user.skills"><span class="label label-success">{{skill}}</span></li>
                     </ul> 
                 </div>
@@ -49,16 +49,21 @@
                 
                 <h3>My Interests</h3>
                 
-                <div class="list-group mb20">
-                  <div class="list-group-item animate-fadein-out" ng-repeat="interest in interests track by $index">
-                    <span class="close" ng-click="removeInterest($index)">&times;</span>
-                    <label>
-                      <span>{{ interest }}</span>
-                    </label>
-                  </div>
+                <div class="mb20 left">
+                    <ul class="list-inline no-padding">
+                        <li ng-repeat="interest in interests track by $index" class="animate-fadein-out label label-success interest">
+                            <div>
+                                <span>{{ interest }}</span>
+                                <span class="left close" ng-click="removeInterest($index)" title="Remove">&times;</span>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
                 
-                <form class="form-inline col-md-12 col-sm-12 col-xs-12" ng-submit="addInterest()">
+            </div>
+            
+            <div class="row">
+                <form class="form-inline" ng-submit="addInterest()">
                     <div class="form-group col-md-9 col-sm-12 col-xs-12">
                         <input type="text" ng-model="interest" class="form-control cold-md-4" placeholder="Enter new interest" focus>
                     </div>
@@ -66,7 +71,6 @@
                         <button type="submit" class="btn btn-primary form-control">Add</button>
                     </div>
                 </form>
-                
             </div>
         </div>
     </div>
