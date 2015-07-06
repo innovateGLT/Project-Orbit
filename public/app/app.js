@@ -1,8 +1,6 @@
 'use strict';
 
 var ADMIN_EMAIL = 'innovate@hsbc.ca';
-var FROM_SEARCH = '#1';
-var FROM_CATEGORY = '#0';
 
 // app.js
 angular.module('app', ['auth0','home', 'profile', 'project', 'user', 'angular-storage', 'angular-jwt', 'ngAnimate']);

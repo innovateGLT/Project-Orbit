@@ -84,9 +84,12 @@ angular.module('user')
                 });
             };
             
+            $scope.returnUrl = $location.hash();
+            
             $scope.backToList = function() {
-                $location.path($location.hash());
+                var returnUrl = $location.hash();
                 $location.hash("");
+                $location.path(returnUrl);
             };
             
             

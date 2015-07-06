@@ -1,7 +1,7 @@
 <div class="thumbnail">
     <img class="img-circle" width="120px" ng-src="{{user.picture}}">
     
-    <h3><i ng-show="user.featured" class="glyphicon {{(user.featured) ? 'glyphicon-ok-circle text-success' : '' }} "></i>  <a href="/user/{{user.user_id}}"> {{user.name}}</a></h3>
+    <h3><i ng-show="user.featured" class="glyphicon {{(user.featured) ? 'glyphicon-ok-circle text-success' : '' }} "></i>  <a href="/user/{{user.user_id}}#{{returnUrl}}"> {{user.name}}</a></h3>
     <p>{{user.job_role}}</p>
     <p>{{user.dept}}</p>
     <p>{{user.country}}</p>
