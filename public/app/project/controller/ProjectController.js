@@ -263,7 +263,7 @@ angular.module('project')
                         type: "success"
                     }, function(){ 
                         console.log('Project has been ' + message, project);
-                        $location.url('/project/' + project._id);
+                        $location.url('/project/' + project._id + "#" + $location.hash());
                     });
                 });
             };

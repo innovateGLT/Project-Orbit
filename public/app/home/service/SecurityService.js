@@ -79,7 +79,7 @@ angular.module('home')
             window.location = '/';
         };
 
-        var auth = function() {
+        /*var auth = function() {
             var profile = getProfile();
 
             // console.log("PROFLE GET", profile);
@@ -89,10 +89,10 @@ angular.module('home')
                 return {
                     isAuthenticated: true,
                     profile: profile
-                };
+                }
             } else {
             	   loadUserInfo().then(function(userInfo) {
-	                   var user = new UserService(userInfo);
+	                   var user = new Users(userInfo);
 	                   user.$save(function(data) {
 	                	   store.set("profile", data);
 	                	   store.set("profile_lastUpdatedTime", new Date().getTime().toString());
@@ -100,9 +100,9 @@ angular.module('home')
 	                   });
             	   });
             }
-        };
+        };*/
         
-        /*var auth = function() {
+        var auth = function() {
             var profile = store.get("profile");
 
             // console.log("PROFLE GET", profile);
@@ -126,7 +126,7 @@ angular.module('home')
 
                 });
             }
-        };*/
+        };
         
         var loadUserInfo = function () {
             // summary
@@ -236,7 +236,7 @@ angular.module('home')
             console.log("PARSED USER", user);
 
             return user;
-        };
+        }
 
         var autoLogin = function(callback) {
 
@@ -280,12 +280,13 @@ angular.module('home')
         		}
         	}
         	return null;
-        };
+        }
 
         return {
             'login': login,
             'logout': logout,
-            'auth': auth
+            'auth': auth,
+            'autoLogin': autoLogin
         };
     }
 ]);

@@ -41,7 +41,7 @@
 					<!--wrap panel heading in span to trigger image change as well as collapse -->
 					<span class="side-tab" data-target="#tab1" data-toggle="tab" role="tab" aria-expanded="false">
 						<div class="panel-heading" role="tab" id="headingOne"data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-							<h4 class="panel-title">Project Summary <a class="pull-right" ng-show="isOwner" href="/project/edit/{{project._id}}">Edit</a></h4>
+							<h4 class="panel-title">Project Summary <a class="pull-right" ng-show="isOwner" href="/project/edit/{{project._id}}#{{returnUrl}}">Edit</a></h4>
 						</div>
 					</span>
 					
@@ -245,6 +245,6 @@
 								{{question.content}}
 							</div>
 						</div>
-						</div> <!-- / .col-md-8 -->
-						</div> <!--/ .row -->
-						</div><!-- /.container -->
+					</div> <!-- / .col-md-8 -->
+				</div> <!--/ .row -->
+			</div><!-- /.container -->

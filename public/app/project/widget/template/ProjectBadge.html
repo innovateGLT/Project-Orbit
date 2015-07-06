@@ -11,6 +11,6 @@
     <p ng-show="isAdmin" class="text-success">{{project.country}}</p>
     <p ng-show="isAdmin" class="text-danger">{{project.visibility | uppercase}}</p>
     
-    <p>By <a href="/user/{{project.user.user_id}}"> {{project.user.name}} </a></p>
-    <p><a class="btn btn-default" href="/project/{{project._id}}">View details »</a></p>
+    <p>By <a href="/user/{{project.user.user_id}}#{{returnUrl}}"> {{project.user.name}} </a></p>
+    <p><a class="btn btn-default" href="/project/{{project._id}}#{{returnUrl}}">View details »</a></p>
 </div>

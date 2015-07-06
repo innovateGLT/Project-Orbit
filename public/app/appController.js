@@ -2,9 +2,9 @@
 
 var app = angular.module('app');
 
-app.controller('appController', ['$scope', '$location',
+app.controller('appController', ['$scope', '$location', '$anchorScroll',
     
-    function ($scope, $location) {
+    function ($scope, $location, $anchorScroll) {
     
     
         $scope.$on('$locationChangeStart', function(event) {
@@ -18,6 +18,8 @@ app.controller('appController', ['$scope', '$location',
             $scope.isNavigationVisibile = $location.path() !== "/";
             $scope.isContainerVisible = $location.path() !== "/profile";
             $scope.isUserViewPage = $location.path().indexOf("/user/list") === -1 && $location.path().indexOf("/user") === 0;
+            
+            $anchorScroll();
         });
         
     

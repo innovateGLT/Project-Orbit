@@ -570,16 +570,16 @@ angular.module('project')
             }];
 
 
+            $scope.returnUrl = $location.hash();
+
             $scope.backToList = function () {
                 // summary
                 //      return back to projects list
                 //      if a hash is existing in the url, we determine that the user came from the projects list filtered by category
                 
-                /*var fromCategoryFlag = $location.hash();
+                var returnUrl = $location.hash();
                 $location.hash("");
-                $location.path("/project/list" + ( fromCategoryFlag ? "/" + $scope.project.category : "" ) );
-                */
-                $window.history.back();
+                $location.path(returnUrl);
 
             };
 

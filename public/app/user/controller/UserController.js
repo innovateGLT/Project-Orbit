@@ -85,8 +85,11 @@ angular.module('user')
             };
             
             $scope.backToList = function() {
-                $location.path("/user/list");
-            }
+                $location.path($location.hash());
+                $location.hash("");
+            };
+            
+            
         }
     ])
 
