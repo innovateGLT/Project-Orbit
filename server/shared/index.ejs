@@ -7,7 +7,7 @@
 </head>
 <body ng-controller="appController">
 	
-    <div ng-if="isNavigationVisibile" class="animate-fadein-out" ng-include="'/app/common/page/navigation.html'"></div>
+    <div ng-if="isNavigationVisibile" ng-include="'/app/common/page/navigation.html'"></div>
 	<div ng-view class="animate-fadein-out {{ isNavigationVisibile && isContainerVisible && !isUserViewPage ? 'container container-main' : ''}}"></div>
 
     <% include ../inc/footer %>
