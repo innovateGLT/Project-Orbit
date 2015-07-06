@@ -47,7 +47,7 @@ router.get('/featured', function(req, res, next) {
     // console.log("USEr ID",req.params.user_id );
     var query = Project.find({
         'featured': true
-    }).limit(3);
+    }).limit(4);
 
     query.or([{
         country: req.query.country

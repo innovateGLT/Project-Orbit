@@ -1,10 +1,10 @@
 'use strict';
 
 angular.module('project')
-    .controller('ProjectDetailController', ['$scope', '$routeParams', 'Projects', '$location', 'Questions', 'Credentials', 'Users', 'SweetAlert', 'Email', 'Rating', 'store',
-        function($scope, $routeParams, Projects, $location, Questions, Credentials, Users, SweetAlert, Email, Rating, store) {
+    .controller('ProjectDetailController', ['$scope', '$routeParams', '$window', 'Projects', '$location', 'Questions', 'SecurityService', 'UserService', 'SweetAlert', 'Email', 'Rating', 'store',
+        function($scope, $routeParams, $window, Projects, $location, Questions, SecurityService, UserService, SweetAlert, Email, Rating, store) {
 
-            $scope.auth = Credentials.auth();
+            $scope.auth = SecurityService.auth();
 
             $scope.isAdmin = false;
             $scope.projectFullStars = [];
@@ -47,7 +47,7 @@ angular.module('project')
                     $scope.isAdmin = true;
                 }
 
-                $scope.matchedUsers = Users.getMatches({
+                $scope.matchedUsers = UserService.getMatches({
                     skills: $scope.project.skillset.join(',')
                 }, function() {
                     $scope.matchedUsers = $scope.matchedUsers.filter(function(person) {
@@ -327,7 +327,7 @@ angular.module('project')
 
 
 
-                    Users.getByUserId({
+                    UserService.getByUserId({
                         user_id: $scope.project.user.user_id
                     }, function(newUser) {
                         if (newUser.email == "") {
@@ -393,7 +393,7 @@ angular.module('project')
                     return;
                 }
 
-                Users.getByUserId({
+                UserService.getByUserId({
                     user_id: user.user_id
                 }, function(newUser) {
                     if (newUser.email == "") {
@@ -554,10 +554,6 @@ angular.module('project')
 
             };
 
-
-
-
-
             $scope.ratingStates = [{
                 stateOn: 'glyphicon-ok-sign',
                 stateOff: 'glyphicon-ok-circle'
@@ -575,7 +571,16 @@ angular.module('project')
 
 
             $scope.backToList = function () {
-                $location.path("/list");  
+                // summary
+                //      return back to projects list
+                //      if a hash is existing in the url, we determine that the user came from the projects list filtered by category
+                
+                /*var fromCategoryFlag = $location.hash();
+                $location.hash("");
+                $location.path("/project/list" + ( fromCategoryFlag ? "/" + $scope.project.category : "" ) );
+                */
+                $window.history.back();
+
             };
 
         }

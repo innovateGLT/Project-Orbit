@@ -3,33 +3,104 @@
 <head>
 	<% include ../inc/header %>
 
+    <base href="/">
 </head>
-<body >
+<body ng-controller="appController">
 	
-	<div ng-view class="animate-fadein-out"></div>
+    <div ng-if="isNavigationVisibile" class="animate-fadein-out" ng-include="'/app/common/page/navigation.html'"></div>
+	<div ng-view class="animate-fadein-out {{ isNavigationVisibile && isContainerVisible && !isUserViewPage ? 'container container-main' : ''}}"></div>
 
     <% include ../inc/footer %>
 
 	<% include ../inc/vendors %>
 
-    <!-- App scripts -->
-    <script src="/app/app.js"></script>
+    <!------------------------------------------------------------------------------------------------------------>
+    <!------------------------------------------------------------------------------------------------------------>
+    <!------------------------------------------------------------------------------------------------------------>
+    <!--------------PLEASE MAINTAIN THE IMPORT STATEMENTS ALPHABETICAL FOR EASIER CODE READABILITY :D------------->
+    <!------------------------------------------------------------------------------------------------------------>
+    <!------------------------------------------------------------------------------------------------------------>
+    <!------------------------------------------------------------------------------------------------------------>
+
+    <!------------------------------------------------------------------------------------------------------------>
+    <!------------------------------------------------------------------------------------------------------------>
+    <!-------------------------------------MAIN APP SCRIPTS------------------------------------------------------->
+    <!------------------------------------------------------------------------------------------------------------>
+    <!------------------------------------------------------------------------------------------------------------>
+    <script type="text/javascript" src="/app/app.js"></script>
+        <!-- Controller -->
+    <script type="text/javascript" src="/app/appController.js"></script>
     <script type="text/javascript" src="/app/common/controller/HeaderController.js"></script>
     
-    <!-- Project scripts -->
-    <script src="/app/project/project.js"></script>
-    <script src="/app/project/service/ProjectService.js"></script>
+    <!------------------------------------------------------------------------------------------------------------>
+    <!------------------------------------------------------------------------------------------------------------>
+    <!-------------------------------------HOME MODULE SCRIPTS---------------------------------------------------->
+    <!------------------------------------------------------------------------------------------------------------>
+    <!------------------------------------------------------------------------------------------------------------>
+    <script type="text/javascript" src="/app/home/home.js"></script>
+        <!-- Controllers -->
+    <script type="text/javascript" src="/app/home/controller/HomeController.js"></script>
+        <!-- Routers -->
+	<script type="text/javascript" src="/app/home/router/HomeRouter.js"></script>
+        <!-- Service -->
+    <script type="text/javascript" src="/app/home/service/SecurityService.js"></script>
     
-    <!-- User scripts -->
-    <script src="/app/user/user.js"></script>
-    <script src="/app/user/service/UserService.js"></script>
+    <!------------------------------------------------------------------------------------------------------------>
+    <!------------------------------------------------------------------------------------------------------------>
+    <!--------------------------------------PROJECT MODULE SCRIPTS------------------------------------------------>
+    <!------------------------------------------------------------------------------------------------------------>
+    <!------------------------------------------------------------------------------------------------------------>
+    <script type="text/javascript" src="/app/project/project.js"></script>
+        <!-- Controllers -->
+    <script type="text/javascript" src="/app/project/controller/ProjectController.js"></script>
+    <script type="text/javascript" src="/app/project/controller/ProjectDetailController.js"></script>
+    <script type="text/javascript" src="/app/project/controller/ProjectListController.js"></script>
+        <!-- Routers -->
+    <script type="text/javascript" src="/app/project/router/ProjectRouter.js"></script>
+        <!-- Service -->
+    <script type="text/javascript" src="/app/project/service/ProjectService.js"></script>
+    <script type="text/javascript" src="/app/project/service/QuestionService.js"></script>
+
+    <!------------------------------------------------------------------------------------------------------------>
+    <!------------------------------------------------------------------------------------------------------------>
+    <!--------------------------------------USER MODULE SCRIPTS--------------------------------------------------->
+    <!------------------------------------------------------------------------------------------------------------>
+    <!------------------------------------------------------------------------------------------------------------>
+    <script type="text/javascript" src="/app/user/user.js"></script>
+        <!-- Controllers -->
+    <script type="text/javascript" src="/app/user/controller/UserController.js"></script>
+    <script type="text/javascript" src="/app/user/controller/UserListController.js"></script>
+        <!-- Routers -->
+    <script type="text/javascript" src="/app/user/router/UserRouter.js"></script>
+        <!-- Service -->
+    <script type="text/javascript" src="/app/user/service/UserService.js"></script>
     
-    <!-- Home scripts -->
-    <script src="/app/home/home.js"></script>
-    <script src="/app/home/homeController.js"></script>
-	<script src="/app/home/homeRouter.js"></script>	
-	<script src="/app/home/homeFactory.js"></script>
-  
+    
+    <!------------------------------------------------------------------------------------------------------------>
+    <!------------------------------------------------------------------------------------------------------------>
+    <!---------------------------------------PROFILE MODULE SCRIPTS----------------------------------------------->
+    <!------------------------------------------------------------------------------------------------------------>
+    <!------------------------------------------------------------------------------------------------------------>
+    <script type="text/javascript" src="/app/profile/profile.js"></script>
+        <!-- Controllers -->
+    <script type="text/javascript" src="/app/profile/controller/ProfileController.js"></script>
+    <script type="text/javascript" src="/app/profile/controller/ProfileEditController.js"></script>
+        <!-- Routers -->
+    <script type="text/javascript" src="/app/profile/router/ProfileRouter.js"></script>
+        <!-- Service -->
+    <script type="text/javascript" src="/app/profile/service/ProfileService.js"></script>
+    <script type="text/javascript" src="/app/profile/service/SkillsBubbleService.js"></script>
+    
+    <!------------------------------------------------------------------------------------------------------------>
+    <!------------------------------------------------------------------------------------------------------------>
+    <!-----------------------------------CUSTOM DIRECTIVE AND WIDGETS--------------------------------------------->
+    <!------------------------------------------------------------------------------------------------------------>
+    <!------------------------------------------------------------------------------------------------------------>
+    <script type="text/javascript" src="/app/project/widget/ProjectBadge.js"></script>
+    <script type="text/javascript" src="/app/project/widget/ProjectListWidget.js"></script>
+    <script type="text/javascript" src="/app/user/widget/UserBadge.js"></script>
 	
+    <!-- Search scripts -->
+    <script type="text/javascript" src="/app/project/controller/SearchController.js"></script>
 </body>
 </html>

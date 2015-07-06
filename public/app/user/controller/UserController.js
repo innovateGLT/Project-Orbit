@@ -1,12 +1,12 @@
 'use strict';
 
 angular.module('user')
-    .controller('UserController', ['$scope', 'Users', '$location', '$routeParams', 'Credentials', 'Projects', 'SweetAlert', 'Bubble',
-        function($scope, Users, $location, $routeParams, Credentials, Projects, SweetAlert, Bubble) {
+    .controller('UserController', ['$scope', 'UserService', '$location', '$routeParams', 'SecurityService', 'Projects', 'SweetAlert', 'Bubble',
+        function($scope, UserService, $location, $routeParams, SecurityService, Projects, SweetAlert, Bubble) {
 
 
 
-            $scope.auth = Credentials.auth()
+            $scope.auth = SecurityService.auth()
             $scope.isAdmin = false;
 
             $scope.$watch('auth.profile', function() {
@@ -15,7 +15,7 @@ angular.module('user')
                 }
             })
 
-            var user = Users.getByUserId({
+            var user = UserService.getByUserId({
                 user_id: $routeParams.id
             }, function() {
 
@@ -54,7 +54,7 @@ angular.module('user')
             $scope.feature = function() {
                 $scope.user.featured = !$scope.user.featured;
 
-                Users.update({
+                UserService.update({
                     id: $scope.user._id
                 }, $scope.user, function() {
                     if ($scope.user.featured == true) {
@@ -67,7 +67,7 @@ angular.module('user')
             
             var getSkills = function(empId) {
             	$scope.skillList = [];
-                Users.getSkills({empId : parseInt(empId)}, function(data) {
+                UserService.getSkills({empId : parseInt(empId)}, function(data) {
                 	if(data.person) {
                         data.person.skills.forEach(function(s) {
                       	  $scope.skillList.push({
@@ -85,7 +85,7 @@ angular.module('user')
             };
             
             $scope.backToList = function() {
-                $location.path("/list");
+                $location.path("/user/list");
             }
         }
     ])

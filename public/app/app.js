@@ -1,13 +1,13 @@
 'use strict';
 
 var ADMIN_EMAIL = 'innovate@hsbc.ca';
-
-
+var FROM_SEARCH = '#1';
+var FROM_CATEGORY = '#0';
 
 // app.js
-angular.module('app', ['auth0', 'project', 'home', 'user', 'angular-storage', 'angular-jwt', 'ngAnimate']);
+angular.module('app', ['auth0','home', 'profile', 'project', 'user', 'angular-storage', 'angular-jwt', 'ngAnimate']);
 
-angular.module('app').controller('loginModalCtrl', function($scope, $modalInstance, Users, store, $location) {
+angular.module('app').controller('loginModalCtrl', function($scope, $modalInstance, UserService, store, $location) {
 
     $scope.error = false;
 
@@ -27,7 +27,7 @@ angular.module('app').controller('loginModalCtrl', function($scope, $modalInstan
             return;
         }
 
-        Users.login({
+        UserService.login({
             username: $scope.username,
             password: $scope.password
         }, function(result) {

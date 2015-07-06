@@ -1,0 +1,93 @@
+<div class="container bold-container mt80">
+    <div class="row">
+        <div class="containter text-center profile">
+           
+            
+            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 title">
+                <div class="pull-left">
+                    <img width="120px" class="media-object img-circle" src="{{auth.profile.picture}}" alt="Image">
+                </div>
+                
+            </div>
+            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 text-left">
+                <h3 class="media-heading">{{ auth.profile.name}}</h3>
+                    <ul class="list-unstyled">
+                        <li>{{auth.profile.dept}}</li>
+                        <li>{{auth.profile.job_role}}</li>
+                        <li>{{auth.profile.country}}</li>
+                        <li>{{auth.profile.email}}</li>
+                    </ul>
+            </div>
+
+            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                
+            </div>
+
+            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                <div class="edit">
+                    <span class="label label-danger" id="editProfile" ng-click="editProfile()">
+                    <i class="glyphicon glyphicon-cog"></i> Edit Profile
+                </span>
+                </div>
+            </div>
+
+            
+        </div>    
+    </div>
+</div>
+
+
+<div class="container not-bold-container-user ml50 w90">
+    <div class="title">
+         <div class="text-left">
+<!--                 <div class="profile-list"> -->
+<!--                     <strong>Skills:</strong> -->
+<!--                     <ul class="list-inline"> -->
+<!--                         <li ng-repeat="skill in user.skills"><span class="label label-success">{{skill}}</span></li> -->
+<!--                     </ul> -->
+<!--                 </div> -->
+                <div class="profile-list">
+                	<strong>Skills:</strong>
+                    <div class="col-sm-12" >
+                    	<div id="bubbleChart"></div>
+                    </div>
+                </div>  
+                <div class="profile-list">
+                    <strong>Interests:</strong>
+                    <ul class="list-inline">
+                        <li ng-repeat="interest in user.interests"><span class="label label-success">{{interest}}</span></li>
+                    </ul>
+                </div>
+                <br />
+                <div class="profile-list">
+                    <strong>I am actively looking for a project:</strong>
+                    <ul class="list-inline">
+                        <li>
+                            {{(user.status) ? "YES" : "NO" }}&nbsp;
+                        </li>
+                    </ul>
+                </div>
+                <br />
+            </div>
+    </div>
+</div>
+
+<!-- The current projects I am involved with -->
+<div class="container bold-container" ng-if="projects.length > 0">
+    <project-list projects="projects" class="container">My Currenct Projects</project-list>
+</div>
+
+<!-- Projects I have contributed -->
+<div class="container not-bold-container-user" ng-if="completedProjects.length > 0">
+    <project-list projects="completedProjects" class="container">My Completed Projects</project-list>
+</div>
+
+<!-- The list of project that I am invited to join / contribute -->
+<div class="container bold-container" ng-if="invitedProjects.length > 0">
+    <project-list projects="invitedProjects" class="container">Project Invitations</project-list>
+</div>
+
+<!-- Project suggestions based on the users skills and interests -->
+<div class="container not-bold-container-user" ng-if="matchedProjects.length > 0">
+    <project-list projects="matchedProjects" class="container">You might be interested in the following projects</project-list>
+</div>

@@ -1,0 +1,63 @@
+<div class="profile-container">
+    <div class="row edit-profile">
+        <div class="col-md-4 text-center no-padding">
+            <img class="img-circle" width="120px" src="{{user.picture}}">
+            
+            <h3><i ng-show="user.featured" class="glyphicon {{(user.featured) ? 'glyphicon-ok-circle text-success' : '' }} "></i><a href="/user/{{user.user_id}}"> {{user.name}}</a></h3>
+            <p>{{user.job_role}}</p>
+            <p>{{user.dept}}</p>
+            <p>{{user.country}}</p>
+            <p>{{user.email}}</p>
+            
+            <div class="col-md-12 mt30">
+                <hr class="featurette-divider-sm">
+                
+                <h3>Availability</h3>
+                <label>
+                    <input type="checkbox" value="" ng-model="status"> I am actively looking for a project
+                </label>
+            </div>
+            
+            <div class="col-md-12 edit mt50">
+                <span ng-click="save()" class="label label-success" id="editProfileDone">
+                    <i class="glyphicon glyphicon-ok"></i> Update
+                </span>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="row">
+                <div class="profile-list">
+                     <h3>My Skills</h3>
+                     <ul class="list-inline no-padding">
+                        <li ng-repeat="skill in user.skills"><span class="label label-success">{{skill}}</span></li>
+                    </ul> 
+                </div>
+            </div>
+            
+            <div class="row">
+                <hr class="featurette-divider-sm">
+                
+                <h3>My Interests</h3>
+                
+                <div class="list-group mb20">
+                  <div class="list-group-item animate-fadein-out" ng-repeat="interest in interests track by $index">
+                    <span class="close" ng-click="removeInterest($index)">&times;</span>
+                    <label>
+                      <span>{{ interest }}</span>
+                    </label>
+                  </div>
+                </div>
+                
+                <form class="form-inline col-md-12 col-sm-12 col-xs-12" ng-submit="addInterest()">
+                    <div class="form-group col-md-9 col-sm-12 col-xs-12">
+                        <input type="text" ng-model="interest" class="form-control cold-md-4" placeholder="Enter new interest" focus>
+                    </div>
+                    <div class="form-group col-md-3 col-sm-12 col-xs-12">
+                        <button type="submit" class="btn btn-primary form-control">Add</button>
+                    </div>
+                </form>
+                
+            </div>
+        </div>
+    </div>
+</div>

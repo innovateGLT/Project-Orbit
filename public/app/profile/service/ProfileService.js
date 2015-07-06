@@ -2,22 +2,22 @@
 
 // TODO : cleanup
 
-angular.module('user')
+angular.module('profile')
 
-    .factory('UserService', ['$resource',
+    .factory('ProfileService', ['$resource',
         function($resource) {
 
             return $resource('/api/users/:id', null, {
                 'update': {
                     method: 'PUT'
                 },
-                'login': {
+                /*'login': {
                     method: 'POST',
                     'url': '/api/users/login',
                 },
-                /*'get': {
+                'get': {
                     method: 'GET'
-                },*/
+                },
                 'getMatches': {
                     method: 'GET',
                     'url': '/api/users/matches',
@@ -27,7 +27,7 @@ angular.module('user')
                     method: 'GET',
                     'url': '/api/users/featured',
                     isArray: true
-                },/*
+                },
                 'upsert': {
                     method: 'PUT',
                     'url': '/api/users/upsert/:user_id'

@@ -9,7 +9,10 @@ angular.module("project")
 			scope: {
 				project: "=project"
 			},
-			templateUrl: "/app/project/widget/template/ProjectBadge.html"
+			templateUrl: "/app/project/widget/template/ProjectBadge.html",
+            controller: function ($scope) {
+                // implement just in case needed
+            }
 		};
-		
+    		
 	});

@@ -2,13 +2,13 @@
 
 angular.module('app')
 
-.controller('HeaderController', ['$scope', 'Projects', '$location', '$routeParams', 'Credentials',
-    function($scope, Projects, $location, $routeParams, Credentials) {
+.controller('HeaderController', ['$scope', 'Projects', '$location', '$routeParams', 'SecurityService',
+    function($scope, Projects, $location, $routeParams, SecurityService) {
 
 
         console.log("MMMEEEEE");
 
-        $scope.auth = Credentials.auth();
+        $scope.auth = SecurityService.auth();
 
 
         console.log('HEADER', $scope.auth, $scope.auth.isAuthenticated);
@@ -21,11 +21,11 @@ angular.module('app')
             }
         });
 
-        $scope.login = Credentials.login;
-        $scope.logout = Credentials.logout;
+        $scope.login = SecurityService.login;
+        $scope.logout = SecurityService.logout;
 
         $scope.search = function() {
-            window.location = '/search/#/?q=' + $scope.query;
+            $location.path('/search').search({q: $scope.query});
         };
 
     }

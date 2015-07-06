@@ -1,10 +1,10 @@
 'use strict';
 
 angular.module('user')
-    .controller('UserListController', ['$scope', 'Users', '$location', '$routeParams', 'auth', 'Credentials', 'Projects',
-        function($scope, Users, $location, $routeParams, auth, Credentials, Projects) {
+    .controller('UserListController', ['$scope', 'UserService', 'auth', 'Projects',
+        function($scope, UserService, auth, Projects) {
 
-            $scope.users = Users.query();
+            $scope.UserService = UserService.query();
 
         }
     ])

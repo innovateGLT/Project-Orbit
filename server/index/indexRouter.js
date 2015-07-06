@@ -10,28 +10,29 @@ router.get('/', function(req, res) {
     });
 });
 
+/* The url patterns were appended with * so we could maintain a single page design
+   We would want to still render index.ejs even after the user refreshers the browser.
+ */
 
-/* GET project page. */
-router.get('/project', function(req, res) {
-    res.render('project', {});
+router.get('/projec*', function(req, res) {
+    res.render('index', {});
 });
 
-/* GET profile page. */
-router.get('/profile', function(req, res) {
+router.get('/profil*', function(req, res) {
 
-    res.render('profile', {});
+    res.render('index', {});
 });
 
-router.get('/user', function(req, res) {
-    res.render('user', {});
+router.get('/use*', function(req, res) {
+    res.render('index', {});
 });
 
-router.get('/search', function(req, res) {
-    res.render('search', {});
+router.get('/searc*', function(req, res) {
+    res.render('index', {});
 });
 
-router.get('/loaduser', function(req, res) {
-    res.render('loaduser', {});
+router.get('/loaduse*', function(req, res) {
+    res.render('index', {});
 });
 
 

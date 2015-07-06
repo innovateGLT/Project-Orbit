@@ -18,7 +18,7 @@ body {
     width: 100%;
     min-height: 600px;
     /*background-color: #110022;*/
-    /*background-image: url("../img/sky.png");
+    /*background-image: url("/app/assets/img/sky.png");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center top;*/
@@ -46,6 +46,11 @@ body {
 
 .featurette-divider-sm {
     margin: 40px 0;
+    /* Space out the Bootstrap <hr> more */
+}
+
+.featurette-divider-xs {
+    margin: 15px 0;
     /* Space out the Bootstrap <hr> more */
 }
 
@@ -268,8 +273,7 @@ body {
     background: #f8f8f8;
     border-radius: 3px;
     padding: 30px;
-    margin-top: 150px;
-    margin-bottom: 100px;
+    margin-bottom: 30px;
     
     -webkit-box-shadow: 0px 0px 30px -5px rgba(0,0,0,0.75);
     -moz-box-shadow: 0px 0px 30px -5px rgba(0,0,0,0.75);
@@ -779,7 +783,7 @@ video#bgvid {
     padding: 0px;
     margin: 0px;
     z-index: 1;
-    background: url(/app/assets/img/sky.png) no-repeat;
+    background: url("/app/assets/img/sky.png") no-repeat;
     background-size: cover;
 }
 
@@ -1213,11 +1217,12 @@ user-badge .thumbnail {
     overflow: hidden;
 }
 
+/* page entrance and exit style START */
 .animate-fadein-out {
-  -webkit-transition: color 0.5s, background-color 0.5s;
-  -moz-transition: color 0.5s, background-color 0.5s;
-  -ms-transition: color 0.5s, background-color 0.5s;
-  transition: color 0.5s, background-color 0.5s;
+  -webkit-transition: color .5s, background-color .5s;
+  -moz-transition: color .5s, background-color .5s;
+  -ms-transition: color .5s, background-color .5s;
+  transition: color .5s, background-color .5s;
 }
 
 .animate-fadein-out.ng-enter {
@@ -1233,6 +1238,33 @@ user-badge .thumbnail {
     -ms-animation: fadeOutRight .5s;
     animation: fadeOutRight .5s;
 }
+
+/* page entrance and exit style END */
+
+
+/* navigation entrance and exit style START */
+.animate-fadein-down {
+  -webkit-transition: all .5s;
+  -moz-transition: all .5s;
+  -ms-transition: all .5s;
+  transition: all .5s;
+}
+
+.animate-fadein-down.ng-enter {
+    -webkit-animation: fadeInDown .5s;
+    -moz-animation: fadeInDown .5s;
+    -ms-animation: fadeInDown .5s;
+    animation: fadeInDown .5s;
+}
+
+.animate-fadein-down.ng-leave {
+    -webkit-animation: fadeOutUp .5s;
+    -moz-animation: fadeOutUp .5s;
+    -ms-animation: fadeOutUp .5s;
+    animation: fadeOutUp .5s;
+}
+
+/* navigation entrance and exit style END */
 
 /* edit profile styles */
 

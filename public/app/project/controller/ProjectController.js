@@ -1,17 +1,14 @@
 'use strict';
 
 angular.module('project')
-    .controller('ProjectController', ['$scope', 'Projects', '$location', '$routeParams', 'Credentials', 'SweetAlert',
+    .controller('ProjectController', ['$scope', 'Projects', '$location', '$routeParams', 'SecurityService', 'SweetAlert',
 
-        function($scope, Projects, $location, $routeParams, Credentials, SweetAlert) {
+        function($scope, Projects, $location, $routeParams, SecurityService, SweetAlert) {
 
-
-
-
-            $scope.auth = Credentials.auth();
+            $scope.auth = SecurityService.auth();
 
             if (!$scope.auth.isAuthenticated) {
-                Credentials.login();
+                SecurityService.login();
                 return;
             }
 
@@ -266,7 +263,7 @@ angular.module('project')
                         type: "success"
                     }, function(){ 
                         console.log('Project has been ' + message, project);
-                        $location.url('/' + project._id);
+                        $location.url('/project/' + project._id);
                     });
                 });
             };
