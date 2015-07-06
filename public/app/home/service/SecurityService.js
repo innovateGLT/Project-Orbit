@@ -92,7 +92,7 @@ angular.module('home')
                 }
             } else {
             	   loadUserInfo().then(function(userInfo) {
-	                   var user = new Users(userInfo);
+	                   var user = new UserService(userInfo);
 	                   user.$save(function(data) {
 	                	   store.set("profile", data);
 	                	   store.set("profile_lastUpdatedTime", new Date().getTime().toString());
