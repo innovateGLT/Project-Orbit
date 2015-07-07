@@ -1433,3 +1433,7 @@ user-badge .thumbnail {
 .discussion-board .comment .owner {
     color: #f39c12;
 }
+
+.user-badge-name {
+    min-height: 55px;
+}
