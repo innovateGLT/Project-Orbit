@@ -1,9 +1,9 @@
 'use strict';
 
 angular.module('project')
-    .controller('ProjectController', ['$scope', 'Projects', '$location', '$routeParams', 'SecurityService', 'SweetAlert',
+    .controller('ProjectController', ['$scope', 'Projects', '$location', '$routeParams', 'SecurityService', 'SweetAlert', 'store',
 
-        function($scope, Projects, $location, $routeParams, SecurityService, SweetAlert) {
+        function($scope, Projects, $location, $routeParams, SecurityService, SweetAlert, store) {
 
             $scope.auth = SecurityService.auth();
 
@@ -266,6 +266,22 @@ angular.module('project')
                         $location.url('/project/' + project._id + "#" + $location.hash());
                     });
                 });
+            };
+            
+            $scope.returnUrl = $location.hash();
+
+            $scope.backToList = function () {
+                // summary
+                //      return back to previous page
+                //      if a hash is existing in the url, we determine that the user came from the projects list filtered by category
+                //      also attacht the previous search params if any
+                
+                var returnUrl = $location.hash();
+                $location.hash("");
+                
+                $location.path(returnUrl).search(store.get("searchParams"));
+                store.remove("searchParams");
+
             };
         }
     ])

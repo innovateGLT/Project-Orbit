@@ -49,6 +49,11 @@
 					</div>
 				</div>
 			</div>
+            <div class="row pull-right text-right">
+                <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+                    <div ng-show="(!isOwner) && (hasApplied==false)" href="#" class="btn btn-primary pull-right" ng-click="apply()"><span class="glyphicon glyphicon-save"></span> Apply</div>
+                </div>
+            </div>
 		</div>
 		
 	</div> <!-- /. HEADER PART -->
@@ -59,11 +64,11 @@
 			
 			<!-- FIRST COLUMN -->
 			<!-- Project Summary -->
-			<div class="row">
+			<div>
 				<div class="panel panel-default">
 					<!--wrap panel heading in span to trigger image change as well as collapse -->
 					<div class="panel-heading" role="tab" id="headingOne"data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-						<h4 class="panel-title">Project Summary <a class="pull-right glyphicon glyphicon-pencil" ng-show="isOwner" href="/project/edit/{{project._id}}#{{returnUrl}}"></a></h4>
+						<h4 class="panel-title">Project Description <a class="pull-right glyphicon glyphicon-pencil" ng-show="isOwner" href="/project/edit/{{project._id}}#{{returnUrl}}"></a></h4>
 					</div>
 					<div id="collapseOne" class="panel-collapse collapsed in" role="tabpanel" aria-labelledby="headingOne">
 						<div class="panel-body">
@@ -73,14 +78,14 @@
 				</div>
 			</div>
 			
-			<div class="row">
+			<div>
 				<!--  panel 3 -->
 				<div class="panel panel-default">
 					<!--wrap panel heading in span to trigger image change as well as collapse -->
 					<div class="panel-heading" role="tab" id="headingThree"  class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
 						<h4 class="panel-title">Project Details</h4>
 					</div>
-					<div id="collapseThree" class="panel-collapse collapsed" role="tabpanel" aria-labelledby="headingThree">
+					<div id="collapseThree" class="panel-collapse collapsed in" role="tabpanel" aria-labelledby="headingThree">
 						<div class="panel-body">
 							<!-- tab content goes here -->
 							<div class="row mt10">
@@ -118,14 +123,14 @@
 				
 			</div>
 			
-			<div class="row">
+			<div>
 				<!-- panel 2 -->
 				<div class="panel panel-default">
 					<!--wrap panel heading in span to trigger image change as well as collapse -->
 					<div class="panel-heading" role="tab" id="headingTwo" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
 						<h4 class="panel-title collapsed">Project Skillset</h4>
 					</div>
-					<div id="collapseTwo" class="panel-collapse collapsed" role="tabpanel" aria-labelledby="headingTwo">
+					<div id="collapseTwo" class="panel-collapse collapsed in" role="tabpanel" aria-labelledby="headingTwo">
 						<div class="panel-body">
 							<!-- Tab content goes here -->
 							<div class="profile-list">
@@ -139,14 +144,14 @@
 				<!-- / panel 2 -->
 			</div>
 			
-			<div class="row">
+			<div>
 				<!-- MATCHED PEOLE -->
 				<div class="panel panel-default" ng-show="isOwner">
 					<!--wrap panel heading in span to trigger image change as well as collapse -->
 					<div class="panel-heading" role="tab" id="headingThree"  class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#matchedPeople" aria-expanded="true" aria-controls="matchedPeople">
 						<h4 class="panel-title">Matched People</h4>
 					</div>
-					<div id="matchedPeople" class="panel-collapse collapsed" role="tabpanel" aria-labelledby="headingThree">
+					<div id="matchedPeople" class="panel-collapse collapsed in" role="tabpanel" aria-labelledby="headingThree">
 						<div class="panel-body">
 							<!-- tab content goes here -->
 							<div class="row user-list-item-sm" ng-repeat="user in matchedUsers">
@@ -169,14 +174,14 @@
 				<!-- END OF MATCHED PEOPLE ACCORDION -->
 			</div>
 			
-			<div class="row">
+			<div>
 				<!-- APPLIED PEOLE -->
 				<div class="panel panel-default" ng-show="isOwner">
 					<!--wrap panel heading in span to trigger image change as well as collapse -->
 					<div class="panel-heading" role="tab" id="headingThree"  class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#appliedPeople" aria-expanded="true" aria-controls="appliedPeople">
 						<h4 class="panel-title">Applied People</h4>
 					</div>
-					<div id="appliedPeople" class="panel-collapse collapsed" role="tabpanel" aria-labelledby="headingThree">
+					<div id="appliedPeople" class="panel-collapse collapsed in" role="tabpanel" aria-labelledby="headingThree">
 						<div class="panel-body">
 							<!-- tab content goes here -->
 							<div class="row" ng-repeat="user in project.appliedUsers">
@@ -195,14 +200,14 @@
 				<!-- END OF APPLIED PEOPLE ACCORDION -->
 			</div>
 			
-			<div class="row">
+			<div>
 				<!-- SELECTED PEOLE -->
 				<div class="panel panel-default" ng-show="isOwner || logginUserSelectedForProject">
 					<!--wrap panel heading in span to trigger image change as well as collapse -->
 					<div class="panel-heading" role="tab" id="headingThree"  class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#selectedPeople" aria-expanded="true" aria-controls="selectedPeople">
 						<h4 class="panel-title">Selected People</h4>
 					</div>
-					<div id="selectedPeople" class="panel-collapse collapsed" role="tabpanel" aria-labelledby="headingThree">
+					<div id="selectedPeople" class="panel-collapse collapsed in" role="tabpanel" aria-labelledby="headingThree">
 						<div class="panel-body">
 							<!-- tab content goes here -->
 							<div class="row" ng-repeat="user in project.selectedUsers">
@@ -230,18 +235,18 @@
         <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
             <div class="panel panel-default" ng-show="auth.isAuthenticated">
 				<!--wrap panel heading in span to trigger image change as well as collapse -->
-				<div class="panel-heading" role="tab" id="headingFour"  class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="true" aria-controls="collapseFour" ng-click="showQuestions()">
+				<div class="panel-heading" role="tab" id="headingFour" class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="true" aria-controls="collapseFour" ng-click="showQuestions()">
 					<h4 class="panel-title">Project Discussion</h4>
 				</div>
-				<div  id="collapseFour" class="panel-collapse collapsed" role="tabpanel" aria-labelledby="headingFour">
+				<div  id="collapseFour" class="panel-collapse collapsed in" role="tabpanel" aria-labelledby="headingFour">
 					<div class="panel-body discussion-board">
 						<!-- tab content goes here -->
-						<!--<div ng-show="(!isOwner) && (hasApplied==false)" href="#" class="btn btn-lg btn-danger" ng-click="apply()"><span class="glyphicon glyphicon-save"></span> Apply</div>
-						<div class="btn btn-lg btn-info" ng-click="ask();"><span class="glyphicon glyphicon-info-sign" ></span> {{ (isOwner) ? 'Answer' : 'Ask' }}</div>-->
 						
-						<form class="form-horizontal" ng-submit="submitQuestion()">
+						<!--<div class="btn btn-lg btn-info" ng-click="ask();"><span class="glyphicon glyphicon-info-sign" ></span> {{ (isOwner) ? 'Answer' : 'Ask' }}</div>-->
+						
+						<form class="form-horizontal" ng-submit="submitComment()">
 							</br>
-							<textarea class="form-control" id="project-skillset" placeholder="Enter comment / question" ng-model="question" name="project-skillset"></textarea >
+							<textarea class="form-control" id="project-skillset" placeholder="Enter comment / question" ng-model="comment" name="project-skillset"></textarea >
 							</br>
 							<button id="project-submit" name="project-submit" class="btn btn-danger" >Submit</button>
 						</form>

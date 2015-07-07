@@ -41,7 +41,7 @@ angular.module('project')
                 } else {
                     $scope.isOwner = false;
                 }
-
+                
                 if ($scope.auth.profile.email == ADMIN_EMAIL) {
                     $scope.isOwner = true;
                     $scope.isAdmin = true;
@@ -207,7 +207,7 @@ angular.module('project')
                                 rating.$save(function() {
                                     // alert("DONE");
                                     getProjectRating($scope.project._id);
-                                })
+                                });
 
                                 $scope.isReadonly = true;
                                 $scope.isRated = true;
@@ -285,26 +285,30 @@ angular.module('project')
             };
 
 
-            $scope.submitQuestion = function() {
+            $scope.submitComment = function() {
 
-
-                var newQuestion = {
-                    content: $scope.question,
-                    project_id: $scope.project._id,
-                    user: {
-                        name: $scope.auth.profile.name,
-                        user_id: $scope.auth.profile.user_id,
-                        picture: $scope.auth.profile.picture,
-                    }
-                };
-                var question = new Questions(newQuestion);
-                question.$save(function() {
-                    console.log("question HAS BEEN CREATED", question);
-                    $scope.questions.unshift(question);
-                    $scope.question = "";
-                    SweetAlert.swal("Done!", "Your text has been submit!", "success");
-                });
-                console.log($scope.question);
+                if ( $scope.comment ) {
+                    var newQuestion = {
+                        content: $scope.comment,
+                        project_id: $scope.project._id,
+                        user: {
+                            name: $scope.auth.profile.name,
+                            user_id: $scope.auth.profile.user_id,
+                            picture: $scope.auth.profile.picture,
+                        }
+                    };
+                    var question = new Questions(newQuestion);
+                    question.$save(function() {
+                        console.log("question HAS BEEN CREATED", question);
+                        $scope.questions.unshift(question);
+                        $scope.question = "";
+                        SweetAlert.swal("Done!", "Your text has been submit!", "success");
+                        $scope.comment = "";
+                    });
+                    console.log($scope.question);
+                } else {
+                    SweetAlert.swal('Error!', 'Please enter a comment', 'error');
+                }
             };
 
 
@@ -346,7 +350,7 @@ angular.module('project')
                         }, function(inputValue) {
                             if (inputValue === false) return false;
                             if (inputValue === "") {
-                                swal.showInputError("You need to write something before sending your application!");
+                                SweetAlert.swal.showInputError("You need to write something before sending your application!");
                                 return false;
                             }
 
@@ -412,8 +416,8 @@ angular.module('project')
                     }, function(inputValue) {
                         if (inputValue === false) return false;
                         if (inputValue === "") {
-                            swal.showInputError("You need to write something before sending an inviation!");
-                            return false
+                            SweetAlert.swal.showInputError("You need to write something before sending an inviation!");
+                            return false;
                         }
 
                         if ( !invited ) {

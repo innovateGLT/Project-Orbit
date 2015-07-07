@@ -1,4 +1,11 @@
 <div class="container">
+    <div class="row pull-right text-right">
+        <div class="edit col-md-12 col-lg-12 col-xs-12 col-sm-12" style="position:relative;">
+            <span class="label label-danger" id="viewProject" ng-click="backToList()">
+                <i class="glyphicon glyphicon-arrow-left"></i> Back
+            </span>
+        </div>
+    </div>
     <form class="form-horizontal" ng-submit="save()" ng-show="auth.isAuthenticated">
         <!-- Form Name -->
         <div class="page-header">
