@@ -211,8 +211,43 @@
 				</div>
 				<!-- END OF SELECTED PEOPLE ACCORDION -->
 			</div>
+			
+			
 		</div>
 	</div>
+	
+	<div class="panel panel-default" ng-show="auth.isAuthenticated">
+					<!--wrap panel heading in span to trigger image change as well as collapse -->
+						<div class="panel-heading" role="tab" id="headingFour"  class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="true" aria-controls="collapseFour" ng-click="showQuestions()">
+							<h4 class="panel-title">Project Contact</h4>
+						</div>
+					<div  id="collapseFour" class="panel-collapse collapsed" role="tabpanel" aria-labelledby="headingFour">
+						<div class="panel-body">
+							<!-- tab content goes here -->
+							<div ng-show="(!isOwner) && (hasApplied==false)" href="#" class="btn btn-lg btn-danger" ng-click="apply()"><span class="glyphicon glyphicon-save"></span> Apply</div>
+							<div   class="btn btn-lg btn-info" ng-click="ask();"><span class="glyphicon glyphicon-info-sign" ></span> {{ (isOwner) ? 'Answer' : 'Ask' }}</div>
+							
+							<form class="form-horizontal" ng-submit="submitQuestion()" ng-show="showAsk">
+								</br>
+								<textarea class="form-control" id="project-skillset" placeholder="Enter your question" ng-model="question" name="project-skillset"></textarea >
+								</br>
+								<button id="project-submit" name="project-submit" class="btn btn-danger" >Submit</button>
+							</form>
+						</div>
+					</div>
+				</div>
+				
+				<div class="media" ng-show="showQuestion" ng-repeat="question in questions">
+							<div class="pull-left">
+								<a href="#">
+									<img class="img-circle" width="60px" ng-src="{{ (question.user.picture) ? question.user.picture : 'http://placehold.it/60x60' }}">
+								</a>
+							</div>
+							<div class="media-body">
+								<h4 class="media-heading">{{question.user.name}}</h4>
+								{{question.content}}
+							</div>
+						</div>
 	
 	<!--<div class="page-header col-md-12 col-lg-12 no-padding left" style="margin-top: 0;">
 		<div class="row">
@@ -251,15 +286,4 @@
 		
 	</div>-->
 	
-	<div class="media" ng-show="showQuestion" ng-repeat="question in questions">
-							<div class="pull-left">
-								<a href="#">
-									<img class="img-circle" width="60px" ng-src="{{ (question.user.picture) ? question.user.picture : 'http://placehold.it/60x60' }}">
-								</a>
-							</div>
-							<div class="media-body">
-								<h4 class="media-heading">{{question.user.name}}</h4>
-								{{question.content}}
-							</div>
-						</div>
 </div>
