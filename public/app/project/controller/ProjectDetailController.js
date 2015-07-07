@@ -428,6 +428,7 @@ angular.module('project')
 
                         if ( !invited ) {
                             $scope.project.invitedUsers.push(invitedUser);
+                            user.invited = true;
                         }
 
 
