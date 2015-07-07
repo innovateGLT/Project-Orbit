@@ -136,11 +136,13 @@ angular.module('project')
                         });
                     };
 
-                    // remove all matched users who have been invited
+                    // set invited to all matched users who has been invited already
                     for (var i = 0; i < $scope.project.invitedUsers.length; i++) {
                         var userId = $scope.project.invitedUsers[i].user_id;
-                        $scope.matchedUsers = $scope.matchedUsers.filter(function(person) {
-                            return person.user_id != userId;
+                        $scope.matchedUsers.forEach(function(person) {
+                            if ( person.user_id == userId ) {
+                                person.invited = true;
+                            }
                         });
                     };
 
@@ -260,25 +262,27 @@ angular.module('project')
                     showCancelButton: true,
                     confirmButtonText: "Yes, remove it",
                     closeOnConfirm: false
-                }, function() {
-                    Projects.remove({
-                        id: $scope.project._id
-                    }, function() {
-                        SweetAlert.swal({
-                            title: "Removed!",
-                            text: "The project has been removed! You will go to the homepage",
-                            type: "success",
-                            showCancelButton: true,
-                            confirmButtonText: "Go",
-                            closeOnConfirm: false
+                }, function( isConfirm ) {
+                    
+                    if ( isConfirm ) {
+                        Projects.remove({
+                            id: $scope.project._id
                         }, function() {
-                            window.location = "/";
+                            SweetAlert.swal({
+                                title: "Removed!",
+                                text: "The project has been removed! You will go to the homepage",
+                                type: "success",
+                                showCancelButton: true,
+                                confirmButtonText: "Go",
+                                closeOnConfirm: false
+                            }, function() {
+                                window.location = "/";
+                            });
+    
                         });
-
-                    });
+                    }
 
                 });
-
 
             };
 
@@ -507,7 +511,8 @@ angular.module('project')
             $scope.accept = function(profile) {
                 var user = {
                     user_id: profile.user_id,
-                    name: profile.name
+                    name: profile.name,
+                    picture: profile.picture
                 };
 
                 var exist = false;

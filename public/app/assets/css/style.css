@@ -1409,6 +1409,10 @@ user-badge .thumbnail {
     padding-top: 0;
 }
 
+.user-list-item-sm .action {
+    line-height: 3em;
+}
+
 .discussion-board .comment {
     padding: 10px;
     border-radius: 5px;

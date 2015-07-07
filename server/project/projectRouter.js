@@ -1,6 +1,7 @@
 'use strict';
 
 var express = require('express');
+var Q = require('q');
 var router = express.Router();
 var Project = require('./projectSchema');
 var User = require('../users/usersSchema');
@@ -199,31 +200,55 @@ router.post('/', function(req, res, next) {
     });
 });
 
+function getUser( userId ) {
+    
+    var deferred = Q.defer();
+    
+    User.findOne({
+        user_id: userId
+    }, function(err, userRecord) {
+        
+        deferred.resolve( userRecord );
+        
+    });
+    
+    return deferred.promise;
+}
 
 router.post('/apply', function(req, res, next) {
 
     var dat = req.body;
 
-    var user = {
-        user_id: dat.user_id,
-        name: dat.name
-    };
-
-    // console.log(dat);
-    Project.findByIdAndUpdate(dat.project_id, {
-        $addToSet: {
-            appliedUsers: user
+    getUser(dat.user_id).then(
+        
+        // success callback
+        function ( user ) {
+            Project.findByIdAndUpdate(dat.project_id, {
+                $addToSet: {
+                    appliedUsers: {
+                        user_id : user.user_id,
+                        picture : user.picture,
+                        name: user.name
+                    }
+                }
+            }, function(err, post) {
+                if (err) return next(err);
+                res.json(post);
+            });
+        },
+        
+        // error callback
+        function ( error ) {
+            console.log( error );
         }
-    }, function(err, post) {
-        if (err) return next(err);
-        res.json(post);
-    });
+    );
 });
 
 /* GET /projects/id */
 router.get('/:id', function(req, res, next) {
     Project.findById(req.params.id, function(err, post) {
         if (err) return next(err);
+        
         res.json(post);
     });
 });

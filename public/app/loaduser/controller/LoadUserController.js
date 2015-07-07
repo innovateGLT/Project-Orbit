@@ -28,7 +28,7 @@ angular.module('loaduser')
 
             $scope.save = function() {
                 var newUser = angular.copy($scope.user);
-                newUser.picture = "http://api.adorable.io/avatars/200/" + newUser.name;
+                newUser.picture = newUser.name;
 
 
                 console.log("NEW USER", newUser);

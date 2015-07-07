@@ -155,13 +155,13 @@
 						<div class="panel-body">
 							<!-- tab content goes here -->
 							<div class="row user-list-item-sm" ng-repeat="user in matchedUsers">
-								<div class="col-md-10 col-lg-10 col-sm-10 col-xs-10">
+								<div class="col-md-10 col-lg-10 col-sm-9 col-xs-9">
 									<a href="/user/{{user.user_id}}#{{currentPath}}">
                                         <img ng-src="{{user.picture}}" class="img img-circle" width="50px" />
                                     </a>
 									<a href="/user/{{user.user_id}}#{{currentPath}}" class="ml10"><strong>{{user.name}}</strong></a>
 								</div>
-								<div ng-click="invite(user)" ng-show="isOwner" class="col-md-2 col-xs-2 col-sm-2 col-lg-2">
+								<div ng-click="invite(user)" ng-show="isOwner" class="text-center action">
 									<button class="btn btn-success">{{ (user.invited == true) ? 'Resend' : 'Invite' }}</button>
 								</div>
 							</div>
@@ -184,12 +184,18 @@
 					<div id="appliedPeople" class="panel-collapse collapsed in" role="tabpanel" aria-labelledby="headingThree">
 						<div class="panel-body">
 							<!-- tab content goes here -->
-							<div class="row" ng-repeat="user in project.appliedUsers">
-                                <a href="/user/{{user.user_id}}#{{currentPath}}">
-                                    <img ng-src="{{user.picture}}" class="img img-circle" width="50px" />
-                                </a>
-								<div class="col-md-6"><a href="/user/{{user.user_id}}#{{currentPath}}" class="ml10"><strong>{{user.name}}</strong></a></div>
-								<div ng-show="isOwner" class="col-md-6" ng-click="accept(user)">	<button class="btn btn-success">Accept</button></div>
+							<div class="row user-list-item-sm" ng-repeat="user in project.appliedUsers">
+								
+								<div class="col-md-10 col-lg-10 col-sm-9 col-xs-9">
+									<a href="/user/{{user.user_id}}#{{currentPath}}">
+	                                    <img ng-src="{{user.picture}}" class="img img-circle" width="50px" />
+	                                </a>
+									<a href="/user/{{user.user_id}}#{{currentPath}}" class="ml10"><strong>{{user.name}}</strong></a>
+								</div>
+								
+								<div ng-click="accept(user)" ng-show="isOwner" class="text-center action">
+									<button class="btn btn-success">Accept</button>
+								</div>
 							</div>
 						    <div ng-show="project.appliedUsers.length == 0">
                                 <p class="bg-warning p15">No one applied yet.</p>
@@ -210,12 +216,16 @@
 					<div id="selectedPeople" class="panel-collapse collapsed in" role="tabpanel" aria-labelledby="headingThree">
 						<div class="panel-body">
 							<!-- tab content goes here -->
-							<div class="row" ng-repeat="user in project.selectedUsers">
-                                <a href="/user/{{user.user_id}}#{{currentPath}}">
-                                    <img ng-src="{{user.picture}}" class="img img-circle" width="50px" />
-                                </a>
-								<div class="col-md-6"><a href="/user/{{user.user_id}}#{{currentPath}}" class="ml10"><strong>{{user.name}}</strong></a></div>
-								<div class="col-md-6" ng-show="isOwner">
+							<div class="row user-list-item-sm" ng-repeat="user in project.selectedUsers">
+								
+								<div class="col-md-10 col-lg-10 col-sm-9 col-xs-9">
+									<a href="/user/{{user.user_id}}#{{currentPath}}">
+	                                    <img ng-src="{{user.picture}}" class="img img-circle" width="50px" />
+	                                </a>
+									<a href="/user/{{user.user_id}}#{{currentPath}}" class="ml10"><strong>{{user.name}}</strong></a>
+								</div>
+								
+								<div ng-show="isOwner" class="text-center action">
 									<rating ng-model="user.rate" max="max" readonly="user.isReadonly" on-hover="hoveringRatingUser(value,$index)" on-leave="overStar = null"></rating>
 								</div>
 							</div>
