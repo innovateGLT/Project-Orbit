@@ -100,7 +100,7 @@ body {
     color: #000;
 }
 
-.footer .disclaimer {
+.footer .footer-disclaimer {
     color: #808080;
 }
 
@@ -919,6 +919,11 @@ video#bgvid {
 .no-padding {padding: 0 !important;}
 .no-margin {margin: 0 !important;}
 
+/* padding styles */
+.p10 {padding:10px;}
+.p15 {padding:15px;}
+.p20 {padding:20px;}
+
 /* line-height */
 .lh5 {line-height:5em;}
 .lh55 {line-height:5.5em;}
@@ -1395,10 +1400,6 @@ user-badge .thumbnail {
 
 /* project details */
 
-.project-details .panel-body {
-    height: 170px;
-}
-
 .user-list-item-sm {
     padding: 5px;
     border-bottom: 1px solid #f5f5f5;
@@ -1406,4 +1407,29 @@ user-badge .thumbnail {
 
 .user-list-item-sm:first-child {
     padding-top: 0;
+}
+
+.discussion-board .comment {
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.discussion-board .comments {
+    padding: 0;
+}
+
+.discussion-board .comment.odd {
+    background-color: #f2f2f2;
+}
+
+.discussion-board .comment.even {
+    background-color: #ffffff;
+}
+
+.discussion-board .comment .date {
+    color: #a0a0a0;
+}
+
+.discussion-board .comment .owner {
+    color: #f39c12;
 }

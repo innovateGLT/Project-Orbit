@@ -585,6 +585,8 @@ angular.module('project')
                 store.remove("searchParams");
 
             };
+            
+            $scope.currentPath = $location.path();
 
         }
     ]);

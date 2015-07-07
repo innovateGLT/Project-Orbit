@@ -8,7 +8,7 @@
     </div>
 	
 	<!-- HEADER PART -->
-	<div class="page-header row pull-left">
+	<div class="page-header row">
 
 		<!-- Project title and actions section -->
 		<!-- Use green for Available, red for In Progress, grey for Completed -->
@@ -27,7 +27,7 @@
 				
 				<div class="row">
 					<div class="col-md-7 col-lg-7 col-sm-12 col-xs-12">
-						<h2 class="col-md-12 col-lg-12 left no-margin"><small style="color: blue"> By <a href="/user/{{project.user.user_id}}">{{project.user.name}}</a></small>
+						<h2 class="col-md-12 col-lg-12 left no-margin"><small style="color: blue"> By <a href="/user/{{question.user.user_id}}#{{currentPath}}">{{project.user.name}}</a></small>
 						<small>
 						<i ng-repeat="star in projectFullStars" class="glyphicon glyphicon-star" style="color: #f39c12"></i><i ng-repeat="star1 in projectEmptyStars" class="glyphicon glyphicon-star-empty" style="color: #f39c12"></i>
 						({{projectPeoplesRating}} people rated)
@@ -55,11 +55,11 @@
 	
 	<!-- PROJECT DETAILS -->
 	<div class="row project-details">
-		<div class="col-md-12 col-lg-12">
+		<div class="col-md-6 col-lg-6">
 			
 			<!-- FIRST COLUMN -->
 			<!-- Project Summary -->
-			<div class="col-md-6 col-lg-6">
+			<div class="row">
 				<div class="panel panel-default">
 					<!--wrap panel heading in span to trigger image change as well as collapse -->
 					<div class="panel-heading" role="tab" id="headingOne"data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
@@ -73,7 +73,7 @@
 				</div>
 			</div>
 			
-			<div class="col-md-6 col-lg-6">
+			<div class="row">
 				<!--  panel 3 -->
 				<div class="panel panel-default">
 					<!--wrap panel heading in span to trigger image change as well as collapse -->
@@ -83,31 +83,31 @@
 					<div id="collapseThree" class="panel-collapse collapsed" role="tabpanel" aria-labelledby="headingThree">
 						<div class="panel-body">
 							<!-- tab content goes here -->
-							<div class="row">
+							<div class="row mt10">
 								<div class="col-md-6"><strong>Project Type</strong></div>
 								<div class="col-md-6">{{project.category | camelCaseToHuman}}</div>
 							</div>
-							<div class="row">
+							<div class="row mt10">
 								<div class="col-md-6"><strong>Project Financials</strong></div>
 								<div class="col-md-6">{{ (project.chargeable ) ? 'Chargeable' :  'Non-Chargeable' }} </div>
 							</div>
-							<div class="row">
+							<div class="row mt10">
 								<div class="col-md-6"><strong>Project Skill Category</strong></div>
 								<div class="col-md-6">{{project.skillCategory}} </div>
 							</div>
-							<div class="row">
+							<div class="row mt10">
 								<div class="col-md-6"><strong>Effort Required</strong></div>
 								<div class="col-md-6">{{ project.effortRequired }}</div>
 							</div>
-							<div class="row">
+							<div class="row mt10">
 								<div class="col-md-6"><strong>Time Availability</strong></div>
 								<div class="col-md-6">{{ project.timeAvailability }}</div>
 							</div>
-							<div class="row">
+							<div class="row mt10">
 								<div class="col-md-6"><strong>Due Date</strong></div>
 								<div class="col-md-6">{{ project.endDate | date:'yyyy/MM/dd'}}</div>
 							</div>
-							<div class="row">
+							<div class="row mt10">
 								<div class="col-md-6"><strong>Visibility</strong></div>
 								<div class="col-md-6">{{ project.visibility | uppercase}}</div>
 							</div>
@@ -118,7 +118,7 @@
 				
 			</div>
 			
-			<div class="col-md-6 col-lg-6">
+			<div class="row">
 				<!-- panel 2 -->
 				<div class="panel panel-default">
 					<!--wrap panel heading in span to trigger image change as well as collapse -->
@@ -139,9 +139,7 @@
 				<!-- / panel 2 -->
 			</div>
 			
-			
-			
-			<div class="col-md-6 col-lg-6">
+			<div class="row">
 				<!-- MATCHED PEOLE -->
 				<div class="panel panel-default" ng-show="isOwner">
 					<!--wrap panel heading in span to trigger image change as well as collapse -->
@@ -149,25 +147,29 @@
 						<h4 class="panel-title">Matched People</h4>
 					</div>
 					<div id="matchedPeople" class="panel-collapse collapsed" role="tabpanel" aria-labelledby="headingThree">
-						<div class="panel-body" style="overflow-y:scroll;">
+						<div class="panel-body">
 							<!-- tab content goes here -->
 							<div class="row user-list-item-sm" ng-repeat="user in matchedUsers">
-								<div class="col-md-10">
-									<img ng-src="{{user.picture}}" class="img img-circle" width="50px" />
-									<a href="/user/{{user.user_id}}"><strong>{{user.name}}</strong></a>
+								<div class="col-md-10 col-lg-10 col-sm-10 col-xs-10">
+									<a href="/user/{{user.user_id}}#{{currentPath}}">
+                                        <img ng-src="{{user.picture}}" class="img img-circle" width="50px" />
+                                    </a>
+									<a href="/user/{{user.user_id}}#{{currentPath}}" class="ml10"><strong>{{user.name}}</strong></a>
 								</div>
-								<div ng-click="invite(user)" ng-show="isOwner" class="col-md-2">
+								<div ng-click="invite(user)" ng-show="isOwner" class="col-md-2 col-xs-2 col-sm-2 col-lg-2">
 									<button class="btn btn-success">{{ (user.invited == true) ? 'Resend' : 'Invite' }}</button>
 								</div>
 							</div>
-							
+							<div ng-show="matchedUsers.length == 0">
+                                <p class="bg-warning p15">No matches found.</p>
+						    </div>
 						</div>
 					</div>
 				</div>
 				<!-- END OF MATCHED PEOPLE ACCORDION -->
 			</div>
 			
-			<div class="col-md-6 col-lg-6">
+			<div class="row">
 				<!-- APPLIED PEOLE -->
 				<div class="panel panel-default" ng-show="isOwner">
 					<!--wrap panel heading in span to trigger image change as well as collapse -->
@@ -178,17 +180,22 @@
 						<div class="panel-body">
 							<!-- tab content goes here -->
 							<div class="row" ng-repeat="user in project.appliedUsers">
-								<div class="col-md-6"><a href="/user/{{user.user_id}}"><strong>{{user.name}}</strong></a></div>
+                                <a href="/user/{{user.user_id}}#{{currentPath}}">
+                                    <img ng-src="{{user.picture}}" class="img img-circle" width="50px" />
+                                </a>
+								<div class="col-md-6"><a href="/user/{{user.user_id}}#{{currentPath}}" class="ml10"><strong>{{user.name}}</strong></a></div>
 								<div ng-show="isOwner" class="col-md-6" ng-click="accept(user)">	<button class="btn btn-success">Accept</button></div>
 							</div>
-							
+						    <div ng-show="project.appliedUsers.length == 0">
+                                <p class="bg-warning p15">No one applied yet.</p>
+						    </div>
 						</div>
 					</div>
 				</div>
 				<!-- END OF APPLIED PEOPLE ACCORDION -->
 			</div>
 			
-			<div class="col-md-6 col-lg-6">
+			<div class="row">
 				<!-- SELECTED PEOLE -->
 				<div class="panel panel-default" ng-show="isOwner || logginUserSelectedForProject">
 					<!--wrap panel heading in span to trigger image change as well as collapse -->
@@ -199,13 +206,17 @@
 						<div class="panel-body">
 							<!-- tab content goes here -->
 							<div class="row" ng-repeat="user in project.selectedUsers">
-								<div class="col-md-6"><a href="/user/{{user.user_id}}"><strong>{{user.name}}</strong></a></div>
+                                <a href="/user/{{user.user_id}}#{{currentPath}}">
+                                    <img ng-src="{{user.picture}}" class="img img-circle" width="50px" />
+                                </a>
+								<div class="col-md-6"><a href="/user/{{user.user_id}}#{{currentPath}}" class="ml10"><strong>{{user.name}}</strong></a></div>
 								<div class="col-md-6" ng-show="isOwner">
 									<rating ng-model="user.rate" max="max" readonly="user.isReadonly" on-hover="hoveringRatingUser(value,$index)" on-leave="overStar = null"></rating>
 								</div>
-								
 							</div>
-							
+							<div ng-show="project.selectedUsers.length == 0">
+                                <p class="bg-warning p15">No one is selected yet.</p>
+						    </div>
 						</div>
 					</div>
 				</div>
@@ -214,40 +225,55 @@
 			
 			
 		</div>
-	</div>
-	
-	<div class="panel panel-default" ng-show="auth.isAuthenticated">
-					<!--wrap panel heading in span to trigger image change as well as collapse -->
-						<div class="panel-heading" role="tab" id="headingFour"  class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="true" aria-controls="collapseFour" ng-click="showQuestions()">
-							<h4 class="panel-title">Project Contact</h4>
-						</div>
-					<div  id="collapseFour" class="panel-collapse collapsed" role="tabpanel" aria-labelledby="headingFour">
-						<div class="panel-body">
-							<!-- tab content goes here -->
-							<div ng-show="(!isOwner) && (hasApplied==false)" href="#" class="btn btn-lg btn-danger" ng-click="apply()"><span class="glyphicon glyphicon-save"></span> Apply</div>
-							<div   class="btn btn-lg btn-info" ng-click="ask();"><span class="glyphicon glyphicon-info-sign" ></span> {{ (isOwner) ? 'Answer' : 'Ask' }}</div>
-							
-							<form class="form-horizontal" ng-submit="submitQuestion()" ng-show="showAsk">
-								</br>
-								<textarea class="form-control" id="project-skillset" placeholder="Enter your question" ng-model="question" name="project-skillset"></textarea >
-								</br>
-								<button id="project-submit" name="project-submit" class="btn btn-danger" >Submit</button>
-							</form>
-						</div>
+        
+        <!-- Project Discussion -->
+        <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
+            <div class="panel panel-default" ng-show="auth.isAuthenticated">
+				<!--wrap panel heading in span to trigger image change as well as collapse -->
+				<div class="panel-heading" role="tab" id="headingFour"  class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="true" aria-controls="collapseFour" ng-click="showQuestions()">
+					<h4 class="panel-title">Project Discussion</h4>
+				</div>
+				<div  id="collapseFour" class="panel-collapse collapsed" role="tabpanel" aria-labelledby="headingFour">
+					<div class="panel-body discussion-board">
+						<!-- tab content goes here -->
+						<!--<div ng-show="(!isOwner) && (hasApplied==false)" href="#" class="btn btn-lg btn-danger" ng-click="apply()"><span class="glyphicon glyphicon-save"></span> Apply</div>
+						<div class="btn btn-lg btn-info" ng-click="ask();"><span class="glyphicon glyphicon-info-sign" ></span> {{ (isOwner) ? 'Answer' : 'Ask' }}</div>-->
+						
+						<form class="form-horizontal" ng-submit="submitQuestion()">
+							</br>
+							<textarea class="form-control" id="project-skillset" placeholder="Enter comment / question" ng-model="question" name="project-skillset"></textarea >
+							</br>
+							<button id="project-submit" name="project-submit" class="btn btn-danger" >Submit</button>
+						</form>
+                        
+                        <hr class="featurette-divider-xs">
+                        
+                        <div class="col-md-12 col-lg-12 comments">
+                            <div class="media comment" ng-class-odd="'odd'" ng-class-even="'even'" ng-show="showQuestion" ng-repeat="question in questions track by $index">
+                				<div class="pull-left">
+                					<a href="/user/{{question.user.user_id}}#{{currentPath}}">
+                						<img class="img-circle" width="60px" ng-src="{{ (question.user.picture) ? question.user.picture : 'http://placehold.it/60x60' }}">
+                					</a>
+                				</div>
+                				<div class="media-body">
+                					<h4 class="media-heading">
+                                        <a href="/user/{{question.user.user_id}}#{{currentPath}}">{{question.user.name}}</a>
+                                        <i ng-show="auth.profile.user_id == question.user.user_id" class="glyphicon glyphicon-star owner pull-right"></i>
+                                    </h4>
+                					{{question.content}}
+                				</div>
+                                <div class="pull-right text-right">
+                                    <small class="date">{{question.createdDate | date : 'MMM-dd-yyyy hh:mm'}}</small>
+                                </div>
+                			</div>
+                        </div>
 					</div>
 				</div>
-				
-				<div class="media" ng-show="showQuestion" ng-repeat="question in questions">
-							<div class="pull-left">
-								<a href="#">
-									<img class="img-circle" width="60px" ng-src="{{ (question.user.picture) ? question.user.picture : 'http://placehold.it/60x60' }}">
-								</a>
-							</div>
-							<div class="media-body">
-								<h4 class="media-heading">{{question.user.name}}</h4>
-								{{question.content}}
-							</div>
-						</div>
+			</div>
+        </div>
+	</div>
+	
+	
 	
 	<!--<div class="page-header col-md-12 col-lg-12 no-padding left" style="margin-top: 0;">
 		<div class="row">
