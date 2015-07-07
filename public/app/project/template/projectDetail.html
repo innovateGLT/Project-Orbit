@@ -1,88 +1,86 @@
-<div class="container" style="min-height: 75%;margin-top:30px">
-	<div class="page-header col-md-12 col-lg-12 no-padding left" style="margin-top: 0;">
+<div class="container" style="min-height: 75%;">
+	<div class="row pull-right text-right">
+        <div class="edit col-md-12 col-lg-12 col-xs-12 col-sm-12" style="position:relative;">
+            <span class="label label-danger" id="viewProject" ng-click="backToList()">
+                <i class="glyphicon glyphicon-arrow-left"></i> Back
+            </span>
+        </div>
+    </div>
+	
+	<!-- HEADER PART -->
+	<div class="page-header row pull-left">
+
+		<!-- Project title and actions section -->
 		<!-- Use green for Available, red for In Progress, grey for Completed -->
-		<div class="row">
-			<div class="col-md-9 col-lg-9 col-sm-12 col-xs-12">
-				<h1 style="margin-top: 0;" class="col-md-9 col-lg-9 no-padding">{{project.title}}    <small style="color: green">{{project.status}}</small>  <button ng-show="isAdmin" class="btn btn-danger" ng-click="delete()">Delete</button> <i ng-show="isAdmin" class="glyphicon {{(project.featured) ? 'glyphicon-ok-circle text-success' : 'glyphicon-remove-circle'}}" ng-click="feature()"></i> <button ng-show="hasBeenInvited" class="btn btn-success" ng-click="acceptInvitation(auth.profile)">Accept this project</button> </h1>
+		<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+			<div class="col-md-3 col-lg-3 colsm-12 col-xs-12">
+				<div class="macbook-pro">
+					<img class="img img-responsive" ng-src="/app/assets/img/categories/full/{{project.category}}.png" style="">
+				</div>
+				<div class="macbook-pro-base"></div>
 			</div>
-			<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 no-padding pull-right text-right">
-	            <div class="edit">
-	                <span class="label label-danger" id="viewProject" ng-click="backToList()">
-	                    <i class="glyphicon glyphicon-arrow-left"></i> Back
-	                </span>
-	            </div>
-	        </div>
+			<div class="col-md-6 col-lg-9 col-sm-12 col-xs-12 no-padding">
+				<h1 style="margin-top: 0;" class="col-md-12 col-lg-12">
+					<i ng-show="isAdmin" ng-click="feature()" class="mr10 icon-featured {{(project.featured) ? 'icon-featured-active' : 'icon-featured-inactive' }}"></i> {{project.title}}
+					<small style="color: green">{{project.status}}</small>
+				</h1>
+				
+				<div class="row">
+					<div class="col-md-7 col-lg-7 col-sm-12 col-xs-12">
+						<h2 class="col-md-12 col-lg-12 left no-margin"><small style="color: blue"> By <a href="/user/{{project.user.user_id}}">{{project.user.name}}</a></small>
+						<small>
+						<i ng-repeat="star in projectFullStars" class="glyphicon glyphicon-star" style="color: #f39c12"></i><i ng-repeat="star1 in projectEmptyStars" class="glyphicon glyphicon-star-empty" style="color: #f39c12"></i>
+						({{projectPeoplesRating}} people rated)
+						</small>
+						</h2>
+					</div>
+					<div ng-show="logginUserSelectedForProject" class="col-md-5 col-lg-5 col-sm-12 col-xs-12 text-right no-padding">
+						
+						{{ (isRated == true) ? 'You have rated this project\'s owner' : 'Rate this project\'s owner:'}} <rating ng-model="rate" max="max" readonly="isReadonly" on-hover="hoveringOver(value)" on-leave="overStar = null"></rating>
+						<span class="label" ng-class="{'label-warning': percent<30, 'label-info': percent>=30 && percent<70, 'label-success': percent>=70}" ng-show="overStar && !isReadonly">{{percent}}%</span>
+					</div>
+				</div>
+				
+				<!-- Project actions -->
+				<div class="row">
+					<div class="col-md-12 col-lg-12 mt20 ml20">
+						<button ng-show="hasBeenInvited" class="btn btn-success" ng-click="acceptInvitation(auth.profile)">Accept this project</button>
+						<button ng-show="isAdmin" class="btn btn-danger" ng-click="delete()">Delete</button>
+					</div>
+				</div>
+			</div>
 		</div>
 		
-		<div class="row lh55">
-			<div class="col-md-8 col-lg-8 col-sm-12 col-xs-12">
-				<h2 class="col-md-12 col-lg-12 no-padding left"><small style="color: blue"> By <a href="/user/{{project.user.user_id}}">{{project.user.name}}</a></small>
-				<small>
-				<i ng-repeat="star in projectFullStars" class="glyphicon glyphicon-star" style="color: #f39c12"></i><i ng-repeat="star1 in projectEmptyStars" class="glyphicon glyphicon-star-empty" style="color: #f39c12"></i>
-				({{projectPeoplesRating}} people rated)
-				</small>
-				</h2>
-			</div>
-			<div ng-show="logginUserSelectedForProject" class="col-md-4 col-lg-4 col-sm-12 col-xs-12 text-right no-padding">
-				
-				{{ (isRated == true) ? 'You have rated this project\'s owner' : 'Rate this project\'s owner:'}} <rating ng-model="rate" max="max" readonly="isReadonly" on-hover="hoveringOver(value)" on-leave="overStar = null"></rating>
-				<span class="label" ng-class="{'label-warning': percent<30, 'label-info': percent>=30 && percent<70, 'label-success': percent>=70}" ng-show="overStar && !isReadonly">{{percent}}%</span>
-			</div>
-		</div>
-		
-	</div>
-	<div class="row">
-		<div class="col-md-4">
-			<!-- begin panel group -->
-			<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-				
-				<!-- panel 1 -->
+	</div> <!-- /. HEADER PART -->
+	
+	<!-- PROJECT DETAILS -->
+	<div class="row project-details">
+		<div class="col-md-12 col-lg-12">
+			
+			<!-- FIRST COLUMN -->
+			<!-- Project Summary -->
+			<div class="col-md-6 col-lg-6">
 				<div class="panel panel-default">
 					<!--wrap panel heading in span to trigger image change as well as collapse -->
-					<span class="side-tab" data-target="#tab1" data-toggle="tab" role="tab" aria-expanded="false">
-						<div class="panel-heading" role="tab" id="headingOne"data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-							<h4 class="panel-title">Project Summary <a class="pull-right" ng-show="isOwner" href="/project/edit/{{project._id}}#{{returnUrl}}">Edit</a></h4>
-						</div>
-					</span>
-					
-					<div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+					<div class="panel-heading" role="tab" id="headingOne"data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+						<h4 class="panel-title">Project Summary <a class="pull-right glyphicon glyphicon-pencil" ng-show="isOwner" href="/project/edit/{{project._id}}#{{returnUrl}}"></a></h4>
+					</div>
+					<div id="collapseOne" class="panel-collapse collapsed in" role="tabpanel" aria-labelledby="headingOne">
 						<div class="panel-body">
 							{{project.description}}
 						</div>
 					</div>
 				</div>
-				<!-- / panel 1 -->
-				
-				<!-- panel 2 -->
-				<div class="panel panel-default">
-					<!--wrap panel heading in span to trigger image change as well as collapse -->
-					<span class="side-tab" data-target="#tab2" data-toggle="tab" role="tab" aria-expanded="false">
-						<div class="panel-heading" role="tab" id="headingTwo" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-							<h4 class="panel-title collapsed">Project Skillset</h4>
-						</div>
-					</span>
-					<div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-						<div class="panel-body">
-							<!-- Tab content goes here -->
-							<div class="profile-list">
-								<ul class="list-inline">
-									<li ng-repeat="skill in project.skillset" ><span class="label label-success">{{skill}}</span></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
-				<!-- / panel 2 -->
-				
+			</div>
+			
+			<div class="col-md-6 col-lg-6">
 				<!--  panel 3 -->
 				<div class="panel panel-default">
 					<!--wrap panel heading in span to trigger image change as well as collapse -->
-					<span class="side-tab" data-target="#tab3" data-toggle="tab" role="tab" aria-expanded="false">
-						<div class="panel-heading" role="tab" id="headingThree"  class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-							<h4 class="panel-title">Project Details</h4>
-						</div>
-					</span>
-					<div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+					<div class="panel-heading" role="tab" id="headingThree"  class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+						<h4 class="panel-title">Project Details</h4>
+					</div>
+					<div id="collapseThree" class="panel-collapse collapsed" role="tabpanel" aria-labelledby="headingThree">
 						<div class="panel-body">
 							<!-- tab content goes here -->
 							<div class="row">
@@ -117,35 +115,66 @@
 						</div>
 					</div>
 				</div>
+				
+			</div>
+			
+			<div class="col-md-6 col-lg-6">
+				<!-- panel 2 -->
+				<div class="panel panel-default">
+					<!--wrap panel heading in span to trigger image change as well as collapse -->
+					<div class="panel-heading" role="tab" id="headingTwo" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+						<h4 class="panel-title collapsed">Project Skillset</h4>
+					</div>
+					<div id="collapseTwo" class="panel-collapse collapsed" role="tabpanel" aria-labelledby="headingTwo">
+						<div class="panel-body">
+							<!-- Tab content goes here -->
+							<div class="profile-list">
+								<ul class="list-inline">
+									<li ng-repeat="skill in project.skillset" ><span class="label label-success">{{skill}}</span></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- / panel 2 -->
+			</div>
+			
+			
+			
+			<div class="col-md-6 col-lg-6">
 				<!-- MATCHED PEOLE -->
 				<div class="panel panel-default" ng-show="isOwner">
 					<!--wrap panel heading in span to trigger image change as well as collapse -->
-					<span class="side-tab" data-target="#tab3" data-toggle="tab" role="tab" aria-expanded="false">
-						<div class="panel-heading" role="tab" id="headingThree"  class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#matchedPeople" aria-expanded="false" aria-controls="matchedPeople">
-							<h4 class="panel-title">Matched People</h4>
-						</div>
-					</span>
-					<div id="matchedPeople" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-						<div class="panel-body">
+					<div class="panel-heading" role="tab" id="headingThree"  class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#matchedPeople" aria-expanded="true" aria-controls="matchedPeople">
+						<h4 class="panel-title">Matched People</h4>
+					</div>
+					<div id="matchedPeople" class="panel-collapse collapsed" role="tabpanel" aria-labelledby="headingThree">
+						<div class="panel-body" style="overflow-y:scroll;">
 							<!-- tab content goes here -->
-							<div class="row" ng-repeat="user in matchedUsers">
-								<div class="col-md-6"><a href="/user/{{user.user_id}}"><strong>{{user.name}}</strong></a></div>
-								<div ng-click="invite(user)" ng-show="isOwner" class="col-md-6">	<button class="btn btn-success">{{ (user.invited == true) ? 'Resend' : 'Invite' }}</button></div>
+							<div class="row user-list-item-sm" ng-repeat="user in matchedUsers">
+								<div class="col-md-10">
+									<img ng-src="{{user.picture}}" class="img img-circle" width="50px" />
+									<a href="/user/{{user.user_id}}"><strong>{{user.name}}</strong></a>
+								</div>
+								<div ng-click="invite(user)" ng-show="isOwner" class="col-md-2">
+									<button class="btn btn-success">{{ (user.invited == true) ? 'Resend' : 'Invite' }}</button>
+								</div>
 							</div>
 							
 						</div>
 					</div>
 				</div>
 				<!-- END OF MATCHED PEOPLE ACCORDION -->
+			</div>
+			
+			<div class="col-md-6 col-lg-6">
 				<!-- APPLIED PEOLE -->
 				<div class="panel panel-default" ng-show="isOwner">
 					<!--wrap panel heading in span to trigger image change as well as collapse -->
-					<span class="side-tab" data-target="#tab2" data-toggle="tab" role="tab" aria-expanded="false">
-						<div class="panel-heading" role="tab" id="headingThree"  class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#appliedPeople" aria-expanded="false" aria-controls="appliedPeople">
-							<h4 class="panel-title">Applied People</h4>
-						</div>
-					</span>
-					<div id="appliedPeople" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+					<div class="panel-heading" role="tab" id="headingThree"  class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#appliedPeople" aria-expanded="true" aria-controls="appliedPeople">
+						<h4 class="panel-title">Applied People</h4>
+					</div>
+					<div id="appliedPeople" class="panel-collapse collapsed" role="tabpanel" aria-labelledby="headingThree">
 						<div class="panel-body">
 							<!-- tab content goes here -->
 							<div class="row" ng-repeat="user in project.appliedUsers">
@@ -157,15 +186,16 @@
 					</div>
 				</div>
 				<!-- END OF APPLIED PEOPLE ACCORDION -->
+			</div>
+			
+			<div class="col-md-6 col-lg-6">
 				<!-- SELECTED PEOLE -->
 				<div class="panel panel-default" ng-show="isOwner || logginUserSelectedForProject">
 					<!--wrap panel heading in span to trigger image change as well as collapse -->
-					<span class="side-tab" data-target="#tab2" data-toggle="tab" role="tab" aria-expanded="false">
-						<div class="panel-heading" role="tab" id="headingThree"  class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#selectedPeople" aria-expanded="false" aria-controls="selectedPeople">
-							<h4 class="panel-title">Selected People</h4>
-						</div>
-					</span>
-					<div id="selectedPeople" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+					<div class="panel-heading" role="tab" id="headingThree"  class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#selectedPeople" aria-expanded="true" aria-controls="selectedPeople">
+						<h4 class="panel-title">Selected People</h4>
+					</div>
+					<div id="selectedPeople" class="panel-collapse collapsed" role="tabpanel" aria-labelledby="headingThree">
 						<div class="panel-body">
 							<!-- tab content goes here -->
 							<div class="row" ng-repeat="user in project.selectedUsers">
@@ -180,71 +210,44 @@
 					</div>
 				</div>
 				<!-- END OF SELECTED PEOPLE ACCORDION -->
-				<!--  panel 4 -->
-				<div class="panel panel-default" ng-show="auth.isAuthenticated">
-					<!--wrap panel heading in span to trigger image change as well as collapse -->
-					<span class="side-tab" data-target="#tab4" data-toggle="tab" role="tab" aria-expanded="false">
-						<div class="panel-heading" role="tab" id="headingFour"  class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour" ng-click="showQuestions()">
-							<h4 class="panel-title">Project Contact</h4>
-						</div>
-					</span>
-					<div  id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
-						<div class="panel-body">
-							<!-- tab content goes here -->
-							<div ng-show="(!isOwner) && (hasApplied==false)" href="#" class="btn btn-lg btn-danger" ng-click="apply()"><span class="glyphicon glyphicon-save"></span> Apply</div>
-							<div   class="btn btn-lg btn-info" ng-click="ask();"><span class="glyphicon glyphicon-info-sign" ></span> {{ (isOwner) ? 'Answer' : 'Ask' }}</div>
-							
-							<form class="form-horizontal" ng-submit="submitQuestion()" ng-show="showAsk">
-								</br>
-								<textarea class="form-control" id="project-skillset" placeholder="Enter your question" ng-model="question" name="project-skillset"></textarea >
-								</br>
-								<button id="project-submit" name="project-submit" class="btn btn-danger" >Submit</button>
-							</form>
-						</div>
-					</div>
-				</div>
-				</div> <!-- / panel-group -->
+			</div>
+		</div>
+	</div>
+	
+	<!--<div class="page-header col-md-12 col-lg-12 no-padding left" style="margin-top: 0;">
+		<div class="row">
+			<div class="col-md-9 col-lg-9 col-sm-12 col-xs-12">
+				<h1 style="margin-top: 0;" class="col-md-9 col-lg-9 no-padding">{{project.title}}
+					<small style="color: green">{{project.status}}</small>
+					<button ng-show="isAdmin" class="btn btn-danger" ng-click="delete()">Delete</button>
+					<i ng-show="isAdmin" class="glyphicon {{(project.featured) ? 'glyphicon-ok-circle text-success' : 'glyphicon-remove-circle'}}" ng-click="feature()"></i>
+					<button ng-show="hasBeenInvited" class="btn btn-success" ng-click="acceptInvitation(auth.profile)">Accept this project</button>
+				</h1>
+			</div>
+			<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 no-padding pull-right text-right">
+	            <div class="edit">
+	                <span class="label label-danger" id="viewProject" ng-click="backToList()">
+	                    <i class="glyphicon glyphicon-arrow-left"></i> Back
+	                </span>
+	            </div>
+	        </div>
+		</div>
+		
+		<div class="row lh55">
+			<div class="col-md-8 col-lg-8 col-sm-12 col-xs-12">
+				<h2 class="col-md-12 col-lg-12 no-padding left"><small style="color: blue"> By <a href="/user/{{project.user.user_id}}">{{project.user.name}}</a></small>
+				<small>
+				<i ng-repeat="star in projectFullStars" class="glyphicon glyphicon-star" style="color: #f39c12"></i><i ng-repeat="star1 in projectEmptyStars" class="glyphicon glyphicon-star-empty" style="color: #f39c12"></i>
+				({{projectPeoplesRating}} people rated)
+				</small>
+				</h2>
+			</div>
+			<div ng-show="logginUserSelectedForProject" class="col-md-4 col-lg-4 col-sm-12 col-xs-12 text-right no-padding">
 				
-				</div> <!-- /col-md-4 -->
-				
-				<div class="col-md-8">
-					<!-- begin macbook pro mockup -->
-					<div class="md-macbook-pro md-glare">
-						<div class="md-lid">
-							<div class="md-camera"></div>
-							<div class="md-screen">
-								<!-- content goes here -->
-								<div class="tab-featured-image">
-									<div class="tab-content">
-										<div class="tab-pane fade in active" id="tab1">
-											<img ng-src="/app/assets/img/categories/full/{{project.category}}.png" class="img img-responsive">
-										</div>
-										<div class="tab-pane fade" id="tab2">
-											<img ng-src="/app/assets/img/categories/full/{{project.category}}.png" class="img img-responsive">
-										</div>
-										<div class="tab-pane fade" id="tab3">
-											<img ng-src="/app/assets/img/categories/full/{{project.category}}.png" class="img img-responsive">
-										</div>
-										<div class="tab-pane fade" id="tab4">
-											<img ng-src="/app/assets/img/categories/full/{{project.category}}.png" class="img img-responsive">
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="md-base"></div>
-						</div> <!-- end macbook pro mockup -->
-						<div class="media" ng-show="showQuestion" ng-repeat="question in questions">
-							<div class="pull-left">
-								<a href="#">
-									<img class="img-circle" width="60px" ng-src="{{ (question.user.picture) ? question.user.picture : 'http://placehold.it/60x60' }}">
-								</a>
-							</div>
-							<div class="media-body">
-								<h4 class="media-heading">{{question.user.name}}</h4>
-								{{question.content}}
-							</div>
-						</div>
-					</div> <!-- / .col-md-8 -->
-				</div> <!--/ .row -->
-			</div><!-- /.container -->
+				{{ (isRated == true) ? 'You have rated this project\'s owner' : 'Rate this project\'s owner:'}} <rating ng-model="rate" max="max" readonly="isReadonly" on-hover="hoveringOver(value)" on-leave="overStar = null"></rating>
+				<span class="label" ng-class="{'label-warning': percent<30, 'label-info': percent>=30 && percent<70, 'label-success': percent>=70}" ng-show="overStar && !isReadonly">{{percent}}%</span>
+			</div>
+		</div>
+		
+	</div>-->
+</div>

@@ -1,5 +1,5 @@
 <div class="container">
-    <h2 class="text-center"> {{ (projects.length == 0) ? 'No existing projects' : 'All Projects' + ( category ? ' under ' + category : '' )  | camelCaseToHuman}} </h2>
+    <h2 class="text-left"> {{ (projects.length == 0) ? 'No existing projects' : 'All Projects' + ( category ? ' under ' + category : '' )  | camelCaseToHuman}} </h2>
     
     <div class="container" ng-if="projects.length > 0">
         <hr class="featurette-divider-xs">

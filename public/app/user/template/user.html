@@ -2,30 +2,41 @@
     <div class="row">
        
             
-        <div class="col-md-3 col-lg-3 title">
-            <div class="pull-left" >
-                <img width="120px" class="media-object img-circle" src="{{user.picture}}" alt="Image">
+        <div class="col-md-3 col-lg-3 col-sm-12 col-xs-12 title">
+            <div>
+                <img width="150px" class="media-object img-circle" ng-src="{{user.picture}}" alt="Image"/>
             </div>
         </div>
         
-        <div class="col-md-3 col-lg-3 text-left">
-            <h3 class="media-heading">{{ user.name}}</h3>
+        <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12 text-left">
+            <h2 class="media-heading mb20">{{ user.name}}</h2>
             <ul class="list-unstyled">
                 <li>{{user.dept}}</li>
                 <li>{{user.job_role}}</li>
                 <li>{{user.country}}</li>
                 <li>{{user.email}}</li>
             </ul>
+            
+            <div class="profile-list col-sm-12 col-xs-12 no-padding">
+                <strong>I am actively looking for a project:</strong>
+                <ul class="list-inline">
+                    <li>
+                        {{(user.status) ? "YES" : "NO" }}&nbsp;
+                    </li>
+                </ul>
+            </div>
+            
         </div>
-
-        <div class="col-md-3 col-lg-3">
-            <div ng-show="isAdmin" class="edit">
-                <h2>
-                    <i ng-click="feature()" class="glyphicon {{(user.featured) ? 'glyphicon-ok-circle text-success' : 'glyphicon-remove-circle' }}"></i> Featured
+        
+        <div class="col-md-2 col-lg-2 col-sm-12 col-xs-12">
+            <div ng-show="isAdmin" class="text-center">
+                <h2 class="no-margin">
+                    <i ng-click="feature()" class="icon-featured {{(user.featured) ? 'icon-featured-active' : 'icon-featured-inactive' }}"></i> Featured
                 </h2>
             </div>
         </div>
-        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+        
+        <div class="col-md-3 col-lg-3 col-sm-12 col-xs-12">
             <div class="edit">
                 <span class="label label-danger" id="editProfile" ng-click="backToList()">
                     <i class="glyphicon glyphicon-arrow-left"></i> Back
@@ -48,14 +59,6 @@
                     <strong>Interests:</strong>
                     <ul class="list-inline">
                         <li ng-repeat="interest in user.interests"><span class="label label-success">{{interest}}</span></li>
-                    </ul>
-                </div>
-                <div class="profile-list">
-                    <strong>I am actively looking for a project:</strong>
-                    <ul class="list-inline">
-                        <li>
-                            {{(user.status) ? "YES" : "NO" }}&nbsp;
-                        </li>
                     </ul>
                 </div>
                 <br />
