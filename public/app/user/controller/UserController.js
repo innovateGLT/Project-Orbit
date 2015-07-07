@@ -13,7 +13,7 @@ angular.module('user')
                 if (($scope.auth.profile) && ($scope.auth.profile.email == ADMIN_EMAIL)) {
                     $scope.isAdmin = true;
                 }
-            })
+            });
 
             var user = UserService.getByUserId({
                 user_id: $routeParams.id

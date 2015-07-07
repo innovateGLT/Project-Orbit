@@ -1205,21 +1205,24 @@ video#bgvid {
 }
 
 /* All users animation styles */
-.user-record {
-    -webkit-transition: color 0.6s, background-color 0.3s;
-    -moz-transition: color 0.6s, background-color 0.3s;
-    -ms-transition: color 0.6s, background-color 0.3s;
-    transition: color 0.6s, background-color 0.3s;
+.animated-list-record {
+    -webkit-transition: 1ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+    -moz-transition: 1ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+    -ms-transition: 1ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+    -o-transition: 1ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+    transition: 1ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+    position: relative;
+    display: block;
 }
 
-.user-record.ng-enter {
+.animated-list-record.ng-enter {
     -webkit-animation: bounceIn 1s;
     -moz-animation: bounceIn 1s;
     -ms-animation: bounceIn 1s;
     animation: bounceIn 1s;
 }
   
-.user-record.ng-leave {
+.animated-list-record.ng-leave {
     -webkit-animation: bounceOut 1s;
     -moz-animation: bounceOut 1s;
     -ms-animation: bounceOut 1s;

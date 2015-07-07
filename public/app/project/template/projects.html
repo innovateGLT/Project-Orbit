@@ -1,10 +1,23 @@
 <div class="container">
-    <h2 class="text-left"> {{ (projects.length == 0) ? 'No existing projects' : 'All Projects' + ( category ? ' under ' + category : '' )  | camelCaseToHuman}} </h2>
+    <h1 class="col-md-8 col-lg-8 colsm-12 col-xs-12">{{ (projects.length == 0) ? 'No existing projects' : 'All Projects' + ( category ? ' under ' + category : '' )  | camelCaseToHuman}} </h1>
+    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 pull-right">
+        <div class="form-group">
+            <label class="control-label" for="filter">&nbsp;</label>
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search for name, role, location, email..." ng-model="filter"/>
+                <span class="input-group-addon">
+                    <i class="glyphicon glyphicon-search"></i>
+                </span>
+            </div>
+        </div>
+    </div>
     
-    <div class="container" ng-if="projects.length > 0">
+    <div class="container row" ng-if="projects.length > 0">
         <hr class="featurette-divider-xs">
         
-        <project-list projects="projects" class="container"></project-list>
+        <div class="col-sm-6 text-center col-md-3 col-xl-3 animated-list-record" ng-repeat="project in projects | filter : filter">
+            <project-badge project="project"></project-badge>
+        </div>
         
         <hr class="featurette-divider-xs">
     </div>
