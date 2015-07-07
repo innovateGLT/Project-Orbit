@@ -26,7 +26,7 @@
 				</h1>
 				
 				<div class="row">
-					<div class="col-md-7 col-lg-7 col-sm-12 col-xs-12">
+					<div class="col-md-8 col-lg-8 col-sm-12 col-xs-12">
 						<h2 class="col-md-12 col-lg-12 left no-margin"><small style="color: blue"> By <a href="/user/{{question.user.user_id}}#{{currentPath}}">{{project.user.name}}</a></small>
 						<small>
 						<i ng-repeat="star in projectFullStars" class="glyphicon glyphicon-star" style="color: #f39c12"></i><i ng-repeat="star1 in projectEmptyStars" class="glyphicon glyphicon-star-empty" style="color: #f39c12"></i>
@@ -34,7 +34,7 @@
 						</small>
 						</h2>
 					</div>
-					<div ng-show="logginUserSelectedForProject" class="col-md-5 col-lg-5 col-sm-12 col-xs-12 text-right no-padding">
+					<div ng-show="logginUserSelectedForProject" class="col-md-8 col-lg-8 col-sm-12 col-xs-12 text-right no-padding">
 						
 						{{ (isRated == true) ? 'You have rated this project\'s owner' : 'Rate this project\'s owner:'}} <rating ng-model="rate" max="max" readonly="isReadonly" on-hover="hoveringOver(value)" on-leave="overStar = null"></rating>
 						<span class="label" ng-class="{'label-warning': percent<30, 'label-info': percent>=30 && percent<70, 'label-success': percent>=70}" ng-show="overStar && !isReadonly">{{percent}}%</span>

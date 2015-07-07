@@ -30,7 +30,7 @@ angular.module('project')
 
                     $scope.projectPeoplesRating = pr.count;
                 });
-            }
+            };
 
 
             $scope.project = Projects.get({
@@ -50,6 +50,8 @@ angular.module('project')
                 $scope.matchedUsers = UserService.getMatches({
                     skills: $scope.project.skillset.join(',')
                 }, function() {
+                    
+                    // remove the project owner from the list of matched users
                     $scope.matchedUsers = $scope.matchedUsers.filter(function(person) {
                         console.log("sXXXX", $scope.project.user.user_id);
                         return person.user_id != $scope.project.user.user_id;
@@ -214,9 +216,9 @@ angular.module('project')
 
                                 SweetAlert.swal("Done!", "You have rated the the owner of the project: " + rate + " stars. \n You cannot rate any more", "success");
                                 $scope.isReadonly = true;
-                            })
+                            });
                         }
-                    })
+                    });
                 }
 
 
@@ -454,7 +456,7 @@ angular.module('project')
 
 
 
-            }
+            };
 
             $scope.feature = function() {
                 $scope.project.featured = !$scope.project.featured;
@@ -500,7 +502,7 @@ angular.module('project')
                     SweetAlert.swal("Done!", "You have accepted this the invitation!", "success");
                 });
 
-            }
+            };
 
             $scope.accept = function(profile) {
                 var user = {
@@ -585,8 +587,12 @@ angular.module('project')
                 var returnUrl = $location.hash();
                 $location.hash("");
                 
-                $location.path(returnUrl).search(store.get("searchParams"));
-                store.remove("searchParams");
+                if ( store.get("searchParams") ) {
+                    $location.path(returnUrl).search(store.get("searchParams"));
+                    store.remove("searchParams");
+                } else {
+                    $location.path(returnUrl);
+                }
 
             };
             
