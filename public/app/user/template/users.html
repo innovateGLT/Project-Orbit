@@ -1,24 +1,25 @@
 <div class="container">
-    <div class="page-header row no-margin-top">
-        <h1 class="col-md-8 col-lg-8 colsm-12 col-xs-12">All Users</h1>
-        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 pull-right">
-            <div class="form-group">
-                <label class="control-label" for="filter">&nbsp;</label>
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search for name, role, location, email..." ng-model="filter"/>
-                    <span class="input-group-addon">
-                        <i class="glyphicon glyphicon-search"></i>
-                    </span>
-                </div>
+    <h1 class="col-md-8 col-lg-8 colsm-12 col-xs-12">All Users</h1>
+    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 pull-right">
+        <div class="form-group">
+            <label class="control-label" for="filter">&nbsp;</label>
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search for name, role, location, email..." ng-model="filter"/>
+                <span class="input-group-addon">
+                    <i class="glyphicon glyphicon-search"></i>
+                </span>
             </div>
         </div>
     </div>
     
-    <div class="row">
+    <div  class="container row">
+        
+        <hr class="featurette-divider-xs">
+        
         <div class="col-md-4 col-sm-6 text-center animated-list-record" ng-repeat="user in users | filter:filter">
             <user-badge user="user"></user-badge>
         </div>
+        
+        <hr class="featurette-divider-xs">
     </div>
-    <!-- /.row -->
-    <hr class="featurette-divider">
 </div>
