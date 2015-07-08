@@ -35,5 +35,8 @@ router.get('/loaduse*', function(req, res) {
     res.render('index', {});
 });
 
+router.get('/hel*', function(req, res) {
+    res.render('index', {});
+});
 
 module.exports = router;
