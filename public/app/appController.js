@@ -2,10 +2,12 @@
 
 angular.module('app')
 
-.controller('appController', ['$scope', '$location', '$anchorScroll', 'store',
+.controller('appController', ['$scope', '$location', '$anchorScroll', 'store', '$timeout', 'SecurityService',
     
-    function ($scope, $location, $anchorScroll, store) {
+    function ($scope, $location, $anchorScroll, store, $timeout, SecurityService) {
     
+    
+        $scope.auth = SecurityService.auth();
     
         $scope.$on('$locationChangeStart', function(event) {
             // summary
@@ -26,6 +28,25 @@ angular.module('app')
             $anchorScroll();
         });
         
-    
+        // if the user is authenticated already and refreshes the browser, delay should only be 1s coz we already have all employee info
+        // else, we expect a longer delay in retrieving the employee info from the external API
+        $scope.overlayTimeout = $scope.auth.isAuthenticated ? 1000 : 4000;
+        
+        $scope.isLoadingVisible = true;
+        while ( $scope.isLoadingVisible ) {
+            
+            if ( staffDetails_name ) {
+                
+                $timeout(hideLoadingOverlay, $scope.overlayTimeout);
+                
+                break;
+            }
+            
+        };
+        
+        function hideLoadingOverlay() {
+            $scope.isLoadingVisible = false;
+        };
+        
     }
 ]);

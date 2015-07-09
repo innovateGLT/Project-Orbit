@@ -65,7 +65,7 @@
             </div>
         </div>
         
-        <hr class="featurette-divider-sm">
+        <hr />
         
         <div class="row mb20">
             <div class="col-md-12 col-lg-12 tabs">
@@ -75,7 +75,7 @@
                 </div>
                 <div class="col-md-{{12 / projectTabs}} col-lg-{{12 / projectTabs}} col-xs-{{12 / projectTabs}} col-sm-{{12 / projectTabs}} text-center {{projectTabContainers['completed'] ? 'active' : ''}}" ng-click="showProjectsTab('completed')" ng-if="completedProjects.length">
                     <i class="glyphicon glyphicon-check"></i>
-                    <h4>Complete Projects</h4>
+                    <h4>Completed Projects</h4>
                 </div>
                 <div class="col-md-{{12 / projectTabs}} col-lg-{{12 / projectTabs}} col-xs-{{12 / projectTabs}} col-sm-{{12 / projectTabs}} text-center {{projectTabContainers['invitations'] ? 'active' : ''}}" ng-click="showProjectsTab('invitations')" ng-if="invitedProjects.length">
                     <i class="glyphicon glyphicon-magnet"></i>
@@ -91,92 +91,22 @@
         
         <!-- The current projects I am involved with -->
         <div class="container bold-container" ng-if="projects.length > 0" ng-show="projectTabContainers['current']">
-            <project-list projects="projects" class="container">My Current Projects</project-list>
+            <project-list projects="projects" class="container"></project-list>
         </div>
         
         <!-- Projects I have contributed -->
         <div class="container bold-container" ng-if="completedProjects.length > 0" ng-show="projectTabContainers['completed']">
-            <project-list projects="completedProjects" class="container">My Completed Projects</project-list>
+            <project-list projects="completedProjects" class="container"></project-list>
         </div>
         
         <!-- The list of project that I am invited to join / contribute -->
         <div class="container bold-container" ng-if="invitedProjects.length > 0" ng-show="projectTabContainers['invitations']">
-            <project-list projects="invitedProjects" class="container">Project Invitations</project-list>
+            <project-list projects="invitedProjects" class="container"></project-list>
         </div>
         
         <!-- Project suggestions based on the users skills and interests -->
         <div class="container bold-container" ng-if="matchedProjects.length > 0" ng-show="projectTabContainers['suggestions']">
-            <project-list projects="matchedProjects" class="container">You might be interested in the following projects</project-list>
+            <project-list projects="matchedProjects" class="container"></project-list>
         </div>
     </div>
 </div>
-
-
-
-<!--<div class="container container-main bold-container mt80">
-    <div class="row">
-        <div class="containter text-center profile">
-           
-            
-            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 title">
-                <div class="pull-left">
-                    <img width="120px" class="media-object img-circle" ng-src="{{isAdmin ? '/app/assets/img/admin.png' : auth.profile.picture}}" alt="Image">
-                </div>
-                
-            </div>
-            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 text-left">
-                <h3 class="media-heading">{{ auth.profile.name}}</h3>
-                    <ul class="list-unstyled">
-                        <li>{{auth.profile.dept}}</li>
-                        <li>{{auth.profile.job_role}}</li>
-                        <li>{{auth.profile.country}}</li>
-                        <li>{{auth.profile.email}}</li>
-                    </ul>
-            </div>
-
-            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-                
-            </div>
-
-            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-                <div class="edit">
-                    <span class="label label-danger" id="editProfile" ng-click="editProfile()">
-                    <i class="glyphicon glyphicon-cog"></i> Edit Profile
-                </span>
-                </div>
-            </div>
-
-            
-        </div>    
-    </div>
-</div>-->
-
-
-<!--<div class="container not-bold-container-user ml50 w90">
-    <div class="title">
-         <div class="text-left">
-                <div class="profile-list">
-                	<strong>Skills:</strong>
-                    <div class="col-sm-12" >
-                    	<div id="bubbleChart"></div>
-                    </div>
-                </div>  
-                <div class="profile-list">
-                    <strong>Interests:</strong>
-                    <ul class="list-inline">
-                        <li ng-repeat="interest in user.interests"><span class="label label-success">{{interest}}</span></li>
-                    </ul>
-                </div>
-                <br />
-                <div class="profile-list">
-                    <strong>I am actively looking for a project:</strong>
-                    <ul class="list-inline">
-                        <li>
-                            {{(user.status) ? "YES" : "NO" }}&nbsp;
-                        </li>
-                    </ul>
-                </div>
-                <br />
-            </div>
-    </div>
-</div>-->

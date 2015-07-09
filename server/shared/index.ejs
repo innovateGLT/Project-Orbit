@@ -6,16 +6,24 @@
     <base href="/">
 </head>
 <body ng-controller="appController">
+    
+    <div class="loading-awesome overlay animate-slide-in-out" ng-show="isLoadingVisible">
+    </div>
+    <div class="loading-awesome message animate-slide-in-out" ng-show="isLoadingVisible">
+        
+        <img ng-src="/app/assets/img/Opportunities@HSBC_accelerateyourcareer.png"/>
+        
+        <h2>Loading awesomeness...</h2>
+    </div>
 	
     <% include ../inc/login %>
     
     <div ng-if="isNavigationVisibile" class="animate-fadein-down left w100" ng-include="'/app/common/page/navigation.html'"></div>
-	<div ng-view class="animate-fadein-out left col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding {{ isNavigationVisibile && isContainerVisible && !isUserViewPage ? 'container container-main' : ''}}"></div>
+	<div ng-view ng-show="!isLoadingVisible" class="animate-fadein-out left col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding {{ isNavigationVisibile && isContainerVisible && !isUserViewPage ? 'container container-main' : ''}}"></div>
 
-    <% include ../inc/footer %>
+    <div ng-show="!isLoadingVisible" ng-include="'/app/common/page/footer.html'"></div>
 
-	<% include ../inc/vendors %>
-
+   <% include ../inc/vendors %>
     <!------------------------------------------------------------------------------------------------------------>
     <!------------------------------------------------------------------------------------------------------------>
     <!------------------------------------------------------------------------------------------------------------>
