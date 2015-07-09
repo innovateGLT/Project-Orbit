@@ -1,79 +1,94 @@
-<div class="container bold-container" style="margin-top : 80px">
-    <div class="row">
-       
-            
-        <div class="col-md-3 col-lg-3 col-sm-12 col-xs-12 title">
-            <div>
-                <img width="150px" class="media-object img-circle" ng-src="{{user.picture}}" alt="Image"/>
-            </div>
-        </div>
-        
-        <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12 text-left">
-            <h2 class="media-heading mb20">{{ user.name}}</h2>
-            <ul class="list-unstyled">
-                <li>{{user.dept}}</li>
-                <li>{{user.job_role}}</li>
-                <li>{{user.country}}</li>
-                <li>{{user.email}}</li>
-            </ul>
-            
-            <div class="profile-list col-sm-12 col-xs-12 no-padding">
-                <strong>I am actively looking for a project:</strong>
-                <ul class="list-inline">
-                    <li>
-                        {{(user.status) ? "YES" : "NO" }}&nbsp;
-                    </li>
-                </ul>
-            </div>
-            
-        </div>
-        
-        <div class="col-md-2 col-lg-2 col-sm-12 col-xs-12">
-            <div ng-show="isAdmin" class="text-center">
-                <h2 class="no-margin">
-                    <i ng-click="feature()" class="icon-featured {{(user.featured) ? 'icon-featured-active' : 'icon-featured-inactive' }}"></i> Featured
-                </h2>
-            </div>
-        </div>
-        
-        <div class="col-md-3 col-lg-3 col-sm-12 col-xs-12">
-            <div class="edit">
-                <span class="label label-danger" id="editProfile" ng-click="backToList()">
-                    <i class="glyphicon glyphicon-arrow-left"></i> Back
-                </span>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="container not-bold-container-user ml50 w90">
-    <div class="row">
-         <div class="text-left">
-                <div class="profile-list">
-                	<strong>Skills:</strong>
-                    <div class="col-sm-12" >
-                    	<div id="bubbleChart"></div>
-                    </div>
-                </div>  
-                <div class="profile-list">
-                    <strong>Interests:</strong>
-                    <ul class="list-inline">
-                        <li ng-repeat="interest in user.interests"><span class="label label-success">{{interest}}</span></li>
-                    </ul>
+<div class="profile">
+    <div class="container container-main">
+        <div class="row profile-header">
+            <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12 text-center profile-main-info">
+                <img class="img-circle" width="150px" ng-src="{{isAdmin && !userProfileView ? '/app/assets/img/admin.png' : user.picture}}">
+                
+                <h3><i ng-show="user.featured" class="glyphicon {{(user.featured) ? 'glyphicon-ok-circle text-success' : '' }} "></i><a href="/user/{{user.user_id}}"> {{user.name}}</a></h3>
+                <p>{{user.job_role}}</p>
+                <p>{{user.dept}}</p>
+                <p>{{user.country}}</p>
+                <p>{{user.email}}</p>
+                
+                <hr class="featurette-divider-sm-white">
+                
+                <div class="col-md-12">
+                    <h3>Availability</h3>
+                    <label ng-if="user.status" class="alert alert-success">
+                        I am actively looking for a project
+                    </label>
+                    <label ng-if="!user.status" class="alert alert-warning">
+                        Quite busy right now
+                    </label>
                 </div>
-                <br />
             </div>
+            <div class="col-md-8 col-lg-8 col-sm-12 col-xs-12 left">
+                <div class="row mb130">
+                    <div class="text-right col-md-12 col-lg-12">
+                        <span class="label label-danger left btn-span mt15 pull-right" id="backToList" ng-click="backToList()">
+                            <i class="glyphicon glyphicon-arrow-left"></i> Back
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 tabs">
+                        <div class="col-md-6 col-lg-6 col-xs-6 col-sm-6 text-center {{skillsActive ? 'active' : ''}}" ng-click="showSkillsTab()">
+                            <i class="glyphicon glyphicon-tower"></i>
+                            <span>Skills</span>
+                        </div>
+                        <div class="col-md-6 col-lg-6 col-xs-6 col-sm-6 text-center {{interestsActive ? 'active' : ''}}" ng-click="showInterestsTab()">
+                            <i class="glyphicon glyphicon-thumbs-up"></i>
+                            <span>Interests</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row" ng-show="skillsActive">
+                    <div class="profile-list col-md-12 col-lg-12 col-sm-12 col-xs-12">
+                    	<h3>Skills</h3>
+                        <div class="col-sm-12" >
+                        	<div id="bubbleChart"></div>
+                        </div>
+                        <label ng-if="user.skills.length == 0" class="alert alert-danger col-md-12">Failed to retrieved skills from GMIS</label>
+                    </div>
+                </div> 
+                
+                <div class="row" ng-show="interestsActive">
+                    <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+                        <h3>Interests</h3>
+                        <ul class="list-inline">
+                            <li ng-repeat="interest in user.interests" class="interest"><span>{{interest}}</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <hr />
+        
+        <div class="row mb20">
+            <div class="col-md-12 col-lg-12 tabs">
+                <div class="col-md-{{12 / projectTabs}} col-lg-{{12 / projectTabs}} col-xs-{{12 / projectTabs}} col-sm-{{12 / projectTabs}} text-center {{projectTabContainers['current'] ? 'active' : 'fuck'}}" ng-click="showProjectsTab('current')" ng-if="projects.length">
+                    <i class="glyphicon glyphicon-random"></i>
+                    <h4>Current Projects</h4>
+                </div>
+                <div class="col-md-{{12 / projectTabs}} col-lg-{{12 / projectTabs}} col-xs-{{12 / projectTabs}} col-sm-{{12 / projectTabs}} text-center {{projectTabContainers['completed'] ? 'active' : ''}}" ng-click="showProjectsTab('completed')" ng-if="completedProjects.length">
+                    <i class="glyphicon glyphicon-check"></i>
+                    <h4>Completed Projects</h4>
+                </div>
+            </div>
+        </div>
+        
+        
+        <!-- The current projects I am involved with -->
+        <div class="container bold-container" ng-if="projects.length > 0" ng-show="projectTabContainers['current']">
+            <project-list projects="projects" class="container"></project-list>
+        </div>
+        
+        <!-- Projects I have contributed -->
+        <div class="container bold-container" ng-if="completedProjects.length > 0" ng-show="projectTabContainers['completed']">
+            <project-list projects="completedProjects" class="container"></project-list>
+        </div>
     </div>
 </div>
-
-
-<!-- The current projects I am involved with -->
-<div class="container bold-container" ng-if="projects.length > 0">
-    <project-list projects="projects" class="container">My Currenct Projects</project-list>
-</div>
-
-<!-- Projects I have contributed -->
-<div class="container not-bold-container-user" ng-if="completedProjects.length > 0">
-    <project-list projects="completedProjects" class="container">My Completed Projects</project-list>
-</div>
-

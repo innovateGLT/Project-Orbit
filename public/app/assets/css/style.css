@@ -1204,27 +1204,27 @@ video#bgvid {
 
 /* All users animation styles */
 .animated-list-record {
-    -webkit-transition: .2s cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
-    -moz-transition: .2s cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
-    -ms-transition: .2s cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
-    -o-transition: .2s cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
-    transition: .2s cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+    -webkit-transition: .3s cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+    -moz-transition: .3s cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+    -ms-transition: .3s cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+    -o-transition: .3s cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+    transition: .3s cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
     position: relative;
     display: block;
 }
 
 .animated-list-record.ng-enter {
-    -webkit-animation: bounceIn .5s;
-    -moz-animation: bounceIn .5s;
-    -ms-animation: bounceIn .5s;
-    animation: bounceIn .5s;
+    -webkit-animation: fadeIn .5s;
+    -moz-animation: fadeIn .5s;
+    -ms-animation: fadeIn .5s;
+    animation: fadeIn .5s;
 }
   
 .animated-list-record.ng-leave {
-    -webkit-animation: bounceOut .2s;
-    -moz-animation: bounceOut .2s;
-    -ms-animation: bounceOut .2s;
-    animation: bounceOut .2s;
+    -webkit-animation: fadeOut .3s;
+    -moz-animation: fadeOut .3s;
+    -ms-animation: fadeOut .3s;
+    animation: fadeOut .3s;
 }
 
 user-badge .thumbnail {
@@ -1492,7 +1492,7 @@ user-badge .thumbnail {
 .help .left-nav-bar ul {
     list-style-type: none;
     margin: 0;
-    padding: 0;
+    padding-left: 10px;
     margin-top: 20px;
 }
 
@@ -1650,7 +1650,6 @@ user-badge .thumbnail {
     background: url('/app/assets/img/background.jpg') no-repeat;
     margin: 0;
     background-size: 100% 150px;
-    padding-bottom: 30px;
 }
 
 .profile .profile-main-info {
@@ -1691,3 +1690,46 @@ user-badge .thumbnail {
     color: #a8a8a8;
 }
 /* Profile Styles END */
+
+/* Loading Awesome overlay message START */
+
+.loading-awesome.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(232, 232, 232, .9);
+    height: 100%;
+    width: 100%;
+    z-index: 2000;
+}
+
+.loading-awesome.message {
+    width: 70%;
+    vertical-align: middle;
+    border: 1px solid #f0f0f0;
+    padding: 150px 50px;
+    z-index: 2001;
+    position: fixed;
+    top: 22%;
+    left: 15%;
+    text-align: center;
+    background: #fff;
+    border-radius: 10px;
+    font-size: 200%;
+    color: rgb(252, 88, 88);
+}
+/* Loading Awesome overlay message END */
+
+/* Help Header Styles START */
+
+.help .help-header {
+    background: url('/app/assets/img/background.jpg') no-repeat;
+    margin: 0;
+    background-size: 100% 150px;
+}
+
+.help .help-header .breadcrumb {
+    margin: 130px 10px 0 10px;
+}
+
+/* Help Header Styles END */

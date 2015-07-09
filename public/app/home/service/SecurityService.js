@@ -5,8 +5,8 @@
 angular.module('home')
 
 
-.factory('SecurityService', ['auth', 'store', '$location', 'UserService', '$modal', '$http', '$q',
-    function(auth, store, $location, UserService, $modal, $http, $q) {
+.factory('SecurityService', ['auth', 'store', '$location', 'UserService', '$modal', '$http', '$q', '$window',
+    function(auth, store, $location, UserService, $modal, $http, $q, $window) {
 
         // var login = function(callback) {
 
@@ -96,7 +96,7 @@ angular.module('home')
 	                   user.$save(function(data) {
 	                	   store.set("profile", data);
 	                	   store.set("profile_lastUpdatedTime", new Date().getTime().toString());
-	                	   window.location.reload();
+	                	   $window.location.reload();
 	                   });
             	   });
             }
@@ -263,7 +263,7 @@ angular.module('home')
                 // called asynchronously if an error occurs
                 // or server returns response with an error status.
                 alert("cannot auto login");
-                window.location.reload();
+                $window.location.reload();
             });
         };
         

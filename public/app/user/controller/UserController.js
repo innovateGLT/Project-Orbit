@@ -6,7 +6,7 @@ angular.module('user')
 
 
 
-            $scope.auth = SecurityService.auth()
+            $scope.auth = SecurityService.auth();
             $scope.isAdmin = false;
 
             $scope.$watch('auth.profile', function() {
@@ -14,6 +14,9 @@ angular.module('user')
                     $scope.isAdmin = true;
                 }
             });
+
+            // variable to store how many project tabs would be shown
+            $scope.projectTabs = 0;
 
             var user = UserService.getByUserId({
                 user_id: $routeParams.id
@@ -27,27 +30,36 @@ angular.module('user')
                     user.interests = ["NONE"];
                 }
 
+                if ( user.email !== ADMIN_EMAIL ) {
+                    $scope.userProfileView = true;
+                }
 
                 $scope.user = user;
                 getSkills($scope.user.empId);
-            })
-
-
-            var projects = Projects.getByUserId({
-                user_id: $routeParams.id
-            }, function() {
-                // console.log("USER PROJECT",projects);
-
-                $scope.projects = projects;
             });
 
-
-            var completedProjects = Projects.getCompletedProjectsByUserId({
+            // Retrieve user's current projects
+            Projects.getByUserId({
                 user_id: $routeParams.id
-            }, function() {
-                // console.log("USER PROJECT",projects);
+            }, function( projects ) {
+
+                $scope.projects = projects;
+                
+                if ( $scope.projects && $scope.projects.length > 0 ) {
+                    $scope.projectTabs++;
+                }
+            });
+
+            // Retrieve user's completed projects
+            Projects.getCompletedProjectsByUserId({
+                user_id: $routeParams.id
+            }, function( completedProjects ) {
 
                 $scope.completedProjects = completedProjects;
+                
+                if ( $scope.completedProjects && $scope.completedProjects.length > 0 ) {
+                    $scope.projectTabs++;
+                }
             });
 
 
@@ -100,6 +112,31 @@ angular.module('user')
             };
             
             
+            $scope.skillsActive = true;
+            $scope.interestsActive = false;
+            $scope.showSkillsTab = function () {
+                $scope.skillsActive = true;
+                $scope.interestsActive = false;
+            };
+            
+            $scope.showInterestsTab = function () {
+                $scope.skillsActive = false;
+                $scope.interestsActive = true;
+                
+            };
+            
+            $scope.showProjectsTab = function ( /* String */tabName ) {
+                // summary
+                //      Show the requested project tab
+                // param
+                //      tabName - the name of the tab to be shown
+                
+                $scope.projectTabContainers = [];
+                $scope.projectTabContainers[ tabName ] = true;
+            };
+            
+            // set default projects tab to Current Projects
+            $scope.showProjectsTab('current');
         }
     ])
 
