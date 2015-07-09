@@ -1,5 +1,14 @@
-<ol class="breadcrumb">
-  <li><a href="#">Home</a></li>
-  <li><a href="#">Library</a></li>
-  <li class="active">Data</li>
-</ol>
+<div class="container help">
+
+    <div class="row">
+        <help-breadcrumb></help-breadcrumb>
+    </div>
+    <div class="row">
+        <div class="col-md-3 col-lg-3">
+            <help-sidebar class="left-nav-bar"></help-sidebar>
+        </div>
+        <div ng-include="helpUrl" class="animate-fadein-out col-md-9 col-lg-9 col-sm-12 col-xs-12 content">
+        </div>
+    </div>
+    
+</div>

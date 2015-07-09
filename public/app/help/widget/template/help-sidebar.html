@@ -1,0 +1,6 @@
+<ul>
+    <li class="back animate-fadeinout-left" ng-if="isBackVisible" ng-click="navigateBack()">Back</li>
+    <li ng-repeat="navigationItem in navigationItems" class="animate-fadeinout-left">
+        <a href="#" ng-click="navigate(navigationItem)" class="{{navigationItem.label == currentNavItem.label ? 'active' : ''}}">{{ navigationItem.label }}</a>
+    </li>
+</ul>

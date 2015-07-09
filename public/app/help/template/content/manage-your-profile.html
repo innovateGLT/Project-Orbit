@@ -1,0 +1,136 @@
+<div>
+    <h2>Manage Your Profile</h2>
+    
+    <div class="help-question">
+        <strong ng-click="toggleQuestion('manage-profile1')">
+            <h4>
+                <i class="glyphicon glyphicon-question-sign mr10"></i>
+                <span>I do not have any skills listed on my profile. How do I add skills?</span>
+            </h4>
+        </strong>
+        
+        <p ng-show="questions['manage-profile1']" class="animate-slide-in-out answer">If you have not yet added professional skills onto your SMART Profile via GMIS2G, then the “Skills” section of your opportunities@HSBC Profile Page will be blank. To add skills onto your opportunities@HSBC Profile Page, you will first need to add skills onto your SMART Profile via GMIS2G. The skills will subsequently appear on your opportunities@HSBC Profile Page.</p>
+    </div>
+    
+    <div class="help-question">
+        <strong ng-click="toggleQuestion('manage-profile2')">
+            <h4>
+                <i class="glyphicon glyphicon-question-sign mr10"></i>
+                <span>I have skills listed on my profile, but I need to make changes. How do I add or remove skills?</span>
+            </h4>
+        </strong>
+        
+        <p ng-show="questions['manage-profile2']" class="animate-slide-in-out answer">If you have added professional skills onto your SMART Profile via GMIS2G, then the skills will be displayed in the “Skills” section of your opportunities@HSBC Profile Page. To add skills to or remove skills from your opportunities@HSBC Profile Page, you will need to add skills to or remove skills from your SMART Profile via GMIS2G. The updates will subsequently reflect on your opportunities@HSBC Profile Page.</p>
+    </div>
+    
+    <div class="help-question">
+        <strong ng-click="toggleQuestion('manage-profile3')">
+            <h4>
+                <i class="glyphicon glyphicon-question-sign mr10"></i>
+                <span>I do not have any interests listed on my profile. How do I add interests?</span>
+            </h4>
+        </strong>
+        
+        
+        <div ng-show="questions['manage-profile3']" class="animate-slide-in-out pt5 answer">
+            <h5 ng-show="questions['manage-profile3']">When you visit your Profile Page for the first time, the “Interests” section will display the word “NONE”.</h5>
+            <h5 ng-show="questions['manage-profile3']">To add interests onto your Profile Page, proceed with these steps:</h5>
+            <ul class="decimal" ng-show="questions['manage-profile3']">
+                <li>Go to the Home Page.</li>
+                <li>In the Home Page, click on “My Profile” link to launch your Profile Page.</li>
+                <li>In your Profile Page, click on “Edit Profile” button.</li>
+                <li>Under “My Interests”, input an interest into “Enter new interest” field.</li>
+                <li>Click on “Add” button.</li>
+                <li>The newly input interest will be displayed under “My Interests”.</li>
+                <li>Repeat steps 4 to 6 as necessary.</li>
+                <li>Click on “Update” button.</li>
+                <li>Click on “OK” button in confirmation modal window and you will be returned to your Profile Page.</li>
+                <li>In your Profile Page, the newly input interest will be displayed in “Interests” section.</li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="help-question">
+        <strong ng-click="toggleQuestion('manage-profile4')">
+            <h4>
+                <i class="glyphicon glyphicon-question-sign mr10"></i>
+                <span>I have interests listed on my profile. How do I remove interests?</span>
+            </h4>
+        </strong>
+        
+        
+        <div ng-show="questions['manage-profile4']" class="animate-slide-in-out pt5 answer">
+            <h5 ng-show="questions['manage-profile4']">To remove interests from your Profile Page, proceed with these steps:</h5>
+            <ul class="decimal" ng-show="questions['manage-profile4']">
+                <li>Go to the Home Page.</li>
+                <li>In the Home Page, click on “My Profile” link to launch your Profile Page.</li>
+                <li>In your Profile Page, click on “Edit Profile” button.</li>
+                <li>Under “My Interests”, click on the “X” displayed next to the interest you wish to remove.</li>
+                <li>Repeat step 4 as necessary.</li>
+                <li>Click on “Update” button.</li>
+                <li>Click on “OK” button in confirmation modal window and you will be returned to your Profile Page.</li>
+                <li>In your Profile Page, the removed interest will no longer be displayed in “Interests” section.</li>
+            </ul>
+        </div>
+    </div>
+    
+    
+    <div class="help-question">
+        <strong ng-click="toggleQuestion('manage-profile5')">
+            <h4>
+                <i class="glyphicon glyphicon-question-sign mr10"></i>
+                <span>How do I mark myself as actively seeking for opportunities?</span>
+            </h4>
+        </strong>
+        
+        <p ng-show="questions['manage-profile5']" class="animate-slide-in-out answer">When you visit the opportunities@HSBC Home Page for the first time, your account will be created automatically. When you click on “My Profile” in the Home Page, your Profile Page will be created automatically based on existing information stored in other HSBC databases. By default, you will be marked as actively seeking for opportunities.</p>
+    </div>
+
+
+    <div class="help-question">
+        <strong ng-click="toggleQuestion('manage-profile6')">
+            <h4>
+                <i class="glyphicon glyphicon-question-sign mr10"></i>
+                <span>I previously marked myself as not actively seeking for opportunities. How do I mark myself as actively seeking for opportunities?</span>
+            </h4>
+        </strong>
+        
+        
+        <div ng-show="questions['manage-profile6']" class="animate-slide-in-out pt5 answer">
+            <h5 ng-show="questions['manage-profile6']">To mark yourself as actively seeking for opportunities, proceed with these steps:</h5>
+            <ul class="decimal" ng-show="questions['manage-profile6']">
+                <li>Go to the Home Page.</li>
+                <li>In the Home Page, click on “My Profile” link to launch your Profile Page.</li>
+                <li>In your Profile Page, click on “Edit Profile” button.</li>
+                <li>Under “Availability”, <strong><em>check</em></strong> the checkbox for “I am actively looking for a project”.</li>
+                <li>Click on “Update” button.</li>
+                <li>Click on “OK” button in confirmation modal window and you will be returned to your Profile Page.</li>
+                <li>In your Profile Page, the word “YES” is displayed next to “I am actively looking for a project”.</li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="help-question">
+        <strong ng-click="toggleQuestion('manage-profile7')">
+            <h4>
+                <i class="glyphicon glyphicon-question-sign mr10"></i>
+                <span>How do I mark myself as not actively seeking for opportunities?</span>
+            </h4>
+        </strong>
+        
+        
+        <div ng-show="questions['manage-profile7']" class="animate-slide-in-out pt5 answer">
+            <h5 ng-show="questions['manage-profile7']">To mark yourself as not actively seeking for opportunities, proceed with these steps:</h5>
+            <ul class="decimal" ng-show="questions['manage-profile7']">
+                <li>Go to the Home Page.</li>
+                <li>In the Home Page, click on “My Profile” link to launch your Profile Page.</li>
+                <li>In your Profile Page, click on “Edit Profile” button.</li>
+                <li>Under “Availability”, <strong><em>uncheck</em></strong> the checkbox for “I am actively looking for a project”.</li>
+                <li>Click on “Update” button.</li>
+                <li>Click on “OK” button in confirmation modal window and you will be returned to your Profile Page.</li>
+                <li>In your Profile Page, the word “YES” is displayed next to “I am actively looking for a project”.</li>
+            </ul>
+        </div>
+    </div>
+
+</div>

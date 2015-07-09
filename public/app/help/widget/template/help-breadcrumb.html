@@ -1,0 +1,6 @@
+<ol class="breadcrumb">
+    
+    <li ng-repeat="breadcrumb in breadcrumbs track by $index" class="animate-fadeinout-left">
+        <a href="{{breadcrumb.url}}" class="{{($index == (breadcrumbs.length -1)) ? 'active' : ''}}">{{ breadcrumb.label }}</a>
+    </li>
+</ol>

@@ -1,0 +1,64 @@
+<div>
+    <h2>Profile Basics</h2>
+    
+    <div class="help-question">
+        <strong ng-click="toggleQuestion('basics1')">
+            <h4>
+                <i class="glyphicon glyphicon-question-sign mr10"></i>
+                <span>Do I need to create a profile?</span>
+            </h4>
+        </strong>
+        
+        <p ng-show="questions['basics1']" class="animate-slide-in-out answer">When you visit the opportunities@HSBC Home Page for the first time, your account will be created automatically. When you click on “My Profile” in the Home Page, your Profile Page will be created automatically based on existing information stored in other HSBC databases. You will not have to go through a separate process for creating a Profile Page.</p>
+    </div>
+    
+    <div class="help-question">
+        <strong ng-click="toggleQuestion('basics2')">
+            <h4>
+                <i class="glyphicon glyphicon-question-sign mr10"></i>
+                <span>What will I see on my profile?</span>
+            </h4>
+        </strong>
+        
+        
+        <div ng-show="questions['basics2']" class="animate-slide-in-out answwer">
+            <ul class="no-style no-margin" ng-show="questions['basics2']">
+                <li>
+                    <i class="glyphicon glyphicon-ok"></i>
+                    <span>Your name, department name, role, region of employment, and Lotus Notes ID are captured from Active Directory.</span>
+                </li>
+                <li>
+                    <i class="glyphicon glyphicon-ok"></i>
+                    <span>If you have uploaded a photograph to the Staff Photograph Repository via HRDirect, then the photograph will also be displayed.</span>
+                </li>
+                <li>
+                    <i class="glyphicon glyphicon-ok"></i>
+                    <span>If you have not yet added professional skills onto your SMART Profile via GMIS2G, then the “Skills” section of your Profile Page will be blank. If you have added skills onto your SMART Profile via GMIS2G, then the skills will be displayed in the “Skills” section of your Profile Page.</span>
+                </li>
+                <li>
+                    <i class="glyphicon glyphicon-ok"></i>
+                    <span>When you visit your Profile Page for the first time, the “Interests” section will display the word “NONE”.</span>
+                </li>
+                <li>
+                    <i class="glyphicon glyphicon-ok"></i>
+                    <span>By default, you will be marked as actively seeking for opportunities.</span>
+                </li>
+                <li>
+                    <i class="glyphicon glyphicon-ok"></i>
+                    <span>If there are opportunities available that require skills matching the ones displayed in the “Skills” section, then these opportunities will be listed in the “You might be interested in the following projects” section.</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="help-question">
+        <strong ng-click="toggleQuestion('basics3')">
+            <h4>
+                <i class="glyphicon glyphicon-question-sign mr10"></i>
+                <span>My skills are colour coded and they appear inside bubbles. How does this work?</span>
+            </h4>
+        </strong>
+        
+        <p ng-show="questions['basics3']" class="animate-slide-in-out answer">TBD</p>
+    </div>
+</div>

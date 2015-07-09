@@ -11,6 +11,12 @@ angular.module('profile')
                 return;
             }
 
+            $scope.$watch('auth.profile', function() {
+                if (($scope.auth.profile) && ($scope.auth.profile.email === ADMIN_EMAIL)) {
+                    $scope.isAdmin = true;
+                }
+            });
+
             $scope.userId = $scope.auth.profile.user_id;
 
 

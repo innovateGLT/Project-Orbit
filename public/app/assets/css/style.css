@@ -49,6 +49,12 @@ body {
     /* Space out the Bootstrap <hr> more */
 }
 
+.featurette-divider-sm-white {
+    margin: 40px 0;
+    border-top: 1px solid #fff;
+    /* Space out the Bootstrap <hr> more */
+}
+
 .featurette-divider-xs {
     margin: 15px 0;
     /* Space out the Bootstrap <hr> more */
@@ -259,20 +265,15 @@ body {
     padding: 10px 50px;
 }
 
-.profile-list .list-inline > li {
-    padding: 5px;
-}
-
 .profile-list,
 .profile-list > ul {
     font-size: 16px;
 }
 
 .profile-container {
-    border: 1px solid f2f2f2;
+    border: 1px solid #f2f2f2;
     background: #f8f8f8;
     border-radius: 3px;
-    padding: 30px;
     margin-bottom: 30px;
     
     -webkit-box-shadow: 0px 0px 10px -5px rgba(0,0,0,0.75);
@@ -303,22 +304,6 @@ span.label {
 
 .side-tab:hover {
     cursor: pointer;
-}
-
-.panel.panel-default {
-    /*border: none;
-    box-shadow: none !important;
-    border-bottom-right-radius: 0px;
-    border-bottom-left-radius: 0px;*/
-}
-
-.panel-heading {
-    /*border: none;
-    background-color: #eee;*/
-}
-
-.panel-body {
-    /*background-color: #f5f5f5;*/
 }
 
 .panel-title {
@@ -390,7 +375,7 @@ span.label {
     margin: 0 auto;
     position: relative;
     top: 2.0625em;
-    // background: #1d1d1d;
+    /* background: #1d1d1d;*/
     background: #fff;
     overflow: hidden;
 }
@@ -798,7 +783,7 @@ video#bgvid {
 }
 
 .bold-container {
-    background-color: #F5F4F4;
+    background-color: rgba(236, 239, 239, .2);
     width: 100%;
     padding : 40px;
 }
@@ -861,6 +846,7 @@ video#bgvid {
 
 .mt5  {margin-top:5px;}
 .mt10 {margin-top:10px;}
+.mt15 {margin-top:15px;}
 .mt20 {margin-top:20px;}
 .mt30 {margin-top:30px;}
 .mt40 {margin-top:40px;}
@@ -883,6 +869,11 @@ video#bgvid {
 .mb80 {margin-bottom:80px;}
 .mb90 {margin-bottom:90px;}
 .mb100 {margin-bottom:100px;}
+.mb110 {margin-bottom:110px;}
+.mb120 {margin-bottom:120px;}
+.mb130 {margin-bottom:130px;}
+.mb140 {margin-bottom:140px;}
+.mb150 {margin-bottom:150px;}
 
 .ml5 {margin-left:5px;}
 .ml7 {margin-left:7px;}
@@ -923,6 +914,13 @@ video#bgvid {
 .p10 {padding:10px;}
 .p15 {padding:15px;}
 .p20 {padding:20px;}
+
+
+.pt5  {padding-top:5px;}
+.pt10 {padding-top:10px;}
+.pt15 {padding-top:15px;}
+.pt20 {padding-top:20px;}
+
 
 /* line-height */
 .lh5 {line-height:5em;}
@@ -1206,27 +1204,27 @@ video#bgvid {
 
 /* All users animation styles */
 .animated-list-record {
-    -webkit-transition: 1ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
-    -moz-transition: 1ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
-    -ms-transition: 1ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
-    -o-transition: 1ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
-    transition: 1ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+    -webkit-transition: .2s cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+    -moz-transition: .2s cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+    -ms-transition: .2s cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+    -o-transition: .2s cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+    transition: .2s cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
     position: relative;
     display: block;
 }
 
 .animated-list-record.ng-enter {
-    -webkit-animation: bounceIn 1s;
-    -moz-animation: bounceIn 1s;
-    -ms-animation: bounceIn 1s;
-    animation: bounceIn 1s;
+    -webkit-animation: bounceIn .5s;
+    -moz-animation: bounceIn .5s;
+    -ms-animation: bounceIn .5s;
+    animation: bounceIn .5s;
 }
   
 .animated-list-record.ng-leave {
-    -webkit-animation: bounceOut 1s;
-    -moz-animation: bounceOut 1s;
-    -ms-animation: bounceOut 1s;
-    animation: bounceOut 1s;
+    -webkit-animation: bounceOut .2s;
+    -moz-animation: bounceOut .2s;
+    -ms-animation: bounceOut .2s;
+    animation: bounceOut .2s;
 }
 
 user-badge .thumbnail {
@@ -1242,24 +1240,24 @@ user-badge .thumbnail {
 
 /* page entrance and exit style START */
 .animate-fadein-out {
-  -webkit-transition: color .5s, background-color .5s;
-  -moz-transition: color .5s, background-color .5s;
-  -ms-transition: color .5s, background-color .5s;
-  transition: color .5s, background-color .5s;
+  -webkit-transition: color .1s, background-color .1s;
+  -moz-transition: color .1s, background-color .1s;
+  -ms-transition: color .1s, background-color .1s;
+  transition: color .1s, background-color .1s;
 }
 
 .animate-fadein-out.ng-enter {
-    -webkit-animation: fadeInUp .5s;
-    -moz-animation: fadeInUp .5s;
-    -ms-animation: fadeInUp .5s;
-    animation: fadeInUp .5s;
+    -webkit-animation: fadeIn 1s;
+    -moz-animation: fadeIn 1s;
+    -ms-animation: fadeIn 1s;
+    animation: fadeIn 1s;
 }
 
 .animate-fadein-out.ng-leave {
-    -webkit-animation: fadeOutRight .5s;
-    -moz-animation: fadeOutRight .5s;
-    -ms-animation: fadeOutRight .5s;
-    animation: fadeOutRight .5s;
+    -webkit-animation: fadeOut .1s;
+    -moz-animation: fadeOut .1s;
+    -ms-animation: fadeOut .1s;
+    animation: fadeOut .1s;
 }
 
 /* page entrance and exit style END */
@@ -1267,27 +1265,66 @@ user-badge .thumbnail {
 
 /* navigation entrance and exit style START */
 .animate-fadein-down {
-  -webkit-transition: color .5s, background-color .5s;
-  -moz-transition: color .5s, background-color .5s;
-  -ms-transition: color .5s, background-color .5s;
-  transition: color .5s, background-color .5s;
+  -webkit-transition: all .1s;
+  -moz-transition: all .1s;
+  -ms-transition: all .1s;
+  transition: all .1s;
 }
 
 .animate-fadein-down.ng-enter {
-    -webkit-animation: fadeInLeft .5s;
-    -moz-animation: fadeInLeft .5s;
-    -ms-animation: fadeInLeft .5s;
-    animation: fadeInLeft .5s;
+    -webkit-animation: fadeInLeft .2s;
+    -moz-animation: fadeInLeft .2s;
+    -ms-animation: fadeInLeft .2s;
+    animation: fadeInLeft .2s;
 }
 
 .animate-fadein-down.ng-leave {
-    -webkit-animation: fadeOutRight .5s;
-    -moz-animation: fadeOutRight .5s;
-    -ms-animation: fadeOutRight .5s;
-    animation: fadeOutRight .5s;
+    -webkit-animation: fadeOutRight .1s;
+    -moz-animation: fadeOutRight .1s;
+    -ms-animation: fadeOutRight .1s;
+    animation: fadeOutRight .1s;
 }
 
 /* navigation entrance and exit style END */
+
+/* help sidebar entrance and exit style START */
+.animate-fadeinout-left {
+  -webkit-transition: all .2s;
+  -moz-transition: all .2s;
+  -ms-transition: all .2s;
+  transition: all .2s;
+}
+
+.animate-fadeinout-left.ng-enter {
+    -webkit-animation: fadeInLeft .2s;
+    -moz-animation: fadeInLeft .2s;
+    -ms-animation: fadeInLeft .2s;
+    animation: fadeInLeft .2s;
+}
+
+.animate-fadeinout-left.ng-leave {
+    -webkit-animation: fadeOutLeft .2s;
+    -moz-animation: fadeOutLeft .2s;
+    -ms-animation: fadeOutLeft .2s;
+    animation: fadeOutLeft .2s;
+}
+
+/* help sidebar entrance and exit style END */
+
+
+/* slide up and down entrance and exit style START */
+.animate-slide-in-out.ng-hide-remove {
+    -webkit-animation: fadeIn .5s;
+    animation: fadeIn .5s;
+}
+ 
+.animate-slide-in-out.ng-hide-add {
+    -webkit-animation: fadeOut .5s;
+    animation: fadeOut .5s;
+    display: block !important;
+}
+
+/* help sidebar entrance and exit style END */
 
 /* edit profile styles */
 
@@ -1304,16 +1341,10 @@ user-badge .thumbnail {
     margin-right:10px;
 }
 
-.edit-profile .interest > div {
-    padding:3px 10px;
-    float:left;
-    margin:0;
-}
-
 .edit-profile .interest > div > span:first-child {
     float:left;
     margin-right:10px;
-    margin-top:5px;
+    line-height: 1.9em;
 }
 
 /* edit profile styles end */
@@ -1360,7 +1391,7 @@ user-badge .thumbnail {
 }
 /* helper styles END */
 
-/* project thumbnal - macbook pro mockup */
+/* small macbook pro mockup end */
 
 .macbook-pro {
     border: 10px solid #000;      
@@ -1400,6 +1431,8 @@ user-badge .thumbnail {
     background: #a6a8ad;
     border-radius: 0 0 0.625em 0.625em;
 }
+
+/* small macbook pro mockup end */
 
 /* project details */
 
@@ -1444,3 +1477,217 @@ user-badge .thumbnail {
 .user-badge-name {
     min-height: 55px;
 }
+
+.breadcrumb > li > a.active {
+    color: #999999 !important;
+    text-decoration: none;
+    border-bottom: 2px solid #999999;
+    padding-bottom: 5px;
+}
+
+.breadcrumb > li + li:before {
+    content: "\2192" !important;
+}
+
+.help .left-nav-bar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    margin-top: 20px;
+}
+
+.help .left-nav-bar ul li {
+    padding: 5px 0;
+}
+
+.help .left-nav-bar ul li.back {
+    cursor: pointer;
+}
+
+.help .left-nav-bar ul li.back:before {
+    content: "\2190" !important;
+    margin-right: 5px;
+    font-size: 20px;
+}
+
+.help .left-nav-bar ul li a {
+    text-decoration: none;
+}
+
+.help .left-nav-bar ul li a.active {
+    font-weight: bold;
+}
+
+.help .content {
+    color: #565a5c;
+}
+
+.help .content h2 {
+    margin-bottom: 20px;
+}
+
+.help .content p,
+.help .content li,
+.help .help-question h4 {
+    line-height: 2em;
+    float: left;
+    width: 100%;
+}
+
+.help .content ul.decimal {
+    margin-left: 20px;
+    padding: 0;
+    list-style-type: decimal;
+}
+
+.help .content ul.no-style {
+    list-style-type: none;
+    float: left;
+}
+
+.help .content ul.no-style li i,
+.help .content ul.no-style li span {
+    float: left;
+}
+
+.help .content ul.no-style li i {
+    width: 3%;
+    margin-top: 5px;
+}
+
+.help .content ul.no-style li span {
+    width: 95%;
+}
+
+.help .content ul .glyphicon {
+    color: #ffd700;
+}
+
+.help .content .steps {
+    border: 1px solid #f0f0f0;
+    padding: 30px;
+    float: left;
+    width: 100%;
+    background-color: #f8f8f8;
+    border-radius: 2px;
+    margin-top: 30px;
+}
+
+.help .help-question {
+    padding-bottom: 10px;
+    border-bottom: 1px solid #f0f0f0;
+    float: left;
+    width: 100%;
+}
+
+.help .help-question h4 {
+    color: #428bca;
+    cursor: pointer;
+}
+
+.help .help-question h4:hover {
+    color: #2a6496;
+}
+
+.help .help-question h4 span {
+    width: 95%;
+    float: left;
+}
+
+.help .help-question h4 .glyphicon {
+    float: left;
+    font-size: 150%;
+    margin-top: 5px;
+    width: 3.5%;
+}
+
+.help .help-question .answer {
+    margin-left: 4.5%;
+    width: 95.5%;
+}
+
+/* enable absolute positioning */
+.inner-addon { 
+    position: relative; 
+}
+
+/* style icon */
+.inner-addon .glyphicon {
+  position: absolute;
+  padding: 10px;
+  pointer-events: none;
+}
+
+/* align icon */
+.left-addon .glyphicon  { left:  0px;}
+.right-addon .glyphicon { right: 0px;}
+
+/* add padding  */
+.left-addon input  { padding-left:  30px; }
+.right-addon input { padding-right: 30px; }
+
+.profile .skill,
+.profile .interest, .interest, .skill {
+    background-color: #f0f0f0;
+    border-bottom: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    color: rgb(129, 128, 128);
+    font-size: 12px;
+    border-radius: 3px;
+    cursor: pointer;
+    font-weight: bold;
+    margin: 5px;
+    float: left;
+}
+
+.profile .interest,
+.profile .skill { 
+    padding: 6px 17px !important;
+}
+
+/* Profile Styles START */
+.profile .profile-header {
+    background: url('/app/assets/img/background.jpg') no-repeat;
+    margin: 0;
+    background-size: 100% 150px;
+    padding-bottom: 30px;
+}
+
+.profile .profile-main-info {
+    padding: 40px;
+    background-color: rgba(249, 252, 252, 0.5);
+}
+
+.btn-span {
+    padding: 10px 40px;
+}
+
+.profile .tabs div {
+    padding: 5px 0;
+    cursor: pointer;
+    border-bottom: 1px solid #a0a0a0;
+}
+
+.profile .tabs div h4 {
+    display: inline;
+}
+
+.profile .tabs div.active {
+    border-bottom: 3px solid #a0a0a0;
+    color: #333;
+    box-sizing: border-box;
+}
+
+.profile .tabs div:hover {
+    background-color: #f0f0f0;
+}
+
+.profile .tabs div i {
+    margin-right: 5px;
+    color: #c0c0c0;
+}
+
+.profile .tabs div i:hover {
+    color: #a8a8a8;
+}
+/* Profile Styles END */

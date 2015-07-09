@@ -12,11 +12,11 @@
 		    <a class="navbar-brand" href="/">
 				<div class="media">
 					<a class="pull-left" href="/profile">
-						<img width="50px" class="media-object img-circle" src="{{auth.profile.picture}}" alt="Image" >
+						<img width="50px" class="media-object img-circle" ng-src="{{isAdmin ? '/app/assets/img/admin.png' : auth.profile.picture}}" alt="Image" >
 					</a>
 					<div class="media-body">
 						<a href="/" class="header-logo">
-							<img src="/app/assets/img/Opportunities@HSBC_white_notagline.png" width="200"/>
+							<img ng-src="/app/assets/img/Opportunities@HSBC_white_notagline.png" width="200"/>
 						</a>
 						<p>Welcome, {{auth.profile.nickname}}</p>
 					</div>
@@ -44,7 +44,7 @@
 		      
 		    </form>
 
-		    <ul class="nav navbar-nav navbar-right nav-pills">
+		    <ul class="nav navbar-nav navbar-right nav-pills mt15">
 				
 				<li role="presentation" class="login-btn" ng-show="!auth.isAuthenticated" ng-click="login()"><a href="#/">Login</a></li>
 				

@@ -1,0 +1,31 @@
+<div>
+    <h2>Contact Us</h2>
+    
+    <div class="row">
+        <form role="form" class="form-vertical col-md-9 col-lg-9 col-sm-12 col-xs-12" autocomplete="off">
+            <div class="form-group">
+                <label for="email">Name:</label>
+                <div class="inner-addon left-addon">
+                    <i class="glyphicon glyphicon-user"></i>
+                    <input type="text" class="form-control" ng-mode="name" autocomplete="off" />
+                </div>
+            </div>
+          
+            <div class="form-group">
+                <label for="email">Email address:</label>
+                <div class="inner-addon left-addon">
+                    <i class="glyphicon glyphicon-envelope"></i>
+                    <input type="email" class="form-control" ng-model="email" autocomplete="off"/>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email address:</label>
+                <textarea ng-model="message" class="form-control" rows="10" autocomplete="off"></textarea>
+            </div>
+            
+            <button type="submit" class="btn btn-primary pull-right">Submit</button>
+        </form>
+    </div>
+</div>
+

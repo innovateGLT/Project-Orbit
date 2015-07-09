@@ -1,76 +1,82 @@
-<div class="container profile-container">
-    <div class="row edit-profile">
-        <div class="col-md-4 text-center no-padding">
-            <img class="img-circle" width="120px" src="{{user.picture}}">
-            
-            <h3><i ng-show="user.featured" class="glyphicon {{(user.featured) ? 'glyphicon-ok-circle text-success' : '' }} "></i><a href="/user/{{user.user_id}}"> {{user.name}}</a></h3>
-            <p>{{user.job_role}}</p>
-            <p>{{user.dept}}</p>
-            <p>{{user.country}}</p>
-            <p>{{user.email}}</p>
-            
-            <div class="col-md-12 mt30">
-                <hr class="featurette-divider-sm">
+<div class="profile edit-profile">
+    <div class="container container-main">
+        <div class="row profile-header">
+            <div class="col-md-4 text-center profile-main-info">
+                <img class="img-circle" width="150px" ng-src="{{isAdmin ? '/app/assets/img/admin.png' : user.picture}}">
                 
-                <h3>Availability</h3>
-                <label>
-                    <input type="checkbox" value="" ng-model="status"> I am actively looking for a project
-                </label>
-            </div>
-            
-            <div class="col-md-12 edit mt50">
-                <span ng-click="save()" class="btn btn-primary" id="editProfileDone">
-                    <i class="glyphicon glyphicon-ok"></i> Update
-                </span>
-            </div>
-        </div>
-        <div class="col-md-8">
-            
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 mb50">
-                <div class="edit">
-                    <span class="label label-danger" id="editProfile" ng-click="goToProfile()">
-                        <i class="glyphicon glyphicon-arrow-left"></i> Back
+                <h3><i ng-show="user.featured" class="glyphicon {{(user.featured) ? 'glyphicon-ok-circle text-success' : '' }} "></i><a href="/user/{{user.user_id}}"> {{user.name}}</a></h3>
+                <p>{{user.job_role}}</p>
+                <p>{{user.dept}}</p>
+                <p>{{user.country}}</p>
+                <p>{{user.email}}</p>
+                
+                <hr class="featurette-divider-sm-white">
+                
+                <div class="col-md-12">
+                    <h3>Availability</h3>
+                    <label>
+                        <input type="checkbox" value="" ng-model="status"> I am actively looking for a project
+                    </label>
+                </div>
+                
+                <div class="col-md-12 mt30">
+                    <span ng-click="save()" class="btn btn-primary" id="editProfileDone">
+                        <i class="glyphicon glyphicon-ok"></i> Update
                     </span>
                 </div>
             </div>
-            
-            <div class="row">
-                <div class="profile-list">
-                    <h3>My Skills</h3>
-                    <p class="disclaimer disclaimer-light">Skills are automatically retrieved from GMIS, so editing / adding is not applicable.</p>
-                    <ul class="list-inline no-padding">
-                        <li ng-repeat="skill in user.skills"><span class="label label-success">{{skill}}</span></li>
-                    </ul> 
+            <div class="col-md-8">
+                
+                <div class="row mb150">
+                    <div class="text-right col-md-12 col-lg-12">
+                        <span class="label label-danger left btn-span mt15 pull-right" id="backToProfile" ng-click="goToProfile()">
+                            <i class="glyphicon glyphicon-arrow-left"></i> Back
+                        </span>
+                    </div>
                 </div>
-            </div>
-            
-            <div class="row">
+                
+                <div class="row">
+                    <div class="col-md-12 col-lg-12">
+                        <h3>My Skills</h3>
+                        <p class="disclaimer disclaimer-light">Skills are automatically retrieved from GMIS, so editing / adding is not applicable.</p>
+                        <ul class="list-inline no-padding">
+                            <li ng-repeat="skill in user.skills" class="skill"><span>{{skill}}</span></li>
+                        </ul> 
+                    </div>
+                </div>
+                
                 <hr class="featurette-divider-sm">
                 
-                <h3>My Interests</h3>
-                
-                <div class="mb20 left">
-                    <ul class="list-inline no-padding">
-                        <li ng-repeat="interest in interests track by $index" class="animate-fadein-out label label-success interest">
-                            <div>
-                                <span>{{ interest }}</span>
-                                <span class="left close" ng-click="removeInterest($index)" title="Remove">&times;</span>
+                <div class="row">
+                    
+                    <div class="col-md-12 col-lg-12">
+                        <h3>My Interests</h3>
+                        
+                        <div class="mb20 left">
+                            <ul class="list-inline no-padding">
+                                <li ng-repeat="interest in interests track by $index" class="animate-fadein-out interest">
+                                    <div>
+                                        <span>{{ interest }}</span>
+                                        <span class="left close" ng-click="removeInterest($index)" title="Remove">&times;</span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-12 col-lg-12">
+                        <form class="form-inline" ng-submit="addInterest()">
+                            <div class="form-group col-md-9 col-sm-12 col-xs-12">
+                                <input type="text" ng-model="interest" class="form-control cold-md-4" placeholder="Enter new interest" focus>
                             </div>
-                        </li>
-                    </ul>
+                            <div class="form-group col-md-3 col-sm-12 col-xs-12">
+                                <button type="submit" class="btn btn-primary form-control">Add</button>
+                            </div>
+                        </form>
+                    </div>
+                    
                 </div>
                 
-            </div>
-            
-            <div class="row">
-                <form class="form-inline" ng-submit="addInterest()">
-                    <div class="form-group col-md-9 col-sm-12 col-xs-12">
-                        <input type="text" ng-model="interest" class="form-control cold-md-4" placeholder="Enter new interest" focus>
-                    </div>
-                    <div class="form-group col-md-3 col-sm-12 col-xs-12">
-                        <button type="submit" class="btn btn-primary form-control">Add</button>
-                    </div>
-                </form>
             </div>
         </div>
     </div>

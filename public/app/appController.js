@@ -16,7 +16,7 @@ angular.module('app')
             //      the main container is hidden on the My Pofile page and User profile page
             
             $scope.isNavigationVisibile = $location.path() !== "/";
-            $scope.isContainerVisible = $location.path() !== "/profile";
+            $scope.isContainerVisible = $location.path() !== "/profile" && $location.path() !== "/profile/edit";
             $scope.isUserViewPage = $location.path().indexOf("/user/list") === -1 && $location.path().indexOf("/user") === 0;
             
             if ( $location.path() == "/search" ) {
