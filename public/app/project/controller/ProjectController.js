@@ -26,7 +26,6 @@ angular.module('project')
                 { id : "JobShadowing", name : "Job Shadowing" },
                 { id : "BusinessInteractions", name : "Business Interactions" },
                 { id : "AdventureAssignments", name : "Adventure Assignments" },
-                { id : "FindaMentorMentee", name : "Find a Mentor / Mentee" },
                 { id : "OtherOpportunities", name : "Other Opportunities" },
             ];
             $scope.project.category = $scope.defaultCategories[3];

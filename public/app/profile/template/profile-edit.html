@@ -38,7 +38,7 @@
                 <div class="row">
                     <div class="col-md-12 col-lg-12">
                         <h3>My Skills</h3>
-                        <p class="disclaimer disclaimer-light">Skills are automatically retrieved from GMIS, so editing / adding is not applicable.</p>
+                        <p class="alert alert-info">Skills are automatically retrieved from GMIS, so editing / adding is not applicable.</p>
                         <ul class="list-inline no-padding">
                             <li ng-repeat="skill in user.skills" class="skill"><span>{{skill}}</span></li>
                         </ul> 
@@ -64,7 +64,7 @@
                         </div>
                     </div>
                     
-                    <div class="col-md-12 col-lg-12 left">
+                    <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 left">
                         <form class="form-inline" ng-submit="addInterest()">
                             <div class="form-group col-md-9 col-sm-12 col-xs-12">
                                 <input type="text" ng-model="interest" class="form-control cold-md-4" placeholder="Enter new interest" focus>

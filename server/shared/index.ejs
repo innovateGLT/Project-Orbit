@@ -7,11 +7,13 @@
 </head>
 <body ng-controller="appController">
     
-    <div class="loading-awesome overlay animate-slide-in-out" ng-show="isLoadingVisible">
-    </div>
+    <!-- Trick to preload image -->
+    <img ng-src="/app/assets/img/Opportunities@HSBC_accelerateyourcareer.png" class="hide"/>
+    
+    <div class="loading-awesome overlay animate-slide-in-out" ng-show="isLoadingVisible"></div>
     <div class="loading-awesome message animate-slide-in-out" ng-show="isLoadingVisible">
         
-        <img ng-src="/app/assets/img/Opportunities@HSBC_accelerateyourcareer.png"/>
+        <div class="loading-image"></div>
         
         <h2>Loading awesomeness...</h2>
     </div>

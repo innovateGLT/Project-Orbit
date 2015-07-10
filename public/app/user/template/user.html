@@ -50,7 +50,7 @@
                         <div class="col-sm-12" >
                         	<div id="bubbleChart"></div>
                         </div>
-                        <label ng-if="user.skills.length == 0" class="alert alert-danger col-md-12">Failed to retrieved skills from GMIS</label>
+                        <label ng-if="user.skills.length == 0" class="alert alert-warning col-md-12">User hasn't completed his / her GMIS profile yet.</label>
                     </div>
                 </div> 
                 
@@ -58,8 +58,9 @@
                     <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
                         <h3>Interests</h3>
                         <ul class="list-inline">
-                            <li ng-repeat="interest in user.interests" class="interest"><span>{{interest}}</span></li>
+                            <li ng-repeat="interest in user.interests" class="interest" ng-click="search(interest)"><span>{{interest}}</span></li>
                         </ul>
+                        <label ng-if="user.interests.length == 0" class="alert alert-warning col-md-12">This user hasn't added any interest yet.</label>
                     </div>
                 </div>
             </div>

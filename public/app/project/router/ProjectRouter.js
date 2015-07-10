@@ -13,7 +13,7 @@ angular.module('project')
                     controller: 'SearchController'
                 })
                 
-                .when('/project', {
+                .when('/project/new', {
                     templateUrl: '/app/project/template/project.html',
                     controller: 'ProjectController'
                 })
