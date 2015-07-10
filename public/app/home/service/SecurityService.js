@@ -79,7 +79,7 @@ angular.module('home')
             window.location = '/';
         };
 
-        var auth = function() {
+        /*var auth = function() {
             var profile = getProfile();
 
             // console.log("PROFLE GET", profile);
@@ -100,9 +100,9 @@ angular.module('home')
 	                   });
             	   });
             }
-        };
+        };*/
         
-        /*var auth = function() {
+        var auth = function() {
             var profile = store.get("profile");
 
             // console.log("PROFLE GET", profile);
@@ -126,7 +126,7 @@ angular.module('home')
 
                 });
             }
-        };*/
+        };
         
         var loadUserInfo = function () {
             // summary

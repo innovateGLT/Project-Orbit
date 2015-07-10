@@ -282,6 +282,13 @@ angular.module('project')
                 store.remove("searchParams");
 
             };
+
+            $scope.cancelEdit = function () {
+                // summary
+                //      cancel project editing and return to project details page
+
+                $location.path("/project/" + $scope.project._id);
+            };
         }
     ])
 ;

@@ -14,16 +14,19 @@
                 
                 <div class="col-md-12">
                     <h3>Availability</h3>
-                    <label>
-                        <input type="checkbox" value="" ng-model="status"> I am actively looking for a project
-                    </label>
+                    <div class="checkbox checkbox-success">
+                        <input id="checkbox1" type="checkbox" ng-model="status" ng-change="setAvailability()"/>
+                        <label for="checkbox1">
+                            I am actively looking for a project
+                        </label>
+                    </div>
                 </div>
                 
-                <div class="col-md-12 mt30">
+                <!--<div class="col-md-12 mt30">
                     <span ng-click="save()" class="btn btn-primary btn-lg" id="editProfileDone">
                         <i class="glyphicon glyphicon-ok"></i> Save Profile
                     </span>
-                </div>
+                </div>-->
             </div>
             <div class="col-md-8">
                 
@@ -45,7 +48,7 @@
                     </div>
                 </div>
                 
-                <hr class="featurette-divider-sm">
+                <hr/>
                 
                 <div class="row">
                     

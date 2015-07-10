@@ -25,7 +25,11 @@ angular.module('app')
                 store.set("searchParams", $location.search());
             }
             
+            // TODO : REIMPLEMENT THIS AFTER BACK BEHAVIOUR HAS BEEN MOVED TO SESSION STORAGE
+            //$location.hash('navigationBar');
+            
             $anchorScroll();
+            //$location.hash('');
         });
         
         // if the user is authenticated already and refreshes the browser, delay should only be 1s coz we already have all employee info
@@ -35,7 +39,7 @@ angular.module('app')
         $scope.isLoadingVisible = true;
         while ( $scope.isLoadingVisible ) {
             
-            if ( staffDetails_name ) {
+            if ( true ) {
                 
                 $timeout(hideLoadingOverlay, $scope.overlayTimeout);
                 

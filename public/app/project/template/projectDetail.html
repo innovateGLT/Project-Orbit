@@ -1,26 +1,40 @@
-<div class="container" style="min-height: 75%;">
-	<div class="row pull-right text-right">
-        <div class="edit col-md-12 col-lg-12 col-xs-12 col-sm-12" style="position:relative;">
-            <span class="label label-danger" id="viewProject" ng-click="backToList()">
-                <i class="glyphicon glyphicon-arrow-left"></i> Back
-            </span>
-        </div>
-    </div>
+<div class="project-detail">
+	<div class="container">
+        <div class="row project-detail-header">
+
 	
+
 	<!-- HEADER PART -->
-	<div class="page-header row">
+	<div class="row">
 
 		<!-- Project title and actions section -->
 		<!-- Use green for Available, red for In Progress, grey for Completed -->
 		<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
-			<div class="col-md-3 col-lg-3 colsm-12 col-xs-12">
+			<div class="col-md-3 col-lg-3 colsm-12 col-xs-12 project-detail-main-info">
 				<div class="macbook-pro">
 					<img class="img img-responsive" ng-src="/app/assets/img/categories/full/{{project.category}}.png" style="">
 				</div>
 				<div class="macbook-pro-base"></div>
+
+				<!-- Project actions -->
+				<div class="row">
+					<div class="row text-center mt20">
+						<div ng-show="hasBeenInvited && !hasAccepted" href="#" class="btn btn-success form-action-buttons" ng-click="acceptInvitation(auth.profile)"><span class="glyphicon glyphicon-save"></span>Accept Invitation</div>
+						<div ng-show="isAdmin" href="#" class="btn btn-danger form-action-buttons" ng-click="delete()"><span class="glyphicon glyphicon-trash"></span>Delete</div>
+						<div ng-show="(!isOwner) && (hasApplied==false) && !hasBeenInvited && !hasAccepted" href="#" class="btn btn-success form-action-buttons" ng-click="apply()"><span class="glyphicon glyphicon-save"></span> Apply</div>
+					</div>
+				</div>
 			</div>
-			<div class="col-md-6 col-lg-9 col-sm-12 col-xs-12 no-padding">
-				<h1 style="margin-top: 0;" class="col-md-12 col-lg-12">
+			<div class="col-md-9 col-lg-9 col-sm-12 col-xs-12 no-padding">
+				<div class="row mb130">
+					<div class="text-right col-md-12 col-lg-12">
+						<span class="label label-danger left btn-span mt15 pull-right" id="viewProject" ng-click="back()">
+							<i class="glyphicon glyphicon-arrow-left"></i> Back
+						</span>
+					</div>
+				</div>
+                
+				<h1 class="col-md-12 col-lg-12">
 					<i ng-show="isAdmin" ng-click="feature()" class="mr10 icon-featured {{(project.featured) ? 'icon-featured-active' : 'icon-featured-inactive' }}"></i> {{project.title}}
 					<small style="color: green">{{project.status}}</small>
 				</h1>
@@ -34,30 +48,19 @@
 						</small>
 						</h2>
 					</div>
-					<div ng-show="logginUserSelectedForProject" class="col-md-8 col-lg-8 col-sm-12 col-xs-12 text-right no-padding">
+				</div>
+				<div class="row">
+					<div ng-show="logginUserSelectedForProject" class="col-md-12 col-lg-12 col-sm-12 col-xs-12 text-right no-padding">
 						
 						{{ (isRated == true) ? 'You have rated this project\'s owner' : 'Rate this project\'s owner:'}} <rating ng-model="rate" max="max" readonly="isReadonly" on-hover="hoveringOver(value)" on-leave="overStar = null"></rating>
 						<span class="label" ng-class="{'label-warning': percent<30, 'label-info': percent>=30 && percent<70, 'label-success': percent>=70}" ng-show="overStar && !isReadonly">{{percent}}%</span>
 					</div>
 				</div>
-				
-				<!-- Project actions -->
-				<div class="row">
-					<div class="col-md-12 col-lg-12 mt20 ml20">
-						<button ng-show="hasBeenInvited" class="btn btn-primary" ng-click="acceptInvitation(auth.profile)">Accept this project</button>
-						<button ng-show="isAdmin" class="btn btn-danger" ng-click="delete()">Delete</button>
-					</div>
-				</div>
 			</div>
-            <div class="row pull-right text-right">
-                <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
-                    <div ng-show="(!isOwner) && (hasApplied==false)" href="#" class="btn btn-primary pull-right" ng-click="apply()"><span class="glyphicon glyphicon-save"></span> Apply</div>
-                </div>
-            </div>
 		</div>
 		
 	</div> <!-- /. HEADER PART -->
-	
+	<hr />
 	<!-- PROJECT DETAILS -->
 	<div class="row project-details">
 		<div class="col-md-6 col-lg-6">
@@ -133,9 +136,9 @@
 					<div id="collapseTwo" class="panel-collapse collapsed in" role="tabpanel" aria-labelledby="headingTwo">
 						<div class="panel-body">
 							<!-- Tab content goes here -->
-							<div class="profile-list">
-								<ul class="list-inline">
-									<li ng-repeat="skill in project.skillset" ng-click="search(skill)"><span class="label label-success">{{skill}}</span></li>
+							<div class="skillset">
+								<ul class="list-inline left">
+									<li ng-repeat="skill in project.skillset" ng-click="search(skill)"><span class="skill">{{skill}}</span></li>
 								</ul>
 							</div>
 						</div>
@@ -254,12 +257,16 @@
 						
 						<!--<div class="btn btn-lg btn-info" ng-click="ask();"><span class="glyphicon glyphicon-info-sign" ></span> {{ (isOwner) ? 'Answer' : 'Ask' }}</div>-->
 						
-						<form class="form-horizontal" ng-submit="submitComment()">
-							</br>
-							<textarea class="form-control" id="project-skillset" placeholder="Enter comment / question" ng-model="comment" name="project-skillset"></textarea >
-							</br>
-							<button id="project-submit" name="project-submit" class="btn btn-primary" >Submit</button>
-						</form>
+						<div class="row">
+							<div class="col-md-12 col-lg-12 col-xs-12 col-sm-12">
+								<form class="form-horizontal" ng-submit="submitComment()">
+									</br>
+									<textarea class="form-control" id="project-skillset" placeholder="Enter comment / question" ng-model="comment" name="project-skillset"></textarea >
+									</br>
+									<button id="project-submit" name="project-submit" class="btn btn-primary pull-right">Submit</button>
+								</form>
+							</div>
+						</div>
                         
                         <hr class="featurette-divider-xs">
                         
@@ -287,5 +294,5 @@
 			</div>
         </div>
 	</div>
-	
+	</div></div>
 </div>

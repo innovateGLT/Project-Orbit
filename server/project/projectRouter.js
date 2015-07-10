@@ -64,10 +64,18 @@ router.get('/featured', function(req, res, next) {
 
 /* GET /projects/completed/by_user_id/:user_id */
 router.get('/completed/by_user_id/:user_id', function(req, res, next) {
+    // summary
+    //      retrieve all projects owned by this user and all projects he is involved with, which has Completed status
+    // params
+    //      user_id - the id of the user
+    // returns
+    //      the list of completed projects
 
-    // console.log("USEr ID",req.params.user_id );
     var query = Project.find({
-        'user.user_id': req.params.user_id,
+        $or : [
+            { 'user.user_id': req.params.user_id },
+            { 'selectedUsers.user_id' : req.params.user_id } 
+        ],
         'status': 'Completed'
     });
 
@@ -82,6 +90,7 @@ router.get('/matched/by_user_id/:user_id', function(req, res, next) {
     // summary
     //      get project suggestions based on the users skills and interests
     //      retrieve the user skills and interests first, and use it at as parameters in retrieving matched projects
+    //      retrieve only projects that user is not involved, invited and applied
     // params
     //      user_id - the user id of the current user
     // return
@@ -109,7 +118,16 @@ router.get('/matched/by_user_id/:user_id', function(req, res, next) {
         var query = Project.find({
             "skillset" : { 
                 $in : skillsAndInterests 
-            } 
+            },
+            "selectedUsers.user_id" : {
+                $ne : req.params.user_id
+            },
+            "invitedUsers.user_id" : {
+                $ne : req.params.user_id
+            },
+            "appliedUsers.user_id" : {
+                $ne : req.params.user_id
+            }
         }).limit(4);
         
         query.exec(function (err, records) {
@@ -127,27 +145,35 @@ router.get('/matched/by_user_id/:user_id', function(req, res, next) {
 
 /* GET /projects/by_user_id/:user_id */
 router.get('/by_user_id/:user_id', function(req, res, next) {
+    // summary
+    //      retrieves all project authored by this user and projects currently he's involved with
+    // params
+    //      user_id - the id of the user
+    // return 
+    //      the list of projects
 
-    // console.log("USEr ID",req.params.user_id );
-    var query = Project.find({
-        'user.user_id': req.params.user_id
-    });
 
-    query.or([{
-        status: "Open"
-    }, {
-        status: "In Progress"
-    }]);
+    Project
+        .find({
+            $or : [
+                {'user.user_id' : req.params.user_id},
+                { 'selectedUsers' : {
+                    $elemMatch : { 'user_id' : req.params.user_id }
+                }}
+            ]
+        })
+        
+        .where('status').in(['Open', 'In Progress'])
 
-    query.exec(function(err, post) {
-        if (err) return next(err);
-        res.json(post);
-    });
+        .exec(function(err, post) {
+            if (err) return next(err);
+            res.json(post);
+        });
 });
 
 router.get('/invited', function(req, res, next) {
 
-    console.log("USEr ID", req.query.id);
+    console.log("USER ID", req.query.id);
     var query = Project.find({
         'invitedUsers': {
             $elemMatch: {

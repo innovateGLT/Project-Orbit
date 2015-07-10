@@ -83,15 +83,84 @@ angular.module('profile')
             }, function( matchedProjects ) {
 
                 $scope.matchedProjects = matchedProjects;
+
+                /*$scope.filteredMatchedProjects = [];
+                
+                $scope.removeCurrentProjects();
+                $scope.removeCompletedProjects();
+                $scope.removeInvitations();*/
                 
                 if ( $scope.matchedProjects && $scope.matchedProjects.length > 0 ) {
                     $scope.projectTabs++;
                 }
             });
+            
+            $scope.removeCurrentProjects = function () {
+                // summary
+                //      this function would remove current projects from the list of matched projects
+                // tags
+                //      private
+                
+                $scope.projects.forEach( function ( project ) {
+                    
+                    $scope.matchedProjects.forEach(function ( matchedProject ) {
+
+                        if ( matchedProject._id !== project._id && $scope.filteredMatchedProjects.indexOf( project ) == -1 ) {
+
+                            // if the two project id's doesn't matched, we add it
+                            $scope.filteredMatchedProjects.push( project );
+                        }
+
+                    });
+
+                });
+            };
+            
+            $scope.removeCompletedProjects = function () {
+                // summary
+                //      this function would remove completed projects from the list of matched projects
+                // tags
+                //      private
+                
+                $scope.completedProjects.forEach( function ( completedProject ) {
+                    
+                    $scope.matchedProjects.forEach(function ( matchedProject ) {
+
+                        if ( completedProject._id !== matchedProject._id && $scope.filteredMatchedProjects.indexOf( completedProject ) == -1 ) {
+
+                            // if the two project id's doesn't matched, we add it
+                            $scope.filteredMatchedProjects.push( completedProject );
+                        }
+
+                    });
+
+                });
+            };
+            
+            $scope.removeInvitations = function () {
+                // summary
+                //      this function would remove project invitations from the list of matched projects
+                // tags
+                //      private
+                
+                $scope.invitedProjects.forEach( function ( invitation ) {
+                    
+                    $scope.matchedProjects.forEach(function ( matchedProject ) {
+
+                        if ( invitation._id !== matchedProject._id && $scope.filteredMatchedProjects.indexOf( invitation ) == -1 ) {
+
+                            // if the two project id's doesn't matched, we add it
+                            $scope.filteredMatchedProjects.push( invitation );
+                        }
+
+                    });
+
+                });
+            };
 
             $scope.editProfile = function() {
                 $location.path("/profile/edit");
-            }
+            };
             
             var getSkills = function() {
             	$scope.skillList = [];

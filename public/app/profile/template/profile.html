@@ -45,10 +45,10 @@
                 </div>
                 
                 <div class="row" ng-show="skillsActive">
-                    <div class="profile-list col-md-12 col-lg-12 col-sm-12 col-xs-12">
+                    <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
                     	<h3>Skills</h3>
                         <p class="alert alert-info">Your skills are automatically retrieved from GMIS. The bigger the bubble, the better the expertise.</p>
-                        <div class="col-sm-12" >
+                        <div class="col-sm-12">
                         	<div id="bubbleChart"></div>
                         </div>
                         <label ng-if="user.skills.length == 0" class="alert alert-warning col-md-12">Failed to retrieved skills from GMIS.</label>
@@ -59,7 +59,7 @@
                     <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
                         <h3>Interests</h3>
                         <p class="alert alert-info">You can click on the interests below to trigger a search.</p>
-                        <ul class="list-inline left">
+                        <ul class="list-inline">
                             <li ng-repeat="interest in user.interests" class="interest" ng-click="search(interest)"><span>{{interest}}</span></li>
                         </ul>
                     </div>
@@ -71,19 +71,19 @@
         
         <div class="row mb20">
             <div class="col-md-12 col-lg-12 tabs">
-                <div class="col-md-{{12 / projectTabs}} col-lg-{{12 / projectTabs}} col-xs-{{12 / projectTabs}} col-sm-{{12 / projectTabs}} text-center {{projectTabContainers['current'] ? 'active' : 'fuck'}}" ng-click="showProjectsTab('current')" ng-if="projects.length">
+                <div class="col-md-3 col-lg-3 col-xs-12 col-sm-12 text-center {{projectTabContainers['current'] ? 'active' : ''}}" ng-click="showProjectsTab('current')">
                     <i class="glyphicon glyphicon-random"></i>
                     <h4>Current Projects</h4>
                 </div>
-                <div class="col-md-{{12 / projectTabs}} col-lg-{{12 / projectTabs}} col-xs-{{12 / projectTabs}} col-sm-{{12 / projectTabs}} text-center {{projectTabContainers['completed'] ? 'active' : ''}}" ng-click="showProjectsTab('completed')" ng-if="completedProjects.length">
+                <div class="col-md-3 col-lg-3 col-xs-12 col-sm-12 text-center {{projectTabContainers['completed'] ? 'active' : ''}}" ng-click="showProjectsTab('completed')">
                     <i class="glyphicon glyphicon-check"></i>
                     <h4>Completed Projects</h4>
                 </div>
-                <div class="col-md-{{12 / projectTabs}} col-lg-{{12 / projectTabs}} col-xs-{{12 / projectTabs}} col-sm-{{12 / projectTabs}} text-center {{projectTabContainers['invitations'] ? 'active' : ''}}" ng-click="showProjectsTab('invitations')" ng-if="invitedProjects.length">
+                <div class="col-md-3 col-lg-3 col-xs-12 col-sm-12 text-center {{projectTabContainers['invitations'] ? 'active' : ''}}" ng-click="showProjectsTab('invitations')">
                     <i class="glyphicon glyphicon-magnet"></i>
                     <h4>Invitations</h4>
                 </div>
-                <div class="col-md-{{12 / projectTabs}} col-lg-{{12 / projectTabs}} col-xs-{{12 / projectTabs}} col-sm-{{12 / projectTabs}} text-center {{projectTabContainers['suggestions'] ? 'active' : ''}}" ng-click="showProjectsTab('suggestions')" ng-if="matchedProjects.length">
+                <div class="col-md-3 col-lg-3 col-xs-12 col-sm-12 text-center {{projectTabContainers['suggestions'] ? 'active' : ''}}" ng-click="showProjectsTab('suggestions')">
                     <i class="glyphicon glyphicon-flag"></i>
                     <h4>Suggestions</h4>
                 </div>
@@ -92,22 +92,26 @@
         
         
         <!-- The current projects I am involved with -->
-        <div class="container bold-container" ng-if="projects.length > 0" ng-show="projectTabContainers['current']">
+        <div class="container bold-container" ng-show="projectTabContainers['current']">
+            <div class="alert alert-info">Have free time? Have an amazing idea? Want to collaborate with others? Click on New Project now.</div>
             <project-list projects="projects" class="container"></project-list>
         </div>
         
         <!-- Projects I have contributed -->
-        <div class="container bold-container" ng-if="completedProjects.length > 0" ng-show="projectTabContainers['completed']">
+        <div class="container bold-container" ng-show="projectTabContainers['completed']">
+            <div class="alert alert-info">Learned a lot from these projects and worked with cool people!</div>
             <project-list projects="completedProjects" class="container"></project-list>
         </div>
         
         <!-- The list of project that I am invited to join / contribute -->
-        <div class="container bold-container" ng-if="invitedProjects.length > 0" ng-show="projectTabContainers['invitations']">
+        <div class="container bold-container" ng-show="projectTabContainers['invitations']">
+            <div class="alert alert-info">You're profile looks awesome and you're getting noticed! People want you in their project!</div>
             <project-list projects="invitedProjects" class="container"></project-list>
         </div>
         
         <!-- Project suggestions based on the users skills and interests -->
-        <div class="container bold-container" ng-if="matchedProjects.length > 0" ng-show="projectTabContainers['suggestions']">
+        <div class="container bold-container" ng-show="projectTabContainers['suggestions']">
+            <div class="alert alert-info">Have free time? Have an amazing idea? Want to collaborate with others? Click on New Project now.</div>
             <project-list projects="matchedProjects" class="container"></project-list>
         </div>
     </div>

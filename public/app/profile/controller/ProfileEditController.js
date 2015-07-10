@@ -46,23 +46,21 @@ angular.module('profile')
                 user.interests = $scope.interests;
 
                 user.status = $scope.status;
-                $scope.status = !$scope.status;
-
 
                 var deferred = ProfileService.update({
                     id: user._id
                 }, user).$promise;
                 
                 deferred.then(function () {
-                    
-                    SweetAlert.swal({
+                    console.log("User profile update!");  
+                    /*SweetAlert.swal({
                         title: "Saved!",
                         type: "success",
                         text: "The user's profile has been updated."
                     }, function(){ 
                         console.log("The user's profile has been updated.");
                         $scope.goToProfile();
-                    });
+                    });*/
                 });
                 
             };
@@ -73,14 +71,42 @@ angular.module('profile')
             };
             
             $scope.addInterest = function() {
+                // summary
+                //      save the user profile after adding an interest
+                
+                var interests = [];
                 if ( $scope.interest ) {
-                    $scope.interests.push($scope.interest.trim());
+                    
+                    interests = $scope.interest.split(",");
+                    if ( interests.length > 0 ) {
+                        
+                        interests.forEach( function ( interest ) {
+                            $scope.interests.push(interest.trim());
+                        } );
+                    } else {
+                        $scope.interests.push($scope.interest.trim());
+                    }
+                    
                     $scope.interest = "";
                 }
+                
+                $scope.save();
+            };
+            
+            $scope.setAvailability = function () {
+                // summary
+                //      save the availability of the user
+                
+                $scope.save();
             };
               
             $scope.removeInterest = function(index) {
+                // summary
+                //      save the user profile after removing an interest
+                
                 $scope.interests.splice(index, 1);
+                
+                $scope.save();
             };
               
             $scope.clearAll = function() {

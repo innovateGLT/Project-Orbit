@@ -1,6 +1,6 @@
 <div>
     <h2 class="{{ (projects.length == 0) ? 'title' : 'text-center' }}"> <span ng-transclude></span> </h2>
-    <div>
+    <div class="row">
         <div class="col-sm-6 text-center col-md-3 col-xl-3" ng-repeat="project in projects">
             <project-badge project="project"></project-badge>
         </div>

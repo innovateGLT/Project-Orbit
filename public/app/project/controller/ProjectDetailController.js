@@ -33,9 +33,12 @@ angular.module('project')
             };
 
 
-            $scope.project = Projects.get({
+            Projects.get({
                 id: $routeParams.id
-            }, function() {
+            }, function( project ) {
+
+                $scope.project = project;
+
                 if ($scope.auth.profile.user_id == $scope.project.user.user_id) {
                     $scope.isOwner = true;
                 } else {
@@ -46,6 +49,9 @@ angular.module('project')
                     $scope.isOwner = true;
                     $scope.isAdmin = true;
                 }
+
+                // check if the user has been selected
+                $scope.hasAccepted = $scope.isUserSelected( $scope.auth.profile );
 
                 $scope.matchedUsers = UserService.getMatches({
                     skills: $scope.project.skillset.join(',')
@@ -480,20 +486,30 @@ angular.module('project')
             }
 
 
-            $scope.acceptInvitation = function(profile) {
+            $scope.acceptInvitation = function( profile ) {
                 var user = {
                     user_id: profile.user_id,
                     name: profile.name
                 };
 
-                var exist = false;
-                for (var i = 0; i < $scope.project.selectedUsers.length; i++) {
-                    if (user.user_id == $scope.project.selectedUsers[i].user_id) {
-                        exist = true;
-                    }
-                };
-                if (exist == false) {
+                // if user is not yet selected
+                if ( !$scope.isUserSelected( user ) ) {
+                    
+                    // set that the user has accepted the invitation
+                    $scope.hasAccepted = true;
+                    
                     $scope.project.selectedUsers.push(user);
+                    
+                    // remove the user from the list of invited users
+                    var refreshedListOfInvitedUsers = [];
+                    for (var i = 0; i < $scope.project.invitedUsers.length; i++) {
+                        if (user.user_id != $scope.project.invitedUsers[i].user_id) {
+                            refreshedListOfInvitedUsers[i] = $scope.project.invitedUsers[i];
+                        }
+                    }
+                    
+                    $scope.project.invitedUsers = refreshedListOfInvitedUsers;
+                    
                 } else {
                     // alert("you have accept this invitation this user");
                     SweetAlert.swal("Error!", "You have accepted this invitation already!", "error");
@@ -507,6 +523,24 @@ angular.module('project')
                     SweetAlert.swal("Done!", "You have accepted this the invitation!", "success");
                 });
 
+            };
+
+            $scope.isUserSelected = function ( /* Object */user ) {
+                // summary
+                //      check if the user has been selected for the project
+                // params
+                //      user - the user to check
+                // return
+                //      true if the user is in the list of selected users, otherwise false
+                
+                var exists = false;
+                for (var i = 0; i < $scope.project.selectedUsers.length; i++) {
+                    if (user.user_id == $scope.project.selectedUsers[i].user_id) {
+                        exists = true;
+                    }
+                }
+                
+                return exists;
             };
 
             $scope.accept = function(profile) {
@@ -584,7 +618,7 @@ angular.module('project')
 
             $scope.returnUrl = $location.hash();
 
-            $scope.backToList = function () {
+            $scope.back = function () {
                 // summary
                 //      return back to projects list
                 //      if a hash is existing in the url, we determine that the user came from the projects list filtered by category
