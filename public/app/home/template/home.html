@@ -268,7 +268,28 @@
 </div>
 
 <!-- Featured projects -->
+
+<!--<carousel interval="5000">
+    <slide ng-repeat="slide in slides" active="project.active">
+        <div class="thumbnail project-thumbnail">
+            <img class="img-circle" width="140px" ng-src="/app/assets/img/categories/300x300/{{slide.category}}.png">
+            <h3>{{project.title}}</h3>
+            <div class="featured-project">
+                <i class="glyphicon {{(project. featured) ? 'glyphicon-ok-circle text-success' : 'ng-hide' }} "></i> 
+        
+                <i class="glyphicon {{(slide.visibility == 'global') ? 'glyphicon-globe text-success' : 'ng-hide' }} "></i>
+            </div>
+            <p class="project-desc" title="{{slide.description}}">{{slide.description | characters : 100}}</p>
+            
+            <p ng-show="isAdmin" class="text-success">{{slide.country}}</p>
+            <p ng-show="isAdmin" class="text-danger">{{slide.visibility | uppercase}}</p>
+            
+            <p>By <a href="/user/{{slide.user.user_id}}#{{returnUrl}}"> {{slide.user.name}} </a></p>
+            <p><a class="btn btn-default" href="/project/{{slide._id}}#{{returnUrl}}">View details »</a></p>
+        </div>
+    </slide>
+</carousel>-->
+
 <div class="container bold-container" ng-if="featuredProjects.length > 0">
     <project-list projects="featuredProjects" class="container"><h1 class="featurette-heading mb50">Featured Projects</h1></project-list>
 </div>
-
