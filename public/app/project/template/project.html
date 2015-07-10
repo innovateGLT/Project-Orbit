@@ -1,3 +1,211 @@
+<div class="project-detail">
+    <div class="container">
+        <div class="row project-detail-header">
+            <div class="col-md-3 col-lg-3 col-sm-12 col-xs-12 text-center project-detail-main-info">
+                
+                <div class="macbook-pro">
+					<img class="img img-responsive" ng-src="/app/assets/img/categories/full/{{project.category.id}}.png" style="">
+				</div>
+                <div class="macbook-pro-base"></div>
+                
+                <div class="project-preview">
+                    <h3>{{project.title}}</h3>
+                    <div class="featured-project">
+                        <i class="glyphicon {{(project. featured) ? 'glyphicon-ok-circle text-success' : 'ng-hide' }} "></i> 
+                
+                        <i class="glyphicon {{(project.visibility == 'global') ? 'glyphicon-globe text-success' : 'ng-hide' }} "></i>
+                    </div>
+                    <p class="project-desc" title="{{project.description}}">{{project.description | characters : 100}}</p>
+                    
+                    <p ng-show="isAdmin" class="text-success">{{project.country}}</p>
+                    <p ng-show="isAdmin" class="text-danger">{{project.visibility | uppercase}}</p>
+                    
+                    <p>By <a>{{auth.profile.name}}</a></p>
+                    <p><a class="btn btn-default" disabled="disabled">View details »</a></p>
+                </div>
+            </div>
+            <div class="col-md-9 col-lg-9 col-sm-12 col-xs-12 left">
+                <div class="row mb130">
+                    <div class="text-right col-md-12 col-lg-12">
+                        <span class="label label-danger left btn-span mt15 pull-right" id="editProfile" ng-click="cancel()">
+                            <i class="glyphicon glyphicon-ban-circle"></i> Cancel
+                        </span>
+                    </div>
+                </div>
+                
+                <form class="form-horizontal col-md-9 col-lg-9" ng-submit="save()" ng-show="auth.isAuthenticated">
+
+                    <!-- Form Name -->
+                    <div>
+                        <h2>{{ (isNewProject) ? "Create a new Project" : "Edit The Project" }}</h2>
+                    </div>
+                    
+                    <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="project-title">Project Title</label>
+                        <div class="col-md-8">
+                            <input id="project-title" name="project-title" type="text" placeholder="Your Project Title" class="form-control input-md" ng-required="true" ng-model="project.title">
+                        </div>
+                    </div>
+                    <!-- Multiple Radios -->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="project-category">Project Category</label>
+                        <div class="col-md-8">
+                            <ui-select ng-model="project.category" theme="selectize">
+                                <ui-select-match placeholder="Select the project category...">{{$select.selected.name}}</ui-select-match>
+                                <ui-select-choices repeat="category in defaultCategories | filter: $select.search">
+                                    {{ category.name }}
+                                </ui-select-choices>
+                            </ui-select>
+                        </div>
+                    </div>
+                    <!-- Multiple Radios -->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="project-chargeable">Project Financials</label>
+                        <div class="col-md-8">
+                            
+                            <div class="btn-group">
+                                <label class="btn btn-default" ng-model="project.chargeable" btn-radio="true">Chargeable</label>
+                                <label class="btn btn-default" ng-model="project.chargeable" btn-radio="false">Non-Chargeable</label>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Multiple Radios -->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="project-visibility">Project Visibility</label>
+                        <div class="col-md-8">
+                            
+                            <div class="btn-group">
+                                <label class="btn btn-default" ng-model="project.visibility" btn-radio="'Global'">Global</label>
+                                <label class="btn btn-default" ng-model="project.visibility" btn-radio="'Local'">Local</label>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Textarea -->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="project-summary">Project Summary</label>
+                        <div class="col-md-8">
+                            <textarea class="form-control" id="project-summary" name="project-summary" placeholder="Summary and benefits" ng-model="project.description" ng-required="true"></textarea>
+                        </div>
+                    </div>
+                    <!-- Project Category -->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="project-skillset">Project Skill Category</label>
+                        <div class="col-md-8">
+                            <ui-select ng-model="project.skillCategory" theme="selectize">
+                                <ui-select-match placeholder="Select the project category...">{{$select.selected}}</ui-select-match>
+                                <ui-select-choices repeat="category in defaultSkillCategories | filter: $select.search">
+                                    {{ category }}
+                                </ui-select-choices>
+                            </ui-select>
+                        </div>
+                    </div>
+                    <!-- PROJECT SKILLSET -->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="project-skillset">Project Skillset</label>
+                        <div class="col-md-8">
+                            <textarea class="form-control" id="project-skillset" placeholder="Enter your skillset, separated by commas" name="project-skillset" ng-model="project.skillset" ng-value="" ng-required="true"></textarea>
+                        </div>
+                    </div>
+                    <!-- EFFORT REQUIRED -->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="project-timeline">Effort Required</label>
+                        <div class="col-md-8">
+                            <input type="text" ng-required="true" class="form-control input-md left w60" ng-model="effortNum"/>
+                            
+                            <ui-select ng-model="project.effortRequired" theme="selectize" class="left w35 ml5p">
+                                <ui-select-match placeholder="">{{$select.selected}}</ui-select-match>
+                                <ui-select-choices repeat="effort in defaultEffortRequired | filter: $select.search">
+                                    {{ effort }}
+                                </ui-select-choices>
+                            </ui-select>
+                        </div>
+                    </div>
+                    <!-- TIME AVAILABILITY -->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="project-timeline">Time Availability</label>
+                        <div class="col-md-8">
+                            
+                            <div class="input-group w60 left">
+                                <input type="text" ng-required="true" class="form-control" ng-model="hoursAvail" placeholder="" aria-describedby="basic-addon2" >
+                                <span class="input-group-addon" id="basic-addon2">hours</span>
+                                <span class="input-group-addon time-avail">Per</span>
+                            </div>
+                            <ui-select ng-model="project.timeAvailability" theme="selectize" class="left w35 ml5p">
+                                <ui-select-match placeholder="">{{$select.selected}}</ui-select-match>
+                                <ui-select-choices repeat="effort in defaultTimeAvailability | filter: $select.search">
+                                    {{ effort }}
+                                </ui-select-choices>
+                            </ui-select>
+                        </div>
+                    </div>
+                    <!-- PROJECT POSTED END DATE FIELD -->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="project-timeline">Project Posted End Date</label>
+                        <div class="col-md-8">
+                            <p class="input-group">
+                                <input pikaday="postedEndDateCalendar" type="text" name="project-posted-end-date" id="project-posted-end-date-1" format="{{ DATE_FORMAT }}" placeholder="DD-MM-YYYY" ng-model="project.postedEndDate" ng-required="true" class="form-control input-md"/>
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-default" ng-click="open($event, 0)"><i class="glyphicon glyphicon-calendar"></i></button>
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                    <!-- START DATE FIELD -->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="project-timeline">Start date</label>
+                        <div class="col-md-8">
+                            <p class="input-group">
+                                <input pikaday="startDateCalendar" type="text" name="project-start-date" id="project-start-date-1" format="{{ DATE_FORMAT }}" placeholder="DD-MM-YYYY" ng-model="project.startDate" ng-required="true" class="form-control input-md"/>
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-default" ng-click="open($event, 1)"><i class="glyphicon glyphicon-calendar"></i></button>
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                    <!-- END DATE FIELD -->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="project-timeline">End date</label>
+                        <div class="col-md-8">
+                            <p class="input-group">
+                                <input pikaday="endDateCalendar" type="text" name="project-end-date" id="project-end-date-1" format="{{ DATE_FORMAT }}" placeholder="DD-MM-YYYY" ng-model="project.endDate" ng-required="true" class="form-control input-md"/>
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-default" ng-click="open($event, 2)"><i class="glyphicon glyphicon-calendar"></i></button>
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                    <!-- STATUS FIELD -->
+                    <div class="form-group" ng-show="!isNewProject">
+                        <label class="col-md-4 control-label" for="project-timeline">Status</label>
+                        <div class="col-md-8">
+                            <ui-select ng-model="project.status" theme="selectize">
+                                <ui-select-match placeholder="Select the project category...">{{$select.selected}}</ui-select-match>
+                                <ui-select-choices repeat="status in defaultStatuses | filter: $select.search">
+                                    {{ status }}
+                                </ui-select-choices>
+                            </ui-select>
+                        </div>
+                    </div>
+                    
+                    <hr class="featurette-divider-xs">
+                    
+                    <!-- Button -->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="project-submit"></label>
+                        <div class="col-md-8">
+                            <button id="project-submit" name="project-submit" class="btn btn-primary">{{ (isNewProject) ? "Submit" : "Update" }}</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+    </div>
+</div>
+
+
+<!--
 <div class="container">
     <div class="row pull-right text-right">
         <div class="edit col-md-12 col-lg-12 col-xs-12 col-sm-12" style="position:relative;">
@@ -7,19 +215,16 @@
         </div>
     </div>
     <form class="form-horizontal" ng-submit="save()" ng-show="auth.isAuthenticated">
-        <!-- Form Name -->
         <div class="page-header">
             <h1>{{ (isNewProject) ? "Create a new Project" : "Edit The Project" }}</h1>
         </div>
         
-        <!-- Text input-->
         <div class="form-group">
             <label class="col-md-4 control-label" for="project-title">Project Title</label>
             <div class="col-md-4">
                 <input id="project-title" name="project-title" type="text" placeholder="Your Project Title" class="form-control input-md" ng-required="true" ng-model="project.title">
             </div>
         </div>
-        <!-- Multiple Radios -->
         <div class="form-group">
             <label class="col-md-4 control-label" for="project-category">Project Category</label>
             <div class="col-md-4">
@@ -31,7 +236,6 @@
                 </ui-select>
             </div>
         </div>
-        <!-- Multiple Radios -->
         <div class="form-group">
             <label class="col-md-4 control-label" for="project-chargeable">Project Financials</label>
             <div class="col-md-4">
@@ -42,7 +246,6 @@
                 </div>
             </div>
         </div>
-        <!-- Multiple Radios -->
         <div class="form-group">
             <label class="col-md-4 control-label" for="project-visibility">Project Visibility</label>
             <div class="col-md-4">
@@ -53,14 +256,12 @@
                 </div>
             </div>
         </div>
-        <!-- Textarea -->
         <div class="form-group">
             <label class="col-md-4 control-label" for="project-summary">Project Summary</label>
             <div class="col-md-4">
                 <textarea class="form-control" id="project-summary" name="project-summary" placeholder="Summary and benefits" ng-model="project.description" ng-required="true"></textarea>
             </div>
         </div>
-        <!-- Project Category -->
         <div class="form-group">
             <label class="col-md-4 control-label" for="project-skillset">Project Skill Category</label>
             <div class="col-md-4">
@@ -72,14 +273,12 @@
                 </ui-select>
             </div>
         </div>
-        <!-- PROJECT SKILLSET -->
         <div class="form-group">
             <label class="col-md-4 control-label" for="project-skillset">Project Skillset</label>
             <div class="col-md-4">
                 <textarea class="form-control" id="project-skillset" placeholder="Enter your skillset, separated by commas" name="project-skillset" ng-model="project.skillset" ng-value="" ng-required="true"></textarea>
             </div>
         </div>
-        <!-- EFFORT REQUIRED -->
         <div class="form-group">
             <label class="col-md-4 control-label" for="project-timeline">Effort Required</label>
             <div class="col-md-4">
@@ -93,7 +292,6 @@
                 </ui-select>
             </div>
         </div>
-        <!-- TIME AVAILABILITY -->
         <div class="form-group">
             <label class="col-md-4 control-label" for="project-timeline">Time Availability</label>
             <div class="col-md-4">
@@ -111,7 +309,6 @@
                 </ui-select>
             </div>
         </div>
-        <!-- PROJECT POSTED END DATE FIELD -->
         <div class="form-group">
             <label class="col-md-4 control-label" for="project-timeline">Project Posted End Date</label>
             <div class="col-md-4">
@@ -123,7 +320,6 @@
                 </p>
             </div>
         </div>
-        <!-- START DATE FIELD -->
         <div class="form-group">
             <label class="col-md-4 control-label" for="project-timeline">Start date</label>
             <div class="col-md-4">
@@ -135,7 +331,6 @@
                 </p>
             </div>
         </div>
-        <!-- END DATE FIELD -->
         <div class="form-group">
             <label class="col-md-4 control-label" for="project-timeline">End date</label>
             <div class="col-md-4">
@@ -147,7 +342,6 @@
                 </p>
             </div>
         </div>
-        <!-- STATUS FIELD -->
         <div class="form-group" ng-show="!isNewProject">
             <label class="col-md-4 control-label" for="project-timeline">Status</label>
             <div class="col-md-4">
@@ -162,7 +356,6 @@
         
         <hr class="featurette-divider-xs">
         
-        <!-- Button -->
         <div class="form-group">
             <label class="col-md-4 control-label" for="project-submit"></label>
             <div class="col-md-4">
@@ -170,4 +363,4 @@
             </div>
         </div>
     </form>
-</div>
+</div>-->

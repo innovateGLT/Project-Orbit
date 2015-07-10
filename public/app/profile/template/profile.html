@@ -35,11 +35,11 @@
                     <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 tabs">
                         <div class="col-md-6 col-lg-6 col-xs-6 col-sm-6 text-center {{skillsActive ? 'active' : ''}}" ng-click="showSkillsTab()">
                             <i class="glyphicon glyphicon-tower"></i>
-                            <span>Skills</span>
+                            <h4>Skills</h4>
                         </div>
                         <div class="col-md-6 col-lg-6 col-xs-6 col-sm-6 text-center {{interestsActive ? 'active' : ''}}" ng-click="showInterestsTab()">
                             <i class="glyphicon glyphicon-thumbs-up"></i>
-                            <span>Interests</span>
+                            <h4>Interests</h4>
                         </div>
                     </div>
                 </div>
@@ -47,18 +47,20 @@
                 <div class="row" ng-show="skillsActive">
                     <div class="profile-list col-md-12 col-lg-12 col-sm-12 col-xs-12">
                     	<h3>Skills</h3>
+                        <p class="alert alert-info">Your skills are automatically retrieved from GMIS. The bigger the bubble, the better the expertise.</p>
                         <div class="col-sm-12" >
                         	<div id="bubbleChart"></div>
                         </div>
-                        <label ng-if="user.skills.length == 0" class="alert alert-danger col-md-12">Failed to retrieved skills from GMIS</label>
+                        <label ng-if="user.skills.length == 0" class="alert alert-warning col-md-12">Failed to retrieved skills from GMIS.</label>
                     </div>
                 </div> 
                 
                 <div class="row" ng-show="interestsActive">
                     <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
                         <h3>Interests</h3>
-                        <ul class="list-inline">
-                            <li ng-repeat="interest in user.interests" class="interest"><span>{{interest}}</span></li>
+                        <p class="alert alert-info">You can click on the interests below to trigger a search.</p>
+                        <ul class="list-inline left">
+                            <li ng-repeat="interest in user.interests" class="interest" ng-click="search(interest)"><span>{{interest}}</span></li>
                         </ul>
                     </div>
                 </div>

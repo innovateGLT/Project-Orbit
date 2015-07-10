@@ -1,0 +1,43 @@
+{
+  "name": "angular-preload-image",
+  "authors": [
+    "leon <leon@revillwebdesign.com>"
+  ],
+  "description": "Easily pre-load images in your AngularJS apps",
+  "main": "angular-preload-image.min.js",
+  "moduleType": [
+    "amd"
+  ],
+  "keywords": [
+    "angularjs",
+    "pre-load",
+    "images",
+    "angularjs",
+    "preload"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.3.10"
+  },
+  "devDependencies": {
+    "angular": "~1.3.10"
+  },
+  "homepage": "https://github.com/RevillWeb/angular-preload-image",
+  "_release": "f9bef504ce",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "f9bef504ced2c5f7bb788d1d85c823171424877f"
+  },
+  "_source": "git://github.com/RevillWeb/angular-preload-image.git",
+  "_target": "*",
+  "_originalSource": "angular-preload-image",
+  "_direct": true
+}

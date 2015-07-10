@@ -135,6 +135,16 @@ angular.module('profile')
                 $scope.projectTabContainers[ tabName ] = true;
             };
             
+            $scope.search = function ( /* String */searchQuery ) {
+                // summary
+                //      this function is triggered when the user clicks on a skill or interest pill
+                //      the user would then be redirected to the search results
+                // params
+                //      searchQuery - the clicked skill or interest
+                
+                $location.path("/search").search({q: searchQuery});
+            };
+            
             // set default projects tab to Current Projects
             $scope.showProjectsTab('current');
         }
