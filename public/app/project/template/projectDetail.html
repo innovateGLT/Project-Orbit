@@ -22,11 +22,14 @@
 						<div ng-show="hasBeenInvited && !hasAccepted" href="#" class="btn btn-success form-action-buttons" ng-click="acceptInvitation(auth.profile)"><span class="glyphicon glyphicon-save"></span>Accept Invitation</div>
 						<div ng-show="isAdmin" href="#" class="btn btn-danger form-action-buttons" ng-click="delete()"><span class="glyphicon glyphicon-trash"></span>Delete</div>
 						<div ng-show="(!isOwner) && (hasApplied==false) && !hasBeenInvited && !hasAccepted" href="#" class="btn btn-success form-action-buttons" ng-click="apply()"><span class="glyphicon glyphicon-save"></span> Apply</div>
+                        
+                        <div ng-show="isOwner" href="#" class="btn btn-success form-action-buttons" ng-click="editProject()"><span class="glyphicon glyphicon-pencil"></span>Edit</div>
+                        <a class="pull-right glyphicon glyphicon-pencil" ng-show="isOwner" href="/project/edit/{{project._id}}#{{returnUrl}}"></a>
 					</div>
 				</div>
 			</div>
 			<div class="col-md-9 col-lg-9 col-sm-12 col-xs-12 no-padding">
-				<div class="row mb130">
+				<div class="row action-row">
 					<div class="text-right col-md-12 col-lg-12">
 						<span class="label label-danger left btn-span mt15 pull-right" id="viewProject" ng-click="back()">
 							<i class="glyphicon glyphicon-arrow-left"></i> Back
@@ -41,10 +44,10 @@
 				
 				<div class="row">
 					<div class="col-md-8 col-lg-8 col-sm-12 col-xs-12">
-						<h2 class="col-md-12 col-lg-12 left no-margin"><small style="color: blue"> By <a href="/user/{{question.user.user_id}}#{{currentPath}}">{{project.user.name}}</a></small>
+						<h2 class="col-md-12 col-lg-12 left no-margin"><small style="color: blue"> By <a href="/user/{{project.user.user_id}}#{{currentPath}}">{{project.user.name}}</a></small>
 						<small>
-						<i ng-repeat="star in projectFullStars" class="glyphicon glyphicon-star" style="color: #f39c12"></i><i ng-repeat="star1 in projectEmptyStars" class="glyphicon glyphicon-star-empty" style="color: #f39c12"></i>
-						({{projectPeoplesRating}} people rated)
+    						<i ng-repeat="star in projectFullStars" class="glyphicon glyphicon-star" style="color: #f39c12"></i><i ng-repeat="star1 in projectEmptyStars" class="glyphicon glyphicon-star-empty" style="color: #f39c12"></i>
+    						({{projectPeoplesRating}} people rated)
 						</small>
 						</h2>
 					</div>
@@ -71,7 +74,7 @@
 				<div class="panel panel-default">
 					<!--wrap panel heading in span to trigger image change as well as collapse -->
 					<div class="panel-heading" role="tab" id="headingOne"data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-						<h4 class="panel-title">Project Description <a class="pull-right glyphicon glyphicon-pencil" ng-show="isOwner" href="/project/edit/{{project._id}}#{{returnUrl}}"></a></h4>
+						<h4 class="panel-title">Project Description</h4>
 					</div>
 					<div id="collapseOne" class="panel-collapse collapsed in" role="tabpanel" aria-labelledby="headingOne">
 						<div class="panel-body">

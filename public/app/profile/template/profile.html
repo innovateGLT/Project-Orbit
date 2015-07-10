@@ -23,7 +23,7 @@
                 </div>
             </div>
             <div class="col-md-8 col-lg-8 col-sm-12 col-xs-12 left">
-                <div class="row mb130">
+                <div class="row action-row">
                     <div class="text-right col-md-12 col-lg-12">
                         <span class="label label-danger left btn-span mt15 pull-right" id="editProfile" ng-click="editProfile()">
                             <i class="glyphicon glyphicon-cog"></i> Edit Profile
@@ -76,7 +76,7 @@
                     <h4>Current Projects</h4>
                 </div>
                 <div class="col-md-3 col-lg-3 col-xs-12 col-sm-12 text-center {{projectTabContainers['completed'] ? 'active' : ''}}" ng-click="showProjectsTab('completed')">
-                    <i class="glyphicon glyphicon-check"></i>
+                    <i class="glyphicon glyphicon-ok"></i>
                     <h4>Completed Projects</h4>
                 </div>
                 <div class="col-md-3 col-lg-3 col-xs-12 col-sm-12 text-center {{projectTabContainers['invitations'] ? 'active' : ''}}" ng-click="showProjectsTab('invitations')">
@@ -92,27 +92,27 @@
         
         
         <!-- The current projects I am involved with -->
-        <div class="container bold-container" ng-show="projectTabContainers['current']">
+        <div class="container bold-container animate-fadeInleft-fadeOutRight" ng-show="projectTabContainers['current']">
             <div class="alert alert-info">Have free time? Have an amazing idea? Want to collaborate with others? Click on New Project now.</div>
-            <project-list projects="projects" class="container"></project-list>
+            <project-list projects="projects" class="container" ng-if="projects.length > 0"></project-list>
         </div>
         
         <!-- Projects I have contributed -->
-        <div class="container bold-container" ng-show="projectTabContainers['completed']">
+        <div class="container bold-container animate-fadeInleft-fadeOutRight" ng-show="projectTabContainers['completed']">
             <div class="alert alert-info">Learned a lot from these projects and worked with cool people!</div>
-            <project-list projects="completedProjects" class="container"></project-list>
+            <project-list projects="completedProjects" class="container" ng-if="completedProjects.length > 0"></project-list>
         </div>
         
         <!-- The list of project that I am invited to join / contribute -->
-        <div class="container bold-container" ng-show="projectTabContainers['invitations']">
-            <div class="alert alert-info">You're profile looks awesome and you're getting noticed! People want you in their project!</div>
-            <project-list projects="invitedProjects" class="container"></project-list>
+        <div class="container bold-container animate-fadeInleft-fadeOutRight" ng-show="projectTabContainers['invitations']">
+            <div class="alert alert-info">You're profile looks awesome and you're getting noticed! People want you in their project! Remeber, being proactive reflects on your mid year and year end review. ;)</div>
+            <project-list projects="invitedProjects" class="container" ng-if="invitedProjects.length > 0"></project-list>
         </div>
         
         <!-- Project suggestions based on the users skills and interests -->
-        <div class="container bold-container" ng-show="projectTabContainers['suggestions']">
-            <div class="alert alert-info">Have free time? Have an amazing idea? Want to collaborate with others? Click on New Project now.</div>
-            <project-list projects="matchedProjects" class="container"></project-list>
+        <div class="container bold-container animate-fadeInleft-fadeOutRight" ng-show="projectTabContainers['suggestions']">
+            <div class="alert alert-info">Oh, I was stunned for a second with those impressive list of skills and striking interests. Think you'd be interested on these projects?</div>
+            <project-list projects="matchedProjects" class="container" ng-if="matchedProjects.length > 0"></project-list>
         </div>
     </div>
 </div>

@@ -23,7 +23,7 @@
                 </div>
             </div>
             <div class="col-md-8 col-lg-8 col-sm-12 col-xs-12 left">
-                <div class="row mb130">
+                <div class="row action-row">
                     <div class="text-right col-md-12 col-lg-12">
                         <span class="label label-danger left btn-span mt15 pull-right" id="backToList" ng-click="backToList()">
                             <i class="glyphicon glyphicon-arrow-left"></i> Back
@@ -45,12 +45,12 @@
                 </div>
                 
                 <div class="row" ng-show="skillsActive">
-                    <div class="profile-list col-md-12 col-lg-12 col-sm-12 col-xs-12">
+                    <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
                     	<h3>Skills</h3>
                         <div class="col-sm-12" >
                         	<div id="bubbleChart"></div>
                         </div>
-                        <label ng-if="user.skills.length == 0" class="alert alert-warning col-md-12">User hasn't completed his / her GMIS profile yet.</label>
+                        <label ng-if="user.skills.length == 0" class="alert alert-warning col-md-12">I'm still working on my awesomeness, check back again soon!</label>
                     </div>
                 </div> 
                 
@@ -60,7 +60,7 @@
                         <ul class="list-inline">
                             <li ng-repeat="interest in user.interests" class="interest" ng-click="search(interest)"><span>{{interest}}</span></li>
                         </ul>
-                        <label ng-if="user.interests.length == 0" class="alert alert-warning col-md-12">This user hasn't added any interest yet.</label>
+                        <label ng-if="user.interests.length == 0" class="alert alert-warning col-md-12">Still thinking about it, thinking about simple things is tough too, ain't it?</label>
                     </div>
                 </div>
             </div>

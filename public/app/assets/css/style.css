@@ -156,6 +156,7 @@ body {
 
 .navbar-default .navbar-brand {
     color: #eee;
+    display: none;
 }
 
 .navbar-default .navbar-brand:hover,
@@ -171,8 +172,7 @@ body {
 }
 
 .navbar-default .navbar-collapse {
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding: 10px;
 }
 
 .navbar-nav>li>a {
@@ -877,6 +877,7 @@ video#bgvid {
 .ml5 {margin-left:5px;}
 .ml7 {margin-left:7px;}
 .ml10 {margin-left:10px;}
+.ml15 {margin-left:15px;}
 .ml20 {margin-left:20px;}
 .ml30 {margin-left:30px;}
 .ml40 {margin-left:40px;}
@@ -892,7 +893,7 @@ video#bgvid {
 .mr20 {margin-right:20px;}
 .mr30 {margin-right:30px;}
 .mr40 {margin-right:40px;}
-.mr50 {margin-right:50px;}
+.mr50 {margin-right: 50px !important;}
 .mr60 {margin-right:60px;}
 .mr70 {margin-right:70px;}
 .mr80 {margin-right:80px;}
@@ -1023,36 +1024,126 @@ video#bgvid {
     }
     
     .panel-circle.main p {
-         font-size: 400%;
-         margin-top: -20%;
-     }
+        font-size: 400%;
+        margin-top: -20%;
+    }
      
-     .panel-circle.role {
-         margin-top: 0;
+    .panel-circle.role {
+        margin-top: 0;
+    }
+     
+    .panel-circle p {
+        font-size: 150%;
+        margin-top: -20%;
+    }
+     
+    .panel-circle.role p.role-title {
+        font-size: 200%;
+        margin-top: 0;
+    }
+     
+    .seeker-active, .owner-active {
+        max-height: 1000px;
+    }    
+     
+    .hiw-steps img {
+        width: 50vw;
+    }
+     
+    .loading-awesome.message {
+         width: 90% !important;
+         left: 5% !important;
+         top: 25% !important;
+         padding: 100px 25px 70px 25px !important;
+    }
+    
+    .loading-awesome.message h2 {
+        font-size: 20px !important;
+    }
+    
+    .loading-awesome.message img {
+        width: 70vw !important;
+    }
+    
+    .profile .profile-main-info {
+        padding: 40px  20px !important;
+    }
+    
+    .row .action-row {
+        margin-bottom: 30px!important;
+    }
+    
+    .nav-bar-profile .logo {
+        margin-left: 15px !important;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    
+    .nav-bar-profile .navbar-toggle {
+        margin: 18px;
+    }
+}
+
+@media only screen and (min-width: 500px) and (max-width: 959px) {
+    
+    .panel-circle {
+        float: left;
+    }
+    
+    .panel-circle.role {
+        cursor: pointer;
+        margin-top: 7%;
+        width: 30%;
+    }
+    
+    .panel-circle.main {
+        width: 38%;
+        margin: 0 1%;
+    }
+    
+    .panel-circle.role p {
+        font-size: 2.5vw;
+    }
+    
+    .panel-circle.role p.role-title {
+        font-size: 4.5vw;
+        margin-top: -5%;
+    }
+     
+    .panel-circle.main p {
+        font-size: 6vw;
+        margin-top: -15%;
+    }
+     
+    .row .action-row {
+        margin-bottom: 30px!important;
+    }
+}
+
+@media only screen and (min-width: 960px) {
+     .panel-circle {
+         float: left;
      }
      
      .panel-circle p {
-         font-size: 150%;
-         margin-top: -20%;
+         font-size: 2.5vw;
      }
      
-     .panel-circle.role p.role-title {
-         font-size: 200%;
-         margin-top: 0;
+     .panel-circle.role p.role-title { 
+         font-size: 4vw;
+         margin-top: -5%;
      }
      
-     .seeker-active, .owner-active {
-         max-height: 1000px;
-     }    
+     .panel-circle.main p {
+         font-size: 5vw;
+         margin-top: -10%;
+     }
      
      .hiw-steps img {
-         width: 50vw;
+         width: 15vw;
      }
-}
-
-@media only screen and (min-width: 500px) {
-    
-    .panel-circle {
+     
+     .panel-circle {
         float: left;
     }
     
@@ -1079,30 +1170,6 @@ video#bgvid {
      .panel-circle.main p {
          font-size: 6vw;
          margin-top: -15%;
-     }
-}
-
-@media only screen and (min-width: 960px) {
-     .panel-circle {
-         float: left;
-     }
-     
-     .panel-circle p {
-         font-size: 2.5vw;
-     }
-     
-     .panel-circle.role p.role-title { 
-         font-size: 4vw;
-         margin-top: -5%;
-     }
-     
-     .panel-circle.main p {
-         font-size: 5vw;
-         margin-top: -10%;
-     }
-     
-     .hiw-steps img {
-         width: 15vw;
      }
 }
 
@@ -1323,7 +1390,22 @@ user-badge .thumbnail {
     display: block !important;
 }
 
-/* help sidebar entrance and exit style END */
+/* slide up and down entrance and exit style END */
+
+/* slide up and down entrance and exit style START */
+.animate-fadeInleft-fadeOutRight.ng-hide-remove {
+    -webkit-animation: fadeInLeft .3s;
+    animation: fadeInLeft .3s;
+}
+ 
+.animate-fadeInleft-fadeOutRight.ng-hide-add {
+    -webkit-animation: fadeOutRight .1s;
+    animation: fadeOutRight .1s;
+    display: block !important;
+}
+
+/* slide up and down entrance and exit style END */
+
 
 /* edit profile styles */
 
@@ -1349,6 +1431,10 @@ user-badge .thumbnail {
 /* edit profile styles end */
 
 /* helper styles START */
+.row .action-row {
+    margin-bottom: 130px;
+}
+
 .disclaimer {
     font-size: 75%;
     padding: 10px;
@@ -1480,7 +1566,6 @@ user-badge .thumbnail {
 }
 
 .discussion-board .comment .owner {
-    /*color: #f39c12;*/
     background: url('/app/assets/img/owner.png') no-repeat;
     height: 30px;
     width: 30px;
@@ -1491,9 +1576,9 @@ user-badge .thumbnail {
 }
 
 .breadcrumb > li > a.active {
-    color: #999999 !important;
+    color: #949393 !important;
     text-decoration: none;
-    border-bottom: 2px solid #999999;
+    border-bottom: 1px solid #949393;
     padding-bottom: 5px;
 }
 
@@ -1675,7 +1760,7 @@ user-badge .thumbnail {
 }
 
 .profile .tabs div {
-    padding: 5px 0 10px 0;
+    padding: 10px 0 5px 0;
     cursor: pointer;
     border-bottom: 1px solid #a0a0a0;
 }
@@ -1688,6 +1773,7 @@ user-badge .thumbnail {
     border-bottom: 3px solid #a0a0a0;
     color: #333;
     box-sizing: border-box;
+    background-color: #f0f0f0;
 }
 
 .profile .tabs div:hover {
@@ -1752,19 +1838,22 @@ user-badge .thumbnail {
 }
 
 .loading-awesome.message {
-    width: 70%;
+    width: 50%;
     vertical-align: middle;
     border: 1px solid #f0f0f0;
     padding: 150px 50px 120px 50px;
     z-index: 2001;
     position: fixed;
     top: 22%;
-    left: 15%;
+    left: 25%;
     text-align: center;
     background: #fff;
     border-radius: 10px;
-    font-size: 200%;
     color: rgb(252, 88, 88);
+}
+
+.loading-awesome.message img {
+    width: 40vw;
 }
 
 .loading-awesome .loading-image {
@@ -1782,10 +1871,18 @@ user-badge .thumbnail {
     background: url('/app/assets/img/background.jpg') no-repeat;
     margin: 0;
     background-size: 100% 150px;
+    margin-bottom: 20px;
 }
 
 .help .help-header .breadcrumb {
     margin: 130px 10px 0 10px;
+    padding: 15px;
+    background-color: #F7F4FA;
+    border-radius: 0;
 }
 
 /* Help Header Styles END */
+
+.nav-bar-profile .logo {
+    margin-left: 60px;
+}
