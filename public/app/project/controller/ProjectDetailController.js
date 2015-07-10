@@ -646,6 +646,13 @@ angular.module('project')
                 $location.path("/search").search({q: searchQuery});
             };
             
+            $scope.editProject = function () {
+                 // summary
+                 //     load edit project page
+                 
+                 $location.path("/project/edit/" + $scope.project._id).hash($location.path());
+            };
+            
             $scope.currentPath = $location.path();
 
         }
