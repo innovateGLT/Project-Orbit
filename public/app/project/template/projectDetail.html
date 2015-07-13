@@ -20,10 +20,9 @@
 				<div class="row">
 					<div class="row text-center mt20">
 						<div ng-show="hasBeenInvited && !hasAccepted" href="#" class="btn btn-success form-action-buttons" ng-click="acceptInvitation(auth.profile)"><span class="glyphicon glyphicon-save"></span>Accept Invitation</div>
-						<div ng-show="isAdmin" href="#" class="btn btn-danger form-action-buttons" ng-click="delete()"><span class="glyphicon glyphicon-trash"></span>Delete</div>
+						<div ng-show="isOwner" href="#" class="btn btn-primary form-action-buttons mb10" ng-click="editProject()"><span class="glyphicon glyphicon-pencil"></span>Edit</div>
+                        <div ng-show="isAdmin" href="#" class="btn btn-danger form-action-buttons" ng-click="delete()"><span class="glyphicon glyphicon-trash"></span>Delete</div>
 						<div ng-show="(!isOwner) && (!hasApplied) && !hasBeenInvited && !hasAccepted" href="#" class="btn btn-success form-action-buttons" ng-click="apply()"><span class="glyphicon glyphicon-hand-up"></span> Apply</div>
-                        
-                        <div ng-show="isOwner" href="#" class="btn btn-success form-action-buttons" ng-click="editProject()"><span class="glyphicon glyphicon-pencil"></span>Edit</div>
 					</div>
 				</div>
 			</div>
