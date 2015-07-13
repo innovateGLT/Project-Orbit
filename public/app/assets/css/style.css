@@ -55,6 +55,12 @@ body {
     /* Space out the Bootstrap <hr> more */
 }
 
+.featurette-divider-xs-white {
+    margin: 20px 0;
+    border-top: 1px solid #fff;
+    /* Space out the Bootstrap <hr> more */
+}
+
 .featurette-divider-xs {
     margin: 15px 0;
     /* Space out the Bootstrap <hr> more */
@@ -907,7 +913,7 @@ video#bgvid {
     margin-top: 0 !important;
 }
 
-.no-padding {/* padding: 0 !important; */}
+.no-padding {padding: 0 !important;}
 .no-margin {margin: 0 !important;}
 
 /* padding styles */
@@ -1435,6 +1441,10 @@ user-badge .thumbnail {
     margin-bottom: 130px;
 }
 
+.row .action-row span {
+    margin-top: 15px;
+}
+
 .disclaimer {
     font-size: 75%;
     padding: 10px;
@@ -1463,7 +1473,7 @@ user-badge .thumbnail {
     background-repeat: no-repeat;
     width: 30px;
     height: 30px;
-    float: left;
+    display: inline-block;
     cursor: pointer;
 }
 

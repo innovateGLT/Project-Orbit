@@ -5,16 +5,25 @@
                 <img class="img-circle" width="150px" ng-src="{{isAdmin && !userProfileView ? '/app/assets/img/admin.png' : user.picture}}">
                 <div class="row">
                     <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 text-center">
-                        <i style="width:30px;" ng-show="user.featured || isAdmin" class="mr10 icon-featured glyphicon {{(user.featured) ? 'icon-featured-active' : 'icon-featured-inactive' }} " ng-click="feature()"></i>
+                        
                     </div>
                 </div>
-                <h3><a href="/user/{{user.user_id}}"> {{user.name}}</a></h3>
+                <h3>
+                    <a href="/user/{{user.user_id}}"> {{user.name}}</a>
+                </h3>
                 <p>{{user.job_role}}</p>
                 <p>{{user.dept}}</p>
                 <p>{{user.country}}</p>
                 <p>{{user.email}}</p>
                 
-                <hr class="featurette-divider-sm-white">
+                <div class="mt30" ng-show="isAdmin">
+                    <i class="icon-featured {{(user.featured) ? 'icon-featured-active' : 'icon-featured-inactive' }} " ng-click="feature()" title="Click to toggle user featured status."></i>
+                    <label ng-if="user.status" class="alert alert-info mt20">
+                        Click the start above to toggle user's featured status.
+                    </label>
+                </div>
+                
+                <hr class="featurette-divider-xs-white">
                 
                 <div class="col-md-12">
                     <h3>Availability</h3>
@@ -74,11 +83,11 @@
         
         <div class="row mb20">
             <div class="col-md-12 col-lg-12 tabs">
-                <div class="col-md-{{12 / projectTabs}} col-lg-{{12 / projectTabs}} col-xs-{{12 / projectTabs}} col-sm-{{12 / projectTabs}} text-center {{projectTabContainers['current'] ? 'active' : 'fuck'}}" ng-click="showProjectsTab('current')" ng-if="projects.length">
+                <div class="col-md-6 col-lg-6 col-xs-12 col-sm-12 text-center {{projectTabContainers['current'] ? 'active' : 'fuck'}}" ng-click="showProjectsTab('current')">
                     <i class="glyphicon glyphicon-random"></i>
                     <h4>Current Projects</h4>
                 </div>
-                <div class="col-md-{{12 / projectTabs}} col-lg-{{12 / projectTabs}} col-xs-{{12 / projectTabs}} col-sm-{{12 / projectTabs}} text-center {{projectTabContainers['completed'] ? 'active' : ''}}" ng-click="showProjectsTab('completed')" ng-if="completedProjects.length">
+                <div class="col-md-6 col-lg-6 col-xs-12 col-sm-12 text-center {{projectTabContainers['completed'] ? 'active' : ''}}" ng-click="showProjectsTab('completed')">
                     <i class="glyphicon glyphicon-check"></i>
                     <h4>Completed Projects</h4>
                 </div>
@@ -87,12 +96,12 @@
         
         
         <!-- The current projects I am involved with -->
-        <div class="container bold-container" ng-if="projects.length > 0" ng-show="projectTabContainers['current']">
+        <div class="container bold-container" ng-show="projectTabContainers['current']" class="no-padding">
             <project-list projects="projects" class="container"></project-list>
         </div>
         
         <!-- Projects I have contributed -->
-        <div class="container bold-container" ng-if="completedProjects.length > 0" ng-show="projectTabContainers['completed']">
+        <div class="container bold-container" ng-show="projectTabContainers['completed']" class="no-padding">
             <project-list projects="completedProjects" class="container"></project-list>
         </div>
     </div>

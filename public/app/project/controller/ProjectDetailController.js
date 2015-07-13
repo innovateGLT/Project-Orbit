@@ -463,10 +463,6 @@ angular.module('project')
 
                 });
 
-
-
-
-
             };
 
             $scope.feature = function() {
@@ -489,7 +485,8 @@ angular.module('project')
             $scope.acceptInvitation = function( profile ) {
                 var user = {
                     user_id: profile.user_id,
-                    name: profile.name
+                    name: profile.name,
+                    picture: profile.picture
                 };
 
                 // if user is not yet selected

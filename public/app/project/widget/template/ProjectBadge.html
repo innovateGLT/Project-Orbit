@@ -2,7 +2,7 @@
     <img class="img-circle" width="140px" ng-src="/app/assets/img/categories/300x300/{{project.category}}.png">
     <h3>{{project.title}}</h3>
     <div class="featured-project">
-        <i class="glyphicon {{(project. featured) ? 'glyphicon-ok-circle text-success' : 'ng-hide' }} "></i> 
+        <i class="icon-featured {{(project. featured) ? 'icon-featured-active' : 'hide' }} "></i> 
 
         <i class="glyphicon {{(project.visibility == 'global') ? 'glyphicon-globe text-success' : 'ng-hide' }} "></i>
     </div>
