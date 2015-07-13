@@ -2,12 +2,13 @@
 
 angular.module('app')
 
-.controller('appController', ['$scope', '$location', '$anchorScroll', 'store', '$timeout', 'SecurityService',
+.controller('appController', ['$scope', '$location', '$document', 'store', '$timeout', 'SecurityService',
     
-    function ($scope, $location, $anchorScroll, store, $timeout, SecurityService) {
+    function ($scope, $location, $document, store, $timeout, SecurityService) {
     
     
         $scope.auth = SecurityService.auth();
+        $scope.returnUrls = [];
     
         $scope.$on('$locationChangeStart', function(event) {
             // summary
@@ -25,11 +26,10 @@ angular.module('app')
                 store.set("searchParams", $location.search());
             }
             
-            // TODO : REIMPLEMENT THIS AFTER BACK BEHAVIOUR HAS BEEN MOVED TO SESSION STORAGE
-            //$location.hash('navigationBar');
-            
-            $anchorScroll();
-            //$location.hash('');
+            // scroll back to top on page change
+            $document.scrollTopAnimated(0, 1000).then(function() {
+                console && console.log('You just scrolled to the top!');
+            });
         });
         
         // if the user is authenticated already and refreshes the browser, delay should only be 1s coz we already have all employee info
