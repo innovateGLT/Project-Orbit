@@ -72,10 +72,6 @@ angular.module('home')
 
         }
 
-
-
-
-
         $scope.featuredProjects = Projects.featured({
             country: $scope.auth.profile.country
         });
@@ -115,6 +111,7 @@ angular.module('home')
         $scope.go = function(path) {
             window.location = path;
         };
-
+        
+        $scope.returnUrl = $location.path();
 
     });

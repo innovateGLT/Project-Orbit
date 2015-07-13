@@ -46,7 +46,7 @@
 				
 				<li role="presentation" class="login-btn" ng-show="!auth.isAuthenticated" ng-click="login()"><a href="#/">Login</a></li>
 				
-				<li role="presentation" class="active"><a href="/project/new">New Project</a></li>
+				<li role="presentation" class="active"><a href="/project/new#{{returnUrl}}">New Project</a></li>
 
 				<li class="dropdown" ng-show="auth.isAuthenticated">
 				  <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Categories<span class="caret"></span></a>

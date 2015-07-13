@@ -28,7 +28,7 @@ router.get('/', function(req, res, next) {
         query.or([{
             country: req.query.country
         }, {
-            visibility: "global"
+            visibility: "Global"
         }]);
     } else {
 

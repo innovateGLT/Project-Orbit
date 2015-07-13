@@ -59,7 +59,7 @@ var ProjectSchema = new mongoose.Schema({
     },
     visibility: {
         type: String,
-        default: 'global'
+        default: 'Global'
     },
     createdDate: {
         type: Date,

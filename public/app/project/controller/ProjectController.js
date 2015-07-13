@@ -109,7 +109,7 @@ angular.module('project')
                     project.endDate = moment(new Date(project.endDate)).format($scope.DATE_FORMAT);
 
                     if (!project.visibility) {
-                        project.visibility = 'global';
+                        project.visibility = 'Global';
                     }
 
                     var effort = project.effortRequired.split(' ');
@@ -283,11 +283,21 @@ angular.module('project')
 
             };
 
-            $scope.cancelEdit = function () {
+            $scope.cancel = function () {
                 // summary
                 //      cancel project editing and return to project details page
 
-                $location.path("/project/" + $scope.project._id);
+                if ( $scope.returnUrl ) {
+                    $location.path( $scope.returnUrl );
+                    $location.hash("");
+                } else {
+                    
+                    if ( !$scope.project_id ) {
+                        $location.path("/");
+                    } else {
+                        $location.path("/project/" + $scope.project._id);
+                    }
+                }
             };
         }
     ])

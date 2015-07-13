@@ -1,9 +1,10 @@
 {
   "name": "todoApp",
   "version": "0.0.0",
-  "homepage": "https://github.com/amejiarosario/ngTodo",
+  "homepage": "https://github.com/innovateGLT/Project-Orbit",
   "authors": [
-    "Adrian Mejia <adriansky@gmail.com>"
+    "Clifford Lee <cliffordlee@email.com>",
+    "Marnel Rodriguez <marnelrodriguez@email.com>"
   ],
   "moduleType": [
     "node"

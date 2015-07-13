@@ -27,6 +27,8 @@ angular.module('app')
         $scope.search = function() {
             $location.path('/search').search({q: $scope.query});
         };
+        
+        $scope.returnUrl = $location.path();
 
     }
 ]);
