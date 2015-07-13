@@ -110,6 +110,8 @@ angular.module('user')
                 if ( store.get("searchParams") ) {
                     $location.path(returnUrl).search(store.get("searchParams"));
                     store.remove("searchParams");
+                } else {
+                    $location.path(returnUrl);
                 }
             };
             
