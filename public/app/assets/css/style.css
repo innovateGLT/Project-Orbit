@@ -1892,6 +1892,29 @@ user-badge .thumbnail {
 }
 /* Loading Awesome overlay message END */
 
+
+/* error message for IE START */
+.ie-loading-awesome.message {
+    width: 50%;
+    vertical-align: middle;
+    border: 1px solid #f0f0f0;
+    padding: 150px 50px 120px 50px;
+    z-index: 2001;
+    position: fixed;
+    top: 22%;
+    left: 25%;
+    text-align: center;
+    background: #f0f0f0;
+    border-radius: 10px;
+    color: rgb(252, 88, 88);
+    -webkit-box-shadow: 2px 2px 5px 0px rgba(156,153,156,1);
+    -moz-box-shadow: 2px 2px 5px 0px rgba(156,153,156,1);
+    box-shadow: 2px 2px 5px 0px rgba(156,153,156,1);
+    filter: progid:DXImageTransform.Microsoft.DropShadow(OffX=5, OffY=5, Color=#c9c7c7);
+}
+/* error message for IE END*/
+
+
 /* Help Header Styles START */
 
 .help .help-header {
