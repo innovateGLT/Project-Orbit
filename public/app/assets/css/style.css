@@ -1299,6 +1299,16 @@ video#bgvid {
     animation: fadeOut .3s;
 }
 
+user-badge .thumbnail,
+project-badge .thumbnail {
+    cursor: pointer;
+}
+
+user-badge .thumbnail:hover,
+project-badge .thumbnail:hover {
+    background-color: #f0f0f0;
+}
+
 user-badge .thumbnail {
     max-height: 378px;
 }

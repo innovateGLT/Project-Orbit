@@ -14,6 +14,17 @@ angular.module("user")
 				controller: function ($scope) {
 					
 					$scope.returnUrl = $location.path();
+					
+					$scope.viewUserDetails = function ( /* Object */user ) {
+                        // summary
+                        //      view project details page
+                        // params
+                        //      the project to view
+                        // tags
+                        //      private
+                        
+                        $location.path("/user/" + user.user_id).hash( $scope.returnUrl );
+                    };
 				}
 			};
 		

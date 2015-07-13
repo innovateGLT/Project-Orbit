@@ -16,6 +16,17 @@ angular.module("project")
                     
                     $scope.returnUrl = $location.path();
                     $scope.searchParams = $location.search();
+                    
+                    $scope.viewProjectDetails = function ( /* Object */project ) {
+                        // summary
+                        //      view project details page
+                        // params
+                        //      the project to view
+                        // tags
+                        //      private
+                        
+                        $location.path("/project/" + project._id).hash( $scope.returnUrl );
+                    };
                 }
     		};
         		
