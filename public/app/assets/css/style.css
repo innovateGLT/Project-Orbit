@@ -799,6 +799,9 @@ video#bgvid {
 
 .thumbnail {
     padding: 20px;
+    -webkit-box-shadow: 2px 2px 5px 0px rgba(156,153,156,1);
+    -moz-box-shadow: 2px 2px 5px 0px rgba(156,153,156,1);
+    box-shadow: 2px 2px 5px 0px rgba(156,153,156,1);
 }
 
 .not-bold-container {
@@ -1681,13 +1684,17 @@ user-badge .thumbnail {
 }
 
 .help .content .steps {
-    border: 1px solid #f0f0f0;
+    border-bottom: 1px solid #c9c7c7;
+    border-right: 1px solid #c9c7c7;
     padding: 30px;
     float: left;
     width: 100%;
-    background-color: #f8f8f8;
+    background-color: #e0e0e0;
     border-radius: 2px;
     margin-top: 30px;
+    -webkit-box-shadow: 2px 2px 5px 0px rgba(156,153,156,1);
+    -moz-box-shadow: 2px 2px 5px 0px rgba(156,153,156,1);
+    box-shadow: 2px 2px 5px 0px rgba(156,153,156,1);
 }
 
 .help .help-question {
@@ -1899,6 +1906,9 @@ user-badge .thumbnail {
     padding: 15px;
     background-color: #F7F4FA;
     border-radius: 0;
+    -webkit-box-shadow: 2px 2px 5px 0px rgba(156,153,156,1);
+    -moz-box-shadow: 2px 2px 5px 0px rgba(156,153,156,1);
+    box-shadow: 2px 2px 5px 0px rgba(156,153,156,1);
 }
 
 /* Help Header Styles END */

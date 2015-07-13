@@ -9,16 +9,22 @@ var User = require('../users/usersSchema');
 /* GET /projects listing. */
 router.get('/', function(req, res, next) {
 
+    var pageNo = req.query.pageNo || 1;
+    var recordsPerPage = req.query.recordsPerPage;
 
-    if ((req.query.category != "") && (req.query.category != undefined)) {
-        var query = Project.find({
+    var query = null; 
+    
+    // if category is in the params
+    if ( req.query.category ) {
+        query = Project.find({
             category: req.query.category
         });
     } else {
-        var query = Project.find();
+        query = Project.find();
     }
 
-    if ((req.query.country != "") && (req.query.country != undefined)) {
+    // if country is in the params
+    if ( req.query.country ) {
         query.or([{
             country: req.query.country
         }, {
@@ -28,17 +34,17 @@ router.get('/', function(req, res, next) {
 
     }
 
+    // skip previous records and limit record retrieval to recordsPerPage
+    query
+        .skip((pageNo - 1) * recordsPerPage)
+        .limit(recordsPerPage);
 
-
-
-    query.exec(function(err, post) {
-        if (err) return next(err);
-        res.json(post);
-    });
-    // Project.find(function (err, projects) {
-    //   if (err) return next(err);
-    //   res.json(projects);
-    // });
+    query
+        .exec(function(err, post) {
+            if (err) return next(err);
+            
+            res.json(post);
+        });
 });
 
 

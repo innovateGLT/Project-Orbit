@@ -14,10 +14,13 @@
     
     <div  class="container row">
         
-        <hr class="featurette-divider-xs">
+        <hr class="featurette-divider-sm">
         
-        <div class="col-md-4 col-sm-6 text-center animated-list-record" ng-repeat="user in users | filter:filter" ng-if="user.name != 'admin'">
-            <user-badge user="user"></user-badge>
+        <div tagged-infinite-scroll="loadNext()" tagged-infinite-scroll-disabled="busy || disabled" tagged-infinite-scroll-distance="500">
+            <div class="col-md-4 col-sm-6 text-center animated-list-record" ng-repeat="user in users | filter:filter" ng-if="user.name != 'admin'">
+                <user-badge user="user"></user-badge>
+            </div>
+            <div style="clear: both;"></div>
         </div>
         
         <hr class="featurette-divider-xs">

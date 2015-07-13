@@ -12,11 +12,14 @@
         </div>
     </div>
     
-    <div class="container row" ng-if="projects.length > 0">
-        <hr class="featurette-divider-xs">
+    <div class="row" ng-if="projects.length > 0">
+        <hr class="featurette-divider-sm">
         
-        <div class="col-sm-6 text-center col-md-3 col-xl-3 animated-list-record" ng-repeat="project in projects | filter : filter">
-            <project-badge project="project"></project-badge>
+        <div tagged-infinite-scroll="loadNext()" tagged-infinite-scroll-disabled="busy || disabled" tagged-infinite-scroll-distance="500">
+            <div class="col-sm-6 text-center col-md-3 col-xl-3 animated-list-record" ng-repeat="project in projects | filter : filter">
+                <project-badge project="project"></project-badge>
+            </div>
+            <div style="clear: both;"></div>
         </div>
         
         <hr class="featurette-divider-xs">

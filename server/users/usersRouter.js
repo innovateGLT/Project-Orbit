@@ -10,15 +10,29 @@ var crypto = require('crypto');
 
 /* GET /users listing. */
 router.get('/', function(req, res, next) {
-    // console.log(req);
-    User.find({}, null, {
+    
+    var pageNo = req.query.pageNo || 1;
+    var recordsPerPage = req.query.recordsPerPage;
+    
+    var query = User.find({}, null, {
         sort: {
             _id: -1,
         }
-    }, function(err, users) {
-        if (err) return next(err);
-        res.json(users);
     });
+    
+    // skip previous records and limit record retrieval to recordsPerPage
+    console.log(" ---- pageNo : " + pageNo + " ------ recordsPerpage : " + recordsPerPage);
+    query
+        .skip((pageNo - 1) * recordsPerPage)
+        .limit(recordsPerPage);
+    
+    query
+        .exec(function(err, users) {
+            if (err) return next(err);
+            
+            console.log(" ----- users.length : " + users.length);
+            res.json(users);
+        });
 });
 
 /* POST /users */

@@ -107,8 +107,10 @@ angular.module('user')
                 var returnUrl = $location.hash();
                 $location.hash("");
                 
-                $location.path(returnUrl).search(store.get("searchParams"));
-                store.remove("searchParams");
+                if ( store.get("searchParams") ) {
+                    $location.path(returnUrl).search(store.get("searchParams"));
+                    store.remove("searchParams");
+                }
             };
             
             
