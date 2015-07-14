@@ -93,6 +93,11 @@ angular.module('help')
                     controller: 'HelpController'
                 })
                 
+                .when('/help/feedback', {
+                    templateUrl: '/app/help/template/help.html',
+                    controller: 'HelpController'
+                })
+                
             ;
     
             $locationProvider.html5Mode(true);

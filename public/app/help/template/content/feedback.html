@@ -1,0 +1,60 @@
+<div class="feedback">
+    <h2>We'd like to here from you!</h2>
+    
+    <div class="row no-margin">
+        <span class="info-formal col-md-12 col-lg-12 col-sm-12 col-xs-12">
+            If you have any questions, you can look for answers in our <a href="/help/faq">FAQs</a>. If you can't find what you're looking for, please fill in one of the forms below or call us.
+        </span>
+    </div>
+    
+    <hr class="featurette-divider-sm">
+    
+    <div class="row">
+        <form role="form" class="form-vertical col-md-9 col-lg-9 col-sm-12 col-xs-12" autocomplete="off">
+            
+            <div class="form-group col-md-6 col-lg-6 col-sm-12 col-xs-12 no-padding-left">
+                <label>Topic</label>
+                <ui-select ng-model="feedback.topic" theme="selectize">
+                    <ui-select-match placeholder="Select the feedback topic...">{{$select.selected.label}}</ui-select-match>
+                    <ui-select-choices repeat="topic in topics | filter: $select.search">
+                        {{ topic.label }}
+                    </ui-select-choices>
+                </ui-select>
+            </div>
+            
+            <div class="form-group col-md-6 col-lg-6 col-sm-12 col-xs-12 no-padding-right">
+                <label>Sub-topic</label>
+                <ui-select ng-model="feedback.subtopic" theme="selectize">
+                    <ui-select-match placeholder="Select the subtopic...">{{$select.selected.label}}</ui-select-match>
+                    <ui-select-choices repeat="topic in topics | filter: $select.search">
+                        {{ topic.label }}
+                    </ui-select-choices>
+                </ui-select>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Name:</label>
+                <div class="inner-addon left-addon">
+                    <i class="glyphicon glyphicon-user"></i>
+                    <input type="text" class="form-control" ng-model="feedback.name" autocomplete="off" />
+                </div>
+            </div>
+          
+            <div class="form-group">
+                <label for="email">Email address:</label>
+                <div class="inner-addon left-addon">
+                    <i class="glyphicon glyphicon-envelope"></i>
+                    <input type="email" class="form-control" ng-model="feedback.email" autocomplete="off" readonly/>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email address:</label>
+                <textarea ng-model="message" class="form-control" rows="10" autocomplete="off"></textarea>
+            </div>
+            
+            <button type="submit" class="btn btn-primary pull-right">Submit</button>
+        </form>
+    </div>
+</div>
+

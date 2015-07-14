@@ -921,6 +921,8 @@ video#bgvid {
 }
 
 .no-padding {padding: 0 !important;}
+.no-padding-left {padding-left: 0 !important;}
+.no-padding-right {padding-right: 0 !important;}
 .no-margin {margin: 0 !important;}
 
 /* padding styles */
@@ -1926,7 +1928,7 @@ user-badge .thumbnail {
 /* Help Header Styles START */
 
 .help .help-header {
-    background: url('/app/assets/img/background.jpg') no-repeat;
+    background: url('/app/assets/img/banners/help.png') no-repeat;
     margin: 0;
     background-size: 100% 150px;
     margin-bottom: 20px;
@@ -1947,3 +1949,18 @@ user-badge .thumbnail {
 .nav-bar-profile .logo {
     margin-left: 60px;
 }
+
+/* Feedback form  START */
+
+.help .feedback .info-formal {
+    border-bottom: 1px solid #e0e0e0;
+    border-right: 1px solid #e0e0e0;
+    background-color: #F7F4FA;
+    color: #808080;
+    font-size: 12px;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 2px;
+}
+
+/* Feedback form END */

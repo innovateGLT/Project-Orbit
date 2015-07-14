@@ -8,7 +8,6 @@ angular.module('app')
     
     
         $scope.auth = SecurityService.auth();
-        $scope.returnUrls = [];
     
         $scope.$on('$locationChangeStart', function(event) {
             // summary

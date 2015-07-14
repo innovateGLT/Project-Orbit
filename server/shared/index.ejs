@@ -1,14 +1,13 @@
 ﻿<!DOCTYPE html>
 <html lang="en" ng-app="app">
 <head>
+    <!-- Trick to preload image -->
+    <img src="/app/assets/img/Opportunities@HSBC_accelerateyourcareer.png" class="hide"/>
 	<% include ../inc/header %>
 
     <base href="/">
 </head>
 <body ng-controller="appController">
-    
-    <!-- Trick to preload image -->
-    <img ng-src="/app/assets/img/Opportunities@HSBC_accelerateyourcareer.png" class="hide"/>
     
     <div class="loading-awesome overlay animate-slide-in-out" ng-show="isLoadingVisible"></div>
     <div class="loading-awesome message animate-slide-in-out" ng-show="isLoadingVisible">

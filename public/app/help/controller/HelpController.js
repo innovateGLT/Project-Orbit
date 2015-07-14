@@ -2,9 +2,18 @@
 
 angular.module('help')
 
-    .controller('HelpController', ['$scope', '$location',
+    .controller('HelpController', ['$scope', '$location', 'SecurityService',
 		
-        function( $scope, $location ) {
+        function( $scope, $location, SecurityService ) {
+            
+            
+            $scope.auth = SecurityService.auth();
+            
+            $scope.feedback = {};
+            $scope.feedback.empId = $scope.auth.profile.empId;
+            $scope.feedback.name = $scope.auth.profile.name;
+            $scope.feedback.email = $scope.auth.profile.email;
+            $scope.feedback.picture = $scope.auth.profile.picture;
 
             // Build the left side navigation items
             $scope.navigationItemsStructure = [
@@ -111,13 +120,34 @@ angular.module('help')
                     ]
                 },
                 
-                // FAQ
+                // Contact Us
                 {
                     label       : "Contact Us",
                     template    : "/app/help/template/content/contact-us.html",
                     url         : "/help/contact-us",
                     index       : 0
                 },
+                
+                // FAQ
+                {
+                    label       : "We Love Feedback!",
+                    template    : "/app/help/template/content/feedback.html",
+                    url         : "/help/feedback",
+                    index       : 0
+                },
+            ];
+            
+            
+            $scope.topics = [
+                { id: 1, label: "Topic 1" },
+                { id: 2, label: "Topic 2" },
+                { id: 3, label: "Topic 3" },
+                { id: 4, label: "Topic 4" },
+                { id: 5, label: "Topic 5" },
+                { id: 6, label: "Topic 6" },
+                { id: 7, label: "Topic 7" },
+                { id: 8, label: "Topic 8" },
+                { id: 9, label: "Topic 9" }
             ];
             
             // copy the list of navigation items to preserve the original structure
