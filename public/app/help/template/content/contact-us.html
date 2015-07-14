@@ -7,7 +7,7 @@
                 <label for="email">Name:</label>
                 <div class="inner-addon left-addon">
                     <i class="glyphicon glyphicon-user"></i>
-                    <input type="text" class="form-control" ng-mode="name" autocomplete="off" />
+                    <input type="text" class="form-control" ng-model="feedback.name" autocomplete="off" />
                 </div>
             </div>
           
@@ -15,12 +15,12 @@
                 <label for="email">Email address:</label>
                 <div class="inner-addon left-addon">
                     <i class="glyphicon glyphicon-envelope"></i>
-                    <input type="email" class="form-control" ng-model="email" autocomplete="off"/>
+                    <input type="email" class="form-control" ng-model="feedback.email" autocomplete="off" readonly="readonly"/>
                 </div>
             </div>
             
             <div class="form-group">
-                <label for="email">Email address:</label>
+                <label for="email">Message:</label>
                 <textarea ng-model="message" class="form-control" rows="10" autocomplete="off"></textarea>
             </div>
             
