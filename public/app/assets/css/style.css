@@ -1455,7 +1455,47 @@ user-badge .thumbnail {
 
 /* edit profile styles end */
 
+/* sticky menu animation styles START */
+
+.animate-slide-up-down.ng-hide-remove {
+    -webkit-animation: slideInUp .5s;
+    animation: slideInUp .5s;
+}
+ 
+.animate-slide-up-down.ng-hide-add {
+    -webkit-animation: slideOutDown .5s;
+    animation: slideOutDown .5s;
+    display: block !important;
+}
+
+/* sticky menu animation styles END */
+
 /* helper styles START */
+.sticky-menu {
+    position: fixed;
+    width: 100%;
+    padding: 20px;
+    z-index: 1000;
+    background: #c9c7c7;
+    color: #fff;
+    text-align: center;
+    bottom: 0;
+    left: 0;
+}
+
+.sticky-menu a {
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.sticky-menu a:hover {
+    color: #333;
+}
+
+.sticky-menu.bottom {
+    bottom: 185px;
+}
+
 .row .action-row {
     margin-bottom: 130px;
 }
@@ -1827,9 +1867,29 @@ user-badge .thumbnail {
 }
 /* Profile Styles END */
 
+/* All Projects styles START */
+
+.all-projects-header {
+    background: url('/app/assets/img/banners/allprojects.png') no-repeat;
+    margin: 0;
+    background-size: 100% 150px;
+}
+
+/* All Projects styles END */
+
+/* All Projects styles START */
+
+.all-users-header {
+    background: url('/app/assets/img/banners/allusers.png') no-repeat;
+    margin: 0;
+    background-size: 100% 150px;
+}
+
+/* All Projects styles END */
+
 /* Project START */
 .project-detail .project-detail-header {
-    background: url('/app/assets/img/background.jpg') no-repeat;
+    background: url('/app/assets/img/banners/project.png') no-repeat;
     margin: 0;
     background-size: 100% 150px;
 }
