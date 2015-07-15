@@ -10,7 +10,7 @@
 				<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
 					<div class="col-md-3 col-lg-3 colsm-12 col-xs-12 project-detail-main-info">
 						<div class="macbook-pro">
-							<img class="img img-responsive" ng-src="/app/assets/img/categories/full/{{project.category}}.png" style="">
+							<img img-cache class="img img-responsive" ic-src="{{project.picture}}" />
 						</div>
 						<div class="macbook-pro-base"></div>
 		
@@ -255,8 +255,6 @@
 						<div  id="collapseFour" class="panel-collapse collapsed in" role="tabpanel" aria-labelledby="headingFour">
 							<div class="panel-body discussion-board">
 								<!-- tab content goes here -->
-								
-								<!--<div class="btn btn-lg btn-info" ng-click="ask();"><span class="glyphicon glyphicon-info-sign" ></span> {{ (isOwner) ? 'Answer' : 'Ask' }}</div>-->
 								
 								<div class="row">
 									<div class="col-md-12 col-lg-12 col-xs-12 col-sm-12">

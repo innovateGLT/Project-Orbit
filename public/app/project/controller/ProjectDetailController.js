@@ -38,6 +38,7 @@ angular.module('project')
             }, function( project ) {
 
                 $scope.project = project;
+                $scope.project.picture = "/app/assets/img/categories/full/" + project.category + ".png";
 
                 if ($scope.auth.profile.user_id == $scope.project.user.user_id) {
                     $scope.isOwner = true;
