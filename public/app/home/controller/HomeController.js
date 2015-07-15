@@ -2,9 +2,8 @@
 
 
 angular.module('home')
+
     .controller('HomeController', function(auth, $scope, store, $location, UserService, SecurityService, Projects, $interval) {
-
-
 
         $scope.auth = SecurityService.auth();
 
@@ -76,8 +75,11 @@ angular.module('home')
             country: $scope.auth.profile.country
         });
 
-        $scope.featuredUsers = UserService.featured({
+        UserService.featured({
             country: $scope.auth.profile.country
+        }, function ( featuredUsers ) {
+            
+            $scope.featuredUsers = featuredUsers;
         });
 
         $scope.projectOwnerSelected = false;

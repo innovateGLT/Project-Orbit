@@ -12,7 +12,7 @@
     </nav>
     <div class="row">
         <div class="col-lg-12 text-center v-center">
-            <img ng-src="/app/assets/img/Opportunities@HSBC_accelerateyourcareer.png"/>
+            <img img-cache ic-src="/app/assets/img/Opportunities@HSBC_accelerateyourcareer.png"/>
             <form class="col-lg-12 mt50" ng-submit="search()" style="height: 200px">
                 <div class="input-group input-group-lg col-sm-offset-4 col-sm-4">
                     <input ng-model="query" ng-keyup="$event.keyCode == 13 ? search() : null" type="text" class="center-block form-control input-lg" title="Find your niche" placeholder="Find your niche">
@@ -22,7 +22,7 @@
         </div>
     </div>
     <video autoplay loop poster="{{posterUrl}}" id="bgvid">
-        <!--<source ng-src="polina.webm" type="video/webm">-->
+        <!--<source ic-src="polina.webm" type="video/webm">-->
         <source ng-src="{{videoUrl}}" type="video/mp4">
     </video>
 </div>
@@ -35,7 +35,7 @@
     </div>
     <div class="row">
         <div class="col-md-4 col-sm-4 text-center" ng-repeat="user in featuredUsers">
-            <img class="img-circle" width="120px" ng-src="{{user.picture}}">
+            <img class="img-circle" width="120px" ng-src="{{user.picture}}"/>
             <h2>{{user.name}}</h2>
             <p>{{user.nickname}}</p>
             <p><a class="btn btn-default" href="/user/{{user.user_id}}">View info »</a></p>
@@ -58,17 +58,17 @@
     <div ng-if="projectOwnerSelected" class="row pane pane-dark hiw-steps animate-fadein-out">
         <span class="close" ng-click="selectProjectOwner()">&times;</span>
         <div class="col-md-4 col-sm-4 text-center">
-            <img class="img-rounded" width="300px" ng-src="/app/assets/img/home/owner-step1-announce.png">
+            <img img-cache class="img-rounded" width="300px" ic-src="/app/assets/img/home/owner-step1-announce.png">
             <h2>Step 1. Announce</h2>
             <p>Need more ideas and extra help for a project? Post an opportunity and spread the word to seekers.</p>
         </div>
         <div class="col-md-4 col-sm-4 text-center">
-            <img class="img-rounded" width="300px" ng-src="/app/assets/img/home/owner-step2-review.png">
+            <img img-cache class="img-rounded" width="300px" ic-src="/app/assets/img/home/owner-step2-review.png">
             <h2>Step 2. Review</h2>
             <p>Review the profiles of the applicants and potential seekers who may have the expertise you are looking for.</p>
         </div>
         <div class="col-md-4 col-sm-4 text-center">
-            <img class="img-rounded" width="300px" ng-src="/app/assets/img/home/owner-step3-select.png">
+            <img img-cache class="img-rounded" width="300px" ic-src="/app/assets/img/home/owner-step3-select.png">
             <h2>Step 3. Select</h2>
             <p>Onboard a seeker to the project!</p>
         </div>
@@ -78,17 +78,17 @@
     <div ng-if="projectSeekerSelected" class="row pane pane-dark hiw-steps animate-fadein-out">
         <span class="close" ng-click="selectProjectSeeker()">&times;</span>
         <div class="col-md-4 col-sm-4 text-center">
-            <img class="img-rounded" width="300px" ng-src="/app/assets/img/home/seeker-step1-seek.png">
+            <img img-cache class="img-rounded" width="300px" ic-src="/app/assets/img/home/seeker-step1-seek.png">
             <h2>Step 1. Seek</h2>
             <p>Looking to learn something new and grow your skills? Seek for an opportunity.</p>
         </div>
         <div class="col-md-4 col-sm-4 text-center">
-            <img class="img-rounded" width="300px" ng-src="/app/assets/img/home/seeker-step2-apply.png">
+            <img img-cache class="img-rounded" width="300px" ic-src="/app/assets/img/home/seeker-step2-apply.png">
             <h2>Step 2. Apply</h2>
             <p>Found an opportunity you are interested in? Apply for it.</p>
         </div>
         <div class="col-md-4 col-sm-4 text-center">
-            <img class="img-rounded" width="300px" ng-src="/app/assets/img/home/seeker-step3-collaborate.png">
+            <img img-cache class="img-rounded" width="300px" ic-src="/app/assets/img/home/seeker-step3-collaborate.png">
             <h2>Step 3. Collaborate</h2>
             <p>Once onboarded to a project, explore and collaborate.</p>
         </div>
@@ -138,12 +138,12 @@
     </div>
     <div class="row">
         <div class="col-md-3 col-sm-6 text-center category" ng-click="go('/project/list/CrossUnitProjects')">
-            <img class="img-rounded" width="140px" ng-src="/app/assets/img/categories/300x300/CrossUnitProjects.png">
+            <img img-cache class="img-rounded" width="140px" ic-src="/app/assets/img/categories/300x300/CrossUnitProjects.png">
             <h2>Cross Unit Projects</h2>
             <div class="category-overlay text-left">
                 <div class="media">
                     <a class="pull-left" href="/project/list/CrossUnitProjects">
-                        <img class="media-object" width="50px" ng-src="/app/assets/img/categories/60x60/CrossUnitProjects-60.png" alt="Image">
+                        <img img-cache class="media-object" width="50px" ic-src="/app/assets/img/categories/60x60/CrossUnitProjects-60.png" alt="Image">
                     </a>
                     <div class="media-body">
                         <h4 class="media-heading"><a class="cat-overlay-title" href="/project/list/CrossUnitProjects">Cross Unit Projects</a></h4>
@@ -153,12 +153,12 @@
             </div>
         </div>
         <div class="col-md-3 col-sm-6 text-center category" ng-click="go('/project/list/JobRotations')">
-            <img class="img-rounded" width="140px" ng-src="/app/assets/img/categories/300x300/JobRotations.png">
+            <img img-cache class="img-rounded" width="140px" ic-src="/app/assets/img/categories/300x300/JobRotations.png">
             <h2>Job Rotations</h2>
             <div class="category-overlay text-left">
                 <div class="media">
                     <a class="pull-left" href="/project/list/JobRotations">
-                        <img class="media-object" width="50px" ng-src="/app/assets/img/categories/60x60/JobRotations-60.png" alt="Image">
+                        <img img-cache class="media-object" width="50px" ic-src="/app/assets/img/categories/60x60/JobRotations-60.png" alt="Image">
                     </a>
                     <div class="media-body">
                         <h4 class="media-heading"><a class="cat-overlay-title" href="/project/list/JobRotations">Job Rotations</a></h4>
@@ -168,12 +168,12 @@
             </div>
         </div>
         <div class="col-md-3 col-sm-6 text-center category" ng-click="go('/project/list/StretchAssignments')">
-            <img class="img-rounded" width="140px" ng-src="/app/assets/img/categories/300x300/StretchAssignments.png">
+            <img img-cache class="img-rounded" width="140px" ic-src="/app/assets/img/categories/300x300/StretchAssignments.png">
             <h2>Stretch Assignments</h2>
             <div class="category-overlay text-left">
                 <div class="media">
                     <a class="pull-left" href="/project/list/StretchAssignments">
-                        <img class="media-object" width="50px" ng-src="/app/assets/img/categories/60x60/StretchAssignments-60.png" alt="Image">
+                        <img img-cache class="media-object" width="50px" ic-src="/app/assets/img/categories/60x60/StretchAssignments-60.png" alt="Image">
                     </a>
                     <div class="media-body">
                         <h4 class="media-heading"><a class="cat-overlay-title" href="/project/list/StretchAssignments">Stretch Assignments</a></h4>
@@ -183,12 +183,12 @@
             </div>
         </div>
         <div class="col-md-3 col-sm-6 text-center category" ng-click="go('/project/list/JobShadowing')">
-            <img class="img-rounded" width="140px" ng-src="/app/assets/img/categories/300x300/JobShadowing.png">
+            <img img-cache class="img-rounded" width="140px" ic-src="/app/assets/img/categories/300x300/JobShadowing.png">
             <h2>Job Shadowing</h2>
             <div class="category-overlay text-left">
                 <div class="media">
                     <a class="pull-left" href="/project/list/JobShadowing">
-                        <img class="media-object" width="50px" ng-src="/app/assets/img/categories/60x60/JobShadowing-60.png" alt="Image">
+                        <img img-cache class="media-object" width="50px" ic-src="/app/assets/img/categories/60x60/JobShadowing-60.png" alt="Image">
                     </a>
                     <div class="media-body">
                         <h4 class="media-heading"><a class="cat-overlay-title" href="/project/list/JobShadowing">Job Shadowing</a></h4>
@@ -203,12 +203,12 @@
     </br>
     <div class="row">
         <div class="col-md-3 col-sm-6 text-center category" ng-click="go('/project/list/BusinessInteractions')">
-            <img class="img-rounded" width="140px" ng-src="/app/assets/img/categories/300x300/BusinessInteractions.png">
+            <img img-cache class="img-rounded" width="140px" ic-src="/app/assets/img/categories/300x300/BusinessInteractions.png">
             <h2>Business Interactions</h2>
             <div class="category-overlay text-left">
                 <div class="media">
                     <a class="pull-left" href="/project/list/BusinessInteractions">
-                        <img class="media-object" width="50px" ng-src="/app/assets/img/categories/60x60/BusinessInteractions-60.png" alt="Image">
+                        <img img-cache class="media-object" width="50px" ic-src="/app/assets/img/categories/60x60/BusinessInteractions-60.png" alt="Image">
                     </a>
                     <div class="media-body">
                         <h4 class="media-heading"><a class="cat-overlay-title" href="/project/list/BusinessInteractions">Business Interactions</a></h4>
@@ -218,12 +218,12 @@
             </div>
         </div>
         <div class="col-md-3 col-sm-6 text-center category" ng-click="go('/project/list/AdventureAssignments')">
-            <img class="img-rounded" width="140px" ng-src="/app/assets/img/categories/300x300/AdventureAssignments.png">
+            <img img-cache class="img-rounded" width="140px" ic-src="/app/assets/img/categories/300x300/AdventureAssignments.png">
             <h2>Adventure Assignments</h2>
             <div class="category-overlay text-left">
                 <div class="media">
                     <a class="pull-left" href="/project/list/AdventureAssignments">
-                        <img class="media-object" width="50px" ng-src="/app/assets/img/categories/60x60/AdventureAssignments-60.png" alt="Image">
+                        <img img-cache class="media-object" width="50px" ic-src="/app/assets/img/categories/60x60/AdventureAssignments-60.png" alt="Image">
                     </a>
                     <div class="media-body">
                         <h4 class="media-heading"><a class="cat-overlay-title" href="/project/list/AdventureAssignments">Adventure Assignments</a></h4>
@@ -233,12 +233,12 @@
             </div>
         </div>
         <div class="col-md-3 col-sm-6 text-center category" onclick="window.open('http://www.mentorscout.com/')">
-            <img class="img-rounded" width="140px" ng-src="/app/assets/img/categories/300x300/FindaMentorMentee.png">
+            <img img-cache class="img-rounded" width="140px" ic-src="/app/assets/img/categories/300x300/FindaMentorMentee.png">
             <h2>Find a Mentor / Mentee</h2>
             <div class="category-overlay text-left">
                 <div class="media">
                     <a class="pull-left">
-                        <img class="media-object" width="50px" ng-src="/app/assets/img/categories/60x60/FindaMentorMentee-60.png" alt="Image">
+                        <img img-cache class="media-object" width="50px" ic-src="/app/assets/img/categories/60x60/FindaMentorMentee-60.png" alt="Image">
                     </a>
                     <div class="media-body">
                         <h4 class="media-heading"><a class="cat-overlay-title">Find a Mentor / Mentee</a></h4>
@@ -248,12 +248,12 @@
             </div>
         </div>
         <div class="col-md-3 col-sm-6 text-center category" ng-click="go('/project/list/OtherOpportunities')">
-            <img class="img-rounded" width="140px" ng-src="/app/assets/img/categories/300x300/OtherOpportunities.png">
+            <img img-cache class="img-rounded" width="140px" ic-src="/app/assets/img/categories/300x300/OtherOpportunities.png">
             <h2>Other Opportunities</h2>
             <div class="category-overlay text-left">
                 <div class="media">
                     <a class="pull-left" href="/project/list/OtherOpportunities">
-                        <img class="media-object" width="50px" ng-src="/app/assets/img/categories/60x60/OtherOpportunities-60.png" alt="Image">
+                        <img img-cache class="media-object" width="50px" ic-src="/app/assets/img/categories/60x60/OtherOpportunities-60.png" alt="Image">
                     </a>
                     <div class="media-body">
                         <h4 class="media-heading"><a class="cat-overlay-title" href="/project/list/OtherOpportunities">Other Opportunities</a></h4>
