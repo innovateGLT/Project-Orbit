@@ -51,9 +51,9 @@ angular.module('project')
                     
                     Projects.query({
                             country: $scope.auth.profile.country,
-                            category : $routeParams.category || "",
+                            category : $routeParams.category || ""/*,
                             pageNo : $scope.pageNo,
-                            recordsPerPage: $scope.recordsPerPage
+                            recordsPerPage: $scope.recordsPerPage*/
                         }, function ( projects ) {
                         
                         projects.forEach(function ( project ) {

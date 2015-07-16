@@ -26,9 +26,11 @@ router.get('/', function(req, res, next) {
     // if country is in the params
     if ( req.query.country ) {
         query.or([{
-            country: req.query.country
+            country: new RegExp(req.query.country, 'i')
         }, {
             visibility: "Global"
+        }, {
+            location: new RegExp(req.query.country, 'i')
         }]);
     } else {
 
@@ -42,7 +44,7 @@ router.get('/', function(req, res, next) {
     query
         .exec(function(err, post) {
             if (err) return next(err);
-            
+            console.log("projects : " + post.length);
             res.json(post);
         });
 });

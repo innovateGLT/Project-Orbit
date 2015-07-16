@@ -26,8 +26,8 @@ angular.module('user')
                     $scope.busy = true;
                     
                     UserService.query({
-                        pageNo: $scope.pageNo,
-                        recordsPerPage: $scope.recordsPerPage
+                        /*pageNo: $scope.pageNo,
+                        recordsPerPage: $scope.recordsPerPage*/
                     }, function ( users ) {
     
                         users.forEach( function ( user ) {

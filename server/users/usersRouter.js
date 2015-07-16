@@ -21,16 +21,14 @@ router.get('/', function(req, res, next) {
     });
     
     // skip previous records and limit record retrieval to recordsPerPage
-    console.log(" ---- pageNo : " + pageNo + " ------ recordsPerpage : " + recordsPerPage);
-    query
+    /*query
         .skip((pageNo - 1) * recordsPerPage)
-        .limit(recordsPerPage);
+        .limit(recordsPerPage);*/
     
     query
         .exec(function(err, users) {
             if (err) return next(err);
             
-            console.log(" ----- users.length : " + users.length);
             res.json(users);
         });
 });
