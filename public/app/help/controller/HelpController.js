@@ -135,16 +135,60 @@ angular.module('help')
             
             $scope.faqNav = $scope.navigationItemsStructure[3];
             
+            $scope.resetSubtopics = function () {
+                $scope.feedback.subtopic = "";
+            };
+            
             $scope.topics = [
-                { id: 1, label: "Topic 1" },
-                { id: 2, label: "Topic 2" },
-                { id: 3, label: "Topic 3" },
-                { id: 4, label: "Topic 4" },
-                { id: 5, label: "Topic 5" },
-                { id: 6, label: "Topic 6" },
-                { id: 7, label: "Topic 7" },
-                { id: 8, label: "Topic 8" },
-                { id: 9, label: "Topic 9" }
+                { 
+                    id: 1,
+                    label: "Content",
+                    subtopics: [
+                        "Help Content", "Opportunity Category / Types", "Project Details", "Project Selections"
+                    ] 
+                },
+                { 
+                    id: 2, 
+                    label: "Delete",
+                    subtopics: [
+                        "Delete My Opportunity", "Delete My Profile"
+                    ] 
+                },
+                { 
+                    id: 3, 
+                    label: "Functionality",
+                    subtopics: [
+                        "API's", "Add Integration to Other System", "Email", "Featured Opportunities", "Featured People", "Notifications", "Ratings", "Smart Match (People)", "Smart Match (Projects)", "System Messsages"
+                    ] 
+                },
+                { 
+                    id: 4, 
+                    label: "Performance",
+                    subtopics: [
+                        "Connectivity", "Search", "Slow"
+                    ] 
+                },
+                { 
+                    id: 5, 
+                    label: "Profile",
+                    subtopics: [
+                        "My Profile", "My Skills", "Other Person's Profile", "Other Person's Skills"
+                    ] 
+                },
+                { 
+                    id: 6, 
+                    label: "Branding",
+                    subtopics: [
+                        "UI / UX", "Branding", "Design", "Navigation", "User Experience"
+                    ] 
+                },
+                { 
+                    id: 7, 
+                    label: "Other",
+                    subtopics: [
+                        "Other"
+                    ] 
+                }
             ];
             
             // copy the list of navigation items to preserve the original structure
@@ -295,7 +339,7 @@ angular.module('help')
                         .then(function () {
                             console.log("We've received your message!");
                             SweetAlert.swal({
-                                title: "Done!",
+                                title: "Sent!",
                                 type: "success",
                                 text: "We've received your message! We'll get in touch soon!"
                             }, function () {
@@ -325,7 +369,7 @@ angular.module('help')
                         .then(function () {
                             console.log("Feedback submitted!");
                             SweetAlert.swal({
-                                title: "Done!",
+                                title: "Thank you!",
                                 type: "success",
                                 text: "We have received your feedback and we'll get back to you soon, if need be."
                             }, function () {

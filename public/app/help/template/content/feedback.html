@@ -19,7 +19,7 @@
             
             <div class="form-group col-md-6 col-lg-6 col-sm-12 col-xs-12 no-padding-left">
                 <label>Topic</label>
-                <ui-select ng-model="feedback.topic" theme="selectize">
+                <ui-select ng-model="feedback.topic" theme="selectize" ng-change="resetSubtopics()">
                     <ui-select-match placeholder="Select the feedback topic...">{{$select.selected.label}}</ui-select-match>
                     <ui-select-choices repeat="topic in topics | filter: $select.search">
                         {{ topic.label }}
@@ -30,9 +30,9 @@
             <div class="form-group col-md-6 col-lg-6 col-sm-12 col-xs-12 no-padding-right">
                 <label>Sub-topic</label>
                 <ui-select ng-model="feedback.subtopic" theme="selectize">
-                    <ui-select-match placeholder="Select the subtopic...">{{$select.selected.label}}</ui-select-match>
-                    <ui-select-choices repeat="topic in topics | filter: $select.search">
-                        {{ topic.label }}
+                    <ui-select-match placeholder="Select the subtopic...">{{$select.selected}}</ui-select-match>
+                    <ui-select-choices repeat="topic in feedback.topic.subtopics | filter: $select.search">
+                        {{ topic }}
                     </ui-select-choices>
                 </ui-select>
             </div>
