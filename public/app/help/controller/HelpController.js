@@ -2,18 +2,14 @@
 
 angular.module('help')
 
-    .controller('HelpController', ['$scope', '$location', 'SecurityService',
+    .controller('HelpController', ['$scope', '$location', 'SecurityService', 'ContactUsService', 'FeedbackService', 'SweetAlert',
 		
-        function( $scope, $location, SecurityService ) {
+        function( $scope, $location, SecurityService, ContactUsService, FeedbackService, SweetAlert ) {
             
             
             $scope.auth = SecurityService.auth();
             
-            $scope.feedback = {};
-            $scope.feedback.empId = $scope.auth.profile.empId;
-            $scope.feedback.name = $scope.auth.profile.name;
-            $scope.feedback.email = $scope.auth.profile.email;
-            $scope.feedback.picture = $scope.auth.profile.picture;
+            $scope.user = $scope.auth.profile;
 
             // Build the left side navigation items
             $scope.navigationItemsStructure = [
@@ -279,6 +275,64 @@ angular.module('help')
                 
                 $scope.questions[ questionKey ] = $scope.questions[ questionKey ] ? false : true;
                 
+            };
+            
+            $scope.contactUs = {};
+            
+            $scope.sendComment = function () {
+                // summary
+                //      this function would send an ajax request to save contact us form
+                // tags
+                //      private
+                
+                if ( $scope.contactUs.message ) {
+                    var contactUs = new ContactUsService({
+                        user: $scope.user,
+                        message: $scope.contactUs.message
+                    });
+                    
+                    contactUs.$save()
+                        .then(function () {
+                            console.log("We've received your message!");
+                            SweetAlert.swal({
+                                title: "Done!",
+                                type: "success",
+                                text: "We've received your message! We'll get in touch soon!"
+                            }, function () {
+                                $scope.contactUs = {};
+                            });
+                        });
+                }
+            };
+            
+            $scope.feedback = {};
+            
+            $scope.submitFeedback = function () {
+                // summary
+                //      this function would send an ajax request to save feedback form
+                // tags
+                //      private
+                
+                if ( $scope.feedback.message ) {
+                    var feedback = new FeedbackService({
+                        user: $scope.user,
+                        message: $scope.feedback.message,
+                        topic: $scope.feedback.topic,
+                        subtopic: $scope.feedback.subtopic
+                    });
+                    
+                    feedback.$save()
+                        .then(function () {
+                            console.log("Feedback submitted!");
+                            SweetAlert.swal({
+                                title: "Done!",
+                                type: "success",
+                                text: "We have received your feedback and we'll get back to you soon, if need be."
+                            }, function () {
+                                $scope.feedback = {};
+                            });
+                        });
+                }
             };
         }
     ])
