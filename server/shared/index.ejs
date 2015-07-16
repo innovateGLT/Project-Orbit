@@ -2,7 +2,7 @@
 <html lang="en" ng-app="app">
 <head>
     <!-- Trick to preload image -->
-    <img img-cache ic-src="/app/assets/img/Opportunities@HSBC_accelerateyourcareer.png" class="hide"/>
+    <img ng-src="/app/assets/img/Opportunities@HSBC_accelerateyourcareer.png" class="hide"/>
 	<% include ../inc/header %>
 
     <base href="/">
@@ -12,7 +12,7 @@
     <div class="loading-awesome overlay animate-slide-in-out" ng-show="isLoadingVisible"></div>
     <div class="loading-awesome message animate-slide-in-out" ng-show="isLoadingVisible">
         
-        <img img-cache ic-src="/app/assets/img/Opportunities@HSBC_accelerateyourcareer.png"/>
+        <img ng-src="/app/assets/img/Opportunities@HSBC_accelerateyourcareer.png"/>
         
         <h2>Loading awesomeness...</h2>
     </div>
@@ -30,6 +30,13 @@
         </ul>
     </div>
     <![endif]-->
+    
+    <div class="loading-awesome overlay animate-slide-in-out ng-hide" ng-show="isContingentWorker"></div>
+    <div class="ie-loading-awesome message ng-hide" ng-show="isContingentWorker">
+        <img src="/app/assets/img/Opportunities@HSBC_accelerateyourcareer.png" style="width:550px;"/>
+        
+        <i class="glyphicon glyphicon-remove" style="color: red; font-size:30px;"></i><h4>Aw, too bad! We really hope you would experience what awesome is. <p class="mt20">But not now though.</p></h4>
+    </div>
 	
     <% include ../inc/login %>
     

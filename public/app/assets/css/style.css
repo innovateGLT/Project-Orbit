@@ -1947,6 +1947,7 @@ user-badge .thumbnail {
     background: #fff;
     border-radius: 10px;
     color: rgb(252, 88, 88);
+    max-height:420px;
 }
 
 .loading-awesome.message img {
@@ -1968,7 +1969,7 @@ user-badge .thumbnail {
     width: 50%;
     vertical-align: middle;
     border: 1px solid #f0f0f0;
-    padding: 150px 50px 120px 50px;
+    padding: 150px 40px 120px 40px;
     z-index: 2001;
     position: fixed;
     top: 22%;

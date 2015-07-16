@@ -36,6 +36,7 @@ angular.module('app')
         $scope.overlayTimeout = $scope.auth.isAuthenticated ? 1000 : 4000;
         
         $scope.isLoadingVisible = true;
+        $scope.isContingentWorker = false;
         while ( $scope.isLoadingVisible ) {
             
             if ( true ) {
@@ -48,7 +49,14 @@ angular.module('app')
         };
         
         function hideLoadingOverlay() {
-            $scope.isLoadingVisible = false;
+            
+            // we currently block contingent workers from accessing the app
+            
+            if ( $scope.auth.profile.job_role.indexOf("CONTINGENT") === -1 ) {
+                $scope.isLoadingVisible = false;
+            } else {
+                $scope.isContingentWorker = true;
+            }
         };
         
     }
