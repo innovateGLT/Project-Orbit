@@ -1431,6 +1431,20 @@ user-badge .thumbnail {
 
 /* slide up and down entrance and exit style END */
 
+/* slide up and down entrance and exit style START */
+.animate-slideInDown-Up.ng-hide-remove {
+    -webkit-animation: slideInDown .1s;
+    animation: slideInDown .1s;
+}
+ 
+.animate-slideInDown-Up.ng-hide-add {
+    -webkit-animation: slideOutUp .1s;
+    animation: slideOutUp .1s;
+    display: block !important;
+}
+
+/* slide up and down entrance and exit style END */
+
 
 /* edit profile styles */
 
@@ -1471,6 +1485,10 @@ user-badge .thumbnail {
 /* sticky menu animation styles END */
 
 /* helper styles START */
+.pointer {
+    cursor: pointer;
+}
+
 .sticky-menu {
     position: fixed;
     width: 100%;
@@ -2025,3 +2043,36 @@ user-badge .thumbnail {
 }
 
 /* Feedback form END */
+
+/* NOTIFICATIONS START */
+
+.notifications {
+    position: absolute;
+    right: 95px;
+    top: 50px;
+    background: #fff;
+    color: #706F6F;
+    padding: 10px;
+    font-size: 12px;
+    width: 400px;
+    border: 1px solid #e0e0e0;
+}
+
+.notifications .notification {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.notifications .notification:hover {
+    background-color: #d4e5f8 !important;
+}
+
+.notifications .notification:not(last-child) {
+    margin-bottom: 5px;
+}
+
+.notifications .notification.odd {
+    background-color: #f2f2f2;
+}
+
+/* NOTIFICATIONS END*/

@@ -29,6 +29,27 @@ angular.module('app')
         };
         
         $scope.returnUrl = $location.path();
+        
+        $scope.isNotificationVisible = false;
+        $scope.toggleNotifications = function () {
+            // summary
+            //      this function would retrieve all notifications of the user, triggered by the bell button from the navbar
+            // tags
+            //      private
+            $scope.isNotificationVisible = $scope.isNotificationVisible ? false : true;
+        };
+        
+        $scope.viewUser = function ( /* String */userId ) {
+            // summary
+            //      redirect the user to the user profile page
+            // params
+            //      userId - the user id of the profile to view
+            // tags
+            //      private
+            
+            $scope.isNotificationVisible = false;
+            $location.path("/user/" + userId).hash( $scope.returnUrl );
+        }
 
     }
 ]);

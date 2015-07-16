@@ -16,7 +16,9 @@ angular.module('project')
 
             $scope.editing = [];
 
-            $scope.project = {};
+            $scope.project = {
+                country: $scope.auth.profile.country
+            };
             
 
             $scope.defaultCategories = [
@@ -182,13 +184,10 @@ angular.module('project')
                 newProject.effortRequired = $scope.effortNum + ' ' + newProject.effortRequired;
                 newProject.timeAvailability = $scope.hoursAvail + " hours per " + newProject.timeAvailability;
 
-                newProject.country = $scope.auth.profile.country;
                 newProject.category = $scope.project.category.id; 
 
 
                 console.log("NEW PROJECT", newProject);
-                // return;
-
 
                 var now = new Date();
                 now.setHours(0, 0, 0, 0);

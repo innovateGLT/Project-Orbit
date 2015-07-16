@@ -23,6 +23,19 @@ router.get('/', function(req, res, next) {
     } else {
         query = Project.find();
     }
+    
+    // filter out deleted projects
+    query.and({
+        $or : [
+            {
+                deleteFlag : false
+            },
+            {
+                deleteFlag : undefined
+            }
+        ]
+        
+    });
 
     // if country is in the params
     if ( req.query.country ) {
@@ -78,6 +91,19 @@ router.get('/featured', function(req, res, next) {
         'featured': true
     }).limit(4);
 
+    // filter out deleted projects
+    query.and({
+        $or : [
+            {
+                deleteFlag : false
+            },
+            {
+                deleteFlag : undefined
+            }
+        ]
+        
+    });
+
     query.or([{
         country: new RegExp(req.query.country, 'i')
     }, {
@@ -105,6 +131,18 @@ router.get('/completed/by_user_id/:user_id', function(req, res, next) {
             { 'selectedUsers.user_id' : req.params.user_id } 
         ],
         'status': 'Completed'
+    });
+    
+    // filter out deleted projects
+    query.and({
+        $or : [
+            {
+                deleteFlag : false
+            },
+            {
+                deleteFlag : undefined
+            }
+        ]
     });
 
     query.exec(function(err, post) {
@@ -155,8 +193,39 @@ router.get('/matched/by_user_id/:user_id', function(req, res, next) {
             },
             "appliedUsers.user_id" : {
                 $ne : req.params.user_id
+            },
+            "user.user_id" : {
+                $ne : req.params.user_id
             }
         }).limit(4);
+        
+        // if country is in the params
+        query.and({
+            $or : [
+            {
+                visibility: "Global"
+            }, 
+            {
+                location: new RegExp(post.country, 'i')
+            },
+            {
+                country: new RegExp(post.country, 'i')
+            }
+        ]});
+        
+        query.where('status').in(['Open', 'In Progress']);
+        
+        // filter out deleted projects
+        query.and({
+            $or : [
+                {
+                    deleteFlag : false
+                },
+                {
+                    deleteFlag : undefined
+                }
+            ]
+        });
         
         query.exec(function (err, records) {
             if (err) {
@@ -180,7 +249,6 @@ router.get('/by_user_id/:user_id', function(req, res, next) {
     // return 
     //      the list of projects
 
-
     Project
         .find({
             $or : [
@@ -191,12 +259,25 @@ router.get('/by_user_id/:user_id', function(req, res, next) {
             ]
         })
         
+        // filter out deleted projects
+        .and({
+            $or : [
+                {
+                    deleteFlag : false
+                },
+                {
+                    deleteFlag : undefined
+                }
+            ]
+        })
+        
         .where('status').in(['Open', 'In Progress'])
 
         .exec(function(err, post) {
             if (err) return next(err);
             res.json(post);
         });
+        
 });
 
 router.get('/invited', function(req, res, next) {
@@ -210,6 +291,17 @@ router.get('/invited', function(req, res, next) {
         }
     });
 
+    // filter out deleted projects
+    query.and({
+        $or : [
+            {
+                deleteFlag : false
+            },
+            {
+                deleteFlag : undefined
+            }
+        ]
+    });
 
     query.exec(function(err, post) {
         if (err) return next(err);
@@ -223,6 +315,18 @@ router.get('/search', function(req, res, next) {
     console.log("USEr ID", req.query.q);
     var query = Project.find({
         country: req.query.country
+    });
+
+    // filter out deleted projects
+    query.and({
+        $or : [
+            {
+                deleteFlag : false
+            },
+            {
+                deleteFlag : undefined
+            }
+        ]
     });
 
     query.or([{
@@ -317,10 +421,19 @@ router.put('/:id', function(req, res, next) {
 
 /* DELETE /projects/:id */
 router.delete('/:id', function(req, res, next) {
-    Project.findByIdAndRemove(req.params.id, req.body, function(err, post) {
+    
+    // we won't delete the project permanently
+    Project.findByIdAndUpdate(req.params.id, {
+        deleteFlag: true
+    }, function(err, post) {
         if (err) return next(err);
         res.json(post);
     });
+    
+    /*Project.findByIdAndRemove(req.params.id, req.body, function(err, post) {
+        if (err) return next(err);
+        res.json(post);
+    });*/
 });
 
 module.exports = router;
