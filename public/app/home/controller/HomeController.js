@@ -9,13 +9,13 @@ angular.module('home')
 
         console.log("AUTH VARIABLE HERE", $scope.auth);
         $scope.videoUrl = "/app/assets/video/BANNER_VANCOUVER.mp4";
-        $scope.posterUrl = "/app/assets/img/sky.png";
+//        $scope.posterUrl = "/app/assets/img/sky.png";
         var myVideo = document.getElementsByTagName('video')[0];
 
         var animatedBG = function(location) {
             if (location != null) {
-                $scope.videoUrl = "/app/assets/video/BANNER_VANCOUVER.mp4";
-                $scope.posterUrl = "/app/assets/img/bg/" + location + "/1.jpg";
+                $scope.videoUrl = "/app/assets/video/BANNER_"+ location + ".mp4";
+  //              $scope.posterUrl = "/app/assets/img/bg/" + location + "/1.jpg";
             } else {
                 $scope.videoUrl = "/app/assets/video/undefined.mp4";
                 $scope.posterUrl = "/app/assets/img/bg/" + location + "/1.jpg";
