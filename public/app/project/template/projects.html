@@ -6,9 +6,9 @@
             <div class="form-group">
                 <label class="control-label" for="filter">&nbsp;</label>
                 <div class="input-group">
-                    <input type="text" class="form-control" id="filterList" placeholder="Search for title, description, owner, location ..." ng-model="filter"/>
+                    <input type="text" class="form-control" id="filterList" placeholder="Search for title, description, owner, location ..." ng-model="filter" ng-keyup="doSearch($event)"/>
                     <span class="input-group-addon">
-                        <i class="glyphicon glyphicon-search"></i>
+                        <i class="glyphicon glyphicon-search" ng-click="search()" style="cursor:pointer;"></i>
                     </span>
                 </div>
             </div>
@@ -17,13 +17,14 @@
     
     <div sticky-link class="ng-hide sticky-menu"><a ng-click="backToTop()">Back to Top</a></div>
     
-    <div class="container row" ng-if="projects.length > 0">
+    <div class="container row">
         <hr class="featurette-divider-sm">
         
-        <div> <!--when-scrolled="loadNext()"-->
+        <div when-scrolled="loadNext()">
             <div class="col-sm-6 text-center col-md-3 col-xl-3 animated-list-record" ng-repeat="project in projects | filter : filter">
                 <project-badge project="project"></project-badge>
             </div>
+            <div class="alert alert-warning" ng-show="projects.length == 0">Your search returned no results. Please refine your search and let's see if we can match it with something.</div>
             <div style="clear: both;"></div>
         </div>
         

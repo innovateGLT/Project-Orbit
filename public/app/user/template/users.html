@@ -8,9 +8,9 @@
             <div class="form-group">
                 <label class="control-label" for="filter">&nbsp;</label>
                 <div class="input-group">
-                    <input type="text" class="form-control" id="filterList" placeholder="Search for name, role, location, email..." ng-model="filter"/>
+                    <input type="text" class="form-control" id="filterList" placeholder="Search for name, role, location, email..." ng-model="filter" ng-keyup="doSearch($event)"/>
                     <span class="input-group-addon">
-                        <i class="glyphicon glyphicon-search"></i>
+                        <i class="glyphicon glyphicon-search" ng-click="search()" style="cursor:pointer;"></i>
                     </span>
                 </div>
             </div>
@@ -22,10 +22,11 @@
             
             <hr class="featurette-divider-sm">
             
-            <div> <!--when-scrolled="loadNext()"-->
+            <div when-scrolled="loadNext()">
                 <div class="col-md-4 col-sm-6 text-center animated-list-record" ng-repeat="user in users | filter:filter" ng-if="user.name != 'admin'">
                     <user-badge user="user"></user-badge>
                 </div>
+                <div class="alert alert-warning" ng-show="users.length == 0">Didn't find who you're looking for? Uhm, maybe they haven't heard the good news yet.</div>
                 <div style="clear: both;"></div>
             </div>
             

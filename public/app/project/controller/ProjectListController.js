@@ -4,21 +4,13 @@ angular.module('project')
     .controller('ProjectListController', ['$scope', 'Projects', '$location', '$routeParams', 'SecurityService',
         function($scope, Projects, $location, $routeParams, SecurityService) {
 
-            // initial page to load
-            $scope.pageNo         = 1;
-            $scope.recordsPerPage = 8;
-            
-            // initialize projects list
-            $scope.projects = [];
-
             $scope.category = $routeParams.category;
 
             $scope.auth = SecurityService.auth();
             $scope.isAdmin = $scope.auth.profile.email === ADMIN_EMAIL;
             
             $scope.busy = false;
-
-            $scope.listFetchDisabled = false;
+            
             $scope.loadNext = function () {
                 // summary
                 //      this function would load the list of projects
@@ -34,7 +26,8 @@ angular.module('project')
                             country: $scope.auth.profile.country,
                             category : $routeParams.category || "",
                             pageNo : $scope.pageNo,
-                            recordsPerPage: $scope.recordsPerPage
+                            recordsPerPage: $scope.recordsPerPage,
+                            keyword: $scope.filter
                         };
                         
                     } else {
@@ -42,19 +35,15 @@ angular.module('project')
                         args = {
                             category : $routeParams.category || "",
                             pageNo : $scope.pageNo,
-                            recordsPerPage: $scope.recordsPerPage
+                            recordsPerPage: $scope.recordsPerPage,
+                            keyword: $scope.filter
                         };
                     }
                     
                     // set busy to true to disable next calls to avoid multiple async calls
                     $scope.busy = true;
                     
-                    Projects.query({
-                            country: $scope.auth.profile.country,
-                            category : $routeParams.category || ""/*,
-                            pageNo : $scope.pageNo,
-                            recordsPerPage: $scope.recordsPerPage*/
-                        }, function ( projects ) {
+                    Projects.query(args, function ( projects ) {
                         
                         projects.forEach(function ( project ) {
                             $scope.projects.push( project );
@@ -74,7 +63,48 @@ angular.module('project')
                 }
             };
             
+            $scope.search = function () {
+                // summary
+                //      this function would just reset the load params before triggering the search
+                // tags
+                //      private
+                
+                $scope.reset();
+                $scope.loadNext();
+                
+                $scope.searchKeyword = $scope.filter;
+            };
+            
+            $scope.searchKeyword = "";
+            
+            $scope.doSearch = function ( /* Event */event ) {
+                // summary
+                //      if the user hits Enter key on the filter box, we would do a full search again using any keyword in the filter box
+                //      if the user deletes all the keywords on the filter box, we would do a full search with empty keywords thus, retrieving paginated data again
+                // params
+                //      event - the key event
+                // tags
+                //      private
+                
+                // we don't wanna trigger the search again if the user is using the same search keyword
+                if ( (event.keyCode === 13 || $scope.filter === "") && $scope.searchKeyword !== $scope.filter ) {
+                    $scope.search();
+                }
+            };
+            
+            $scope.reset = function () {
+                // initial page to load
+                $scope.pageNo         = 1;
+                $scope.recordsPerPage = 8;
+                
+                // initialize projects list
+                $scope.projects = [];
+                
+                $scope.listFetchDisabled = false;
+            };
+            
             // retrieve initial projects list
+            $scope.reset();
             $scope.loadNext();
         }
     ]);

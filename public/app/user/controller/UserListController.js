@@ -4,30 +4,22 @@ angular.module('user')
     .controller('UserListController', ['$scope', 'UserService', 'auth', 'Projects',
         function($scope, UserService, auth, Projects) {
 
-            // initial page to load
-            $scope.pageNo         = 1;
-            // no of records to retrieve every call
-            $scope.recordsPerPage = 9;
-
-            // initialize users array
-            $scope.users = [];
-
             $scope.busy = false;
             
-            $scope.fetchListDisabled = false;
             $scope.loadNext = function () {
                 // summary
                 //      this function would load the list of users utilizing infinite scroll mechanism
                 //      we would request 9 user records every call
                 
-                if ( !$scope.fetchListDisabled ) {
+                if ( !$scope.listFetchDisabled ) {
                 
                     // set busy to true to prevent multiple ajax calls to the server
                     $scope.busy = true;
                     
                     UserService.query({
-                        /*pageNo: $scope.pageNo,
-                        recordsPerPage: $scope.recordsPerPage*/
+                        pageNo: $scope.pageNo,
+                        recordsPerPage: $scope.recordsPerPage,
+                        keyword: $scope.filter
                     }, function ( users ) {
     
                         users.forEach( function ( user ) {
@@ -38,7 +30,7 @@ angular.module('user')
                         
                         // if the last record has been hit, we disabled inifit scroll
                         if ( users.length < $scope.recordsPerPage ) {
-                            $scope.fetchListDisabled = true;
+                            $scope.listFetchDisabled = true;
                         }
                         
                         // pageNo increment
@@ -50,7 +42,48 @@ angular.module('user')
                 }
                 
             };
+            
+            $scope.search = function () {
+                // summary
+                //      this function would just reset the load params before triggering the search
+                // tags
+                //      private
+                
+                $scope.reset();
+                $scope.loadNext();
+                
+                $scope.searchKeyword = $scope.filter;
+            };
+            
+            $scope.searchKeyword = "";
+            
+            $scope.doSearch = function ( /* Event */event ) {
+                // summary
+                //      if the user hits Enter key on the filter box, we would do a full search again using any keyword in the filter box
+                //      if the user deletes all the keywords on the filter box, we would do a full search with empty keywords thus, retrieving paginated data again
+                // params
+                //      event - the key event
+                // tags
+                //      private
+                
+                // we don't wanna trigger the search again if the user is using the same search keyword
+                if ( (event.keyCode === 13 || $scope.filter === "") && $scope.searchKeyword !== $scope.filter ) {
+                    $scope.search();
+                }
+            };
+            
+            $scope.reset = function () {
+                // initial page to load
+                $scope.pageNo         = 1;
+                $scope.recordsPerPage = 8;
+                
+                // initialize projects list
+                $scope.users = [];
+                
+                $scope.listFetchDisabled = false;
+            };
 
+            $scope.reset();
             $scope.loadNext();
         }
     ])

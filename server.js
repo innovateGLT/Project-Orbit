@@ -34,6 +34,10 @@ mongoose.connect(databaseURI, function(err) {
     }
 });
 
+mongoose.set('debug', function (collectionName, method, query, doc) {
+    console.log(" QUERY : " + JSON.stringify(query));
+});
+
 var app = express();
 
 // view engine setup

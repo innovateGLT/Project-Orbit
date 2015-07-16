@@ -644,11 +644,13 @@ angular.module('project')
                 $location.path("/search").search({q: searchQuery});
             };
             
+            $scope.returnUrl = $location.path();
+            
             $scope.editProject = function () {
                  // summary
                  //     load edit project page
                  
-                 $location.path("/project/edit/" + $scope.project._id).hash($location.path());
+                 $location.path("/project/edit/" + $scope.project._id).hash($scope.returnUrl);
             };
             
             $scope.currentPath = $location.path();

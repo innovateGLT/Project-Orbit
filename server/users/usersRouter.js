@@ -13,6 +13,7 @@ router.get('/', function(req, res, next) {
     
     var pageNo = req.query.pageNo || 1;
     var recordsPerPage = req.query.recordsPerPage;
+    var keyword = req.query.keyword;
     
     var query = User.find({}, null, {
         sort: {
@@ -20,10 +21,40 @@ router.get('/', function(req, res, next) {
         }
     });
     
+    // smart search
+    if ( keyword ) {
+    
+        query.or([{
+            name: new RegExp(keyword, 'i')
+        }, {
+    
+            family_name: new RegExp(keyword, 'i')
+        }, {
+            given_name: new RegExp(keyword, 'i')
+        }, {
+            country: new RegExp(keyword, 'i')
+        }, {
+            job_role: new RegExp(keyword, 'i')
+        }, {
+            dept: new RegExp(keyword, 'i')
+        }, {
+            email: new RegExp(keyword, 'i')
+        }, {
+            skills: {
+                $in: [new RegExp(keyword, 'i')]
+            }
+        }, {
+            interests: {
+                $in: [new RegExp(keyword, 'i')]
+            }
+        }]);
+    }
+    
+    
     // skip previous records and limit record retrieval to recordsPerPage
-    /*query
+    query
         .skip((pageNo - 1) * recordsPerPage)
-        .limit(recordsPerPage);*/
+        .limit(recordsPerPage);
     
     query
         .exec(function(err, users) {

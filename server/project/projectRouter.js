@@ -11,6 +11,7 @@ router.get('/', function(req, res, next) {
 
     var pageNo = req.query.pageNo || 1;
     var recordsPerPage = req.query.recordsPerPage;
+    var keyword = req.query.keyword;
 
     var query = null; 
     
@@ -32,9 +33,28 @@ router.get('/', function(req, res, next) {
         }, {
             location: new RegExp(req.query.country, 'i')
         }]);
-    } else {
-
     }
+    
+    if ( keyword ) {
+    
+        query.and({
+            $or : [{
+                'user.name': new RegExp(keyword, 'i')
+            }, {
+        
+                title: new RegExp(keyword, 'i')
+            }, {
+                description: new RegExp(keyword, 'i')
+            }, {
+                category: new RegExp(keyword, 'i')
+            }, {
+                skillset: {
+                     $in: [new RegExp(keyword, 'i')]
+                }
+            }]
+        });
+    }
+    
 
     // skip previous records and limit record retrieval to recordsPerPage
     query
@@ -44,7 +64,7 @@ router.get('/', function(req, res, next) {
     query
         .exec(function(err, post) {
             if (err) return next(err);
-            console.log("projects : " + post.length);
+            
             res.json(post);
         });
 });

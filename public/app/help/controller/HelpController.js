@@ -137,6 +137,7 @@ angular.module('help')
                 },
             ];
             
+            $scope.faqNav = $scope.navigationItemsStructure[3];
             
             $scope.topics = [
                 { id: 1, label: "Topic 1" },
@@ -186,7 +187,9 @@ angular.module('help')
                     $scope.navigationItems = navigationItem.items;
                     
                     // update breadcrumbs
-                    $scope.breadcrumbs.push( navigationItem );
+                    if ( $scope.breadcrumbs.indexOf(navigationItem) === -1 ) {
+                        $scope.breadcrumbs.push( navigationItem );
+                    }
                     
                 // if the menu item doesn't have child items, update help content
                 } else {
