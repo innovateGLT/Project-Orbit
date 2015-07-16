@@ -14,11 +14,12 @@ angular.module('home')
 
         var animatedBG = function(location) {
             if (location != null) {
-                $scope.videoUrl = "/app/assets/video/BANNER_"+ location + ".mp4";
+                var location_nospace = location.replace(/\s/g, '');
+                $scope.videoUrl = "/app/assets/video/BANNER_"+ location_nospace + ".mp4";
   //              $scope.posterUrl = "/app/assets/img/bg/" + location + "/1.jpg";
             } else {
                 $scope.videoUrl = "/app/assets/video/undefined.mp4";
-                $scope.posterUrl = "/app/assets/img/bg/" + location + "/1.jpg";
+                $scope.posterUrl = "/app/assets/img/bg/" + location_nospace + "/1.jpg";
             }
 
             myVideo.src = $scope.videoUrl;
