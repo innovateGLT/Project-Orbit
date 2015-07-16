@@ -25,7 +25,11 @@ angular.module('user')
                         users.forEach( function ( user ) {
                            
                             // populate users list
-                            $scope.users.push( user );
+                            if ( $scope.users.indexOf( user ) === -1 ) {
+                                $scope.users.push( user );
+                            } else {
+                                console.log("Duplicate user.");
+                            }
                         });
                         
                         // if the last record has been hit, we disabled inifit scroll

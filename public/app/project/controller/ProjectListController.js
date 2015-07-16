@@ -46,7 +46,12 @@ angular.module('project')
                     Projects.query(args, function ( projects ) {
                         
                         projects.forEach(function ( project ) {
-                            $scope.projects.push( project );
+                            
+                            if ( $scope.projects.indexOf( project ) === -1 ) {
+                                $scope.projects.push( project );
+                            } else {
+                                console.log("Duplicate project.");
+                            }
                         });
                         
                         // if the end is already reached, we disable the auto scroll mechanism
