@@ -24,6 +24,10 @@ var ProjectSchema = new mongoose.Schema({
         type: String,
         default: 'CANADA'
     },
+    location: {
+        type: String,
+        default: 'CANADA'
+    },
     postedEndDate: {
         type: Date,
         default: Date.now
