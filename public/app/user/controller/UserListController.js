@@ -11,7 +11,7 @@ angular.module('user')
                 //      this function would load the list of users utilizing infinite scroll mechanism
                 //      we would request 9 user records every call
                 
-                if ( !$scope.listFetchDisabled ) {
+                if ( !$scope.listFetchDisabled && !$scope.busy ) {
                 
                     // set busy to true to prevent multiple ajax calls to the server
                     $scope.busy = true;

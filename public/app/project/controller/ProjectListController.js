@@ -17,7 +17,7 @@ angular.module('project')
                 //      for admins, we load project no matter what the country is
                 //      for regular users, we only load the projects where the user is located, unless the project is marked Global
                 
-                if ( !$scope.listFetchDisabled ) {
+                if ( !$scope.listFetchDisabled && !$scope.busy ) {
                     
                     var args = {};
                     if ( !$scope.isAdmin ) {

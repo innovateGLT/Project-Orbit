@@ -27,7 +27,6 @@ router.get('/', function(req, res, next) {
         query.or([{
             name: new RegExp(keyword, 'i')
         }, {
-    
             family_name: new RegExp(keyword, 'i')
         }, {
             given_name: new RegExp(keyword, 'i')
