@@ -237,6 +237,7 @@ angular.module('project')
                 newProject.user = {
                     user_id: $scope.auth.profile.user_id,
                     name: $scope.auth.profile.name,
+                    picture: $scope.auth.profile.picture
                 };
 
                 var deferred = null;

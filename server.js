@@ -16,7 +16,7 @@ var rating = require('./server/rating/ratingRouter');
 var contactUs = require('./server/contact-us/contactUsRouter');
 var feedback = require('./server/feedback/feedbackRouter');
 var contactUs = require('./server/contact-us/contactUsRouter');
-var poke = require('./server/poke/pokeRouter');
+var alert = require('./server/alert/alertRouter');
 
 var mongoose = require('mongoose');
 var databaseURI = 'mongodb://localhost/school';
@@ -65,7 +65,7 @@ app.use('/api/email', email);
 app.use('/api/rating', rating);
 app.use('/api/contact-us', contactUs);
 app.use('/api/feedback', feedback);
-app.use('/api/poke', poke);
+app.use('/api/alert', alert);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

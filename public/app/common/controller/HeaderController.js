@@ -2,8 +2,8 @@
 
 angular.module('app')
 
-.controller('HeaderController', ['$scope', 'Projects', '$location', '$routeParams', 'SecurityService', 'PokeService',
-    function($scope, Projects, $location, $routeParams, SecurityService, PokeService) {
+.controller('HeaderController', ['$scope', 'Projects', '$location', '$routeParams', 'SecurityService', 'AlertService',
+    function($scope, Projects, $location, $routeParams, SecurityService, AlertService) {
 
 
         console.log("MMMEEEEE");
@@ -37,38 +37,70 @@ angular.module('app')
             // tags
             //      private
             if ( !$scope.isNotificationVisible ) {
-                PokeService.query({user_id : $scope.auth.profile.user_id}, function ( notifications ) {
+                AlertService.query({user_id : $scope.auth.profile.user_id}, function ( notifications ) {
                     $scope.notifications = notifications;
                 });
             }
             $scope.isNotificationVisible = $scope.isNotificationVisible ? false : true;
         };
         
-        $scope.viewUser = function ( /* String */userId ) {
+        $scope.viewUser = function ( /* String */alert ) {
             // summary
             //      redirect the user to the user profile page
+            //      we would delete the invite alert once clicked
             // params
-            //      userId - the user id of the profile to view
+            //      alert - the alert object
             // tags
             //      private
             
             $scope.isNotificationVisible = false;
-            $location.path("/user/" + userId).hash( $scope.returnUrl );
+            $scope.deleteAlert( alert );
+            $location.path("/user/" + alert.by_user.user_id).hash( $scope.returnUrl );
         }
+        
+        $scope.viewProject = function ( /* Object */alert ) {
+            // summary
+            //      redirect the user to the project details page
+            //      we would delete the invite alert once clicked
+            // params
+            //      alert - the alert object
+            // tags
+            //      private
+            
+            $scope.isNotificationVisible = false;
+            $scope.deleteAlert( alert );
+            $location.path("/project/" + alert.project_id).hash( $scope.returnUrl );
+        };
         
         $scope.deleteAlert = function ( /* Object */alert ) {
             // summary
             //      this function would delete the alert
+            // params
+            //      alert - the alert to be deleted
             
-            PokeService.delete({id: alert._id}, function () {
+            AlertService.delete({id: alert._id}, function () {
                 var index = $scope.notifications.indexOf(alert);
                 $scope.notifications.splice(index, 1);
                 console.log($scope.notifications.length);
             });
         };
         
+        $scope.viewAlert = function( /* String */alert ) {
+            // summary
+            //      view the alert, determine which one to trigger by alert_type
+            // params
+            //      alert - the alert object
+            // tags
+            //      private
+            
+            if ( alert.alert_type === "accept" || alert.alert_type === "poke" ) {
+                $scope.viewUser( alert );
+            } else {
+                $scope.viewProject( alert );
+            }
+        };
         
-        PokeService.query({user_id : $scope.auth.profile.user_id}, function ( notifications ) {
+        AlertService.query({user_id : $scope.auth.profile.user_id}, function ( notifications ) {
             $scope.notifications = notifications;
         });
 

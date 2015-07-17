@@ -1,12 +1,12 @@
 'use strict';
 
-angular.module('poke')
+angular.module('alert')
 
-    .factory('PokeService', ['$resource',
+    .factory('AlertService', ['$resource',
         
         function($resource) {
 
-            return $resource('/api/poke/:id', null, {
+            return $resource('/api/alert/:id', null, {
                 'get': {
                     method: 'GET'
                 }

@@ -132,7 +132,7 @@ a {
     position: absolute;
     width: 100%;
     margin: 25px auto 0;
-    padding: 6px 12px;
+    padding: 6px 40px;
     line-height: 1.428571429;
     color: white;
     text-align: right;
@@ -149,7 +149,7 @@ a {
 }
 
 .navbar-default .navbar-nav>li>a {
-    color: #DDCCEE;
+    color: #fff;
 }
 
 .home,
@@ -205,6 +205,7 @@ a {
 
 .header-nav-links > li > a {
     padding: 5px 15px;
+    color: #fff;
 }
 
 .header-nav-links > li.active > a:hover,
@@ -2071,6 +2072,7 @@ user-badge .thumbnail {
     border: 1px solid #e0e0e0;
     border-radius: 5px;
     border-top-right-radius: 0;
+    z-index: 2000;
 }
 
 .notifications .notification {

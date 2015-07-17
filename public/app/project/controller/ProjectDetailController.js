@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('project')
-    .controller('ProjectDetailController', ['$scope', '$routeParams', '$window', 'Projects', '$location', 'Questions', 'SecurityService', 'UserService', 'SweetAlert', 'Email', 'Rating', 'store', 'PokeService',
-        function($scope, $routeParams, $window, Projects, $location, Questions, SecurityService, UserService, SweetAlert, Email, Rating, store, PokeService) {
+    .controller('ProjectDetailController', ['$scope', '$routeParams', '$window', 'Projects', '$location', 'Questions', 'SecurityService', 'UserService', 'SweetAlert', 'Email', 'Rating', 'store', 'AlertService',
+        function($scope, $routeParams, $window, Projects, $location, Questions, SecurityService, UserService, SweetAlert, Email, Rating, store, AlertService) {
 
             $scope.auth = SecurityService.auth();
 
@@ -340,10 +340,6 @@ angular.module('project')
                     console.log("APPPLIED PROJECT", $scope.project);
                     $scope.hasApplied = true;
 
-
-
-
-
                     UserService.getByUserId({
                         user_id: $scope.project.user.user_id
                     }, function(newUser) {
@@ -367,7 +363,6 @@ angular.module('project')
                                 return false;
                             }
 
-
                             Email.apply({
                                 owner_email: newUser.email,
                                 owner_name: newUser.name,
@@ -381,7 +376,7 @@ angular.module('project')
 
                             });
 
-
+                            $scope.generateApplyAlert( newUser );
                             SweetAlert.swal("Done!", "You applied to the project! An email has been sent to the owner " + newUser.email, "success");
 
                         });
@@ -396,7 +391,7 @@ angular.module('project')
                 var invitedUser = {
                     user_id: user.user_id,
                     name: user.name
-                }
+                };
 
                 var invited = false;
                 for (var i = 0; i < $scope.project.invitedUsers.length; i++) {
@@ -438,7 +433,6 @@ angular.module('project')
                             user.invited = true;
                         }
 
-
                         Email.invite({
                             username: newUser.name,
                             user_id: newUser.user_id,
@@ -448,22 +442,129 @@ angular.module('project')
                             content: inputValue
                         }, function() {
                             console.log("Email has been sent");
-                            // SweetAlert.swal("Done!", "You applied to the project! An email has been sent to the admin", "success");
-                            // SweetAlert.swal("Nice!", "An invitation has been sent to the user", "success"); 
                         });
                         Projects.update({
                             id: $scope.project._id
                         }, $scope.project, function() {
 
-                            // console.log("PROJECT h")
                         });
 
+                        // generate invite alert
+                        $scope.generateInviteAlert( user );
                         SweetAlert.swal("Nice!", "The user has been invited", "success");
-
+                        
                     });
 
                 });
 
+            };
+            
+            $scope.generateApplyAlert = function ( /* Object */user ) {
+                var applyAlert = {
+                    by_user : {
+                        user_id : $scope.auth.profile.user_id,
+                        name: $scope.auth.profile.name,
+                        picture: $scope.auth.profile.picture
+                    },
+                    
+                    for_user : {
+                        user_id : user.user_id,
+                        name: user.name,
+                        picture: user.picture
+                    },
+                    
+                    alert_type: "apply",
+                    
+                    project_name: $scope.project.title,
+                    
+                    project_id: $scope.project._id
+                };
+                
+                var applyRecord = new AlertService(applyAlert);
+                applyRecord.$save().then(function ( response ) {
+                    console.log("Apply alert generated.");
+                });
+            };
+            
+            $scope.generateAcceptApplicationAlert = function ( /* Object */user ) {
+                var acceptApplicationAlert = {
+                    by_user : {
+                        user_id : $scope.auth.profile.user_id,
+                        name: $scope.auth.profile.name,
+                        picture: $scope.auth.profile.picture
+                    },
+                    
+                    for_user : {
+                        user_id : user.user_id,
+                        name: user.name,
+                        picture: user.picture
+                    },
+                    
+                    alert_type: "accept-application",
+                    
+                    project_name: $scope.project.title,
+                    
+                    project_id: $scope.project._id
+                };
+                
+                var acceptApplication = new AlertService(acceptApplicationAlert);
+                acceptApplication.$save().then(function ( response ) {
+                    console.log("Accepted application alert generated.");
+                });
+            };
+            
+            $scope.generateAcceptAlert = function ( /* Object */user ) {
+                var acceptAlert = {
+                    by_user : {
+                        user_id : $scope.auth.profile.user_id,
+                        name: $scope.auth.profile.name,
+                        picture: $scope.auth.profile.picture
+                    },
+                    
+                    for_user : {
+                        user_id : user.user_id,
+                        name: user.name,
+                        picture: user.picture
+                    },
+                    
+                    alert_type: "accept",
+                    
+                    project_name: $scope.project.title,
+                    
+                    project_id: $scope.project._id
+                };
+                
+                var acceptRecord = new AlertService(acceptAlert);
+                acceptRecord.$save().then(function ( response ) {
+                    console.log("Accept alert generated.");
+                });
+            };
+            
+            $scope.generateInviteAlert = function ( /* Object */user ) {
+                var inviteAlert = {
+                    by_user : {
+                        user_id : $scope.auth.profile.user_id,
+                        name: $scope.auth.profile.name,
+                        picture: $scope.auth.profile.picture
+                    },
+                    
+                    for_user : {
+                        user_id : user.user_id,
+                        name: user.name,
+                        picture: user.picture
+                    },
+                    
+                    alert_type: "invite",
+                    
+                    project_name: $scope.project.title,
+                    
+                    project_id: $scope.project._id
+                };
+                
+                var inviteRecord = new AlertService(inviteAlert);
+                inviteRecord.$save().then(function ( response ) {
+                    console.log("Invite alert generated.");
+                });
             };
             
             $scope.poke = function ( /* Object */user ) {
@@ -495,11 +596,13 @@ angular.module('project')
                             user_id : user.user_id,
                             name: user.name,
                             picture: user.picture
-                        }
+                        },
+                        
+                        alert_type: "poke"
                     };
                     
                     // save poke
-                    var pokeRecord = new PokeService(poke);
+                    var pokeRecord = new AlertService(poke);
                     pokeRecord.$save().then(function ( response ) {
                         
                         if ( response.error ) {
@@ -569,6 +672,13 @@ angular.module('project')
                     id: $scope.project._id
                 }, $scope.project, function() {
                     $scope.hasBeenInvited = false;
+                    
+                    $scope.generateAcceptAlert({
+                        user_id: $scope.project.user.user_id,
+                        picture: $scope.project.user.picture,
+                        name: $scope.project.user.name
+                    });
+                    
                     SweetAlert.swal("Done!", "You have accepted this the invitation!", "success");
                 });
 
@@ -620,6 +730,9 @@ angular.module('project')
                 Projects.update({
                     id: $scope.project._id
                 }, $scope.project, function() {
+                    
+                    $scope.generateAcceptApplicationAlert( user );
+                    
                     SweetAlert.swal("Done!", "You accepted the request of " + user.name, "success");
                 });
 
