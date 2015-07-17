@@ -59,7 +59,43 @@
                 
                 <div class="row" ng-show="skillsActive">
                     <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
-                    	<h3>Skills</h3>
+                    	<div class="row">
+                        	<h3 class="col-md-10 col-lg-10 col-xs-10 col-sm-10">Skills</h3>
+                            <span class="col-md-2 col-lg-2 col-xs-2 col-sm-2" style="line-height:4em;">
+                                <span class="pull-right" ng-click="isLegendVisible=isLegendVisible ? false : true"><i class="glyphicon glyphicon-eye-open mr10"></i><a class="pointer">Legend</a></span>
+                            </span>
+                        </div>
+                        <div class="skills-legend animate-slide-in-out" ng-show="isLegendVisible">
+                            <div class="row legend-header">
+                                <div class="col-md-10 col-lg-10 col-sm-10 col-xs-10">Legend</div>
+                                <span class="col-md-2 col-lg-2 col-sm-2 col-xs-2 pull-right close" ng-click="isLegendVisible=isLegendVisible ? false : true">&times;</span>
+                            </div>
+                            <div class="row legend">
+                                <div class="circle red"></div>
+                                <span class="col-md-10 col-lg-10 col-sm-10 col-xs-10">Business Domain</span>
+                            </div>
+                            <div class="row legend">
+                                <div class="circle orange"></div>
+                                <span class="col-md-10 col-lg-10 col-sm-10 col-xs-10">HSBC Application</span>
+                            </div>
+                            <div class="row legend">
+                                <div class="circle yellow"></div>
+                                <span class="col-md-10 col-lg-10 col-sm-10 col-xs-10">Management</span>
+                            </div>
+                            <div class="row legend">
+                                <div class="circle green"></div>
+                                <span class="col-md-10 col-lg-10 col-sm-10 col-xs-10">Project Management</span>
+                            </div>
+                            <div class="row legend">
+                                <div class="circle blue"></div>
+                                <span class="col-md-10 col-lg-10 col-sm-10 col-xs-10">Soft Skills</span>
+                            </div>
+                            <div class="row legend">
+                                <div class="circle purple"></div>
+                                <span class="col-md-10 col-lg-10 col-sm-10 col-xs-10">Technical</span>
+                            </div>
+                        </div>
+                        
                         <div class="col-sm-12" >
                         	<div id="bubbleChart"></div>
                         </div>
