@@ -33,7 +33,9 @@ angular.module("app")
 					// scroll back to top on page change
 		            $document.scrollTopAnimated(0, 500).then(function() {
 		                console && console.log('You just scrolled to the top!');
-						angular.element(document.querySelector('#filterList')).focus();
+                        if ( document.querySelector('#filterList') ) {
+						  angular.element(document.querySelector('#filterList')).focus();
+                        }
 		            });
 				};
 			}
