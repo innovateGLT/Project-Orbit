@@ -3,15 +3,21 @@
     <div class="row all-users-header">
         <div class="mb150"></div>
     
-        <h1 class="col-md-8 col-lg-8 colsm-12 col-xs-12">All Users</h1>
-        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 pull-right">
-            <div class="form-group">
-                <label class="control-label" for="filter">&nbsp;</label>
-                <div class="input-group">
-                    <input type="text" class="form-control" id="filterList" placeholder="Search for name, role, location, email..." ng-model="filter" ng-keyup="doSearch($event)"/>
-                    <span class="input-group-addon">
-                        <i class="glyphicon glyphicon-search" ng-click="search()" class="pointer"></i>
-                    </span>
+        <div class="row no-margin">
+            <div class="listing-header">
+                <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+                    <h1 class="col-md-8 col-lg-8 colsm-12 col-xs-12">All Users</h1>
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 pull-right">
+                        <div class="form-group">
+                            <label class="control-label" for="filter">&nbsp;</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control ng-pristine ng-valid ng-touched" id="filterList" placeholder="Search for name, role, location, email..." ng-model="filter" ng-keyup="doSearch($event)">
+                                <span class="input-group-addon pointer">
+                                    <i class="glyphicon glyphicon-search" ng-click="search()"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -19,8 +25,6 @@
         <div sticky-link class="ng-hide sticky-menu"><a ng-click="backToTop()">Back to Top</a></div>
         
         <div  class="container row">
-            
-            <hr class="featurette-divider-xs">
             
             <div when-scrolled="loadNext()">
                 <div class="col-md-4 col-sm-6 text-center animated-list-record" ng-repeat="user in users | filter:filter" ng-if="user.name != 'admin'">

@@ -7,7 +7,7 @@
             <li role="presentation" class="login-btn" ng-show="auth.isAuthenticated"><a href="/profile/"> My Profile</a></li>
             <li role="presentation" ng-show="false" class="login-btn" ng-click="logout()"><a href="">Logout</a></li>
             <li role="presentation" class="login-btn" ng-show="!auth.isAuthenticated" ng-click="login()"><a href="">Login</a></li>
-            <li role="presentation"><a style="padding:5px;" class="pointer {{notifications.length > 0 'animated swing' : }}" ng-click="toggleNotifications()" title="Alerts"><i class="glyphicon glyphicon-bell" style="color:{{notifications.length > 0 ? 'red' : '#fff'}};"></i></a></li>
+            <li role="presentation"><a style="padding:5px;" class="pointer {{notifications.length > 0 ? 'animated infinite swing' : ''}}" ng-click="toggleNotifications()" title="Alerts"><i class="glyphicon glyphicon-bell" style="color:{{notifications.length > 0 ? 'red' : '#fff'}};"></i></a></li>
             <li role="presentation"><a href="/help"><i class="glyphicon glyphicon-question-sign"></i></a></li>
         </ul>
     </nav>

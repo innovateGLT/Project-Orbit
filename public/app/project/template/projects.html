@@ -1,33 +1,39 @@
 <div class="container">
-    <div class="left">
-        <div class="col-md-12 col-ld-12 all-projects-header" style="height:150px;"></div>
-        <h1 class="col-md-8 col-lg-8 colsm-12 col-xs-12">{{ (projects.length == 0) ? 'No existing projects' : 'All Projects' + ( category ? ' under ' + category : '' )  | camelCaseToHuman}} </h1>
-        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 pull-right">
-            <div class="form-group">
-                <label class="control-label" for="filter">&nbsp;</label>
-                <div class="input-group">
-                    <input type="text" class="form-control" id="filterList" placeholder="Search for title, description, owner, location ..." ng-model="filter" ng-keyup="doSearch($event)"/>
-                    <span class="input-group-addon">
-                        <i class="glyphicon glyphicon-search" ng-click="search()" class="pointer"></i>
-                    </span>
+    <div class="row all-projects-header">
+        <div class="mb150"></div>
+        
+        <div class="row no-margin">
+            <div class="listing-header">
+                <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+                    <h1 class="col-md-8 col-lg-8 colsm-12 col-xs-12">{{ (projects.length == 0) ? 'No existing projects' : 'All Projects' + ( category ? ' under ' + category : '' )  | camelCaseToHuman}}</h1>
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 pull-right">
+                        <div class="form-group">
+                            <label class="control-label" for="filter">&nbsp;</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control ng-pristine ng-valid ng-touched" id="filterList" placeholder="Search for name, role, location, email..." ng-model="filter" ng-keyup="doSearch($event)">
+                                <span class="input-group-addon pointer">
+                                    <i class="glyphicon glyphicon-search" ng-click="search()"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
     
-    <div sticky-link class="ng-hide sticky-menu"><a ng-click="backToTop()">Back to Top</a></div>
-    
-    <div class="container row">
-        <hr class="featurette-divider-sm">
+        <div sticky-link class="ng-hide sticky-menu"><a ng-click="backToTop()">Back to Top</a></div>
         
-        <div when-scrolled="loadNext()">
-            <div class="col-sm-6 text-center col-md-3 col-xl-3 animated-list-record" ng-repeat="project in projects | filter : filter">
-                <project-badge project="project"></project-badge>
+        <div class="container row">
+            
+            <div when-scrolled="loadNext()">
+                <div class="col-sm-6 text-center col-md-3 col-xl-3 animated-list-record" ng-repeat="project in projects | filter : filter">
+                    <project-badge project="project"></project-badge>
+                </div>
+                <div class="alert alert-warning" ng-show="projects.length == 0">Your search returned no results. Please refine your search and let's see if we can match it with something.</div>
+                <div style="clear: both;"></div>
             </div>
-            <div class="alert alert-warning" ng-show="projects.length == 0">Your search returned no results. Please refine your search and let's see if we can match it with something.</div>
-            <div style="clear: both;"></div>
+            
+            <hr class="featurette-divider-xs">
         </div>
-        
-        <hr class="featurette-divider-xs">
     </div>
 </div>

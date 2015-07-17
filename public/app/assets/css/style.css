@@ -2044,13 +2044,15 @@ user-badge .thumbnail {
 }
 
 .help .help-header .breadcrumb {
-    margin: 130px 10px 0 10px;
-    padding: 15px;
-    background-color: #F7F4FA;
+    margin: 110px 15px 0 15px;
+    padding: 10px 10px 15px 10px;
+    opacity: .9;
+    background-color: #fff;
     border-radius: 0;
     -webkit-box-shadow: 2px 2px 5px 0px rgba(156,153,156,1);
     -moz-box-shadow: 2px 2px 5px 0px rgba(156,153,156,1);
     box-shadow: 2px 2px 5px 0px rgba(156,153,156,1);
+    font-size: 15px;
 }
 
 /* Help Header Styles END */
@@ -2185,3 +2187,30 @@ user-badge .thumbnail {
 .skills-legend .circle.purple {
     background-color: purple;
 }
+
+/* listing headers START */
+
+.listing-header {
+    background: #fff;
+    margin: 15px;
+    margin-top: -35px;
+    margin-bottom: 20px;
+    float:left;
+    border-right: 1px solid #f0f0f0;
+    border-bottom: 1px solid #f0f0f0;
+    opacity: .9;
+    -webkit-box-shadow: 2px 2px 5px 0px rgba(156,153,156,1);
+    -moz-box-shadow: 2px 2px 5px 0px rgba(156,153,156,1);
+    box-shadow: 2px 2px 5px 0px rgba(156,153,156,1);
+}
+
+.listing-header h1 {
+    color: #9B9999;
+    padding-left: 0;
+}
+
+.listing-header div.pull-right {
+    padding-right: 0;
+}
+
+/* listing headers END */
