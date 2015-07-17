@@ -50,6 +50,6 @@ var SkillsSchema = new mongoose.Schema({
     }
  
 
-}, {collection: 'skills_vancouver'});
+}, {collection: 'skills'});
 module.exports = mongoose.model('Skills', SkillsSchema);
 
