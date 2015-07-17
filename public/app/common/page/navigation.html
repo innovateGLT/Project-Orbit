@@ -76,7 +76,7 @@
 				    <li  ng-show="false" class="" ng-click="logout()"><a href="#">Logout</a></li>
 				  </ul>
 				</li>
-				<li role="presentation"><a style="padding:5px;" class="pointer" ng-click="toggleNotifications()" title="Alerts"><i class="glyphicon glyphicon-bell" style="color:{{notifications.length > 0 ? 'red' : '#fff'}};"></i></a></li>
+				<li role="presentation"><a style="padding:5px;" class="pointer {{notifications.length > 0 'animated swing' : }}" ng-click="toggleNotifications()" title="Alerts"><i class="glyphicon glyphicon-bell" style="color:{{notifications.length > 0 ? 'red' : '#fff'}};"></i></a></li>
 				<li role="presentation"><a href="/help" style="padding:5px;"><i class="glyphicon glyphicon-question-sign"></i></a></li>
 			</ul>
 			<div class="animate-slideInDown-Up notifications" ng-show="isNotificationVisible">
