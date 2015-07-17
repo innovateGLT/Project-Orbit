@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('project')
-    .controller('ProjectDetailController', ['$scope', '$routeParams', '$window', 'Projects', '$location', 'Questions', 'SecurityService', 'UserService', 'SweetAlert', 'Email', 'Rating', 'store',
-        function($scope, $routeParams, $window, Projects, $location, Questions, SecurityService, UserService, SweetAlert, Email, Rating, store) {
+    .controller('ProjectDetailController', ['$scope', '$routeParams', '$window', 'Projects', '$location', 'Questions', 'SecurityService', 'UserService', 'SweetAlert', 'Email', 'Rating', 'store', 'PokeService',
+        function($scope, $routeParams, $window, Projects, $location, Questions, SecurityService, UserService, SweetAlert, Email, Rating, store, PokeService) {
 
             $scope.auth = SecurityService.auth();
 
@@ -393,7 +393,6 @@ angular.module('project')
             $scope.invite = function(user) {
                 console.log(user);
 
-                var poked = false;
                 var invitedUser = {
                     user_id: user.user_id,
                     name: user.name
@@ -406,43 +405,8 @@ angular.module('project')
                     }
                 };
                 if ( invited ) {
-                    // if the user has been invited, the project owner could notify the user again just by poking
-                    // the poked user would see a notification once he logs in to the site
-                    // once he viewed the poke notification, we would remove the poke notification, thus the project owner could poke the user again
-                        
-                    if ( !user.pokes ) {
-                        user.pokes = [];
-                    }
-                        
-                    // check if already poked
-                    user.pokes.forEach( function ( poke ) {
-                        if ( !poked ) {
-                            if ( poke.user_id === $scope.auth.profile.user_id ) {
-                                poked = true;
-                            }
-                        }
-                    });
-                    
-                    // if the project owner hasn't poked the user yet
-                    if ( !poked ) {
-                        user.pokes.push( {
-                            user_id : $scope.auth.profile.user_id,
-                            name: $scope.auth.profile.name,
-                            picture: $scope.auth.profile.picture
-                        } );
-                        
-                        // save poke
-                        var u = new UserService(user);
-                        u.$save().then(function () {
-                            SweetAlert.swal("Pokey poke!", "We've alerted the user that you really wanted them in your team.", "success");
-                        });
-                        
-                    // if the project owner already poked the user and the user hasn't seen it yet
-                    } else {
-                    
-                        SweetAlert.swal("Awww!", "Too much poking, it hurts.", "error");
-                    }
-                    
+                    // poke!
+                    $scope.poke( user );
                     return;
                 }
 
@@ -500,6 +464,57 @@ angular.module('project')
 
                 });
 
+            };
+            
+            $scope.poke = function ( /* Object */user ) {
+                // summary
+                //      this functions pokes a matched employee
+                //      poke is only available once the user has already been invited but hasn't responded yet
+                
+                // if the user has been invited, the project owner could notify the user again just by poking
+                // the poked user would see a notification once he logs in to the site
+                // once he viewed the poke notification, we would remove the poke notification, thus the project owner could poke the user again
+                
+                var poke = {};
+                var pokeHurts = false;
+                if ( !user.pokes ) {
+                    user.pokes = [];
+                }
+                
+                // if the project owner hasn't poked the user yet
+                if ( !pokeHurts ) {
+                    
+                    poke = {
+                        by_user : {
+                            user_id : $scope.auth.profile.user_id,
+                            name: $scope.auth.profile.name,
+                            picture: $scope.auth.profile.picture
+                        },
+                        
+                        for_user : {
+                            user_id : user.user_id,
+                            name: user.name,
+                            picture: user.picture
+                        }
+                    };
+                    
+                    // save poke
+                    var pokeRecord = new PokeService(poke);
+                    pokeRecord.$save().then(function ( response ) {
+                        
+                        if ( response.error ) {
+                            SweetAlert.swal("Awww!", "Too much poking, it hurts.", "error");
+                            pokeHurts = true;
+                        } else {
+                            SweetAlert.swal("Pokey poke!", "We've alerted the user that you really wanted them in your team.", "success");
+                        }
+                    });
+                
+                // poke already hurts, coz user has been poked 5 times
+                } else {
+                    SweetAlert.swal("Awww!", "Too much poking, it hurts.", "error");
+                }
+                    
             };
 
             $scope.feature = function() {

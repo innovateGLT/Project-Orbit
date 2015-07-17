@@ -76,20 +76,30 @@
 				    <li  ng-show="false" class="" ng-click="logout()"><a href="#">Logout</a></li>
 				  </ul>
 				</li>
-				<li role="presentation" ng-if="auth.profile.pokes.length > 0"><a style="padding:5px;" class="pointer" ng-click="toggleNotifications()"><i class="glyphicon glyphicon-bell" style="color:red;"></i></a></li>
+				<li role="presentation"><a style="padding:5px;" class="pointer" ng-click="toggleNotifications()" title="Alerts"><i class="glyphicon glyphicon-bell" style="color:{{notifications.length > 0 ? 'red' : '#fff'}};"></i></a></li>
 				<li role="presentation"><a href="/help" style="padding:5px;"><i class="glyphicon glyphicon-question-sign"></i></a></li>
 			</ul>
-			<div class="animate-slideInDown-Up notifications" ng-show="isNotificationVisible" ng-if="auth.profile.pokes.length > 0">
-				<div ng-repeat="poke in auth.profile.pokes track by $index" class="notification" ng-class-odd="'odd'">
-					<div class="row" ng-click="viewUser(poke.user_id)">
-						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+			<div class="animate-slideInDown-Up notifications" ng-show="isNotificationVisible">
+				<div class="notification-header">Alerts<a class="pull-right pointer mr5" ng-click="toggleNotifications()"><i class="glyphicon glyphicon-remove"></i></a></div>
+				<div ng-repeat="poke in notifications track by $index" class="notification animate-alert" ng-class-odd="'odd'" ng-mouseover="isCloseable=true" ng-mouseleave="isCloseable=false">
+					<div class="row">
+						<div class="col-xs-11 col-sm-11 col-md-11 col-lg-11" ng-click="viewUser(poke.by_user.user_id)">
 							<div class="left" style="width:30px;">
-								<a class="pointer" ng-click="viewUser(poke.user_id)"><img ng-src="{{poke.picture}}" width="30px" class="media-object img-circle" title="{{poke.name}}"/></a>
+								<a class="pointer" ng-click="viewUser(poke.by_user.user_id)"><img ng-src="{{poke.by_user.picture}}" width="30px" class="media-object img-circle" title="{{poke.by_user.name}}"/></a>
 							</div>
 							<div class="col-md-10 col-lg-10 col-sm-12 col-xs-12">
-								<a class="pointer" ng-click="viewUser(poke.user_id)">{{poke.name}}</a> poked you, reminding to check you invitations.
+								<a class="pointer" ng-click="viewUser(poke.by_user.user_id)">{{poke.by_user.name}}</a> poked you{{poke.poke_ctr > 0 ? " " + poke.poke_ctr + " times" : ""}}, reminding to check you invitations.
 							</div>
 						</div>
+						
+						<div class="col-md-1 col-lg-1 col-sm-1 col-xs-1 text-center" ng-show="isCloseable">
+							<span class="close" ng-click="deleteAlert(poke)">&times;</span>
+						</div>
+					</div>
+				</div>
+				<div class="notification" ng-show="notifications.length == 0">
+					<div class="row">
+						<div class="col-md-12"><span>No alerts.</span></div>
 					</div>
 				</div>
 			</div>

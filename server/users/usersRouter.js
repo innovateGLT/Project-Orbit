@@ -49,7 +49,6 @@ router.get('/', function(req, res, next) {
         }]);
     }
     
-    
     // skip previous records and limit record retrieval to recordsPerPage
     query
         .skip((pageNo - 1) * recordsPerPage)

@@ -52,10 +52,6 @@ var UserSchema = new mongoose.Schema({
         type: Array,
         default: []
     },
-    pokes: {
-        type: mongoose.Schema.Types.Mixed,
-        default: []
-    },
     status: {
         type: Boolean,
         default: true

@@ -2,8 +2,8 @@
 
 angular.module('app')
 
-.controller('HeaderController', ['$scope', 'Projects', '$location', '$routeParams', 'SecurityService',
-    function($scope, Projects, $location, $routeParams, SecurityService) {
+.controller('HeaderController', ['$scope', 'Projects', '$location', '$routeParams', 'SecurityService', 'PokeService',
+    function($scope, Projects, $location, $routeParams, SecurityService, PokeService) {
 
 
         console.log("MMMEEEEE");
@@ -36,6 +36,11 @@ angular.module('app')
             //      this function would retrieve all notifications of the user, triggered by the bell button from the navbar
             // tags
             //      private
+            if ( !$scope.isNotificationVisible ) {
+                PokeService.query({user_id : $scope.auth.profile.user_id}, function ( notifications ) {
+                    $scope.notifications = notifications;
+                });
+            }
             $scope.isNotificationVisible = $scope.isNotificationVisible ? false : true;
         };
         
@@ -50,6 +55,22 @@ angular.module('app')
             $scope.isNotificationVisible = false;
             $location.path("/user/" + userId).hash( $scope.returnUrl );
         }
+        
+        $scope.deleteAlert = function ( /* Object */alert ) {
+            // summary
+            //      this function would delete the alert
+            
+            PokeService.delete({id: alert._id}, function () {
+                var index = $scope.notifications.indexOf(alert);
+                $scope.notifications.splice(index, 1);
+                console.log($scope.notifications.length);
+            });
+        };
+        
+        
+        PokeService.query({user_id : $scope.auth.profile.user_id}, function ( notifications ) {
+            $scope.notifications = notifications;
+        });
 
     }
 ]);

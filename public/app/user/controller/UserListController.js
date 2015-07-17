@@ -25,7 +25,7 @@ angular.module('user')
                         users.forEach( function ( user ) {
                            
                             // populate users list
-                            if ( $scope.users.indexOf( user ) === -1 ) {
+                            if ( $scope.users.indexOf( user ) === -1 && user.job_role.indexOf("CONTINGENT") === -1 ) {
                                 $scope.users.push( user );
                             } else {
                                 console.log("Duplicate user.");
