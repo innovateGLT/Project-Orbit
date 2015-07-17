@@ -5,19 +5,41 @@
         <strong ng-click="toggleQuestion('rate-opps1')">
             <h4>
                 <i class="glyphicon glyphicon-question-sign mr10"></i>
-                <span>How do I rate a user?</span>
+                <span>How do I rate an opportunity owner?</span>
             </h4>
         </strong>
         
         
         <div ng-show="questions['rate-opps1']" class="animate-slide-in-out pt5 answer">
-            <h5 ng-show="questions['rate-opps1']">To mark yourself as not actively seeking for opportunities, proceed with these steps:</h5>
+            <h5 ng-show="questions['rate-opps1']">After a seeker is selected to work on an opportunity, the seeker can rate the owner. If you are a seeker looking to rate an owner, proceed with the following steps:</h5>
             <ul class="decimal" ng-show="questions['rate-opps1']">
                 <li>Go to the Home Page.</li>
-                <li>In the Home Page, click on “New Project” button to launch the Create A New Project Page.</li>
-                <li>In the Create A New Project Page, input the opportunity details.</li>
-                <li>Once you are finished inputting the opportunity details, click on “Submit” button.</li>
-                <li>Click on “OK” button in confirmation modal window to launch the Opportunity Details Page./li>
+                <li>In the Home Page, click on “My Profile” link to launch your Profile Page.</li>
+                <li>In your Profile Page, go to “Current Projects” tab.</li>
+                <li>In “Current Projects” tab, locate the opportunity you have posted and click on “View Details” button to launch the seeker-view of the Opportunity Details Page.</li>
+                <li>In the seeker-view of the Opportunity Details Page, hover over the stars next to “Rate this project’s owner”. For example, if you would like to provide a 3-star rating to the owner, hover over 3 stars.</li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="help-question">
+        <strong ng-click="toggleQuestion('rate-opps2')">
+            <h4>
+                <i class="glyphicon glyphicon-question-sign mr10"></i>
+                <span>How do I rate an opportunity seeker?</span>
+            </h4>
+        </strong>
+        
+        
+        <div ng-show="questions['rate-opps2']" class="animate-slide-in-out pt5 answer">
+            <h5 ng-show="questions['rate-opps2']">After a seeker is selected to work on an opportunity, the owner can rate the seeker. If you are an owner looking to rate a seeker, proceed with the following steps:</h5>
+            <ul class="decimal" ng-show="questions['rate-opps2']">
+                <li>Go to the Home Page.</li>
+                <li>In the Home Page, click on “My Profile” link to launch your Profile Page.</li>
+                <li>In your Profile Page, go to “Current Projects” tab.</li>
+                <li>In “Current Projects” tab, locate the opportunity you have posted and click on “View Details” button to launch the seeker-view of the Opportunity Details Page.</li>
+                <li>In the seeker-view of the Opportunity Details Page, go to “Selected People” tab and locate the seeker you would like to rate.</li>
+                <li>In “Selected People” tab, hover over the stars next to the name of the seeker you would like to rate. For example, if you would like to provide a 3-star rating to the seeker, hover over 3 stars.</li>
             </ul>
         </div>
     </div>

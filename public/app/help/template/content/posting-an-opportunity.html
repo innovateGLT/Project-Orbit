@@ -17,7 +17,29 @@
                 <li>In the Home Page, click on “New Project” button to launch the Create A New Project Page.</li>
                 <li>In the Create A New Project Page, input the opportunity details.</li>
                 <li>Once you are finished inputting the opportunity details, click on “Submit” button.</li>
-                <li>Click on “OK” button in confirmation modal window to launch the Opportunity Details Page./li>
+                <li>Click on “OK” button in confirmation modal window to launch the Opportunity Details Page.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="help-question">
+        <strong ng-click="toggleQuestion('post-opps2')">
+            <h4>
+                <i class="glyphicon glyphicon-question-sign mr10"></i>
+                <span>How do I locate seekers who have a specific skill?</span>
+            </h4>
+        </strong>
+        
+        
+        <div ng-show="questions['post-opps2']" class="animate-slide-in-out pt5 answer">
+            <h5 ng-show="questions['post-opps2']">To locate seekers who have a specify skill, proceed with these steps:</h5>
+            <ul class="decimal" ng-show="questions['post-opps2']">
+                <li>Go to the Home Page.</li>
+                <li>In the Home Page, click on “My Profile” link to launch your Profile Page.</li>
+                <li>In your Profile Page, click on “My Dashboard” to launch a dropdown menu.</li>
+                <li>In the dropdown menu, click on “All Users”.</li>
+                <li>In the All Users Page, input skill into “Search for name, role, location, email…” field then click on search button.</li>
+                <li>In the All Users Page, all the users who have the skill you are searching for will be displayed.</li>
             </ul>
         </div>
     </div>

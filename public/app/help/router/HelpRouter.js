@@ -78,11 +78,6 @@ angular.module('help')
                     controller: 'HelpController'
                 })
                 
-                .when('/help/faq/rating-an-opportunity', {
-                    templateUrl: '/app/help/template/help.html',
-                    controller: 'HelpController'
-                })
-                
                 .when('/help/faq/rating-a-user', {
                     templateUrl: '/app/help/template/help.html',
                     controller: 'HelpController'

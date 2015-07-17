@@ -102,12 +102,6 @@ angular.module('help')
                             index       : 1
                         },
                         {
-                            label       : "Rating an Opportunity",
-                            template    : "/app/help/template/content/rating-an-opportunity.html",
-                            url         : "/help/faq/rating-an-opportunity",
-                            index       : 1
-                        },
-                        {
                             label       : "Rating a User",
                             template    : "/app/help/template/content/rating-a-user.html",
                             url         : "/help/faq/rating-a-user",

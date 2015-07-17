@@ -1770,13 +1770,27 @@ user-badge .thumbnail {
     border-right: 1px solid #c9c7c7;
     padding: 30px;
     float: left;
-    width: 100%;
     background-color: #e0e0e0;
     border-radius: 2px;
     margin-top: 30px;
     -webkit-box-shadow: 2px 2px 5px 0px rgba(156,153,156,1);
     -moz-box-shadow: 2px 2px 5px 0px rgba(156,153,156,1);
     box-shadow: 2px 2px 5px 0px rgba(156,153,156,1);
+}
+
+.help .content .how-it-works .steps {
+    width: 100%;
+}
+
+.help .content .help-center .steps {
+    height: 360px;
+    margin: 5px;
+}
+
+@media only screen and (min-width: 960px) {
+    .help .content .help-center .steps {
+        width: 32%;
+    }
 }
 
 .help .help-question {

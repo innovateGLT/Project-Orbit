@@ -1,1 +1,250 @@
-<h2>Help Center Main page</h2>
+<div class="help-center">
+    <h2>Common Questions to Get You Started</h2>
+    
+    <div class="help-question">
+        <strong ng-click="toggleQuestion('basics1')">
+            <h4>
+                <i class="glyphicon glyphicon-question-sign mr10"></i>
+                <span>Do I need to create a profile?</span>
+            </h4>
+        </strong>
+        
+        <p ng-show="questions['basics1']" class="animate-slide-in-out answer">When you visit the site Home Page for the first time, your account will be created automatically. When you click on “My Profile” in the Home Page, your Profile Page will be created automatically based on existing information stored in other HSBC databases. You will not have to go through a separate process for creating a Profile Page.</p>
+    </div>
+    
+    <div class="help-question">
+        <strong ng-click="toggleQuestion('basics2')">
+            <h4>
+                <i class="glyphicon glyphicon-question-sign mr10"></i>
+                <span>What will I see on my profile?</span>
+            </h4>
+        </strong>
+        
+        
+        <div ng-show="questions['basics2']" class="animate-slide-in-out answwer">
+            <ul class="no-style no-margin" ng-show="questions['basics2']">
+                <li>
+                    <i class="glyphicon glyphicon-ok"></i>
+                    <span>Your name, department name, role, region of employment, and Lotus Notes ID are captured from Active Directory.</span>
+                </li>
+                <li>
+                    <i class="glyphicon glyphicon-ok"></i>
+                    <span>If you have uploaded a photograph to the Staff Photograph Repository via HRDirect, then the photograph will also be displayed.</span>
+                </li>
+                <li>
+                    <i class="glyphicon glyphicon-ok"></i>
+                    <span>If you have not yet added professional skills onto your SMART Profile via GMIS2G, then the “Skills” section of your Profile Page will be blank. If you have added skills onto your SMART Profile via GMIS2G, then the skills will be displayed in the “Skills” section of your Profile Page.</span>
+                </li>
+                <li>
+                    <i class="glyphicon glyphicon-ok"></i>
+                    <span>When you visit your Profile Page for the first time, the “Interests” section will display the word “NONE”.</span>
+                </li>
+                <li>
+                    <i class="glyphicon glyphicon-ok"></i>
+                    <span>By default, you will be marked as actively seeking for opportunities.</span>
+                </li>
+                <li>
+                    <i class="glyphicon glyphicon-ok"></i>
+                    <span>If there are opportunities available that require skills matching the ones displayed in the “Skills” section, then these opportunities will be listed in the “You might be interested in the following projects” section.</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="help-question">
+        <strong ng-click="toggleQuestion('basics3')">
+            <h4>
+                <i class="glyphicon glyphicon-question-sign mr10"></i>
+                <span>My skills are colour coded and they appear inside bubbles. How does this work?</span>
+            </h4>
+        </strong>
+        
+        <p ng-show="questions['basics3']" class="animate-slide-in-out answer">
+            
+            <div ng-show="questions['basics3']" class="animate-slide-in-out answwer">
+                
+                <h5>The larger the bubble in the “Skills” tab, the stronger the expertise.</h5>
+                <h5>The skills are grouped under the following categories:</h5>
+                
+                <ul class="no-style mb30" ng-show="questions['basics3']">
+                    <li>
+                        <i class="glyphicon glyphicon-ok"></i>
+                        <span>“Business Domain” skills will appear in red bubbles</span>
+                    </li>
+                    <li>
+                        <i class="glyphicon glyphicon-ok"></i>
+                        <span>“HSBC Application” skills will appear in orange bubbles</span>
+                    </li>
+                    <li>
+                        <i class="glyphicon glyphicon-ok"></i>
+                        <span>“Management” skills will appear in yellow bubbles</span>
+                    </li>
+                    <li>
+                        <i class="glyphicon glyphicon-ok"></i>
+                        <span>“Project Management” skills will appear in green bubbles</span>
+                    </li>
+                    <li>
+                        <i class="glyphicon glyphicon-ok"></i>
+                        <span>“Soft Skills” will appear in blue bubbles</span>
+                    </li>
+                    <li>
+                        <i class="glyphicon glyphicon-ok"></i>
+                        <span>“Technical” skills will appear in purple bubbles</span>
+                    </li>
+                </ul>
+                
+                <h5>The scale used for the skills are adapted from GMIS2G SMART:</h5>
+                
+                <ul class="no-style no-margin" ng-show="questions['basics3']">
+                    <li>
+                        <i class="glyphicon glyphicon-ok"></i>
+                        <span>1-Novice: New to the job. Is able to do the job but unable to meet the standards and requires total supervision.</span>
+                    </li>
+                    <li>
+                        <i class="glyphicon glyphicon-ok"></i>
+                        <span>2-Learner: A person who is a beginner and is able to do the job, though not yet consistently, to the required standards and needs frequent supervision. This indicates the person needs much help and training to do the job.</span>
+                    </li>
+                    <li>
+                        <i class="glyphicon glyphicon-ok"></i>
+                        <span>3-Proficient: A person who has some experience and is able to do the job to the required standards consistently, on a routine basis with occasional supervision. This indicates the person can do without much help to do the job.</span>
+                    </li>
+                    <li>
+                        <i class="glyphicon glyphicon-ok"></i>
+                        <span>4-Professional: An experienced person who is able to do the job to the required standards consistently without any supervision.</span>
+                    </li>
+                    <li>
+                        <i class="glyphicon glyphicon-ok"></i>
+                        <span>5-Expert: A person who is recognized as an authority for his/her ability to do the job to exemplary standards independently and one who is also able to coach others.</span>
+                    </li>
+                </ul>
+            </div>
+            
+        </p>
+    </div>
+    
+    <div class="help-question">
+        <strong ng-click="toggleQuestion('post-opps1')">
+            <h4>
+                <i class="glyphicon glyphicon-question-sign mr10"></i>
+                <span>How can I post an opportunity?</span>
+            </h4>
+        </strong>
+        
+        
+        <div ng-show="questions['post-opps1']" class="animate-slide-in-out pt5 answer">
+            <h5 ng-show="questions['post-opps1']">To mark yourself as not actively seeking for opportunities, proceed with these steps:</h5>
+            <ul class="decimal" ng-show="questions['post-opps1']">
+                <li>Go to the Home Page.</li>
+                <li>In the Home Page, click on “New Project” button to launch the Create A New Project Page.</li>
+                <li>In the Create A New Project Page, input the opportunity details.</li>
+                <li>Once you are finished inputting the opportunity details, click on “Submit” button.</li>
+                <li>Click on “OK” button in confirmation modal window to launch the Opportunity Details Page./li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="help-question">
+        <strong ng-click="toggleQuestion('apply-opps2')">
+            <h4>
+                <i class="glyphicon glyphicon-question-sign mr10"></i>
+                <span>How do I apply for an opportunity?</span>
+            </h4>
+        </strong>
+        
+        
+        <div ng-show="questions['apply-opps2']" class="animate-slide-in-out pt5 answer">
+            <h5 ng-show="questions['apply-opps2']">To mark yourself as not actively seeking for opportunities, proceed with these steps:</h5>
+            <ul class="decimal" ng-show="questions['apply-opps2']">
+                <li>Go to the Home Page.</li>
+                <li>In the Home Page, click on “New Project” button to launch the Create A New Project Page.</li>
+                <li>In the Create A New Project Page, input the opportunity details.</li>
+                <li>Once you are finished inputting the opportunity details, click on “Submit” button.</li>
+                <li>Click on “OK” button in confirmation modal window to launch the Opportunity Details Page./li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="mt20 left">
+        <h3>How it works for opportunity owners</h3>
+        
+        <div>
+            <!-- Step 1 -->
+            <div class="steps col-md-4 col-lg-4 col-sm-12 col-xs-12">
+                <div class="text-center">
+                    <img img-cache ic-src="/app/assets/img/home/owner-step1-announce.png" width="150px"/>
+                </div>
+                <div class="text-center">
+                    <h4>Step 1. Announce</h4>
+    
+                    <p>Need more ideas and extra help for a project? Post an opportunity and spread the word to seekers.</p>
+                </div>
+            </div>
+            
+            <!-- Step 2 -->
+            <div class="steps col-md-4 col-lg-4 col-sm-12 col-xs-12">
+                <div class="text-center">
+                    <img img-cache ic-src="/app/assets/img/home/owner-step2-review.png" width="150px"/>
+                </div>
+                <div class="text-center">
+                    <h4>Step 2. Review</h4>
+    
+                    <p>Review the profiles of the applicants and potential seekers who may have the expertise you are looking for.</p>
+                </div>
+            </div>
+            
+            <!-- Step 3 -->
+            <div class="steps col-md-4 col-lg-4 col-sm-12 col-xs-12">
+                <div class="text-center">
+                    <img img-cache ic-src="/app/assets/img/home/owner-step3-select.png" width="150px"/>
+                </div>
+                <div class="text-center">
+                    <h4>Step 3. Select</h4>
+    
+                    <p>Onboard a seeker to the project!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="mt20 left">
+        <h3>How it works for opportunity seekers</h3>
+        
+        <div>
+            <!-- Step 1 -->
+            <div class="steps col-md-4 col-lg-4 col-sm-12 col-xs-12">
+                <div class="text-center">
+                    <img img-cache ic-src="/app/assets/img/home/seeker-step1-seek.png" width="150px"/>
+                </div>
+                <div class="text-center">
+                    <h4>Step 1. Seek</h4>
+    
+                    <p>Looking to learn something new and grow your skills? Seek for an opportunity.</p>
+                </div>
+            </div>
+            
+            <!-- Step 2 -->
+            <div class="steps col-md-4 col-lg-4 col-sm-12 col-xs-12">
+                <div class="text-center">
+                    <img img-cache ic-src="/app/assets/img/home/seeker-step2-apply.png" width="150px"/>
+                </div>
+                <div class="text-center">
+                    <h4>Step 2. Apply</h4>
+    
+                    <p>Found an opportunity you are interested in? Apply for it.</p>
+                </div>
+            </div>
+            
+            <!-- Step 3 -->
+            <div class="steps col-md-4 col-lg-4 col-sm-12 col-xs-12">
+                <div class="text-center">
+                    <img img-cache ic-src="/app/assets/img/home/seeker-step3-collaborate.png" width="150px"/>
+                </div>
+                <div class="text-center">
+                    <h4>Step 3. Collaborate</h4>
+    
+                    <p>Once onboarded to a project, explore, and collaborate.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
