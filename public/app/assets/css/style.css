@@ -1657,7 +1657,7 @@ user-badge .thumbnail {
 .discussion-board .comments {
     padding: 0;
     max-height: 1200px;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 
 .discussion-board .comment.odd {
@@ -2090,7 +2090,8 @@ user-badge .thumbnail {
     border-top-right-radius: 0;
     z-index: 2000;
     max-height: 400px;
-    overflow-y: scroll;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .notifications .notification {
@@ -2115,6 +2116,11 @@ user-badge .thumbnail {
     padding-top: 5px;
     margin-bottom: 5px;
     color: #70A8F0;
+}
+
+.notifications .notification .message {
+    width: 91%;
+    padding-right: 0;
 }
 
 /* NOTIFICATIONS END*/

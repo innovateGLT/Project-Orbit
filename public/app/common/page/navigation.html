@@ -87,7 +87,7 @@
 							<div class="left" style="width:30px;">
 								<a class="pointer"><img ng-src="{{alert.by_user.picture}}" width="30px" class="media-object img-circle" title="{{alert.by_user.name}}"/></a>
 							</div>
-							<div class="col-md-10 col-lg-10 col-sm-10 col-xs-10">
+							<div class="col-md-10 col-lg-10 col-sm-10 col-xs-10 message">
 								<span ng-if="alert.alert_type === 'poke'"><b>{{alert.by_user.name}}</b> poked you{{alert.poke_ctr > 1 ? " " + alert.poke_ctr + " times" : ""}}, reminding to check your invitations.</span>
                                 <span ng-if="alert.alert_type === 'invite'"><b>{{alert.by_user.name}}</b> invited you to collborate with his project called <b>{{alert.project_name}}.</b></span>
                                 <span ng-if="alert.alert_type === 'accept'"><b>{{alert.by_user.name}}</b> is cool on helping in your project called <b>{{alert.project_name}}.</b></span>
