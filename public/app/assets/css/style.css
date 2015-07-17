@@ -2089,6 +2089,8 @@ user-badge .thumbnail {
     border-radius: 5px;
     border-top-right-radius: 0;
     z-index: 2000;
+    max-height: 400px;
+    overflow-y: scroll;
 }
 
 .notifications .notification {
@@ -2116,3 +2118,64 @@ user-badge .thumbnail {
 }
 
 /* NOTIFICATIONS END*/
+
+.skills-legend {
+    width: 250px;
+    position: absolute;
+    right: 10px;
+    z-index: 2000;
+    padding: 15px;
+    background-color: #302F4B;
+    border: 1px solid #f0f0f0;
+    color: #fff;
+}
+
+.skills-legend .legend-header {
+    border-bottom: 1px solid #fff;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+.skills-legend .legend-header .close {
+    opacity: 1;
+    color: #fff;
+}
+
+.skills-legend .legend {
+    margin: 10px 0 0 0;
+}
+
+.skills-legend .legend span {
+    margin-top: 5px;
+}
+
+.skills-legend .circle {
+    height: 30px;
+    width: 30px;
+    border-radius: 15px;
+    float: left;
+}
+
+.skills-legend .circle.red {
+    background-color: red;
+}
+
+.skills-legend .circle.orange {
+    background-color: orange;
+}
+
+.skills-legend .circle.yellow {
+    background-color: yellow;
+}
+
+.skills-legend .circle.green {
+    background-color: green;
+}
+
+.skills-legend .circle.blue {
+    background-color: blue;
+}
+
+.skills-legend .circle.purple {
+    background-color: purple;
+}
