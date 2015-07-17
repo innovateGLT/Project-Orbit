@@ -1656,6 +1656,8 @@ user-badge .thumbnail {
 
 .discussion-board .comments {
     padding: 0;
+    max-height: 1200px;
+    overflow-y: scroll;
 }
 
 .discussion-board .comment.odd {
