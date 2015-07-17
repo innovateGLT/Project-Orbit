@@ -2044,14 +2044,11 @@ user-badge .thumbnail {
 }
 
 .help .help-header .breadcrumb {
-    margin: 110px 15px 0 15px;
+    margin: 0px 15px 0 15px;
     padding: 10px 10px 15px 10px;
     opacity: .9;
-    background-color: #fff;
+    background-color: #f8f8f8;
     border-radius: 0;
-    -webkit-box-shadow: 2px 2px 5px 0px rgba(156,153,156,1);
-    -moz-box-shadow: 2px 2px 5px 0px rgba(156,153,156,1);
-    box-shadow: 2px 2px 5px 0px rgba(156,153,156,1);
     font-size: 15px;
 }
 
