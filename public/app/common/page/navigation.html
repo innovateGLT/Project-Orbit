@@ -88,7 +88,7 @@
 								<a class="pointer" ng-click="viewUser(poke.by_user.user_id)"><img ng-src="{{poke.by_user.picture}}" width="30px" class="media-object img-circle" title="{{poke.by_user.name}}"/></a>
 							</div>
 							<div class="col-md-10 col-lg-10 col-sm-12 col-xs-12">
-								<a class="pointer" ng-click="viewUser(poke.by_user.user_id)">{{poke.by_user.name}}</a> poked you{{poke.poke_ctr > 0 ? " " + poke.poke_ctr + " times" : ""}}, reminding to check you invitations.
+								<a class="pointer" ng-click="viewUser(poke.by_user.user_id)">{{poke.by_user.name}}</a> poked you{{poke.poke_ctr > 1 ? " " + poke.poke_ctr + " times" : ""}}, reminding to check you invitations.
 							</div>
 						</div>
 						
