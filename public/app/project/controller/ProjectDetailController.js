@@ -397,7 +397,7 @@ angular.module('project')
 
                 var invited = false;
                 for (var i = 0; i < $scope.project.invitedUsers.length; i++) {
-                    if (invitedUser.user_id == $scope.project.invitedUsers[i].user_id) {
+                    if ( !$scope.project.invitedUsers[i] || invitedUser.user_id == $scope.project.invitedUsers[i].user_id) {
                         invited = true;
                     }
                 };
