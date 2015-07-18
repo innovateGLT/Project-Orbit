@@ -43,7 +43,7 @@
                         <h3>My Skills</h3>
                         <p class="alert alert-info">Skills are automatically retrieved from GMIS, so editing / adding is not applicable.</p>
                         <ul class="list-inline no-padding">
-                            <li ng-repeat="skill in user.skills" class="skill"><span>{{skill}}</span></li>
+                            <li ng-repeat="skill in user.skills track by $index" class="skill"><span>{{skill}}</span></li>
                         </ul> 
                     </div>
                 </div>

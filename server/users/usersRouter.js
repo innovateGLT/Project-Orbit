@@ -199,7 +199,10 @@ router.get('/matches', function(req, res, next) {
         {interests: {
             $in: expandedSkillList
         }}
-    ]}).limit(10);
+    ]});
+    
+    query.
+        select("_id user_id name empId country job_role picture email");
 
     // query.or([{status : "Open"},{status : "In Progress"}]);
 

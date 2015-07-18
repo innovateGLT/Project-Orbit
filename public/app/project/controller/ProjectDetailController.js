@@ -129,28 +129,30 @@ angular.module('project')
 
                     // remove all matched users who have been applied 
                     for (var i = 0; i < $scope.project.appliedUsers.length; i++) {
-                        var userId = $scope.project.appliedUsers[i].user_id;
+                        var user_id = $scope.project.appliedUsers[i].user_id;
                         $scope.matchedUsers = $scope.matchedUsers.filter(function(person) {
-                            return person.user_id != userId;
+                            return person.user_id != user_id;
                         });
                     };
 
                     // remove all matched users who have been selected
                     for (var i = 0; i < $scope.project.selectedUsers.length; i++) {
-                        var userId = $scope.project.selectedUsers[i].user_id;
+                        var user__id = $scope.project.selectedUsers[i].user_id;
                         $scope.matchedUsers = $scope.matchedUsers.filter(function(person) {
-                            return person.user_id != userId;
+                            return person.user_id != user__id;
                         });
                     };
 
                     // set invited to all matched users who has been invited already
                     for (var i = 0; i < $scope.project.invitedUsers.length; i++) {
-                        var userId = $scope.project.invitedUsers[i].user_id;
-                        $scope.matchedUsers.forEach(function(person) {
-                            if ( person.user_id == userId ) {
-                                person.invited = true;
-                            }
-                        });
+                        var user___id = $scope.project.invitedUsers[i].user_id;
+                        if ( user___id ) {
+                            $scope.matchedUsers.forEach(function(person) {
+                                if ( person.user_id == user___id ) {
+                                    person.invited = true;
+                                }
+                            });
+                        }
                     };
 
 

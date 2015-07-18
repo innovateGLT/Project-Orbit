@@ -2211,3 +2211,9 @@ user-badge .thumbnail {
 }
 
 /* listing headers END */
+
+.project-people-list {
+    max-height: 400px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}

@@ -171,9 +171,9 @@ angular.module('help')
                 },
                 { 
                     id: 6, 
-                    label: "Branding",
+                    label: "UI / UX",
                     subtopics: [
-                        "UI / UX", "Branding", "Design", "Navigation", "User Experience"
+                        "Branding", "Design", "Navigation", "User Experience", "User Interface"
                     ] 
                 },
                 { 
