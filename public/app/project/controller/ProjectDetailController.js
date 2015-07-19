@@ -452,7 +452,7 @@ angular.module('project')
                         });
 
                         // generate invite alert
-                        $scope.generateInviteAlert( user );
+                        $scope.generateInviteAlert( user, inputValue );
                         SweetAlert.swal("Nice!", "The user has been invited", "success");
                         
                     });
@@ -542,7 +542,7 @@ angular.module('project')
                 });
             };
             
-            $scope.generateInviteAlert = function ( /* Object */user ) {
+            $scope.generateInviteAlert = function ( /* Object */user, /* String */inviteMessage ) {
                 var inviteAlert = {
                     by_user : {
                         user_id : $scope.auth.profile.user_id,
@@ -560,7 +560,9 @@ angular.module('project')
                     
                     project_name: $scope.project.title,
                     
-                    project_id: $scope.project._id
+                    project_id: $scope.project._id,
+                    
+                    message: inviteMessage
                 };
                 
                 var inviteRecord = new AlertService(inviteAlert);
@@ -654,6 +656,9 @@ angular.module('project')
                     
                     $scope.project.selectedUsers.push(user);
                     
+                    // user should now see the list of selected people in the project
+                    $scope.logginUserSelectedForProject = true;
+                                        
                     // remove the user from the list of invited users
                     var refreshedListOfInvitedUsers = [];
                     for (var i = 0; i < $scope.project.invitedUsers.length; i++) {

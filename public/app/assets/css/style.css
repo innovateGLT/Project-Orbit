@@ -2095,6 +2095,11 @@ user-badge .thumbnail {
 .notifications .notification {
     padding: 10px;
     cursor: pointer;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.notifications .notification:nth-last-child(2) {
+    border: none;
 }
 
 .notifications .notification:hover {
@@ -2216,3 +2221,14 @@ user-badge .thumbnail {
     overflow-y: auto;
     overflow-x: hidden;
 }
+
+
+/* popup alert styles START */
+
+.popup-alert-message {
+    padding:15px;
+    border:1px solid #f0f0f0;
+    margin: 0;
+}
+
+/* popup alert styles END */

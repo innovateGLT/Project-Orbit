@@ -13,15 +13,15 @@
     </nav>
     <div class="animate-slideInDown-Up notifications" ng-show="isNotificationVisible">
 		<div class="notification-header">Alerts<a class="pull-right pointer mr5" ng-click="toggleNotifications()"><i class="glyphicon glyphicon-remove"></i></a></div>
-		<div ng-repeat="alert in notifications track by $index" class="notification animate-alert" ng-class-odd="'odd'" ng-mouseover="isCloseable=true" ng-mouseleave="isCloseable=false">
+		<div ng-repeat="alert in notifications track by $index" class="notification animate-alert" ng-mouseover="isCloseable=true" ng-mouseleave="isCloseable=false">
 			<div class="row">
 				<div class="col-xs-11 col-sm-11 col-md-11 col-lg-11" ng-click="viewAlert(alert)">
 					<div class="left" style="width:30px;">
 						<a class="pointer"><img ng-src="{{alert.by_user.picture}}" width="30px" class="media-object img-circle" title="{{alert.by_user.name}}"/></a>
 					</div>
-					<div class="col-md-10 col-lg-10 col-sm-10 col-xs-10">
+					<div class="col-md-10 col-lg-10 col-sm-10 col-xs-10 message">
 						<span ng-if="alert.alert_type === 'poke'"><b>{{alert.by_user.name}}</b> poked you{{alert.poke_ctr > 1 ? " " + alert.poke_ctr + " times" : ""}}, reminding to check your invitations.</span>
-                        <span ng-if="alert.alert_type === 'invite'"><b>{{alert.by_user.name}}</b> invited you to collborate with his project called <b>{{alert.project_name}}.</b></span>
+                        <span ng-if="alert.alert_type === 'invite'"><b>{{alert.by_user.name}}</b> invited you to collborate with his project called <b>{{alert.project_name}}</b>."</span>
                         <span ng-if="alert.alert_type === 'accept'"><b>{{alert.by_user.name}}</b> is cool on helping in your project called <b>{{alert.project_name}}.</b></span>
                         <span ng-if="alert.alert_type === 'apply'"><b>{{alert.by_user.name}}</b> wants to help in your project called <b>{{alert.project_name}}.</b> View his profile profile now.</span>
                         <span ng-if="alert.alert_type === 'accept-application'"><b>{{alert.by_user.name}}</b> was impressed with profile and accepted your application to join their project called <b>{{alert.project_name}}.</b></span>
