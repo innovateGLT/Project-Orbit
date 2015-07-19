@@ -1,7 +1,7 @@
 
 <div class="container header">
-	
-	<nav class="header-links">
+    
+    <nav class="header-links">
         <ul class="nav nav-pills header-nav-links">
             <li role="presentation" class="active"><a href="/project/new#{{returnUrl}}">New Project</a></li>
             <li role="presentation" class="login-btn" ng-show="auth.isAuthenticated"><a href="/profile/"> My Profile</a></li>
@@ -12,36 +12,38 @@
         </ul>
     </nav>
     <div class="animate-slideInDown-Up notifications" ng-show="isNotificationVisible">
-		<div class="notification-header">Alerts<a class="pull-right pointer mr5" ng-click="toggleNotifications()"><i class="glyphicon glyphicon-remove"></i></a></div>
+        <div class="notification-header">Alerts<a class="pull-right pointer mr5" ng-click="toggleNotifications()"><i class="glyphicon glyphicon-remove"></i></a></div>
         <div class="notifications-container">
-    		<div ng-repeat="alert in notifications track by $index" class="notification animate-alert" ng-mouseover="isCloseable=true" ng-mouseleave="isCloseable=false">
-    			<div class="row">
-    				<div class="col-xs-11 col-sm-11 col-md-11 col-lg-11 no-padding pl15" ng-click="viewAlert(alert)">
-    					<div class="left" style="width:30px;">
-    						<a class="pointer"><img ng-src="{{alert.by_user.picture}}" width="30px" class="media-object img-circle" title="{{alert.by_user.name}}"/></a>
-    					</div>
-    					<div class="col-md-10 col-lg-10 col-sm-10 col-xs-10 message">
-    						<span ng-if="alert.alert_type === 'poke'"><b>{{alert.by_user.name}}</b> poked you{{alert.poke_ctr > 1 ? " " + alert.poke_ctr + " times" : ""}}, reminding to check your invitations.</span>
-                            <span ng-if="alert.alert_type === 'invite'"><b>{{alert.by_user.name}}</b> invited you to collborate with his project called <b>{{alert.project_name}}</b>."</span>
+            <div ng-repeat="alert in notifications track by $index" class="notification animate-alert" ng-mouseover="isCloseable=true" ng-mouseleave="isCloseable=false">
+                <div class="row">
+                    <div class="col-xs-11 col-sm-11 col-md-11 col-lg-11 no-padding pl15" ng-click="viewAlert(alert)">
+                        <div class="left" style="width:30px;">
+                            <a class="pointer"><img ng-src="{{alert.by_user.picture}}" width="30px" class="media-object img-circle" title="{{alert.by_user.name}}"/></a>
+                        </div>
+                        <div class="col-md-10 col-lg-10 col-sm-10 col-xs-10 message">
+                            <span ng-if="alert.alert_type === 'poke'"><b>{{alert.by_user.name}}</b> poked you{{alert.poke_ctr > 1 ? " " + alert.poke_ctr + " times" : ""}}, reminding to check your invitations.</span>
+                            <span ng-if="alert.alert_type === 'invite'"><b>{{alert.by_user.name}}</b> invited you to collborate with his opportunity <b>{{alert.project_name}}</b>."</span>
                             <span ng-if="alert.alert_type === 'comment'"><b>{{alert.by_user.name}}</b> left a comment in <b>{{alert.project_name}}'s</b> discussion board."</span>
-                            <span ng-if="alert.alert_type === 'accept'"><b>{{alert.by_user.name}}</b> is cool on helping in your project called <b>{{alert.project_name}}.</b></span>
-                            <span ng-if="alert.alert_type === 'apply'"><b>{{alert.by_user.name}}</b> wants to help in your project called <b>{{alert.project_name}}.</b> View his profile profile now.</span>
-                            <span ng-if="alert.alert_type === 'accept-application'"><b>{{alert.by_user.name}}</b> was impressed with profile and accepted your application to join their project called <b>{{alert.project_name}}.</b></span>
-    					</div>
-    				</div>
-    				
-    				<div class="col-md-1 col-lg-1 col-sm-1 col-xs-1 text-center" ng-show="isCloseable">
-    					<span class="close" ng-click="deleteAlert(alert)">&times;</span>
-    				</div>
-    			</div>
-    		</div>
+                            <span ng-if="alert.alert_type === 'rate'"><b>{{alert.by_user.name}}</b> rated you <b>{{alert.message}} {{alert.message === '1' ? 'star' : 'stars'}}</b> in the opportunity <b>{{alert.project_name}}</b>. He also said thanks by the way!</span>
+                            <span ng-if="alert.alert_type === 'rate-project-owner'"><b>{{alert.by_user.name}}</b> rated you <b>{{alert.message}} {{alert.message === '1' ? 'star' : 'stars'}}</b> for being so cool in the opportunity <b>{{alert.project_name}}</b>.</span>
+                            <span ng-if="alert.alert_type === 'accept'"><b>{{alert.by_user.name}}</b> is cool on helping in your opportunity <b>{{alert.project_name}}.</b></span>
+                            <span ng-if="alert.alert_type === 'apply'"><b>{{alert.by_user.name}}</b> wants to help in your opportunity <b>{{alert.project_name}}.</b> View his profile profile now.</span>
+                            <span ng-if="alert.alert_type === 'accept-application'"><b>{{alert.by_user.name}}</b> was impressed with profile and accepted your application to join their opportunity <b>{{alert.project_name}}.</b></span>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-1 col-lg-1 col-sm-1 col-xs-1 text-center" ng-show="isCloseable">
+                        <span class="close" ng-click="deleteAlert(alert)">&times;</span>
+                    </div>
+                </div>
+            </div>
         </div>
-		<div class="notification" ng-show="notifications.length == 0">
-			<div class="row">
-				<div class="col-md-12"><span>No alerts.</span></div>
-			</div>
-		</div>
-	</div>
+        <div class="notification" ng-show="notifications.length == 0">
+            <div class="row">
+                <div class="col-md-12"><span>No alerts.</span></div>
+            </div>
+        </div>
+    </div>
     <div class="row">
         <div class="col-lg-12 text-center v-center">
             <img ng-src="/app/assets/img/Opportunities@HSBC_accelerateyourcareer.png"/>
@@ -81,7 +83,7 @@
 
 
 <div class="container bold-container">
-	<!-- How It Works -->
+    <!-- How It Works -->
     <div class="featurette-header">
         <h1 class="featurette-heading">How It Works</h1>
         <br/>
@@ -162,7 +164,7 @@
 
 
 <div class="container not-bold-container">
-	<!-- Category Section -->
+    <!-- Category Section -->
     <!-- <hr class="featurette-divider"> -->
     <div class="featurette-header">
         <h1 class="featurette-heading">Categories</h1>

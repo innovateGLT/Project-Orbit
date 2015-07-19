@@ -56,7 +56,7 @@
 							</div>
 							<div ng-show="logginUserSelectedForProject" class="col-md-6 col-lg-6 col-sm-12 col-xs-12 text-right no-padding">
 								
-								{{ (isRated == true) ? 'You have rated this project\'s owner' : 'Rate this project\'s owner:'}} <rating ng-model="rate" max="max" readonly="isReadonly" on-hover="hoveringOver(value)" on-leave="overStar = null"></rating>
+								{{ (isRated == true) ? 'You have rated this project\'s owner' : 'Rate this project\'s owner:'}} <rating ng-model="rate" max="max" readonly="isReadonly" on-hover="hoveringOver(value)" ng-click="generateRateProjectOwnerAlert()" on-leave="overStar = null"></rating>
 								<!--<span class="label" ng-class="{'label-warning': percent<30, 'label-info': percent>=30 && percent<70, 'label-success': percent>=70}" ng-show="overStar && !isReadonly">{{percent}}%</span>-->
 							</div>
 						</div>
@@ -230,7 +230,7 @@
 							<div id="selectedPeople" class="panel-collapse collapsed in project-people-list" role="tabpanel" aria-labelledby="headingThree">
 								<div class="panel-body">
 									<!-- tab content goes here -->
-									<div class="row user-list-item-sm" ng-repeat="user in project.selectedUsers">
+									<div class="row user-list-item-sm" ng-repeat="user in project.selectedUsers track by $index">
 										
 										<div class="col-md-10 col-lg-10 col-sm-9 col-xs-9">
 											<a href="/user/{{user.user_id}}#{{currentPath}}">
@@ -240,7 +240,7 @@
 										</div>
 										
 										<div ng-show="isOwner" class="text-center action">
-											<rating ng-model="user.rate" max="max" readonly="user.isReadonly" on-hover="hoveringRatingUser(value,$index)" on-leave="overStar = null"></rating>
+											<rating ng-model="user.rate" max="max" readonly="user.isReadonly" on-hover="hoveringRatingUser(value,$index)" ng-click="generateRateAlert(user)" on-leave="overStar = null"></rating>
 										</div>
 									</div>
 									<div ng-show="project.selectedUsers.length == 0">

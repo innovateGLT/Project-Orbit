@@ -101,12 +101,7 @@ angular.module('project')
                                 return;
                             };
 
-                            // console.log("OOOOOOOOOOOOOO",rate,a,b);
-
-                            SweetAlert.swal("Done!", "You have rated the the user " + rate + " stars.", "success");
-
-                            // $scope.project.selectedUsers[i].isReadonly = true;
-                            // $scope.project.selectedUsers[i].rate = rate;
+                            SweetAlert.swal("Done!", "You have rated the team member " + rate + " star" + (rate > 1 ? "s" : "") + ".", "success");
 
                             for (var i = 0; i < $scope.project.selectedUsers.length; i++) {
                                 if ($scope.project.selectedUsers[i].rate == 0) {
@@ -120,7 +115,6 @@ angular.module('project')
                                 id: $scope.project._id
                             }, $scope.project);
                             
-                            $scope.generateRateAlert();
                             console.log("PROJECT HAS BEEN UPDATED", $scope.project);
                         })
 
@@ -227,7 +221,7 @@ angular.module('project')
                                 $scope.isReadonly = true;
                                 $scope.isRated = true;
 
-                                SweetAlert.swal("Done!", "You have rated the the owner of the project: " + rate + " stars. \n You cannot rate any more", "success");
+                                SweetAlert.swal("Done!", "You have rated the opportunity owner " + rate + " star" + (rate > 1 ? "s" : "") + ". \n You cannot rate anymore", "success");
                                 $scope.isReadonly = true;
                             });
                         }
@@ -465,8 +459,65 @@ angular.module('project')
                 });
 
             };
-            
-            
+
+            // rate the project owner
+            $scope.generateRateProjectOwnerAlert = function () {
+                var rateAlert = {
+                    by_user : {
+                        user_id : $scope.auth.profile.user_id,
+                        name: $scope.auth.profile.name,
+                        picture: $scope.auth.profile.picture
+                    },
+                    
+                    for_user: {
+                        user_id : $scope.project.user.user_id,
+                        name: $scope.project.user.name,
+                        picture: $scope.project.user.picture
+                    },
+                    
+                    alert_type: "rate-project-owner",
+                    
+                    project_name: $scope.project.title,
+                    
+                    project_id: $scope.project._id,
+                    
+                    message: $scope.rate
+                };
+                
+                AlertService.comment(rateAlert, function ( response ) {
+                    console.log("Rate alert generated : " + response);
+                });
+            };
+
+            // rate a team member
+            $scope.generateRateAlert = function ( /* Object */user ) {
+                var rateAlert = {
+                    by_user : {
+                        user_id : $scope.auth.profile.user_id,
+                        name: $scope.auth.profile.name,
+                        picture: $scope.auth.profile.picture
+                    },
+                    
+                    for_user: {
+                        user_id : user.user_id,
+                        name: user.name,
+                        picture: user.picture
+                    },
+                    
+                    alert_type: "rate",
+                    
+                    project_name: $scope.project.title,
+                    
+                    project_id: $scope.project._id,
+                    
+                    message: user.rate
+                };
+                
+                AlertService.comment(rateAlert, function ( response ) {
+                    console.log("Rate alert generated : " + response);
+                });
+            };
+
             // the project owner and the selected people will get this alert
             $scope.generateCommentAlert = function ( /* Object */user ) {
                 var commentAlert = {

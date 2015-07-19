@@ -190,14 +190,21 @@ angular.module('home')
         };
         
         $scope.viewInviteAlert = function ( /* Object */alert ) {
+            // summary
+            //      this function would open a SweetAlert popup showing the message in the invite
+            //      user can just ignore it or view the project
+            // params
+            //      alert - the alert object
+            // tags
+            //      private
             SweetAlert.swal({
                 html:true,
                 title: "Project Invitation",
-                text: '<div class="row popup-alert-message">' +
-                          '<div class="left" style="width:30px;">' + 
-		                      '<a class="pointer"><img src="' + alert.by_user.picture + '" width="30px" class="media-object img-circle" title="' + alert.by_user.name + '"/></a>' +
-			              '</div>'+
-                          '<div class="col-md-11 col-lg-11 col-xs-11 col-sm-11 text-left small">" ' + alert.message + ' "</div>' +
+                text: '<div class="left ml10" style="width:30px;">' + 
+                          '<a class="pointer"><img src="' + alert.by_user.picture + '" width="30px" class="media-object img-circle" title="' + alert.by_user.name + '"/></a>' +
+                      '</div>'+
+                      '<div class="bubble">' +
+                          '<div class="text-left small">"' + alert.message + ' "</div>' +
                       '</div>',
                 type: "info",
                 showCancelButton: true,
@@ -211,9 +218,36 @@ angular.module('home')
 
             });
         };
-        
-        AlertService.query({user_id : $scope.auth.profile.user_id}, function ( notifications ) {
-            $scope.notifications = notifications;
+
+        // default to 10 seconds
+        $scope.retrieveAlertInterval = 10;
+        $scope.alertThread = $interval(getAlerts, $scope.retrieveAlertInterval * 1000);
+
+        function getAlerts() {
+            
+            console.log("interval : " + $scope.retrieveAlertInterval);
+            
+            AlertService.query({user_id : $scope.auth.profile.user_id}, function ( notifications ) {
+                $scope.notifications = notifications;
+                
+                // if there are no new notifications, we assume that the user is not actively working on something, hence we increase the interval
+                if ( notifications.length === 0 ) {
+                    $scope.retrieveAlertInterval+= 5;
+                    
+                    $interval.cancel($scope.alertThread);
+                    
+                    $scope.alertThread = $interval(getAlerts, $scope.retrieveAlertInterval * 1000);
+                } else {
+                    $scope.retrieveAlertInterval = 1;
+                }
+            });
+        }
+
+        // listen to location changes, just so we could retrieve new notifications, just in case the interval is already so long
+        $scope.$on("location-changed", function (event, location) {
+            getAlerts();
         });
+
+        getAlerts();
 
     });
