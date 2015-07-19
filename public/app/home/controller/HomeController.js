@@ -8,7 +8,7 @@ angular.module('home')
         $scope.auth = SecurityService.auth();
 
         console.log("AUTH VARIABLE HERE", $scope.auth);
-        $scope.videoUrl = "/app/assets/video/BANNER_VANCOUVER.mp4";
+        $scope.videoUrl = "/app/assets/video/BANNER_CANADA.mp4";
 //        $scope.posterUrl = "/app/assets/img/sky.png";
         var myVideo = document.getElementsByTagName('video')[0];
 
