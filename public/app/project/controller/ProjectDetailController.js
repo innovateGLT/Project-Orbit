@@ -119,6 +119,8 @@ angular.module('project')
                             Projects.update({
                                 id: $scope.project._id
                             }, $scope.project);
+                            
+                            $scope.generateRateAlert();
                             console.log("PROJECT HAS BEEN UPDATED", $scope.project);
                         })
 
@@ -285,7 +287,7 @@ angular.module('project')
                                 confirmButtonText: "Go",
                                 closeOnConfirm: false
                             }, function() {
-                                window.location = "/";
+                                $location.path("/");
                             });
     
                         });
@@ -317,8 +319,11 @@ angular.module('project')
                         console.log("question HAS BEEN CREATED", question);
                         $scope.questions.unshift(question);
                         $scope.question = "";
-                        SweetAlert.swal("Done!", "Your text has been submit!", "success");
+                        SweetAlert.swal("Done!", "Your message has been posted!", "success");
                         $scope.comment = "";
+                        
+                        // alert all selected users and project owner
+                        $scope.generateCommentAlert();
                     });
                     console.log($scope.question);
                 } else {
@@ -459,6 +464,28 @@ angular.module('project')
 
                 });
 
+            };
+            
+            
+            // the project owner and the selected people will get this alert
+            $scope.generateCommentAlert = function ( /* Object */user ) {
+                var commentAlert = {
+                    by_user : {
+                        user_id : $scope.auth.profile.user_id,
+                        name: $scope.auth.profile.name,
+                        picture: $scope.auth.profile.picture
+                    },
+                    
+                    alert_type: "comment",
+                    
+                    project_name: $scope.project.title,
+                    
+                    project_id: $scope.project._id
+                };
+                
+                AlertService.comment(commentAlert, function ( response ) {
+                    console.log("Apply alert generated : " + response);
+                });
             };
             
             $scope.generateApplyAlert = function ( /* Object */user ) {

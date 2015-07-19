@@ -1946,6 +1946,7 @@ user-badge .thumbnail {
     padding: 40px;
     padding-top: 80px;
     background-color: rgba(249, 252, 252, 0.5);
+    min-height: 320px;
 }
 
 .project-detail .skillset {
