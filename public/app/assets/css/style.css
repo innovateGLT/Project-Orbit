@@ -2098,6 +2098,7 @@ user-badge .thumbnail {
     border-bottom: 1px solid #f0f0f0;
 }
 
+.notifications .notification:last-child,
 .notifications .notification:nth-last-child(2) {
     border: none;
 }
@@ -2229,6 +2230,51 @@ user-badge .thumbnail {
     padding:15px;
     border:1px solid #f0f0f0;
     margin: 0;
+    border-radius: 8px;
+    border-top-left-radius: 0;
 }
 
 /* popup alert styles END */
+
+.bubble 
+{
+position: relative;
+display:inline-block;
+min-height:1.5em;
+padding: 20px;
+background: #FFFFFF;
+border: #f0f0f0 solid 1px;
+-webkit-border-radius: 20px;
+-moz-border-radius: 20px;
+border-radius: 10px;
+width: 85%;
+border-top-left-radius: 0;
+}
+
+.bubble:after 
+{
+content: "";
+position: absolute;
+top: 2px;
+left: -9px;
+border-style: solid;
+border-width: 10px 10px 10px 0;
+border-color: transparent #FFFFFF;
+display: block;
+width: 0;
+z-index: 1;
+}
+
+.bubble:before 
+{
+content: "";
+position: absolute;
+top: 2px;
+left: -10px;
+border-style: solid;
+border-width: 10px 10px 10px 0;
+border-color: transparent #f0f0f0;
+display: block;
+width: 0;
+z-index: 0;
+}

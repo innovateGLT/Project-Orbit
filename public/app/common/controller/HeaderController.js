@@ -106,11 +106,11 @@ angular.module('app')
             SweetAlert.swal({
                 html:true,
                 title: "Project Invitation",
-                text: '<div class="row popup-alert-message">' +
-                          '<div class="left" style="width:30px;">' + 
-		                      '<a class="pointer"><img src="' + alert.by_user.picture + '" width="30px" class="media-object img-circle" title="' + alert.by_user.name + '"/></a>' +
-			              '</div>'+
-                          '<div class="col-md-11 col-lg-11 col-xs-11 col-sm-11 text-left small">" ' + alert.message + ' "</div>' +
+                text: '<div class="left ml10" style="width:30px;">' + 
+	                      '<a class="pointer"><img src="' + alert.by_user.picture + '" width="30px" class="media-object img-circle" title="' + alert.by_user.name + '"/></a>' +
+		              '</div>'+
+                      '<div class="bubble">' +
+                          '<div class="text-left small">"' + alert.message + ' "</div>' +
                       '</div>',
                 type: "info",
                 showCancelButton: true,
