@@ -15,7 +15,7 @@
 		<div class="notification-header">Alerts<a class="pull-right pointer mr5" ng-click="toggleNotifications()"><i class="glyphicon glyphicon-remove"></i></a></div>
 		<div ng-repeat="alert in notifications track by $index" class="notification animate-alert" ng-mouseover="isCloseable=true" ng-mouseleave="isCloseable=false">
 			<div class="row">
-				<div class="col-xs-11 col-sm-11 col-md-11 col-lg-11" ng-click="viewAlert(alert)">
+				<div class="col-xs-11 col-sm-11 col-md-11 col-lg-11 no-padding pl15" ng-click="viewAlert(alert)">
 					<div class="left" style="width:30px;">
 						<a class="pointer"><img ng-src="{{alert.by_user.picture}}" width="30px" class="media-object img-circle" title="{{alert.by_user.name}}"/></a>
 					</div>

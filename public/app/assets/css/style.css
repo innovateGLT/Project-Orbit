@@ -930,6 +930,7 @@ video#bgvid {
 .p15 {padding:15px;}
 .p20 {padding:20px;}
 
+.pl15 {padding-left:15px !important;}
 
 .pt5  {padding-top:5px;}
 .pt10 {padding-top:10px;}
@@ -2087,9 +2088,12 @@ user-badge .thumbnail {
     border-radius: 5px;
     border-top-right-radius: 0;
     z-index: 2000;
-    max-height: 400px;
-    overflow-y: auto;
-    overflow-x: hidden;
+}
+
+.notifications .notifications-container {
+    max-height:400px;
+    overflow-y:auto;
+    overflow-x:hidden;
 }
 
 .notifications .notification {
