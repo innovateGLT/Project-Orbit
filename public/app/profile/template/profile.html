@@ -130,25 +130,25 @@
         
         <!-- The current projects I am involved with -->
         <div class="container bold-container animate-fadeInleft-fadeOutRight" ng-show="projectTabContainers['current']">
-            <div class="alert alert-info">Have free time? Have an amazing idea? Want to collaborate with others? Click on New Project now.</div>
+            <div class="alert alert-info no-margin-bottom">Have free time? Have an amazing idea? Want to collaborate with others? Click on New Project now.</div>
             <project-list projects="projects" class="container" ng-if="projects.length > 0"></project-list>
         </div>
         
         <!-- Projects I have contributed -->
         <div class="container bold-container animate-fadeInleft-fadeOutRight" ng-show="projectTabContainers['completed']">
-            <div class="alert alert-info">Learned a lot from these projects and worked with cool people!</div>
+            <div class="alert alert-info no-margin-bottom">Learned a lot from these projects and worked with cool people!</div>
             <project-list projects="completedProjects" class="container" ng-if="completedProjects.length > 0"></project-list>
         </div>
         
         <!-- The list of project that I am invited to join / contribute -->
         <div class="container bold-container animate-fadeInleft-fadeOutRight" ng-show="projectTabContainers['invitations']">
-            <div class="alert alert-info">You're profile looks awesome and you're getting noticed! People want you in their project! Thought, being proactive reflects on your mid year and year end review. ;)</div>
+            <div class="alert alert-info no-margin-bottom">You're profile looks awesome and you're getting noticed! People want you in their project! Thought, being proactive reflects on your mid year and year end review. ;)</div>
             <project-list projects="invitedProjects" class="container" ng-if="invitedProjects.length > 0"></project-list>
         </div>
         
         <!-- Project suggestions based on the users skills and interests -->
         <div class="container bold-container animate-fadeInleft-fadeOutRight" ng-show="projectTabContainers['suggestions']">
-            <div class="alert alert-info">Oh, I was stunned for a second with those impressive list of skills and striking interests. Think you'd be interested in these projects?</div>
+            <div class="alert alert-info no-margin-bottom">Oh, I was stunned for a second with those impressive list of skills and striking interests. Think you'd be interested in these projects?</div>
             <project-list projects="matchedProjects" class="container" ng-if="matchedProjects.length > 0"></project-list>
         </div>
     </div>

@@ -50,8 +50,11 @@
 								</h2>
 							</div>
 						</div>
-						<div class="row">
-							<div ng-show="logginUserSelectedForProject" class="col-md-12 col-lg-12 col-sm-12 col-xs-12 text-right no-padding">
+						<div class="row mt20">
+                            <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12 text-left no-padding">
+								<div class="col-md-12"><strong>Last Updated on {{ project.updatedDate | date:'MMM dd, yyyy'}}</strong></div>
+							</div>
+							<div ng-show="logginUserSelectedForProject" class="col-md-6 col-lg-6 col-sm-12 col-xs-12 text-right no-padding">
 								
 								{{ (isRated == true) ? 'You have rated this project\'s owner' : 'Rate this project\'s owner:'}} <rating ng-model="rate" max="max" readonly="isReadonly" on-hover="hoveringOver(value)" on-leave="overStar = null"></rating>
 								<!--<span class="label" ng-class="{'label-warning': percent<30, 'label-info': percent>=30 && percent<70, 'label-success': percent>=70}" ng-show="overStar && !isReadonly">{{percent}}%</span>-->
@@ -123,6 +126,10 @@
 									<div class="row mt10">
 										<div class="col-md-6"><strong>Location</strong></div>
 										<div class="col-md-6">{{ project.country | uppercase}}</div>
+									</div>
+                                    <div class="row mt10">
+										<div class="col-md-6"><strong>Date Created</strong></div>
+										<div class="col-md-6">{{ project.createdDate | date:'MMM dd, yyyy'}}</div>
 									</div>
 								</div>
 							</div>
