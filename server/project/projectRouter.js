@@ -172,12 +172,16 @@ router.get('/matched/by_user_id/:user_id', function(req, res, next) {
         
         // append the skills
         post.skills.forEach(function ( skill ) {
-            skillsAndInterests.push(new RegExp(skill, "i"));
+            if ( skill ) {
+                skillsAndInterests.push(new RegExp(skill, "i"));
+            }
         });
         
         // append the interests
         post.interests.forEach(function ( interest ) {
-            skillsAndInterests.push(new RegExp(interest, "i"));
+            if ( interest ) {
+                skillsAndInterests.push(new RegExp(interest, "i"));
+            }
         });
 
         // rertieve all matching projects, limit only to 4
