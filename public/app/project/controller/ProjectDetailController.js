@@ -101,12 +101,7 @@ angular.module('project')
                                 return;
                             };
 
-                            // console.log("OOOOOOOOOOOOOO",rate,a,b);
-
-                            SweetAlert.swal("Done!", "You have rated the the user " + rate + " stars.", "success");
-
-                            // $scope.project.selectedUsers[i].isReadonly = true;
-                            // $scope.project.selectedUsers[i].rate = rate;
+                            SweetAlert.swal("Done!", "You have rated the team member " + rate + " star" + (rate > 1 ? "s" : "") + ".", "success");
 
                             for (var i = 0; i < $scope.project.selectedUsers.length; i++) {
                                 if ($scope.project.selectedUsers[i].rate == 0) {
@@ -119,6 +114,7 @@ angular.module('project')
                             Projects.update({
                                 id: $scope.project._id
                             }, $scope.project);
+                            
                             console.log("PROJECT HAS BEEN UPDATED", $scope.project);
                         })
 
@@ -225,7 +221,7 @@ angular.module('project')
                                 $scope.isReadonly = true;
                                 $scope.isRated = true;
 
-                                SweetAlert.swal("Done!", "You have rated the the owner of the project: " + rate + " stars. \n You cannot rate any more", "success");
+                                SweetAlert.swal("Done!", "You have rated the opportunity owner " + rate + " star" + (rate > 1 ? "s" : "") + ". \n You cannot rate anymore", "success");
                                 $scope.isReadonly = true;
                             });
                         }
@@ -244,10 +240,6 @@ angular.module('project')
                 // console.log($scope.questions,"MY QUESTION");
 
             });
-
-
-
-
 
             $scope.showQuestion = true;
 
@@ -285,7 +277,7 @@ angular.module('project')
                                 confirmButtonText: "Go",
                                 closeOnConfirm: false
                             }, function() {
-                                window.location = "/";
+                                $location.path("/");
                             });
     
                         });
@@ -317,8 +309,11 @@ angular.module('project')
                         console.log("question HAS BEEN CREATED", question);
                         $scope.questions.unshift(question);
                         $scope.question = "";
-                        SweetAlert.swal("Done!", "Your text has been submit!", "success");
+                        SweetAlert.swal("Done!", "Your message has been posted!", "success");
                         $scope.comment = "";
+                        
+                        // alert all selected users and project owner
+                        $scope.generateCommentAlert();
                     });
                     console.log($scope.question);
                 } else {
@@ -452,13 +447,92 @@ angular.module('project')
                         });
 
                         // generate invite alert
-                        $scope.generateInviteAlert( user );
+                        $scope.generateInviteAlert( user, inputValue );
                         SweetAlert.swal("Nice!", "The user has been invited", "success");
                         
                     });
 
                 });
 
+            };
+
+            // rate the project owner
+            $scope.generateRateProjectOwnerAlert = function () {
+                var rateAlert = {
+                    by_user : {
+                        user_id : $scope.auth.profile.user_id,
+                        name: $scope.auth.profile.name,
+                        picture: $scope.auth.profile.picture
+                    },
+                    
+                    for_user: {
+                        user_id : $scope.project.user.user_id,
+                        name: $scope.project.user.name,
+                        picture: $scope.project.user.picture
+                    },
+                    
+                    alert_type: "rate-project-owner",
+                    
+                    project_name: $scope.project.title,
+                    
+                    project_id: $scope.project._id,
+                    
+                    message: $scope.rate
+                };
+                
+                AlertService.comment(rateAlert, function ( response ) {
+                    console.log("Rate alert generated : " + response);
+                });
+            };
+
+            // rate a team member
+            $scope.generateRateAlert = function ( /* Object */user ) {
+                var rateAlert = {
+                    by_user : {
+                        user_id : $scope.auth.profile.user_id,
+                        name: $scope.auth.profile.name,
+                        picture: $scope.auth.profile.picture
+                    },
+                    
+                    for_user: {
+                        user_id : user.user_id,
+                        name: user.name,
+                        picture: user.picture
+                    },
+                    
+                    alert_type: "rate",
+                    
+                    project_name: $scope.project.title,
+                    
+                    project_id: $scope.project._id,
+                    
+                    message: user.rate
+                };
+                
+                AlertService.comment(rateAlert, function ( response ) {
+                    console.log("Rate alert generated : " + response);
+                });
+            };
+
+            // the project owner and the selected people will get this alert
+            $scope.generateCommentAlert = function ( /* Object */user ) {
+                var commentAlert = {
+                    by_user : {
+                        user_id : $scope.auth.profile.user_id,
+                        name: $scope.auth.profile.name,
+                        picture: $scope.auth.profile.picture
+                    },
+                    
+                    alert_type: "comment",
+                    
+                    project_name: $scope.project.title,
+                    
+                    project_id: $scope.project._id
+                };
+                
+                AlertService.comment(commentAlert, function ( response ) {
+                    console.log("Comment alert generated : " + response);
+                });
             };
             
             $scope.generateApplyAlert = function ( /* Object */user ) {
@@ -542,7 +616,7 @@ angular.module('project')
                 });
             };
             
-            $scope.generateInviteAlert = function ( /* Object */user ) {
+            $scope.generateInviteAlert = function ( /* Object */user, /* String */inviteMessage ) {
                 var inviteAlert = {
                     by_user : {
                         user_id : $scope.auth.profile.user_id,
@@ -560,7 +634,9 @@ angular.module('project')
                     
                     project_name: $scope.project.title,
                     
-                    project_id: $scope.project._id
+                    project_id: $scope.project._id,
+                    
+                    message: inviteMessage
                 };
                 
                 var inviteRecord = new AlertService(inviteAlert);
@@ -654,6 +730,9 @@ angular.module('project')
                     
                     $scope.project.selectedUsers.push(user);
                     
+                    // user should now see the list of selected people in the project
+                    $scope.logginUserSelectedForProject = true;
+                                        
                     // remove the user from the list of invited users
                     var refreshedListOfInvitedUsers = [];
                     for (var i = 0; i < $scope.project.invitedUsers.length; i++) {

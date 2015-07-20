@@ -6,7 +6,12 @@ var ContactUsSchema = new mongoose.Schema({
     
     user: mongoose.Schema.Types.Mixed,
     
-    message: String
+    message: String,
+    
+    createdDate: {
+        type: Date,
+        default: Date.now
+    }
     
 });
 

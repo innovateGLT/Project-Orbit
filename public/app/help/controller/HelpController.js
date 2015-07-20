@@ -10,6 +10,88 @@ angular.module('help')
             $scope.auth = SecurityService.auth();
             
             $scope.user = $scope.auth.profile;
+            
+            $scope.$watch('auth.profile', function() {
+                if (($scope.auth.profile) && ($scope.auth.profile.email === ADMIN_EMAIL)) {
+                    $scope.isAdmin = true;
+                }
+            });
+
+            $scope.loadNextFeedbacks = function () {
+                
+                if ( !$scope.listFetchDisabled && !$scope.busy ) {
+                    
+                    // set busy to true to disable next calls to avoid multiple async calls
+                    $scope.busy = true;
+                
+                    FeedbackService.query({
+                        pageNo: $scope.pageNo,
+                        recordsPerPage: $scope.recordsPerPage
+                    }, function ( feedbacks ) {
+                        
+                        feedbacks.forEach(function ( feedback ) {
+                            $scope.feedbacks.push( feedback );
+                        });
+                        
+                        // if the end is already reached, we disable the auto scroll mechanism
+                        if ( feedbacks.length < $scope.recordsPerPage ) {
+                            $scope.listFetchDisabled = true;
+                        }
+                        
+                        // increment pageNo to load next page
+                        $scope.pageNo++;
+                        
+                        $scope.busy = false;
+                    });
+                }
+            };
+
+            $scope.loadNextComments = function () {
+                
+                if ( !$scope.listCommentsFetchDisabled && !$scope.commentsBusy ) {
+                    
+                    // set commentsBusy to true to disable next calls to avoid multiple async calls
+                    $scope.commentsBusy = true;
+                
+                    ContactUsService.query({
+                        pageNo: $scope.pageNo,
+                        recordsPerPage: $scope.recordsPerPage
+                    }, function ( messages ) {
+                        
+                        messages.forEach(function ( message ) {
+                            $scope.messages.push( message );
+                        });
+                        
+                        // if the end is already reached, we disable the auto scroll mechanism
+                        if ( messages.length < $scope.recordsPerPage ) {
+                            $scope.listCommentsFetchDisabled = true;
+                        }
+                        
+                        // increment pageNo to load next page
+                        $scope.pageNo++;
+                        
+                        $scope.commentsBusy = false;
+                    });
+                }
+            };
+            
+            
+            $scope.busy = false;
+            $scope.commentsBusy = false;
+            
+            // initial page to load
+            $scope.pageNo         = 1;
+            $scope.recordsPerPage = 5;
+            
+            // initialize messages list
+            $scope.feedbacks = [];
+            $scope.messages = [];
+            
+            $scope.listFetchDisabled = false;
+            $scope.listCommentsFetchDisabled = false;
+            
+            $scope.loadNextFeedbacks();
+            $scope.loadNextComments();
 
             // Build the left side navigation items
             $scope.navigationItemsStructure = [
@@ -125,8 +207,24 @@ angular.module('help')
                     url         : "/help/feedback",
                     index       : 0
                 },
+                
+                // ContactUs Messages
+                {
+                    label       : "Messages",
+                    template    : "/app/help/template/content/messages.html",
+                    url         : "/help/messages",
+                    index       : 0
+                },
+                
+                // Feedbacks
+                {
+                    label       : "Feedbacks",
+                    template    : "/app/help/template/content/feedbacks.html",
+                    url         : "/help/feedbacks",
+                    index       : 0
+                }
             ];
-            
+
             $scope.faqNav = $scope.navigationItemsStructure[3];
             
             $scope.resetSubtopics = function () {
@@ -325,7 +423,12 @@ angular.module('help')
                 
                 if ( $scope.contactUs.message ) {
                     var contactUs = new ContactUsService({
-                        user: $scope.user,
+                        user: {
+                            user_id : $scope.user.user_id,
+                            name: $scope.user.name,
+                            email: $scope.user.email,
+                            picture: $scope.user.picture
+                        },
                         message: $scope.contactUs.message
                     });
                     
@@ -351,11 +454,16 @@ angular.module('help')
                 // tags
                 //      private
                 
-                if ( $scope.feedback.message ) {
+                if ( $scope.feedback.message && $scope.feedback.topic && $scope.feedback.subtopic ) {
                     var feedback = new FeedbackService({
-                        user: $scope.user,
+                        user: {
+                            user_id : $scope.user.user_id,
+                            name: $scope.user.name,
+                            email: $scope.user.email,
+                            picture: $scope.user.picture
+                        },
                         message: $scope.feedback.message,
-                        topic: $scope.feedback.topic,
+                        topic: $scope.feedback.topic.label,
                         subtopic: $scope.feedback.subtopic
                     });
                     
@@ -371,6 +479,15 @@ angular.module('help')
                             });
                         });
                 }
+            };
+            
+            $scope.returnUrl = $location.path();
+            
+            $scope.viewUser = function ( /* Object */user ) {
+                // summary
+                //      view user profile
+                
+                $location.path("/user/" + user.user_id).hash($scope.returnUrl);
             };
         }
     ])
