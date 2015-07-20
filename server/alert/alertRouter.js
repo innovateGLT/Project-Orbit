@@ -108,6 +108,8 @@ router.post('/comment', function(req, res, next) {
 
     Project.findById(postData.project_id, function (err, project) {
         
+        console.log("findById : " + project);
+        console.log("selectedUsers : " + project.selectedUsers);
         project.selectedUsers.forEach(function ( user ) {
 
             // we don't create alert for the poster
@@ -130,6 +132,7 @@ router.post('/comment', function(req, res, next) {
         });
 
         // if the poster is not the project owner, we also send alert to the project owner
+        console.log(project.user.user_id + "  ---- " + postData.by_user.user_id);
         if ( project.user.user_id !== postData.by_user.user_id ) {
 
             // delete _id is existing to save new alert record
@@ -137,31 +140,16 @@ router.post('/comment', function(req, res, next) {
                 delete postData._id;
             }
             
-            var deferred = Q.defer();
-            
-            // if project owner owner has no picture in the project record, get user picture
-
-            if ( !project.user.picture ) {
+            getUser( project.user.user_id ).then( function ( userRecord ) {
+                console.log(" ---- piture : " + userRecord.picture);
+                postData.for_user = {
+                    picture: userRecord.picture,
+                    user_id: project.user.user_id,
+                    name: project.user.name
+                };
                 
-                getUser( project.user.user_id ).then( function ( userRecord ) {
-                    console.log(" ---- piture : " + userRecord.picture);
-                    postData.for_user = {
-                        picture: userRecord.picture
-                    };
-                    
-                    deferred.resolve();
-                } );
-
-            } else {
-                deferred.resolve();
-            }
-            
-            deferred.promise.then(function () {
-                postData.for_user.user_id = project.user.user_id;
-                postData.for_user.name = project.user.name;
-                JSON.stringify( "postData: " + postData );
                 Alert.create(postData);
-            });
+            } );
         }
 
         res.json( true );

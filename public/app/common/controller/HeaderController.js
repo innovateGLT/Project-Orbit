@@ -115,8 +115,8 @@ angular.module('app')
                 html:true,
                 title: "Project Invitation",
                 text: '<div class="left ml10" style="width:30px;">' + 
-	                      '<a class="pointer"><img src="' + alert.by_user.picture + '" width="30px" class="media-object img-circle" title="' + alert.by_user.name + '"/></a>' +
-		              '</div>'+
+                          '<a class="pointer"><img src="' + alert.by_user.picture + '" width="30px" class="media-object img-circle" title="' + alert.by_user.name + '"/></a>' +
+                      '</div>'+
                       '<div class="bubble">' +
                           '<div class="text-left small">"' + alert.message + ' "</div>' +
                       '</div>',

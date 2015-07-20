@@ -1,9 +1,9 @@
 'use strict';
 
 angular.module('project')
-    .controller('ProjectController', ['$scope', 'Projects', '$location', '$routeParams', 'SecurityService', 'SweetAlert', 'store',
+    .controller('ProjectController', ['$scope', 'Projects', '$location', '$routeParams', 'SecurityService', 'SweetAlert', 'AlertService', 'store',
 
-        function($scope, Projects, $location, $routeParams, SecurityService, SweetAlert, store) {
+        function($scope, Projects, $location, $routeParams, SecurityService, SweetAlert, AlertService, store) {
 
             $scope.auth = SecurityService.auth();
 
@@ -263,10 +263,33 @@ angular.module('project')
                     }, function(){ 
                         console.log('Project has been ' + message, project);
                         $location.url('/project/' + project._id + "#" + $location.hash());
+                        
+                        $scope.generateProjectUpdateAlert();
                     });
                 });
             };
-            
+
+            // the project owner and the selected people will get this alert
+            $scope.generateProjectUpdateAlert = function ( /* Object */user ) {
+                var projectUpdateAlert = {
+                    by_user : {
+                        user_id : $scope.auth.profile.user_id,
+                        name: $scope.auth.profile.name,
+                        picture: $scope.auth.profile.picture
+                    },
+                    
+                    alert_type: "project-update",
+                    
+                    project_name: $scope.project.title,
+                    
+                    project_id: $scope.project._id
+                };
+                
+                AlertService.comment(projectUpdateAlert, function ( response ) {
+                    console.log("Apply alert generated : " + response);
+                });
+            };
+
             $scope.returnUrl = $location.hash();
 
             $scope.backToList = function () {

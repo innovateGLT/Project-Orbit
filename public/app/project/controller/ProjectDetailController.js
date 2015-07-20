@@ -241,10 +241,6 @@ angular.module('project')
 
             });
 
-
-
-
-
             $scope.showQuestion = true;
 
             $scope.showAsk = false;
@@ -535,7 +531,7 @@ angular.module('project')
                 };
                 
                 AlertService.comment(commentAlert, function ( response ) {
-                    console.log("Apply alert generated : " + response);
+                    console.log("Comment alert generated : " + response);
                 });
             };
             

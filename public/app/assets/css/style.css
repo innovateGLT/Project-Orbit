@@ -2103,8 +2103,8 @@ user-badge .thumbnail {
     border-bottom: 1px solid #f0f0f0;
 }
 
-.notifications .notification:last-child,
-.notifications .notification:nth-last-child(2) {
+.notifications .notifications-container .notification:last-child,
+.notifications .notification.no-border {
     border: none;
 }
 
@@ -2241,45 +2241,64 @@ user-badge .thumbnail {
 
 /* popup alert styles END */
 
-.bubble 
-{
-position: relative;
-display:inline-block;
-min-height:1.5em;
-padding: 20px;
-background: #FFFFFF;
-border: #f0f0f0 solid 1px;
--webkit-border-radius: 20px;
--moz-border-radius: 20px;
-border-radius: 10px;
-width: 85%;
-border-top-left-radius: 0;
+/* comment bubble styles START*/
+.bubble {
+    position: relative;
+    display:inline-block;
+    min-height:1.5em;
+    padding: 20px;
+    background: #FFFFFF;
+    border: #f0f0f0 solid 1px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 10px;
 }
 
-.bubble:after 
-{
-content: "";
-position: absolute;
-top: 2px;
-left: -9px;
-border-style: solid;
-border-width: 10px 10px 10px 0;
-border-color: transparent #FFFFFF;
-display: block;
-width: 0;
-z-index: 1;
+.bubble:after {
+    content: "";
+    position: absolute;
+    top: 10px;
+    left: -9px;
+    border-style: solid;
+    border-width: 10px 10px 10px 0;
+    border-color: transparent #FFFFFF;
+    display: block;
+    width: 0;
+    z-index: 1;
 }
 
-.bubble:before 
-{
-content: "";
-position: absolute;
-top: 2px;
-left: -10px;
-border-style: solid;
-border-width: 10px 10px 10px 0;
-border-color: transparent #f0f0f0;
-display: block;
-width: 0;
-z-index: 0;
+.bubble:before {
+    content: "";
+    position: absolute;
+    top: 10px;
+    left: -10px;
+    border-style: solid;
+    border-width: 10px 10px 10px 0;
+    border-color: transparent #f0f0f0;
+    display: block;
+    width: 0;
+    z-index: 0;
 }
+
+/* comment bubble styles START*/
+
+/* contact us messages and feedback messages styles START */
+
+.messages .message {
+    margin-bottom: 10px;
+}
+
+.messages .message .bubble {
+    padding: 10px;
+}
+
+.messages .message .bubble .smaller {
+    font-size: 10px;
+}
+
+.messages .message .user {
+    width: 40px;
+    margin-right: 20px;
+    margin-top: 10px;
+}
+/* contact us messages and feedback messages styles END */

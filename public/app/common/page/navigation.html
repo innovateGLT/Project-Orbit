@@ -1,118 +1,119 @@
 <nav class="navbar navbar-default navbar-fixed-top" ng-controller="HeaderController">
-		<div id="navigationBar">
-		  <!-- Brand and toggle get grouped for better mobile display -->
-		  <div class="navbar-header nav-bar-profile">
-		    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-		      <span class="sr-only">Toggle navigation</span>
-		      <span class="icon-bar"></span>
-		      <span class="icon-bar"></span>
-		      <span class="icon-bar"></span>
-		    </button>
+        <div id="navigationBar">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header nav-bar-profile">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
 
-			<div class="media logo">
-				<a class="pull-left" href="/profile">
-					<img width="50px" class="media-object img-circle" ng-src="{{isAdmin ? '/app/assets/img/admin.png' : auth.profile.picture}}" alt="Image" />
-				</a>
-				<div class="media-body">
-					<a href="/" class="header-logo">
-						<img ng-src="/app/assets/img/Opportunities@HSBC_white_notagline.png" width="200"/>
-					</a>
-					<p>Welcome, {{auth.profile.nickname}}</p>
-				</div>
-			</div>
-		  </div>
+            <div class="media logo">
+                <a class="pull-left" href="/profile">
+                    <img width="50px" class="media-object img-circle" ng-src="{{isAdmin ? '/app/assets/img/admin.png' : auth.profile.picture}}" alt="Image" />
+                </a>
+                <div class="media-body">
+                    <a href="/" class="header-logo">
+                        <img ng-src="/app/assets/img/Opportunities@HSBC_white_notagline.png" width="200"/>
+                    </a>
+                    <p>Welcome, {{auth.profile.nickname}}</p>
+                </div>
+            </div>
+          </div>
 
-		  <!-- Collect the nav links, forms, and other content for toggling -->
-		  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
 
-		 	<ul class="nav navbar-nav">
-				<li><a href="/"><i class="glyphicon glyphicon-home"></i></a></li>
-		 	</ul>
-		    <form class="navbar-form navbar-left" role="search" style="display : table">
-		      <div class="form-group">
+             <ul class="nav navbar-nav">
+                <li><a href="/"><i class="glyphicon glyphicon-home"></i></a></li>
+             </ul>
+            <form class="navbar-form navbar-left" role="search" style="display : table">
+              <div class="form-group">
 
-		        <div class="input-group search-bar">
-		        	
-		        	<input type="text" ng-model="query" class=" form-control search-bar" title="Find your niche" placeholder="Find your niche" ng-keyup="$event.keyCode == 13 ? search() : null">
+                <div class="input-group search-bar">
+                    
+                    <input type="text" ng-model="query" class=" form-control search-bar" title="Find your niche" placeholder="Find your niche" ng-keyup="$event.keyCode == 13 ? search() : null">
 
-		        	<span class="input-group-addon" id="basic-addon2"><i class="glyphicon glyphicon-search"></i></span>
-		        </div>
-		      </div>
-		      
-		    </form>
+                    <span class="input-group-addon" id="basic-addon2"><i class="glyphicon glyphicon-search"></i></span>
+                </div>
+              </div>
+              
+            </form>
 
-		    <ul class="nav navbar-nav navbar-right nav-pills mt15 mr50">
-				
-				<li role="presentation" class="login-btn" ng-show="!auth.isAuthenticated" ng-click="login()"><a href="#/">Login</a></li>
-				
-				<li role="presentation" class="active"><a href="/project/new#{{returnUrl}}">New Project</a></li>
+            <ul class="nav navbar-nav navbar-right nav-pills mt15 mr50">
+                
+                <li role="presentation" class="login-btn" ng-show="!auth.isAuthenticated" ng-click="login()"><a href="#/">Login</a></li>
+                
+                <li role="presentation" class="active"><a href="/project/new#{{returnUrl}}">New Project</a></li>
 
-				<li class="dropdown" ng-show="auth.isAuthenticated">
-				  <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Categories<span class="caret"></span></a>
-				  <ul class="dropdown-menu" role="menu">
-				  	
-				  	<li><a href="/project/list/CrossUnitProjects">Cross Unit Projects</a></li>
-				    <li><a href="/project/list/JobRotations">Job Rotations</a></li>
-				    <li><a href="/project/list/StretchAssignments">Stretch Assignments</a></li>
-				    <li><a href="/project/list/JobShadowing">Job Shadowing</a></li>
+                <li class="dropdown" ng-show="auth.isAuthenticated">
+                  <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Categories<span class="caret"></span></a>
+                  <ul class="dropdown-menu" role="menu">
+                      
+                      <li><a href="/project/list/CrossUnitProjects">Cross Unit Projects</a></li>
+                    <li><a href="/project/list/JobRotations">Job Rotations</a></li>
+                    <li><a href="/project/list/StretchAssignments">Stretch Assignments</a></li>
+                    <li><a href="/project/list/JobShadowing">Job Shadowing</a></li>
                     <li><a href="/project/list/BusinessInteractions">Business Interactions</a></li>
-				    <li><a href="/project/list/AdventureAssignments">Adventure Assignments</a></li>
-				    <li><a href="/project/list/FindaMentorMentee">Find a Mentor / Mentee</a></li>
-				    <li><a href="/project/list/OtherOpportunities">Other Opportunities</a></li>
+                    <li><a href="/project/list/AdventureAssignments">Adventure Assignments</a></li>
+                    <li><a href="/project/list/FindaMentorMentee">Find a Mentor / Mentee</a></li>
+                    <li><a href="/project/list/OtherOpportunities">Other Opportunities</a></li>
 
-				  </ul>
-				</li>
+                  </ul>
+                </li>
 
 
-				<li class="dropdown" ng-show="auth.isAuthenticated">
-				  <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">My Dashboard <span class="caret"></span></a>
-				  <ul class="dropdown-menu" role="menu">
-				  	<li role="presentation" class="dropdown-header">{{auth.profile.name}}</li>
-				  	<li><a href="/profile">View Profile</a></li>
-				    <li><a href="/user/list">All Users</a></li>
-				    <li><a href="/project/list">All Projects</a></li>
-				    <!-- <li class="divider"></li> -->
-				    <li  ng-show="false" class="" ng-click="logout()"><a href="#">Logout</a></li>
-				  </ul>
-				</li>
-				<li role="presentation"><a style="padding:5px;" class="pointer {{notifications.length > 0 ? 'animated infinite swing' : ''}}" ng-click="toggleNotifications()" title="Alerts"><i class="glyphicon glyphicon-bell" style="color:{{notifications.length > 0 ? 'red' : '#fff'}};"></i></a></li>
-				<li role="presentation"><a href="/help" style="padding:5px;"><i class="glyphicon glyphicon-question-sign"></i></a></li>
-			</ul>
-			<div class="animate-slideInDown-Up notifications" ng-show="isNotificationVisible">
-        		<div class="notification-header">Alerts<a class="pull-right pointer mr5" ng-click="toggleNotifications()"><i class="glyphicon glyphicon-remove"></i></a></div>
+                <li class="dropdown" ng-show="auth.isAuthenticated">
+                  <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">My Dashboard <span class="caret"></span></a>
+                  <ul class="dropdown-menu" role="menu">
+                      <li role="presentation" class="dropdown-header">{{auth.profile.name}}</li>
+                      <li><a href="/profile">View Profile</a></li>
+                    <li><a href="/user/list">All Users</a></li>
+                    <li><a href="/project/list">All Projects</a></li>
+                    <!-- <li class="divider"></li> -->
+                    <li  ng-show="false" class="" ng-click="logout()"><a href="#">Logout</a></li>
+                  </ul>
+                </li>
+                <li role="presentation"><a style="padding:5px;" class="pointer {{notifications.length > 0 ? 'animated infinite swing' : ''}}" ng-click="toggleNotifications()" title="Alerts"><i class="glyphicon glyphicon-bell" style="color:{{notifications.length > 0 ? 'red' : '#fff'}};"></i></a></li>
+                <li role="presentation"><a href="/help" style="padding:5px;"><i class="glyphicon glyphicon-question-sign"></i></a></li>
+            </ul>
+            <div class="animate-slideInDown-Up notifications" ng-show="isNotificationVisible">
+                <div class="notification-header">Alerts<a class="pull-right pointer mr5" ng-click="toggleNotifications()"><i class="glyphicon glyphicon-remove"></i></a></div>
                 <div class="notifications-container">
-            		<div ng-repeat="alert in notifications track by $index" class="notification animate-alert" ng-mouseover="isCloseable=true" ng-mouseleave="isCloseable=false">
-            			<div class="row">
-            				<div class="col-xs-11 col-sm-11 col-md-11 col-lg-11 no-padding pl15" ng-click="viewAlert(alert)">
-            					<div class="left" style="width:30px;">
-            						<a class="pointer"><img ng-src="{{alert.by_user.picture}}" width="30px" class="media-object img-circle" title="{{alert.by_user.name}}"/></a>
-            					</div>
-            					<div class="col-md-10 col-lg-10 col-sm-10 col-xs-10 message">
-            						<span ng-if="alert.alert_type === 'poke'"><b>{{alert.by_user.name}}</b> poked you{{alert.poke_ctr > 1 ? " " + alert.poke_ctr + " times" : ""}}, reminding to check your invitations.</span>
+                    <div ng-repeat="alert in notifications track by $index" class="notification animate-alert" ng-mouseover="isCloseable=true" ng-mouseleave="isCloseable=false">
+                        <div class="row">
+                            <div class="col-xs-11 col-sm-11 col-md-11 col-lg-11 no-padding pl15" ng-click="viewAlert(alert)">
+                                <div class="left" style="width:30px;">
+                                    <a class="pointer"><img ng-src="{{alert.by_user.picture}}" width="30px" class="media-object img-circle" title="{{alert.by_user.name}}"/></a>
+                                </div>
+                                <div class="col-md-10 col-lg-10 col-sm-10 col-xs-10 message">
+                                    <span ng-if="alert.alert_type === 'poke'"><b>{{alert.by_user.name}}</b> poked you{{alert.poke_ctr > 1 ? " " + alert.poke_ctr + " times" : ""}}, reminding to check your invitations.</span>
                                     <span ng-if="alert.alert_type === 'invite'"><b>{{alert.by_user.name}}</b> invited you to collborate with his opportunity <b>{{alert.project_name}}</b>."</span>
-                                    <span ng-if="alert.alert_type === 'comment'"><b>{{alert.by_user.name}}</b> left a comment in <b>{{alert.project_name}}'s</b> discussion board."</span>
+                                    <span ng-if="alert.alert_type === 'comment'"><b>{{alert.by_user.name}}</b> left a comment in <b>{{alert.project_name}}'s</b> discussion board.</span>
                                     <span ng-if="alert.alert_type === 'rate'"><b>{{alert.by_user.name}}</b> rated you <b>{{alert.message}} {{alert.message === '1' ? 'star' : 'stars'}}</b> in the opportunity <b>{{alert.project_name}}</b>. He also said thanks by the way!</span>
                                     <span ng-if="alert.alert_type === 'rate-project-owner'"><b>{{alert.by_user.name}}</b> rated you <b>{{alert.message}} {{alert.message === '1' ? 'star' : 'stars'}}</b> for being so cool in the opportunity <b>{{alert.project_name}}</b>.</span>
                                     <span ng-if="alert.alert_type === 'accept'"><b>{{alert.by_user.name}}</b> is cool on helping in your opportunity <b>{{alert.project_name}}.</b></span>
                                     <span ng-if="alert.alert_type === 'apply'"><b>{{alert.by_user.name}}</b> wants to help in your opportunity <b>{{alert.project_name}}.</b> View his profile profile now.</span>
                                     <span ng-if="alert.alert_type === 'accept-application'"><b>{{alert.by_user.name}}</b> was impressed with profile and accepted your application to join their opportunity <b>{{alert.project_name}}.</b></span>
-            					</div>
-            				</div>
-            				
-            				<div class="col-md-1 col-lg-1 col-sm-1 col-xs-1 text-center" ng-show="isCloseable">
-            					<span class="close" ng-click="deleteAlert(alert)">&times;</span>
-            				</div>
-            			</div>
-            		</div>
+                                    <span ng-if="alert.alert_type === 'project-update'"><b>{{alert.by_user.name}}</b> updated the details of <b>{{alert.project_name}}</b>. You might wanna check what's changed.</span>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-1 col-lg-1 col-sm-1 col-xs-1 text-center" ng-show="isCloseable">
+                                <span class="close" ng-click="deleteAlert(alert)">&times;</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-        		<div class="notification" ng-show="notifications.length == 0">
-        			<div class="row">
-        				<div class="col-md-12"><span>No alerts.</span></div>
-        			</div>
-        		</div>
-        	</div>
+                <div class="notification no-border" ng-show="notifications.length == 0">
+                    <div class="row">
+                        <div class="col-md-12"><span>No alerts.</span></div>
+                    </div>
+                </div>
+            </div>
       
-	      </div><!-- /.navbar-collapse -->
-	  	</div><!-- /.container-fluid -->
-	</nav>
+          </div><!-- /.navbar-collapse -->
+          </div><!-- /.container-fluid -->
+    </nav>

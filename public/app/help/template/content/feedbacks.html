@@ -1,0 +1,23 @@
+<div ng-if="isAdmin">
+    <h2>Feedbacks</h2>
+    <div class="messages">
+        <div class="row" when-scrolled="loadNextFeedbacks()">
+            <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12 message left animated-list-record" ng-repeat="feedback in feedbacks track by $index">
+                <div class="user col-md-1 col-lg-1 col-sm-1 col-xs-1">
+                    <a class="pointer"><img ng-src="{{feedback.user.picture}}" width="30px" class="media-object img-circle" title="{{feedback.user.name}}"/></a> 
+                </div>
+                <div class="bubble col-md-11 col-lg-11 col-sm-11 col-xs-11">
+                    <div class="text-left"><a class="pointer" ng-click="viewUser(feedback.user)">{{feedback.user.name}}</a><span class="pull-right text-right smaller">{{feedback.createdDate | date:'MMM dd, yyyy'}}</span></div>
+                    <div class="text-left small">{{feedback.message}}</div> 
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
