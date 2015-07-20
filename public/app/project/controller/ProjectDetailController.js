@@ -480,8 +480,9 @@ angular.module('project')
                     message: $scope.rate
                 };
                 
-                AlertService.comment(rateAlert, function ( response ) {
-                    console.log("Rate alert generated : " + response);
+                var rateAlertRecord = new AlertService(rateAlert);
+                rateAlertRecord.$save(rateAlert).then(function ( response ) {
+                    console.log("Rate Project Owner alert generated : " + response);
                 });
             };
 
@@ -509,7 +510,8 @@ angular.module('project')
                     message: user.rate
                 };
                 
-                AlertService.comment(rateAlert, function ( response ) {
+                var rateAlertRecord = new AlertService(rateAlert);
+                rateAlertRecord.$save(rateAlert).then(function ( response ) {
                     console.log("Rate alert generated : " + response);
                 });
             };
