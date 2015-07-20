@@ -1670,6 +1670,7 @@ user-badge .thumbnail {
 
 .discussion-board .comment .date {
     color: #a0a0a0;
+    font-size: 10px;
 }
 
 .discussion-board .comment .owner {
@@ -2246,7 +2247,7 @@ user-badge .thumbnail {
     position: relative;
     display:inline-block;
     min-height:1.5em;
-    padding: 20px;
+    padding: 10px;
     background: #FFFFFF;
     border: #f0f0f0 solid 1px;
     -webkit-border-radius: 20px;
@@ -2292,7 +2293,7 @@ user-badge .thumbnail {
     padding: 10px;
 }
 
-.messages .message .bubble .smaller {
+.messages .message .bubble .smaller, .smaller {
     font-size: 10px;
 }
 

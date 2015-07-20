@@ -7,7 +7,7 @@
                     <a class="pointer"><img ng-src="{{message.user.picture}}" width="30px" class="media-object img-circle" title="{{message.user.name}}"/></a> 
                 </div>
                 <div class="bubble col-md-11 col-lg-11 col-sm-11 col-xs-11">
-                    <div class="text-left"><a class="pointer" ng-click="viewUser(message.user)">{{message.user.name}}</a><span class="pull-right text-right smaller">{{message.createdDate | date:'MMM dd, yyyy'}}</span></div>
+                    <div class="text-left"><a class="pointer" ng-click="viewUser(message.user)">{{message.user.name}}</a><span class="pull-right text-right smaller">{{message.createdDate | date:'MMM dd, yyyy hh:mm'}}</span></div>
                     <div class="text-left small">{{message.message}}</div> 
                 </div>
             </div>
