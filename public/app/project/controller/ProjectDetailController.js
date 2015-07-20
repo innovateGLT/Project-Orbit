@@ -481,7 +481,7 @@ angular.module('project')
                 };
                 
                 var rateAlertRecord = new AlertService(rateAlert);
-                rateAlertRecord.$save(rateAlert).then(function ( response ) {
+                rateAlertRecord.$save().then(function ( response ) {
                     console.log("Rate Project Owner alert generated : " + response);
                 });
             };
@@ -511,7 +511,7 @@ angular.module('project')
                 };
                 
                 var rateAlertRecord = new AlertService(rateAlert);
-                rateAlertRecord.$save(rateAlert).then(function ( response ) {
+                rateAlertRecord.$save().then(function ( response ) {
                     console.log("Rate alert generated : " + response);
                 });
             };
