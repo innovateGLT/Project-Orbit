@@ -125,29 +125,35 @@ angular.module('project')
 
                     // remove all matched users who have been applied 
                     for (var i = 0; i < $scope.project.appliedUsers.length; i++) {
-                        var user_id = $scope.project.appliedUsers[i].user_id;
-                        $scope.matchedUsers = $scope.matchedUsers.filter(function(person) {
-                            return person.user_id != user_id;
-                        });
+                        if ( $scope.project.appliedUsers[i] ) {
+                            var user_id = $scope.project.appliedUsers[i].user_id;
+                            $scope.matchedUsers = $scope.matchedUsers.filter(function(person) {
+                                return person.user_id != user_id;
+                            });
+                        }
                     };
 
                     // remove all matched users who have been selected
                     for (var i = 0; i < $scope.project.selectedUsers.length; i++) {
-                        var user__id = $scope.project.selectedUsers[i].user_id;
-                        $scope.matchedUsers = $scope.matchedUsers.filter(function(person) {
-                            return person.user_id != user__id;
-                        });
+                        if ( $scope.project.selectedUsers[i] ) {
+                            var user__id = $scope.project.selectedUsers[i].user_id;
+                            $scope.matchedUsers = $scope.matchedUsers.filter(function(person) {
+                                return person.user_id != user__id;
+                            });
+                        }
                     };
 
                     // set invited to all matched users who has been invited already
                     for (var i = 0; i < $scope.project.invitedUsers.length; i++) {
-                        var user___id = $scope.project.invitedUsers[i].user_id;
-                        if ( user___id ) {
-                            $scope.matchedUsers.forEach(function(person) {
-                                if ( person.user_id == user___id ) {
-                                    person.invited = true;
-                                }
-                            });
+                        if ( $scope.project.invitedUsers[i] ) {
+                            var user___id = $scope.project.invitedUsers[i].user_id;
+                            if ( user___id ) {
+                                $scope.matchedUsers.forEach(function(person) {
+                                    if ( person.user_id == user___id ) {
+                                        person.invited = true;
+                                    }
+                                });
+                            }
                         }
                     };
 
@@ -160,8 +166,10 @@ angular.module('project')
 
                 $scope.hasApplied = false;
                 for (var i = 0; i < $scope.project.appliedUsers.length; i++) {
-                    if ($scope.auth.profile.user_id == $scope.project.appliedUsers[i].user_id) {
-                        $scope.hasApplied = true;
+                    if ( $scope.project.appliedUsers[i] ) {
+                        if ($scope.auth.profile.user_id == $scope.project.appliedUsers[i].user_id) {
+                            $scope.hasApplied = true;
+                        }
                     }
                 };
 
@@ -392,7 +400,7 @@ angular.module('project')
 
                 var invited = false;
                 for (var i = 0; i < $scope.project.invitedUsers.length; i++) {
-                    if ( !$scope.project.invitedUsers[i] || invitedUser.user_id == $scope.project.invitedUsers[i].user_id) {
+                    if ( $scope.project.invitedUsers[i] && invitedUser.user_id == $scope.project.invitedUsers[i].user_id) {
                         invited = true;
                     }
                 };
