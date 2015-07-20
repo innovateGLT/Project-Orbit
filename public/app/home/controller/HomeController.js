@@ -11,7 +11,7 @@ angular.module('home')
         //        $scope.posterUrl = "/app/assets/img/sky.png";
         var myVideo = document.getElementsByTagName('video')[0];
         var location = $scope.auth.profile.country;
-        $scope.videoUrl = "/app/assets/video/BANNER" + location + ".mp4";
+        $scope.videoUrl = "/app/assets/video/BANNER_" + location + ".mp4";
 
         var animatedBG = function(location) {
             if (location != null) {
