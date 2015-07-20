@@ -778,7 +778,7 @@ video#bgvid {
     padding: 0px;
     margin: 0px;
     z-index: 1;
-    background: url("/app/assets/img/sky.png") no-repeat;
+    background: url("/app/assets/img/bg/CA/1.jpg") no-repeat;
     background-size: cover;
 }
 
