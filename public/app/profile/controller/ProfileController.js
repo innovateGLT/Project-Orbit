@@ -176,7 +176,7 @@ angular.module('profile')
                       }  
                       // Generate bubble chart using D3 API
                 	if($scope.skillList.length > 0) {
-                		Bubble.generateBubble($scope.skillList);
+                		Bubble.generateClickableBubble($scope.skillList);
                 	}
                 });
             }();

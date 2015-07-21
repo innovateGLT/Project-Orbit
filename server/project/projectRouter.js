@@ -172,11 +172,13 @@ router.get('/matched/by_user_id/:user_id', function(req, res, next) {
         
         // append the skills
         post.skills.forEach(function ( skill ) {
+            skill = skill.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
             skillsAndInterests.push(new RegExp(skill, "i"));
         });
         
         // append the interests
         post.interests.forEach(function ( interest ) {
+            interest = interest.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
             skillsAndInterests.push(new RegExp(interest, "i"));
         });
 

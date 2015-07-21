@@ -189,6 +189,7 @@ router.get('/matches', function(req, res, next) {
 	});
 
 	temp.forEach(function(skill){
+        skill = skill.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
 		expandedSkillList.push(new RegExp(skill, "i"));
 	});
 	
