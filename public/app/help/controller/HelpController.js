@@ -25,7 +25,7 @@ angular.module('help')
                     $scope.busy = true;
                 
                     FeedbackService.query({
-                        pageNo: $scope.pageNo,
+                        pageNo: $scope.feedbacksPageNo,
                         recordsPerPage: $scope.recordsPerPage
                     }, function ( feedbacks ) {
                         
@@ -39,7 +39,7 @@ angular.module('help')
                         }
                         
                         // increment pageNo to load next page
-                        $scope.pageNo++;
+                        $scope.feedbacksPageNo++;
                         
                         $scope.busy = false;
                     });
@@ -80,8 +80,9 @@ angular.module('help')
             $scope.commentsBusy = false;
             
             // initial page to load
-            $scope.pageNo         = 1;
-            $scope.recordsPerPage = 5;
+            $scope.pageNo          = 1;
+            $scope.feedbacksPageNo = 1;
+            $scope.recordsPerPage  = 5;
             
             // initialize messages list
             $scope.feedbacks = [];
