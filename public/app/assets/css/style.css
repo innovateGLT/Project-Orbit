@@ -778,7 +778,7 @@ video#bgvid {
     padding: 0px;
     margin: 0px;
     z-index: 1;
-    background: url("/app/assets/img/sky.png") no-repeat;
+    background: url("/app/assets/img/bg/CA/1.jpg") no-repeat;
     background-size: cover;
 }
 
@@ -917,9 +917,8 @@ video#bgvid {
 
 .ml5p {margin-left:5%;}
 
-.no-margin-top {
-    margin-top: 0 !important;
-}
+.no-margin-top {margin-top: 0 !important;}
+.no-margin-bottom {margin-bottom: 0 !important;}
 
 .no-padding {padding: 0 !important;}
 .no-padding-left {padding-left: 0 !important;}
@@ -931,6 +930,7 @@ video#bgvid {
 .p15 {padding:15px;}
 .p20 {padding:20px;}
 
+.pl15 {padding-left:15px !important;}
 
 .pt5  {padding-top:5px;}
 .pt10 {padding-top:10px;}
@@ -1670,6 +1670,7 @@ user-badge .thumbnail {
 
 .discussion-board .comment .date {
     color: #a0a0a0;
+    font-size: 10px;
 }
 
 .discussion-board .comment .owner {
@@ -1946,6 +1947,7 @@ user-badge .thumbnail {
     padding: 40px;
     padding-top: 80px;
     background-color: rgba(249, 252, 252, 0.5);
+    min-height: 320px;
 }
 
 .project-detail .skillset {
@@ -2044,14 +2046,11 @@ user-badge .thumbnail {
 }
 
 .help .help-header .breadcrumb {
-    margin: 110px 15px 0 15px;
+    margin: 0px 15px 0 15px;
     padding: 10px 10px 15px 10px;
     opacity: .9;
-    background-color: #fff;
+    background-color: #f8f8f8;
     border-radius: 0;
-    -webkit-box-shadow: 2px 2px 5px 0px rgba(156,153,156,1);
-    -moz-box-shadow: 2px 2px 5px 0px rgba(156,153,156,1);
-    box-shadow: 2px 2px 5px 0px rgba(156,153,156,1);
     font-size: 15px;
 }
 
@@ -2091,14 +2090,23 @@ user-badge .thumbnail {
     border-radius: 5px;
     border-top-right-radius: 0;
     z-index: 2000;
-    max-height: 400px;
-    overflow-y: auto;
-    overflow-x: hidden;
+}
+
+.notifications .notifications-container {
+    max-height:400px;
+    overflow-y:auto;
+    overflow-x:hidden;
 }
 
 .notifications .notification {
     padding: 10px;
     cursor: pointer;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.notifications .notifications-container .notification:last-child,
+.notifications .notification.no-border {
+    border: none;
 }
 
 .notifications .notification:hover {
@@ -2116,7 +2124,7 @@ user-badge .thumbnail {
     padding-bottom: 5px;
     padding-left: 10px;
     padding-top: 5px;
-    margin-bottom: 5px;
+    margin-bottom: 2px;
     color: #70A8F0;
 }
 
@@ -2214,3 +2222,84 @@ user-badge .thumbnail {
 }
 
 /* listing headers END */
+
+.project-people-list {
+    max-height: 400px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+
+/* popup alert styles START */
+
+.popup-alert-message {
+    padding:15px;
+    border:1px solid #f0f0f0;
+    margin: 0;
+    border-radius: 8px;
+    border-top-left-radius: 0;
+}
+
+/* popup alert styles END */
+
+/* comment bubble styles START*/
+.bubble {
+    position: relative;
+    display:inline-block;
+    min-height:1.5em;
+    padding: 10px;
+    background: #FFFFFF;
+    border: #f0f0f0 solid 1px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 10px;
+}
+
+.bubble:after {
+    content: "";
+    position: absolute;
+    top: 10px;
+    left: -9px;
+    border-style: solid;
+    border-width: 10px 10px 10px 0;
+    border-color: transparent #FFFFFF;
+    display: block;
+    width: 0;
+    z-index: 1;
+}
+
+.bubble:before {
+    content: "";
+    position: absolute;
+    top: 10px;
+    left: -10px;
+    border-style: solid;
+    border-width: 10px 10px 10px 0;
+    border-color: transparent #f0f0f0;
+    display: block;
+    width: 0;
+    z-index: 0;
+}
+
+/* comment bubble styles START*/
+
+/* contact us messages and feedback messages styles START */
+
+.messages .message {
+    margin-bottom: 10px;
+}
+
+.messages .message .bubble {
+    padding: 10px;
+}
+
+.messages .message .bubble .smaller, .smaller {
+    font-size: 10px;
+}
+
+.messages .message .user {
+    width: 40px;
+    margin-right: 20px;
+    margin-top: 10px;
+}
+/* contact us messages and feedback messages styles END */

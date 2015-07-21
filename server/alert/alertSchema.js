@@ -14,6 +14,8 @@ var AlertSchema = new mongoose.Schema({
     
     project_id: String,
     
+    message: String,
+    
     poke_ctr: {
         type: Number,
         default: 1

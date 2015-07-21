@@ -11,6 +11,7 @@ angular.module('loaduser')
                 country: 'CANADA'
             };
 
+            $scope.email = "innovate@hsbc.ca";
             $scope.isLogin = false;
             $scope.newUser = true;
 

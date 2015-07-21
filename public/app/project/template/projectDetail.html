@@ -50,11 +50,14 @@
 								</h2>
 							</div>
 						</div>
-						<div class="row no-margin">
-							<div ng-show="logginUserSelectedForProject" class="col-md-12 col-lg-12 col-sm-12 col-xs-12 text-right no-padding">
+						<div class="row mt20">
+                            <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12 text-left no-padding">
+								<div class="col-md-12"><strong>Last Updated on {{ project.updatedDate | date:'MMM dd, yyyy'}}</strong></div>
+							</div>
+							<div ng-show="logginUserSelectedForProject" class="col-md-6 col-lg-6 col-sm-12 col-xs-12 text-right no-padding">
 								
-								{{ (isRated == true) ? 'You have rated this project\'s owner' : 'Rate this project\'s owner:'}} <rating ng-model="rate" max="max" readonly="isReadonly" on-hover="hoveringOver(value)" on-leave="overStar = null"></rating>
-								<span class="label" ng-class="{'label-warning': percent<30, 'label-info': percent>=30 && percent<70, 'label-success': percent>=70}" ng-show="overStar && !isReadonly">{{percent}}%</span>
+								{{ (isRated == true) ? 'You have rated this project\'s owner' : 'Rate this project\'s owner:'}} <rating ng-model="rate" max="max" readonly="isReadonly" on-hover="hoveringOver(value)" ng-click="generateRateProjectOwnerAlert()" on-leave="overStar = null"></rating>
+								<!--<span class="label" ng-class="{'label-warning': percent<30, 'label-info': percent>=30 && percent<70, 'label-success': percent>=70}" ng-show="overStar && !isReadonly">{{percent}}%</span>-->
 							</div>
 						</div>
 					</div>
@@ -124,6 +127,10 @@
 										<div class="col-md-6"><strong>Location</strong></div>
 										<div class="col-md-6">{{ project.country | uppercase}}</div>
 									</div>
+                                    <div class="row mt10">
+										<div class="col-md-6"><strong>Date Created</strong></div>
+										<div class="col-md-6">{{ project.createdDate | date:'MMM dd, yyyy'}}</div>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -142,7 +149,7 @@
 									<!-- Tab content goes here -->
 									<div class="skillset">
 										<ul class="list-inline left">
-											<li ng-repeat="skill in project.skillset" ng-click="search(skill)"><span class="skill">{{skill}}</span></li>
+											<li ng-repeat="skill in project.skillset track by $index" ng-click="search(skill)"><span class="skill">{{skill}}</span></li>
 										</ul>
 									</div>
 								</div>
@@ -158,7 +165,7 @@
 							<div class="panel-heading" role="tab" id="headingThree"  class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#matchedPeople" aria-expanded="true" aria-controls="matchedPeople">
 								<h4 class="panel-title">Matched People</h4>
 							</div>
-							<div id="matchedPeople" class="panel-collapse collapsed in" role="tabpanel" aria-labelledby="headingThree">
+							<div id="matchedPeople" class="panel-collapse collapsed in project-people-list" role="tabpanel" aria-labelledby="headingThree">
 								<div class="panel-body">
 									<!-- tab content goes here -->
 									<div class="row user-list-item-sm" ng-repeat="user in matchedUsers">
@@ -188,7 +195,7 @@
 							<div class="panel-heading" role="tab" id="headingThree"  class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#appliedPeople" aria-expanded="true" aria-controls="appliedPeople">
 								<h4 class="panel-title">Applied People</h4>
 							</div>
-							<div id="appliedPeople" class="panel-collapse collapsed in" role="tabpanel" aria-labelledby="headingThree">
+							<div id="appliedPeople" class="panel-collapse collapsed in project-people-list" role="tabpanel" aria-labelledby="headingThree">
 								<div class="panel-body">
 									<!-- tab content goes here -->
 									<div class="row user-list-item-sm" ng-repeat="user in project.appliedUsers">
@@ -220,10 +227,10 @@
 							<div class="panel-heading" role="tab" id="headingThree"  class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#selectedPeople" aria-expanded="true" aria-controls="selectedPeople">
 								<h4 class="panel-title">Selected People</h4>
 							</div>
-							<div id="selectedPeople" class="panel-collapse collapsed in" role="tabpanel" aria-labelledby="headingThree">
+							<div id="selectedPeople" class="panel-collapse collapsed in project-people-list" role="tabpanel" aria-labelledby="headingThree">
 								<div class="panel-body">
 									<!-- tab content goes here -->
-									<div class="row user-list-item-sm" ng-repeat="user in project.selectedUsers">
+									<div class="row user-list-item-sm" ng-repeat="user in project.selectedUsers track by $index">
 										
 										<div class="col-md-10 col-lg-10 col-sm-9 col-xs-9">
 											<a href="/user/{{user.user_id}}#{{currentPath}}">
@@ -233,7 +240,7 @@
 										</div>
 										
 										<div ng-show="isOwner" class="text-center action">
-											<rating ng-model="user.rate" max="max" readonly="user.isReadonly" on-hover="hoveringRatingUser(value,$index)" on-leave="overStar = null"></rating>
+											<rating ng-model="user.rate" max="max" readonly="user.isReadonly" on-hover="hoveringRatingUser(value,$index)" ng-click="generateRateAlert(user)" on-leave="overStar = null"></rating>
 										</div>
 									</div>
 									<div ng-show="project.selectedUsers.length == 0">
@@ -276,7 +283,7 @@
 		                            <div class="media comment" ng-class-odd="'odd'" ng-class-even="'even'" ng-show="showQuestion" ng-repeat="question in questions track by $index">
 		                				<div class="pull-left">
 		                					<a href="/user/{{question.user.user_id}}#{{currentPath}}">
-		                						<img class="img-circle" width="60px" ng-src="{{ (question.user.picture) ? question.user.picture : 'http://placehold.it/60x60' }}">
+		                						<img class="img-circle" width="50px" ng-src="{{ (question.user.picture) ? question.user.picture : 'http://placehold.it/60x60' }}">
 		                					</a>
 		                				</div>
 		                				<div class="media-body">

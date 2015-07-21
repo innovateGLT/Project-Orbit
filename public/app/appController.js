@@ -29,6 +29,8 @@ angular.module('app')
             $document.scrollTopAnimated(0, 1000).then(function() {
                 console && console.log('You just scrolled to the top!');
             });
+            
+            $scope.$broadcast("location-changed", $location.path());
         });
         
         // if the user is authenticated already and refreshes the browser, delay should only be 1s coz we already have all employee info

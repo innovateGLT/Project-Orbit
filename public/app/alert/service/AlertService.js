@@ -9,6 +9,12 @@ angular.module('alert')
             return $resource('/api/alert/:id', null, {
                 'get': {
                     method: 'GET'
+                },
+                
+                'comment' : {
+                    method: 'POST',
+                    'url': '/api/alert/comment',
+                    isArray: false
                 }
             });
         }

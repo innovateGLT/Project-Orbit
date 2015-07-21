@@ -1,15 +1,28 @@
 <div class="container help">
 
     <div class="row help-header">
+        <div class="mb150"></div>
+        
+        <div class="row no-margin">
+            <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 no-padding">
+            <div class="listing-header" style="float:none;">
+                <div class="row">
+                    <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+                        <h1 style="padding-left:15px;padding-bottom:5px;">Help Center</h1>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        
         <help-breadcrumb></help-breadcrumb>
-    </div>
-    <div class="row">
-        <div class="col-md-3 col-lg-3 col-xs-12 col-sm-12 left">
-            <help-sidebar class="left-nav-bar left col-md-12 col-lg-12 col-sm-12 col-xs-12 left"></help-sidebar>
+        <div class="row">
+            <div class="col-md-3 col-lg-3 col-xs-12 col-sm-12 left">
+                <help-sidebar class="left-nav-bar left col-md-12 col-lg-12 col-sm-12 col-xs-12 left"></help-sidebar>
+            </div>
+            <div ng-include="helpUrl" class="animate-fadein-out col-md-9 col-lg-9 col-sm-12 col-xs-12 content left">
+            </div>
         </div>
-        <div ng-include="helpUrl" class="animate-fadein-out col-md-9 col-lg-9 col-sm-12 col-xs-12 content left">
-        </div>
+        <div sticky-link class="ng-hide sticky-menu"><a ng-click="backToTop()">Back to Top</a></div>
     </div>
-    <div sticky-link class="ng-hide sticky-menu"><a ng-click="backToTop()">Back to Top</a></div>
-    
 </div>

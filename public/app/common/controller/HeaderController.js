@@ -2,8 +2,8 @@
 
 angular.module('app')
 
-.controller('HeaderController', ['$scope', 'Projects', '$location', '$routeParams', 'SecurityService', 'AlertService',
-    function($scope, Projects, $location, $routeParams, SecurityService, AlertService) {
+.controller('HeaderController', ['$scope', 'Projects', '$location', '$routeParams', 'SecurityService', 'AlertService', 'SweetAlert', '$interval',
+    function($scope, Projects, $location, $routeParams, SecurityService, AlertService, SweetAlert, $interval) {
 
 
         console.log("MMMEEEEE");
@@ -41,6 +41,7 @@ angular.module('app')
                     $scope.notifications = notifications;
                 });
             }
+            $scope.retrieveAlertInterval = 1;
             $scope.isNotificationVisible = $scope.isNotificationVisible ? false : true;
         };
         
@@ -56,7 +57,7 @@ angular.module('app')
             $scope.isNotificationVisible = false;
             $scope.deleteAlert( alert );
             $location.path("/user/" + alert.by_user.user_id).hash( $scope.returnUrl );
-        }
+        };
         
         $scope.viewProject = function ( /* Object */alert ) {
             // summary
@@ -95,14 +96,73 @@ angular.module('app')
             
             if ( alert.alert_type === "accept" || alert.alert_type === "poke" ) {
                 $scope.viewUser( alert );
+            } else if ( alert.alert_type === "invite" ) {
+                $scope.viewInviteAlert( alert );
             } else {
                 $scope.viewProject( alert );
             }
         };
         
-        AlertService.query({user_id : $scope.auth.profile.user_id}, function ( notifications ) {
-            $scope.notifications = notifications;
+        $scope.viewInviteAlert = function ( /* Object */alert ) {
+            // summary
+            //      this function would open a SweetAlert popup showing the message in the invite
+            //      user can just ignore it or view the project
+            // params
+            //      alert - the alert object
+            // tags
+            //      private
+            SweetAlert.swal({
+                html:true,
+                title: "Project Invitation",
+                text: '<div class="left ml10" style="width:30px;">' + 
+                          '<a class="pointer"><img src="' + alert.by_user.picture + '" width="30px" class="media-object img-circle" title="' + alert.by_user.name + '"/></a>' +
+                      '</div>'+
+                      '<div class="bubble">' +
+                          '<div class="text-left small">"' + alert.message + ' "</div>' +
+                      '</div>',
+                type: "info",
+                showCancelButton: true,
+                confirmButtonText: "View Project",
+                closeOnConfirm: true
+            }, function( isConfirm ) {
+                
+                if ( isConfirm ) {
+                    $scope.viewProject( alert );
+                }
+
+            });
+        };
+
+        // default to 10 seconds
+        $scope.retrieveAlertInterval = 10;
+        $scope.alertThread = $interval(getAlerts, $scope.retrieveAlertInterval * 1000);
+
+        function getAlerts() {
+            
+            console.log("interval : " + $scope.retrieveAlertInterval);
+            
+            AlertService.query({user_id : $scope.auth.profile.user_id}, function ( notifications ) {
+                $scope.notifications = notifications;
+                
+                // if there are no new notifications, we assume that the user is not actively working on something, hence we increase the interval
+                if ( notifications.length === 0 ) {
+                    $scope.retrieveAlertInterval+= 5;
+                    
+                    $interval.cancel($scope.alertThread);
+                    
+                    $scope.alertThread = $interval(getAlerts, $scope.retrieveAlertInterval * 1000);
+                } else {
+                    $scope.retrieveAlertInterval = 1;
+                }
+            });
+        }
+
+        // listen to location changes, just so we could retrieve new notifications, just in case the interval is already so long
+        $scope.$on("location-changed", function (event, location) {
+            getAlerts();
         });
+
+        getAlerts();
 
     }
 ]);
