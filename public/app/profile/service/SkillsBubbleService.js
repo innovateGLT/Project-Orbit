@@ -100,7 +100,7 @@ angular.module('profile')
 
             var svg = d3.select("#bubbleChart").append("svg")
                 .attr("class", "mainBubbleSVG")
-                .attr("width", w)
+                .attr("width", w*1.3)
                 .attr("height",h)
                 .on("mouseleave", function() {return resetBubbles();});
                 
@@ -137,7 +137,7 @@ angular.module('profile')
                     .attr("class", "topBubble")
                     .attr("id", function(d,i) {return "topBubble" + i;})
                     .attr("r", function(d) { return oR*0.75; }) // 75% of original radius
-                    .attr("cx", function(d, i) {return oR*(3*(1+i)-1);})
+                    .attr("cx", function(d, i) {return oR*(2.5*(1+i)-1);})
                     .attr("cy", (h+oR)/3)
                     .style("fill", function(d,i) { return gmisCategory[root.children[i].name]; }) // #1f77b4
                     .style("opacity",0.8)
@@ -146,10 +146,10 @@ angular.module('profile')
                     
                 bubbleObj.append("text")
                     .attr("class", "topBubbleText")
-                    .attr("x", function(d, i) {return oR*(3*(1+i)-1);})
+                    .attr("x", function(d, i) {return oR*(2.5*(1+i)-1);})
                     .attr("y", (h+oR)/3)
                     .style("fill", function(d,i) { return "#fff"; }) // #1f77b4
-                    .attr("font-size", 15)
+                    .attr("font-size", Math.min(15,50/nTop))
                     .attr("text-anchor", "middle")
                     .attr("dominant-baseline", "middle")
                     .attr("alignment-baseline", "middle")
@@ -178,7 +178,7 @@ angular.module('profile')
                         .attr("class", "childBubble" + iB)
                         .attr("id", function(d,i) {return "childBubble_" + iB + "sub_" + i;})
                         .attr("r",  function(d) {return satelliteRadius;})  
-                        .attr("cx", function(d,i) {return (oR*(3*(iB+1)-1) + oR*Math.cos((i-1)*factor/180*Math.PI));})
+                        .attr("cx", function(d,i) {return (oR*(2.5*(iB+1)-1) + oR*Math.cos((i-1)*factor/180*Math.PI));})
                         .attr("cy", function(d,i) {return ((h+oR)/3 +        oR*Math.sin((i-1)*factor/180*Math.PI));})
                         .attr("cursor","pointer")
                         .style("opacity",0.5)
@@ -198,7 +198,7 @@ angular.module('profile')
 */
                     childBubbles.append("text")
                         .attr("class", "childBubbleText" + iB)
-                        .attr("x", function(d,i) {return (oR*(3*(iB+1)-1) + oR*1.1*Math.cos((i-1)*factor/180*Math.PI));})
+                        .attr("x", function(d,i) {return (oR*(2.5*(iB+1)-1) + oR*1.1*Math.cos((i-1)*factor/180*Math.PI));})
                         .attr("y", function(d,i) {return ((h+oR)/3 +        oR*1.1*Math.sin((i-1)*factor/180*Math.PI));})
                         .style("opacity",0.0)
                         .attr("text-anchor", "middle")
@@ -225,7 +225,7 @@ angular.module('profile')
 
               mainNote.attr("y",h-15);
                   
-              svg.attr("width", w);
+              svg.attr("width", w*1.3);
               svg.attr("height",h);       
               
             
@@ -235,13 +235,13 @@ angular.module('profile')
                 
                 t.selectAll(".topBubble")
                     .attr("r", function(d) { return oR*0.75; })
-                    .attr("cx", function(d, i) {return oR*(3*(1+i)-1);})
+                    .attr("cx", function(d, i) {return oR*(2.5*(1+i)-1);})
                     .attr("cy", (h+oR)/3)
                     .style("opacity",0.8);
 
                 t.selectAll(".topBubbleText")
-                .attr("font-size", 15)
-                    .attr("x", function(d, i) {return oR*(3*(1+i)-1);})
+                .attr("font-size", Math.min(15,50/nTop))
+                    .attr("x", function(d, i) {return oR*(2.5*(1+i)-1);})
                     .attr("y", (h+oR)/3)
                     .style("opacity",1);
 
@@ -256,7 +256,7 @@ angular.module('profile')
                 }
 
                 t.selectAll(".childBubbleText" + k)
-                        .attr("x", function(d,i) {return (oR*(3*(k+1)-1) + oR*1.1*Math.cos((i-1)*factor/180*Math.PI));})
+                        .attr("x", function(d,i) {return (oR*(2.5*(k+1)-1) + oR*1.1*Math.cos((i-1)*factor/180*Math.PI));})
                         .attr("y", function(d,i) {return ((h+oR)/3 +        oR*1.1*Math.sin((i-1)*factor/180*Math.PI));})
                     .attr("font-size", 6)
                         .style("opacity",0.0);
@@ -264,7 +264,7 @@ angular.module('profile')
                 t.selectAll(".childBubble" + k)
                         .attr("r",  function(d) {return satelliteRadius;})
                     .style("opacity",0.5)
-                        .attr("cx", function(d,i) {return (oR*(3*(k+1)-1) + oR*1.1*Math.cos((i-1)*factor/180*Math.PI));})
+                        .attr("cx", function(d,i) {return (oR*(2.5*(k+1)-1) + oR*1.1*Math.cos((i-1)*factor/180*Math.PI));})
                         .attr("cy", function(d,i) {return ((h+oR)/3 +        oR*1.1*Math.sin((i-1)*factor/180*Math.PI));});
                             
               }   
