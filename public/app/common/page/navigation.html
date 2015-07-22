@@ -90,7 +90,7 @@
                                 </div>
                                 <div class="col-md-10 col-lg-10 col-sm-10 col-xs-10 message">
                                     <span ng-if="alert.alert_type === 'poke'"><b>{{alert.by_user.name}}</b> poked you{{alert.poke_ctr > 1 ? " " + alert.poke_ctr + " times" : ""}}, reminding to check your invitations.</span>
-                                    <span ng-if="alert.alert_type === 'invite'"><b>{{alert.by_user.name}}</b> invited you to collborate with his opportunity <b>{{alert.project_name}}</b>."</span>
+                                    <span ng-if="alert.alert_type === 'invite'"><b>{{alert.by_user.name}}</b> invited you to collaborate with the opportunity: <b>{{alert.project_name}}</b>."</span>
                                     <span ng-if="alert.alert_type === 'comment'"><b>{{alert.by_user.name}}</b> left a comment in <b>{{alert.project_name}}'s</b> discussion board.</span>
                                     <span ng-if="alert.alert_type === 'rate'"><b>{{alert.by_user.name}}</b> rated you <b>{{alert.message}} {{alert.message === '1' ? 'star' : 'stars'}}</b> in the opportunity <b>{{alert.project_name}}</b>. He also said thanks by the way!</span>
                                     <span ng-if="alert.alert_type === 'rate-project-owner'"><b>{{alert.by_user.name}}</b> rated you <b>{{alert.message}} {{alert.message === '1' ? 'star' : 'stars'}}</b> for being so cool in the opportunity <b>{{alert.project_name}}</b>.</span>
