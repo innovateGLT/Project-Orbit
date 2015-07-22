@@ -352,6 +352,17 @@ router.get('/search', function(req, res, next) {
 */
     var query = Project.find();
     
+       query.and({
+        $or : [
+            {
+                deleteFlag : false
+            },
+            {
+                deleteFlag : undefined
+            }
+        ]
+    });
+    
     query.and ([{
             $or:    [{
                 country: req.query.country
