@@ -53,11 +53,10 @@ angular.module('app')
         function hideLoadingOverlay() {
             
             // we currently block contingent workers from accessing the app
-            
-            if ( $scope.auth.profile.job_role.indexOf("CONTINGENT") === -1 ) {
-                $scope.isLoadingVisible = false;
-            } else {
+            if ( $scope.auth.profile && $scope.auth.profile.job_role.indexOf("CONTINGENT") !== -1 ) {
                 $scope.isContingentWorker = true;
+            } else {
+                $scope.isLoadingVisible = false;
             }
         };
         
