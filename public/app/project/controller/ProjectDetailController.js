@@ -281,9 +281,8 @@ angular.module('project')
                                 title: "Removed!",
                                 text: "The project has been removed! You will go to the homepage",
                                 type: "success",
-                                showCancelButton: true,
-                                confirmButtonText: "Go",
-                                closeOnConfirm: false
+                                showCancelButton: false,
+                                confirmTextButton: "Go"
                             }, function() {
                                 $location.path("/");
                             });

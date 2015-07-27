@@ -108,51 +108,53 @@ router.post('/comment', function(req, res, next) {
 
     Project.findById(postData.project_id, function (err, project) {
         
-        console.log("findById : " + project);
-        console.log("selectedUsers : " + project.selectedUsers);
-        project.selectedUsers.forEach(function ( user ) {
-
-            // we don't create alert for the poster
-            if ( postData.by_user.user_id !== user.user_id ) {
-
+        if ( project ) {
+            console.log("findById : " + project);
+            console.log("selectedUsers : " + project.selectedUsers);
+            project.selectedUsers.forEach(function ( user ) {
+    
+                // we don't create alert for the poster
+                if ( postData.by_user.user_id !== user.user_id ) {
+    
+                    // delete _id is existing to save new alert record
+                    if ( postData._id ) {
+                        delete postData._id;
+                    }
+                    
+                    postData.for_user = {
+                        user_id: user.user_id,
+                        name: user.name,
+                        picture: user.picture
+                    };
+                    console.log(JSON.stringify(postData));
+                    Alert.create(postData);
+                }
+                
+            });
+    
+            // if the poster is not the project owner, we also send alert to the project owner
+            console.log(project.user.user_id + "  ---- " + postData.by_user.user_id);
+            if ( project.user.user_id !== postData.by_user.user_id ) {
+    
                 // delete _id is existing to save new alert record
                 if ( postData._id ) {
                     delete postData._id;
                 }
                 
-                postData.for_user = {
-                    user_id: user.user_id,
-                    name: user.name,
-                    picture: user.picture
-                };
-                console.log(JSON.stringify(postData));
-                Alert.create(postData);
+                getUser( project.user.user_id ).then( function ( userRecord ) {
+                    console.log(" ---- piture : " + userRecord.picture);
+                    postData.for_user = {
+                        picture: userRecord.picture,
+                        user_id: project.user.user_id,
+                        name: project.user.name
+                    };
+                    
+                    Alert.create(postData);
+                } );
             }
-            
-        });
-
-        // if the poster is not the project owner, we also send alert to the project owner
-        console.log(project.user.user_id + "  ---- " + postData.by_user.user_id);
-        if ( project.user.user_id !== postData.by_user.user_id ) {
-
-            // delete _id is existing to save new alert record
-            if ( postData._id ) {
-                delete postData._id;
-            }
-            
-            getUser( project.user.user_id ).then( function ( userRecord ) {
-                console.log(" ---- piture : " + userRecord.picture);
-                postData.for_user = {
-                    picture: userRecord.picture,
-                    user_id: project.user.user_id,
-                    name: project.user.name
-                };
-                
-                Alert.create(postData);
-            } );
+    
+            res.json( true );
         }
-
-        res.json( true );
     });
 });
 
