@@ -137,6 +137,7 @@ angular.module('project')
 
             $scope.update = function(index) {
                 var project = $scope.projects[index];
+                project.updatedDate = new Date();
                 Projects.update({
                     id: project._id
                 }, project);
@@ -243,6 +244,7 @@ angular.module('project')
                 var deferred = null;
                 var message = "";
                 var project = new Projects(newProject);
+                project.updatedDate = new Date();
                 if ($scope.isNewProject === true) {
 
                     newProject.status = 'Open';
