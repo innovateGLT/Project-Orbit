@@ -1,9 +1,9 @@
 'use strict';
 
 angular.module('project')
-    .controller('ProjectController', ['$scope', 'Projects', '$location', '$routeParams', 'SecurityService', 'SweetAlert', 'AlertService', 'store',
+    .controller('ProjectController', ['$scope', 'Projects', '$location', '$routeParams', 'SecurityService', 'SweetAlert', 'AlertService', 'store', 'Analytics',
 
-        function($scope, Projects, $location, $routeParams, SecurityService, SweetAlert, AlertService, store) {
+        function($scope, Projects, $location, $routeParams, SecurityService, SweetAlert, AlertService, store, Analytics) {
 
             $scope.auth = SecurityService.auth();
 
@@ -324,6 +324,15 @@ angular.module('project')
                     }
                 }
             };
+             Analytics.visitor({
+                user_id: $scope.auth.profile._id,
+                role: $scope.auth.profile.role,
+                job_role: $scope.auth.profile.job_role,
+                country: $scope.auth.profile.country
+            }, function(ret) {
+                console.log('visitor', ret);
+            });
+
         }
     ])
 ;

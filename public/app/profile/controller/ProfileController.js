@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('profile')
-    .controller('ProfileController', ['$scope', 'ProfileService', '$location', '$routeParams', 'SecurityService', 'Projects', 'Bubble',
-        function($scope, ProfileService, $location, $routeParams, SecurityService, Projects, Bubble) {
+    .controller('ProfileController', ['$scope', 'ProfileService', '$location', '$routeParams', 'SecurityService', 'Projects', 'Bubble', 'Analytics',
+        function($scope, ProfileService, $location, $routeParams, SecurityService, Projects, Bubble, Analytics) {
 
 
             $scope.auth = SecurityService.auth();
@@ -216,6 +216,16 @@ angular.module('profile')
             
             // set default projects tab to Current Projects
             $scope.showProjectsTab('current');
+             //Analytics visitors
+             Analytics.visitor({
+                user_id: $scope.auth.profile._id,
+                role: $scope.auth.profile.role,
+                job_role: $scope.auth.profile.job_role,
+                country: $scope.auth.profile.country
+            }, function(ret) {
+                console.log('visitor', ret);
+            });
+
         }
     ])
 

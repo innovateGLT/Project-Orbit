@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('profile')
-    .controller('ProfileEditController', ['$scope', 'ProfileService', '$location', '$routeParams', 'auth', 'SecurityService', 'Projects', 'SweetAlert',
-        function($scope, ProfileService, $location, $routeParams, auth, SecurityService, Projects, SweetAlert) {
+    .controller('ProfileEditController', ['$scope', 'ProfileService', '$location', '$routeParams', 'auth', 'SecurityService', 'Projects', 'SweetAlert', 'Analytics'
+        function($scope, ProfileService, $location, $routeParams, auth, SecurityService, Projects, SweetAlert, Analytics) {
 
             $scope.auth = SecurityService.auth();
 
@@ -112,6 +112,16 @@ angular.module('profile')
             $scope.clearAll = function() {
                 $scope.interests = [];
             };
+            //Analytics visitors
+             Analytics.visitor({
+                user_id: $scope.auth.profile._id,
+                role: $scope.auth.profile.role,
+                job_role: $scope.auth.profile.job_role,
+                country: $scope.auth.profile.country
+            }, function(ret) {
+                console.log('visitor', ret);
+            });
+
         }
     ])
 

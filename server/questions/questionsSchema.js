@@ -9,6 +9,10 @@ var ProjectSchema = new mongoose.Schema({
     createdDate: {
         type: Date,
         default: Date.now
+    },
+     country: {
+        type: String,
+        default: 'CANADA'
     }
 
 });

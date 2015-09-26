@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('project')
-    .controller('ProjectListController', ['$scope', 'Projects', '$location', '$routeParams', 'SecurityService',
-        function($scope, Projects, $location, $routeParams, SecurityService) {
+    .controller('ProjectListController', ['$scope', 'Projects', '$location', '$routeParams', 'SecurityService','Analytics',
+        function($scope, Projects, $location, $routeParams, SecurityService, Analytics) {
 
             $scope.category = $routeParams.category;
 
@@ -111,5 +111,15 @@ angular.module('project')
             // retrieve initial projects list
             $scope.reset();
             $scope.loadNext();
+            //Analytics
+             Analytics.visitor({
+                user_id: $scope.auth.profile._id,
+                role: $scope.auth.profile.role,
+                job_role: $scope.auth.profile.job_role,
+                country: $scope.auth.profile.country
+            }, function(ret) {
+                console.log('visitor', ret);
+            });
+
         }
     ]);

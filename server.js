@@ -18,6 +18,9 @@ var feedback = require('./server/feedback/feedbackRouter');
 var contactUs = require('./server/contact-us/contactUsRouter');
 var alert = require('./server/alert/alertRouter');
 
+// add analytics router
+var analytics = require('./server/analytics/analyticsRouter');
+
 var mongoose = require('mongoose');
 var databaseURI = 'mongodb://localhost/school';
 
@@ -66,6 +69,9 @@ app.use('/api/rating', rating);
 app.use('/api/contact-us', contactUs);
 app.use('/api/feedback', feedback);
 app.use('/api/alert', alert);
+
+// update the router with analytics
+app.use('/api/analytics', analytics);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

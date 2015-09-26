@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('project')
-    .controller('ProjectDetailController', ['$scope', '$routeParams', '$window', 'Projects', '$location', 'Questions', 'SecurityService', 'UserService', 'SweetAlert', 'Email', 'Rating', 'store', 'AlertService',
-        function($scope, $routeParams, $window, Projects, $location, Questions, SecurityService, UserService, SweetAlert, Email, Rating, store, AlertService) {
+    .controller('ProjectDetailController', ['$scope', '$routeParams', '$window', 'Projects', '$location', 'Questions', 'SecurityService', 'UserService', 'SweetAlert', 'Email', 'Rating', 'store', 'AlertService','Analytics',
+        function($scope, $routeParams, $window, Projects, $location, Questions, SecurityService, UserService, SweetAlert, Email, Rating, store, AlertService, Analytics) {
 
             $scope.auth = SecurityService.auth();
 
@@ -908,6 +908,15 @@ angular.module('project')
             };
             
             $scope.currentPath = $location.path();
+            //Analytics
+            Analytics.visitor({
+                user_id: $scope.auth.profile._id,
+                role: $scope.auth.profile.role,
+                job_role: $scope.auth.profile.job_role,
+                country: $scope.auth.profile.country
+            }, function(ret) {
+                console.log('visitor', ret);
+            });
 
         }
     ]);

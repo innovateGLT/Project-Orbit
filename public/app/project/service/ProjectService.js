@@ -80,4 +80,25 @@ angular.module('project')
                 }
             });
         }
+    ])
+    .factory('Analytics', ['$resource',
+        function($resource) {
+
+            return $resource('/api/analytics/:id', null, {
+                'keyword': {
+                    method: 'POST',
+                    url: '/api/analytics/keyword'
+                },
+                'searchedProject': {
+                    method: 'POST',
+                    url: '/api/analytics/searched-project'
+                },
+                'visitor': {
+                    method: 'POST',
+                    url: '/api/analytics/visitor'
+                }
+            });
+        }
     ]);
+    
+    

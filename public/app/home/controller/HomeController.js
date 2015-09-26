@@ -3,7 +3,7 @@
 
 angular.module('home')
 
-    .controller('HomeController', function(auth, $scope, store, $location, UserService, SecurityService, Projects, $interval, AlertService, SweetAlert) {
+    .controller('HomeController', function(auth, $scope, store, $location, UserService, SecurityService, Projects, $interval, AlertService, SweetAlert,Analytics) {
 
         $scope.auth = SecurityService.auth();
 
@@ -250,5 +250,14 @@ angular.module('home')
         });
 
         getAlerts();
+            //Analytics visitors
+            Analytics.visitor({
+                user_id: $scope.auth.profile._id,
+                role: $scope.auth.profile.role,
+                job_role: $scope.auth.profile.job_role,
+                country: $scope.auth.profile.country
+            }, function(ret) {
+                console.log('visitor', ret);
+            });
 
     });

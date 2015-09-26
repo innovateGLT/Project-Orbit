@@ -100,7 +100,7 @@ router.post('/login', function(req, res, next) {
             "_id": "556aca43bd88723e43b353b9",
             "user_id": "auth0|556aca404461c98662c6b3a8",
             "role": "regular",
-            "nickname": "innovate@HSBC Admin",
+            "nickname": "innovate@hsbc Admin",
             "name": "innovate@hsbc.ca",
             "picture": "https://secure.gravatar.com/avatar/6130f2008ca20ce8b01ced7458811912?s=480&r=pg&d=https%3A%2F%2Fcdn.auth0.com%2Favatars%2Fsc.png",
             "email_verified": true,

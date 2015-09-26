@@ -396,6 +396,8 @@ router.get('/search', function(req, res, next) {
 
 /* POST /projects */
 router.post('/', function(req, res, next) {
+    req.body.updatedDate = new Date(); //For analytics
+    req.body.createdDate = new Date(); //For analytics
     Project.create(req.body, function(err, post) {
         if (err) return next(err);
         res.json(post);
@@ -457,6 +459,7 @@ router.get('/:id', function(req, res, next) {
 
 /* PUT /projects/:id */
 router.put('/:id', function(req, res, next) {
+        req.body.updatedDate = new Date(); //For analytics
     Project.findByIdAndUpdate(req.params.id, req.body, function(err, post) {
         if (err) return next(err);
         res.json(post);
